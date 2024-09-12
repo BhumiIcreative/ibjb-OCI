@@ -1,0 +1,142 @@
+<odoo>
+
+        <template id="web.external_layout_standard">
+            <t t-name="web.external_layout_standard">
+                <t t-if="not company">
+                    <!-- Multicompany -->
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id"/>
+                    </t>
+                    <t t-elif="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id.sudo()"/>
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company"/>
+                    </t>
+                </t>
+
+              <div class="header">
+                    <div class="o_boxed_header" style="border-bottom: 2px solid #0C2D4A">
+                        <div class="row mb8">
+                            <div class="col-6">
+                                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                            </div>
+                            <div class="col-6 text-right mb4">
+                                <h4 class="mt0" t-field="company.report_header"/>
+                                <div name="company_address" class="mb4">
+                                    <span class="company_address" t-field="company.partner_id"
+                                          t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="article o_report_layout_boxed" t-att-data-oe-model="o and o._name"
+                     t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-call="web.address_layout"/>
+                    <t t-raw="0"/>
+                </div>
+
+                <div class="footer" style="border-bottom: 2px solid #0C2D4A;">
+                    <div>
+                        <ul>
+                            <li t-if="company.legal_form">
+                                <span t-field="company.legal_form"/>
+                            </li>
+                            <li t-if="company.phone">Tel:
+                                <span t-field="company.phone"/>
+                            </li>
+                            <li t-if="company.email">Mail:
+                                <span t-field="company.email"/>
+                            </li>
+                            <li t-if="company.fax">Fax:
+                                <span t-field="company.fax"/>
+                            </li>
+                            <li t-if="company.website">Web:
+                                <span t-field="company.website"/>
+                            </li>
+                        </ul>
+                        <t t-if="company.vat" class="list-inline-item">TVA:
+                            <span t-field="company.vat"/>
+                        </t>
+                        <span>&amp;nbsp;</span>
+                        <t t-if="company.siret" class="list-inline-item">Siret:
+                            <span t-field="company.siret"/>
+                        </t>
+                        <span>&amp;nbsp;</span>
+                        <t t-if="company.rcs" class="list-inline-item">RCS:
+                            <span t-field="company.rcs"/>
+                        </t>
+                        <div t-if="report_type == 'pdf'" class="text-muted">
+                            Page:
+                            <span class="page"/>
+                            of
+                            <span class="topage"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+<!--        This report is not visible in version 12 due to Studio-related configuration.-->
+        <template id="report_sale_order_sub" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//table" position="before">
+                <t t-if="not o" t-set="o" t-value="doc"/>
+                <table class="table">
+                    <thead>
+                        <th class="text-left">Order Reference</th>
+                        <th class="text-right">Date</th>
+                        <th class="text-right">Purchase order reference</th>
+                        <th class="text-left">Date EXP</th>
+                        <th class="text-right">CUSTOMER CODE</th>
+                        <th class="text-right">CARRIER</th>
+                    </thead>
+                    <td>
+                        <span t-field="o.name"/>
+                    </td>
+                    <td>
+                        <span t-field="o.date_order" t-options='{"widget": "date"}'/>
+                    </td>
+                    <td>
+                        <span t-field="o.x_studio_purchase_order_reference"/>
+                    </td>
+                    <td>
+                        <span t-field="o.carrier_id"/>
+                    </td>
+                    <td>
+                        <span t-field="o.client_order_ref"/>
+                    </td>
+                    <td>
+                        <span t-field="o.carrier_id.name"/>
+                    </td>
+                    <tbody>
+                    </tbody>
+                </table>
+            </xpath>
+            <xpath expr="//table[2]/thead/tr/th[2]" position="after">
+                <th>LOT</th>
+                <th>Peremption</th>
+            </xpath>
+            <xpath expr="//table[2]/tbody/t/tr/t/td[2]" position="after">
+                <td>
+                    <span t-esc="line.lot_id.name"/>
+                </td>
+                <td>
+                    <span t-esc="line.lot_id.expiration_date" t-options='{"widget": "date"}'/>
+                </td>
+            </xpath>
+            <xpath expr="//table[2]" position="after">
+                <t t-set="cpt" t-value="1"/>
+                <t t-foreach="o.order_line" t-as="p">
+                    <t t-if="p.product_id.type != 'service'">
+                        <t t-set="cpt" t-value="cpt+1"/>
+                    </t>
+                </t>
+                <p>Total quantité article:
+                    <span t-esc="cpt"/>
+                </p>
+            </xpath>
+        </template>
+
+</odoo>
