@@ -1,0 +1,52 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* boy_stock_picking
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-11 07:59+0000\n"
+"PO-Revision-Date: 2024-09-11 07:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: boy_stock_picking
+#. odoo-python
+#: code:addons/boy_stock_picking/models/stock_picking.py:0
+#: model:ir.model.fields,field_description:boy_stock_picking.field_stock_move__actual_lot_id
+#, python-format
+msgid "Actual lot"
+msgstr "Lot / numéro de série"
+
+#. module: boy_stock_picking
+#. odoo-python
+#: code:addons/boy_stock_picking/models/stock_move_line.py:0
+#: code:addons/boy_stock_picking/models/stock_picking.py:0
+#: model:ir.model.fields,field_description:boy_stock_picking.field_stock_move__life_date
+#: model:ir.model.fields,field_description:boy_stock_picking.field_stock_move_line__life_date
+#, python-format
+msgid "Life date"
+msgstr "Date de péremption"
+
+#. module: boy_stock_picking
+#. odoo-python
+#: code:addons/boy_stock_picking/models/stock_picking.py:0
+#: model:ir.model.fields,field_description:boy_stock_picking.field_stock_move__actual_lot_count
+#, python-format
+msgid "Lot count"
+msgstr "Nombre de lot"
+
+#. module: boy_stock_picking
+#: model:ir.model,name:boy_stock_picking.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Mouvements de produit (Ligne de mouvement de stock)"
+
+#. module: boy_stock_picking
+#: model:ir.model,name:boy_stock_picking.model_stock_move
+msgid "Stock Move"
+msgstr "Mouvement de stock"
