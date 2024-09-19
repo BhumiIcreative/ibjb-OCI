@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- tree view -->
+    <record id="sale_subscription_view_tree_inherit" model='ir.ui.view'>
+        <field name='name'>sale.subscription.view.tree.inherit</field>
+        <field name='model'>sale.order</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_tree" />
+        <field name='arch' type='xml'>
+            <field name="start_date" position="after">
+                <field name="end_date" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- form view -->
+    <record id="sale_subscription_order_view_form_inherit" model='ir.ui.view'>
+        <field name='name'>sale.subscription.view.form.inherit</field>
+        <field name='model'>sale.order</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_order_view_form" />
+        <field name='arch' type='xml'>
+            <field name="partner_id" position="after">
+                <field name="abonnement_equipement_id" readonly="1"/>
+            </field>
+            <xpath expr="//div[@name='plan_block']//field[@name='end_date']" position="replace">
+                <field name="end_date"/>
+            </xpath>
+        </field>
+
+    <!-- actions  -->
+    <record id="action_abonnement" model="ir.actions.act_window" >
+        <field name="name">Abonnement</field>
+        <field name="res_model">sale.subscription</field>
+        <field name="context">{'search_default_partner_id': active_id,'default_partner_id': active_id}</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_contrats" model="ir.actions.act_window">
+        <field name="name">Contrats</field>
+        <field name="res_model">sale.subscription</field>
+        <field name="context">{'search_default_x_studio_abonnement_equipement': active_id,'default_x_studio_abonnement_equipement': active_id}</field>
+        <field name="domain">[('x_studio_abonnement_equipement', '=', active_id)]</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="view_mode">tree,form</field>
+  </record>
+</odoo>
