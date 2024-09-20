@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
+from odoo.addons.ibjb_studio import common
 
 
 class SaleOrder(models.Model):
@@ -12,10 +13,13 @@ class SaleOrder(models.Model):
         copy=False,
     )
 
-    def Update_studio_fields(self):
+    def Update_sales_studio_fields(self):
         """
         server action code to migrate studio fields data to custom fields.
         """
+        migration_fields = {
+            "x_studio_abonnement_equipement": "abonnement_equipement_id",
+        }
         for rec in self:
-            if hasattr(rec, "x_studio_abonnement_equipement"):
-                rec.abonnement_equipement_id = rec.x_studio_abonnement_equipement.id
+            for x_field, field in migration_fields.items():
+                common.set_customer_field(rec, x_field, field)
