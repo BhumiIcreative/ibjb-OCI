@@ -12,6 +12,11 @@
     "depends": [
         "sale_subscription",
         "maintenance",
+        "contacts",
     ],
-    "data": [],
+    "data": [
+        "data/action_add_fields.xml",
+        "views/sale_subscription_views.xml",
+        "views/partner_view.xml",
+    ],
 }

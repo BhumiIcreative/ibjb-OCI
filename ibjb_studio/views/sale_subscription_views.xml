@@ -6,6 +6,9 @@
         <field name='model'>sale.order</field>
         <field name="inherit_id" ref="sale_subscription.sale_subscription_view_tree" />
         <field name='arch' type='xml'>
+            <field name="start_date" position="attributes">
+                <attribute name="optional"/>
+            </field>
             <field name="start_date" position="after">
                 <field name="end_date" readonly="1"/>
             </field>
@@ -19,17 +22,18 @@
         <field name="inherit_id" ref="sale_subscription.sale_subscription_order_view_form" />
         <field name='arch' type='xml'>
             <field name="partner_id" position="after">
-                <field name="abonnement_equipement_id" readonly="1"/>
+                <field name="abonnement_equipement_id" readonly="1" invisible="not is_subscription"/>
             </field>
             <xpath expr="//div[@name='plan_block']//field[@name='end_date']" position="replace">
                 <field name="end_date"/>
             </xpath>
         </field>
+    </record>
 
     <!-- actions  -->
     <record id="action_abonnement" model="ir.actions.act_window" >
         <field name="name">Abonnement</field>
-        <field name="res_model">sale.subscription</field>
+        <field name="res_model">sale.order</field>
         <field name="context">{'search_default_partner_id': active_id,'default_partner_id': active_id}</field>
         <field name="domain">[('partner_id', '=', active_id)]</field>
         <field name="target">current</field>
@@ -39,11 +43,26 @@
 
     <record id="action_contrats" model="ir.actions.act_window">
         <field name="name">Contrats</field>
-        <field name="res_model">sale.subscription</field>
-        <field name="context">{'search_default_x_studio_abonnement_equipement': active_id,'default_x_studio_abonnement_equipement': active_id}</field>
-        <field name="domain">[('x_studio_abonnement_equipement', '=', active_id)]</field>
+        <field name="res_model">sale.order</field>
+        <field name="context">{'search_default_abonnement_equipement': active_id,'default_abonnement_equipement': active_id}</field>
+        <field name="domain">[('abonnement_equipement', '=', active_id)]</field>
         <field name="target">current</field>
         <field name="limit">80</field>
         <field name="view_mode">tree,form</field>
-  </record>
+    </record>
+
+    <!-- Automated action -->
+    <record id="automated_action_sale_subscription_end_of_contract" model="base.automation">
+        <field name="name">Alerte fin de contrat Garantie 1ère année</field>
+        <field eval="ref('sale.model_sale_order')" name="model_id"/>
+        <field eval="True" name="active"/>
+        <field name="filter_domain">[('plan_id', 'in', [3])]</field>
+        <field name="filter_pre_domain">[]</field>
+        <field name="last_run">2024-09-19 04:48:57</field>
+        <field eval="False" name="on_change_field_ids"/>
+        <field name="trg_date_id" search="[('model', '=', 'sale.order'), ('name', '=', 'start_date')]" model="ir.model.fields"/>
+        <field name="trg_date_range">10</field>
+        <field name="trg_date_range_type">month</field>
+        <field name="trigger">on_time</field>
+    </record>
 </odoo>
