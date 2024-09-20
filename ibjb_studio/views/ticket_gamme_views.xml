@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <!-- Define a new form view for the helpdesk.source model -->
-    <record id="helpdesk_ticket_source_form_view" model="ir.ui.view">
-        <field name="name">helpdesk.ticket.source.form.view</field>
-        <field name="model">helpdesk.source</field>
+    <!-- Define a new form view for the ticket gamme model -->
+    <record id="helpdesk_ticket_gamme_form_view" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.gamme.form.view</field>
+        <field name="model">ticket.gamme</field>
         <field name="priority">1000</field>
         <field name="arch" type="xml">
             <form>
-                <sheet string="helpdesk_source">
+                <sheet string="helpdesk_ticket_gamme">
                     <div class="oe_title">
                         <!-- Required field for the source name -->
                         <h1>
@@ -19,10 +19,10 @@
         </field>
     </record>
 
-      <!-- Define an action for the helpdesk source -->
-    <record id="action_helpdesk_source" model="ir.actions.act_window">
-        <field name="name">Helpdesk Source</field>
-        <field name="res_model">helpdesk.source</field>
+    <!-- Define an action for the helpdesk source -->
+    <record id="action_helpdesk_ticket_gamme" model="ir.actions.act_window">
+        <field name="name">gamme</field>
+        <field name="res_model">ticket.gamme</field>
         <field name="view_mode">kanban,tree,form,activity</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -31,12 +31,11 @@
         </field>
     </record>
 
-
     <!-- Add a new submenu under the helpdesk configuration menu -->
-        <record id="helpdesk_source_menu" model="ir.ui.menu">
-            <field name="name">Source</field>
+        <record id="helpdesk_ticket_gamme" model="ir.ui.menu">
+            <field name="name">gamme</field>
             <field name="parent_id" ref="helpdesk.helpdesk_menu_config"/>
-            <field name="action" ref="action_helpdesk_source"/>  <!-- Add the appropriate action -->
-            <field name="sequence">12</field>
+            <field name="action" ref="action_helpdesk_ticket_gamme"/>  <!-- Add the appropriate action -->
+            <field name="sequence">11</field>
         </record>
 </odoo>

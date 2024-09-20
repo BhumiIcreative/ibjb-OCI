@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Define a new or modified tree view for the hr attendance model -->
+    <record id="view_hr_attendance_tree_inherit" model="ir.ui.view">
+        <field name="name">view.hr.attendance.tree.inherit</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <field name="employee_id" position="before">
+                <field name="id"/>
+                <field name="badge"/>
+            </field>
+        </field>
+    </record>
+</odoo>

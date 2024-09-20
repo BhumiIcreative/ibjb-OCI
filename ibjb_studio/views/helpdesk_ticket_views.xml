@@ -17,12 +17,14 @@
                        invisible="1"/>
             </field>
             <field name="priority" position="after">
+                <field name="source_id"/>
+                <field name="gamme_id"/>
                 <field name="ouvert_par_id"/>
                 <field name="ouvert_le"/>
             </field>
             <xpath expr="/form[1]/sheet[1]/group[1]" position="after">
                 <group name="studio_group_QK10t">
-                    <group name="studio_group_QK10t_left" string="Titre de gauche"/>
+                    <group name="studio_group_QK10t_left" string="Left title"/>
                     <group name="studio_group_QK10t_right" string="Affected device">
                         <field name="assistance_article_id"/>
                         <field name="assistance_numerolot_id"/>
@@ -38,11 +40,23 @@
         <field name="model">helpdesk.ticket</field>
         <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
         <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="gamme_id"/>
+            </field>
             <field name="stage_id" position="after">
                 <field name="ouverture_fiche_progres"/>
                 <field name="ouvert_par_id"/>
                 <field name="ouvert_le"/>
             </field>
         </field>
+    </record>
+
+    <!-- Define an action for displaying unassigned helpdesk tickets -->
+    <record id="helpdesk.helpdesk_ticket_action_unassigned" model="ir.actions.act_window">
+        <field name="context">{'search_default_team_id': active_id, 'search_default_unassigned': True}</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="search_view_id" ref="helpdesk.helpdesk_tickets_view_search"/>
+        <field name="target">current</field>
+        <field name="view_mode">kanban,form,activity,tree</field>
     </record>
 </odoo>

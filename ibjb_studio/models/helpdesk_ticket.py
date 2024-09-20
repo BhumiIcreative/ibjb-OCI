@@ -4,7 +4,7 @@
 from odoo import models, _, fields
 
 
-class ResCompany(models.Model):
+class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
 
     alerte_sq = fields.Boolean(_('Alert SQ'))  # x_studio_alerte_sq
@@ -12,10 +12,12 @@ class ResCompany(models.Model):
     ouverture_fiche_progres = fields.Selection([('Oui', 'Yes'), ('Non', 'No')],
                                                _('Opening Progress Sheet'))  # x_studio_ouverture_fiche_progres
     precisions = fields.Char(_('Details'))  # x_studio_precisions
-    tache_ficheprogres_id = fields.Many2one('project.task', _('Progress sheet:')) # x_studio_tache_ficheprogres:
-    assistance_article_id = fields.Many2one('product.product',_('Product reference'))  # x_studio_assistance_article
-    assistance_numerolot_id = fields.Many2one('stock.lot',_('Batch/Serial number')) # x_studio_assistance_numerolot
-    ouvert_le = fields.Datetime(_('Open on')) # x_studio_ouvert_le
-    ouvert_par_id = fields.Many2one('res.users',_('Opened by'))  # x_studio_ouvert_par
-    assistance_maintenance_ids = fields.Many2many('maintenance.request',string=_('Existing maintenance'))
-    field_AxWS3 = fields.Many2many('crm.lead',string=_('Existing opportunity'))
+    tache_ficheprogres_id = fields.Many2one('project.task', _('Progress sheet:'))  # x_studio_tache_ficheprogres:
+    assistance_article_id = fields.Many2one('product.product', _('Product reference'))  # x_studio_assistance_article
+    assistance_numerolot_id = fields.Many2one('stock.lot', _('Batch/Serial number'))  # x_studio_assistance_numerolot
+    ouvert_le = fields.Datetime(_('Open on'))  # x_studio_ouvert_le
+    ouvert_par_id = fields.Many2one('res.users', _('Opened by'))  # x_studio_ouvert_par
+    assistance_maintenance_ids = fields.Many2many('maintenance.request', string=_('Existing maintenance'))  # x_studio_assistance_maintenance
+    field_AxWS3 = fields.Many2many('crm.lead', string=_('Existing opportunity'))   # x_studio_field_AxWS3
+    source_id = fields.Many2one('helpdesk.source', _('Source'))   # x_studio_source
+    gamme_id = fields.Many2one('ticket.gamme', _('Range'))  # x_studio_gamme
