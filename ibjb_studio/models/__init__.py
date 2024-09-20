@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
+from . import maintenance
 from . import sale_order
-from . import res_partner

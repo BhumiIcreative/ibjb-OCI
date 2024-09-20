@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherit_hr_employee_form_view" model="ir.ui.view">
+        <field name="name">hr.employee.form.view</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group//group[1]//label" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group//group[1]//div[@class='o_address_format']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//notebook//page[@name='personal_information']//group//group[4]//field[@name='certificate']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="inherit_hr_employee_tree_view" model="ir.ui.view">
+        <field name="name">hr.employee.tree.view</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree//field[@name='name']" position="before">
+                <field name="id"/>
+            </xpath>
+            <xpath expr="//tree//field[@name='name']" position="after">
+                <field name="barcode"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
