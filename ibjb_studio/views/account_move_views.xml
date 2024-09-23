@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherit_account_invoice_bill_tree" model="ir.ui.view">
+        <field name="name">account.move.tree</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_in_invoice_bill_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_tax_signed']" position="replace">
+            </xpath>
+            <xpath expr="//field[@name='name']" position="before">
+                <xpath expr="//field[@name='invoice_date']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_partner_display_name']" position="after">
+                <field name="invoice_origin"/>
+                <xpath expr="//field[@name='invoice_date_due']" position="move"/>
+                <xpath expr="//field[@name='amount_residual_signed']" position="move"/>
+                <xpath expr="//field[@name='state']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="amount_untaxed_signed" string="HT" sum="HT" widget="monetary"/>
+                <field name="amount_tax_signed_stored" sum="VAT" widget="monetary"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_total_signed']" position="attributes">
+                <attribute name="string">VAT included</attribute>
+                <attribute name="sum">VAT included</attribute>
+                <attribute name="widget">monetary</attribute>
+            </xpath>
+            <xpath expr="//field[@name='invoice_origin']" position="attributes">
+                <attribute name="string">Customer VAT No.</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="inherit_account_view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                <field name="oci_codetiersfact"/>
+                <field name="oci_compta_langcustomer"/>
+                <xpath expr="//field[@name='fiscal_position_id']" position="move"/>
+                <field name="vat_customer"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

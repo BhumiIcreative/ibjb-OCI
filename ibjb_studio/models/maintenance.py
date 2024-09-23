@@ -14,7 +14,6 @@ class MaintenanceEquipment(models.Model):
         results = self.env['sale.order'].search(
             [('field_aueov_id', 'in', self.ids), ('is_subscription', '=', True)]
         )
-        print("\n\n\nresult-------------->", results)
 
     def action_view_sale_order(self):
         pass
