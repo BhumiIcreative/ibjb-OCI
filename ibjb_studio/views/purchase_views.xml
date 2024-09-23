@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <!-- Search view -->
+        <record id="view_purchase_order_filter_inherit" model="ir.ui.view">
+            <field name="name">view.purchase.order.filter.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search[1]/field[@name='name']" position="before">
+                    <xpath expr="//field[@name='partner_id']" position="move"/>
+                </xpath>
+                <xpath expr="//group[@expand='0']" position="inside">
+                  <filter context="{'group_by': 'invoice_status'}" name="group_by_Mq1Zm" string="Etat de la Facturation"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                  <attribute name="operator"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Tree view -->
+        <record id="purchase.purchase_order_view_tree" model="ir.ui.view">
+            <field name="name">purchase.order.view.tree</field>
+            <field name="model">purchase.order</field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+            <tree decoration-muted="state == 'cancel'" decoration-info="invoice_status == 'to invoice'" string="Commande fournisseur" class="o_purchase_order" sample="1">
+                    <header>
+                        <button name="action_create_invoice" type="object" string="Create Bills"/>
+                    </header>
+                    <field name="priority" optional="show" widget="priority" nolabel="1"/>
+                    <field name="partner_ref" optional="hide"/>
+                    <field name="name" string="Référence" readonly="1" decoration-bf="1" decoration-info="state in ('draft','sent')"/>
+                    <field name="date_approve" widget="date" column_invisible="context.get('quotation_only', False)" optional="show"/>
+                    <field name="partner_id" readonly="state in ['cancel', 'done', 'purchase']"/>
+                    <field name="state" column_invisible="True"/>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="show" readonly="state in ['cancel', 'done', 'purchase']"/>
+                    <field name="company_id" groups="!base.group_multi_company" column_invisible="True" readonly="state in ['cancel', 'done', 'purchase']"/>
+                    <field name="user_id" widget="many2one_avatar_user" optional="show"/>
+                    <field name="date_order" column_invisible="not context.get('quotation_only', False)" readonly="state in ['cancel', 'done', 'purchase']" optional="show"/>
+                    <field name="activity_ids" widget="list_activity" optional="show"/>
+                    <field name="origin" optional="show"/>
+                    <field name="amount_untaxed" sum="Montant total hors taxe" string="Hors taxe" widget="monetary" optional="hide"/>
+                    <field name="amount_total" sum="Montant total" widget="monetary" optional="show" decoration-bf="1"/>
+                    <field name="create_date"/>
+                    <field name="create_uid"/>
+                    <field name="write_uid"/>
+                    <field name="currency_id" column_invisible="True" readonly="state in ['cancel', 'done', 'purchase']"/>
+                    <field name="invoice_status" widget="badge" decoration-success="invoice_status == 'invoiced'" decoration-info="invoice_status == 'to invoice'" optional="show"/>
+                    <field name="date_planned" column_invisible="context.get('quotation_only', False)" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -12,6 +12,7 @@ class Partner(models.Model):
 
     field_aD1p5 = fields.Selection(
         related="lang",
+        string="Language",
         help=(
             _(
                 "All emails and documents sent to this contact will be translated into this language."
