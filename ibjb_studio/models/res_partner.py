@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import api, fields, models, _
+from odoo import fields, models, _
 from odoo.addons.ibjb_studio import common
 
 
@@ -31,7 +31,7 @@ class Partner(models.Model):
         migration_fields = {
             "x_studio_customer_code": "customer_code",
             "x_studio_customer_contact": "customer_contact",
-            # 'x_studio_field_aD1p5': 'field_aD1p5', # No need to migarte this fields as it is related field
+            # 'x_studio_field_aD1p5': 'field_aD1p5', # No need to migarte this fields as it is related to base field lang
             "x_studio_tva": "tva",
         }
         for rec in self:

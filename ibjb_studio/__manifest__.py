@@ -13,6 +13,9 @@
         "sale_subscription",
         "maintenance",
         "contacts",
+        "account_followup",
+        "delivery",
+        "product",
     ],
     "data": [
         "data/action_add_fields.xml",
