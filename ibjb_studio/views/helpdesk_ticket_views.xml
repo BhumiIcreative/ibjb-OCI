@@ -59,4 +59,28 @@
         <field name="target">current</field>
         <field name="view_mode">kanban,form,activity,tree</field>
     </record>
+
+    <record id="action_helpdesk_assistance" model="ir.actions.act_window">
+        <field name="name">Assistance</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="context">{'search_default_partner_id': active_id, 'default_partner_id': active_id}</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="action_ticket_linked" model="ir.actions.act_window">
+        <field name="name">Related ticket(s)</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="context">{'tache_ficheprogres_id': active_id,
+            'tache_ficheprogres_id': active_id}
+        </field>
+        <field name="domain">[('tache_ficheprogres_id', '=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
 </odoo>

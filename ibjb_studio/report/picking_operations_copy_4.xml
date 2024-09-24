@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_picking_copy_4">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <i style="margin-left:600px">
+                                        <i style="margin-left:-550px">15F BP Rev D 07/2020</i>
+                                        <br/>
+                                    </i>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row address">
+                            <div class="col-5"/>
+                        </div>
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span t-field="o.br_codetiers"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <b style="margin-left:730px">Adresse de livraison:</b>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row address">
+                            <div class="col-5"/>
+                            <div class="col-5 offset-2">
+                                <div t-field="o.sale_id.partner_shipping_id" t-options-widget="'contact'"
+                                     t-options-fields="['name', 'address']"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <b style="margin-left:730px">Code client:</b>
+                                    <!--                                    <span t-field="o.sale_id.oci_saleorder_codetiers"/>-->
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col h2" style="margin-top:10px">
+                                <span>Bordereau de préparation
+                                    <span>BL
+                                        <span t-field="o.name"/>
+                                        <br/>
+                                    </span>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <br/>
+                        <table class="table borderless" style="margin-top:-20px;">
+                            <thead>
+                                <tr>
+                                    <th t-if="o.origin">
+                                        <strong>Référence commande
+                                            <br/>
+                                        </strong>
+                                    </th>
+                                    <th>
+                                        <span>Référence client</span>
+                                    </th>
+                                    <th>
+                                        <span>Date de confirmation</span>
+                                    </th>
+                                    <th>
+                                        <strong>Etat</strong>
+                                    </th>
+                                    <th name="td_sched_date_h" width="20%">
+                                        <strong>Date planifiée</strong>
+                                    </th>
+                                    <th>
+                                        <span>Transporteur</span>
+                                    </th>
+                                    <th t-if="o.weight">
+                                        <strong>Poids</strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td t-if="o.origin">
+                                        <span t-field="o.origin"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.client_reference"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.sale_id.date_order"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.state"/>
+                                    </td>
+                                    <td name="td_sched_date" width="20%">
+                                        <span t-field="o.scheduled_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.bl_transporteur"/>
+                                    </td>
+                                    <td t-if="o.weight">
+                                        <span t-field="o.weight"/>
+                                        <span t-field="o.weight_uom_name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/>
+                        <br/>
+                        <table class="table table-sm" t-if="o.move_line_ids" style="margin-top:-20px">
+                            <t t-set="has_barcode"
+                               t-value="any([move_ids_without_package.product_id and move_ids_without_package.product_id.sudo().barcode or move_ids_without_package.package_id for move_ids_without_package in o.move_line_ids])"/>
+                            <t t-set="has_serial_number"
+                               t-value="o.move_line_ids.filtered(lambda ml: ml.lot_id or ml.lot_name)"
+                               groups="stock.group_production_lot"/>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>Référence</span>
+                                    </th>
+                                    <th>
+                                        <strong>Article</strong>
+                                    </th>
+                                    <th>
+                                        <span>Lot/numéro de série</span>
+                                    </th>
+                                    <th>
+                                        <span>Date de péremption</span>
+                                    </th>
+                                    <th>
+                                        <strong>Quantité</strong>
+                                    </th>
+                                    <th>
+                                        <span>Quantité corrigée</span>
+                                    </th>
+                                    <th>
+                                        <span>Lot corrigé
+                                            <br/>
+                                        </span>
+                                    </th>
+                                    <th>
+                                        <span>N°CRGS</span>
+                                    </th>
+                                    <th>
+                                        <span>Feuille d'analyse
+                                            <br/>
+                                        </span>
+                                    </th>
+                                    <th width="15%" class="text-center" t-if="has_barcode">
+                                        <strong>
+                                            Code-barre de l'article
+                                        </strong>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.move_ids_without_package.sorted(key=lambda m: m.product_id.id)"
+                                   t-as="move">
+                                    <t t-foreach="move.move_line_ids.sorted(key=lambda ml: ml.location_id.id)"
+                                       t-as="ml">
+                                        <tr>
+                                            <td>
+                                                <span t-field="move.product_id.default_code"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="ml.product_id.display_name"/>
+                                                <br/>
+                                                <span t-field="ml.product_id.description_picking"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="ml.lot_id.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="ml.lot_id.expiration_date"/>
+                                            </td>
+                                            <td>
+                                                <span t-if="o.state != 'done'" t-field="ml.quantity_product_uom"/>
+                                                <span t-if="o.state == 'done'" t-field="ml.qty_done"/>
+                                                <span t-field="ml.product_uom_id" groups="uom.group_uom"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.blbr_qtecrg"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.blbr_lotcrg"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.blbr_crgs"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="o.blbr_analyse"/>
+                                            </td>
+                                            <td width="15%" class="text-center" t-if="has_barcode">
+                                                <t t-if="product_barcode != move.product_id.barcode">
+                                                    <span t-if="move.product_id and move.product_id.barcode">
+                                                        <img t-if="len(move.product_id.barcode) == 13"
+                                                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', move.product_id.barcode, 600, 100)"
+                                                             style="width:100%;height:35px" alt="Code Barre"/>
+                                                        <img t-elif="len(move.product_id.barcode) == 8"
+                                                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN8', move.product_id.barcode, 600, 100)"
+                                                             style="width:100%;height:35px" alt="Code Barre"/>
+                                                        <img t-else=""
+                                                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', move.product_id.barcode, 600, 100)"
+                                                             style="width:100%;height:35px" alt="Code Barre"/>
+                                                    </span>
+                                                    <t t-set="product_barcode"
+                                                       t-value="move.product_id.barcode"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-3"/>
+                            <div class="col-3"/>
+                            <div class="col-3"/>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="margin-top:10px">
+                                <span>
+                                    <font style="font-size: 14px;">Poids :</font>
+                                    <br/>
+                                    <font style="font-size: 14px;">Dimensions :</font>
+                                    <br/>
+                                    <font style="font-size: 14px;">Port :</font>
+                                    <br/>
+                                    <br/>
+                                    <font style="font-size: 14px;">Préparée le      /     /         par</font>
+                                    <br/>
+                                    <font style="font-size: 14px;">Vérifiée    le      /     /         par
+                                    </font>
+                                    <br/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <table class="table table-sm"
+                               t-if="o.package_level_ids and o.picking_type_entire_packs">
+                            <thead>
+                                <tr>
+                                    <th width="25%">Colis</th>
+                                    <th width="25%" class="text-center">Code Barre</th>
+                                    <th width="25%" class="text-left">Source</th>
+                                    <th width="25%" class="text-right">Destination</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.package_level_ids.sorted(key=lambda p: p.package_id.name)"
+                                    t-as="package">
+                                    <t t-set="package" t-value="package.with_context(picking_id=o.id)"/>
+                                    <td>
+                                        <span t-field="package.package_id.name"/>
+                                    </td>
+                                    <td>
+                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', package.package_id.name, 600, 100)"
+                                             style="width:300px    ;height:50px" alt="Code Barre"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="package.location_id"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="package.location_dest_id"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <t t-set="no_reserved_product"
+                           t-value="o.move_ids.filtered(lambda x: x.product_uom_qty != x.availability and x.move_line_ids and x.state!='done')"/>
+                        <p t-if="o.state in ['draft', 'waiting', 'confirmed'] or no_reserved_product">
+                            <i class="fa fa-exclamation-triangle"/>
+                            Tous les produits n'ont pas pu être réservés. Cliquez sur le bouton "Vérifier la
+                            disponibilité" pour essayer de réserver les produits.
+                        </p>
+                        <p t-field="o.note"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_picking_operations_copy_4" model="ir.actions.report">
+        <field name="name">Picking Operations copy(4)</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.report_picking_copy_4</field>
+        <field name="report_name">ibjb_studio.report_picking_copy_4</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="ibjb_studio.paperformat_picking_operation_copy_4"/>
+    </record>
+</odoo>

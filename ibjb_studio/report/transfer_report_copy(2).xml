@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="transfer_report_copy_2">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <font style="font-size: 11px;">
+                                <i>15F CfCdeFrance Rev C 07/2020</i>
+                            </font>
+                        </span>
+                    </div>
+                </div>
+                <div class="row address">
+                    <div class="col-5"/>
+                    <div class="col-5 offset-2">
+                        <div t-field="doc.sale_id.partner_id" t-options-widget="'contact'"
+                             t-options-fields="['name', 'address']"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <b style="margin-left:505px">N° TVA:</b>
+<!--                            <span t-field="doc.sale_id.partner_id.tva"/>-->
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <b style="margin-left:505px">Code client:</b>
+<!--                            <span t-field="doc.sale_id.partner_id.customer_code"/>-->
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:15px">
+                        <span>
+                            <b>Adresse d'expédition:</b>
+                        </span>
+                    </div>
+                </div>
+                <div class="row address">
+                    <div class="col-5">
+                        <div t-field="doc.sale_id.partner_shipping_id" t-options-widget="'contact'"
+                             t-options-fields="['name', 'address']"/>
+                    </div>
+                    <div class="col-5 offset-2"/>
+                </div>
+                <div class="row">
+                    <div class="col h2" style="margin-top:20px">
+                        <span style="margin-left:50px">Confirmation de commande</span>
+                        <span t-field="doc.sale_id.name"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:20px">
+                        <span>Cher client,<br/>Nous avons bien reçu votre demande et nous vous en remercions.
+                        </span>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15px">
+                    <div class="col-auto mw-100 mb-2">
+                        <span>
+                            <strong>Votre référence:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="doc.sale_id.client_order_ref"/>
+                    </div>
+                    <div class="col-auto mw-100 mb-2">
+                        <span>
+                            <strong>Date de commande:</strong>
+                            <br/>
+                        </span>
+                        <span t-field="doc.sale_id.date_order"/>
+                    </div>
+                    <div class="col-auto mw-100 mb-2">
+                        <span>
+                            <strong>Date d'expédition(1):</strong>
+                            <br/>
+                        </span>
+<!--                        <span t-field="doc.sale_id.x_studio_oci_bdc_dateexpsht"/>-->
+                    </div>
+                    <div class="col-auto mw-100 mb-2">
+                        <span>
+                            <strong>Transporteur:</strong>
+                            <br/>
+                        </span>
+<!--                        <span t-field="doc.sale_id.oci_saleorder_codetiers"/>-->
+                    </div>
+                </div>
+                <table class="table o_report_block_table" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th class="align-middle text-center">
+                                <span>Référence interne</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Description</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Quantité</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>N° Lot</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Date de péremption</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Prix unit. HT</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>TVA</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Total HT</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="doc.move_line_ids" t-as="table_line" class="table table-sm o_main_table">
+                            <td>
+                                <span t-field="table_line.product_id.default_code"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.move_id.name"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.qty_done"/>
+                                <span t-field="table_line.product_uom_id.display_name"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.lot_id.name"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.lot_id.expiration_date"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.move_id.sale_line_id.price_unit"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.move_id.sale_line_id.tax_id.description"/>
+                            </td>
+                            <td>
+                                <t t-set="horstaxes"
+                                   t-value="round(table_line.qty_done * table_line.move_id.sale_line_id.price_unit,2)"/>
+                                <span class="text-nowrap"
+                                      t-esc="'{0:,.2f}'.format(horstaxes).replace(',',' ').replace('.',',')"/>
+                                €
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-5"/>
+                    <div class="col-5 offset-2">
+                        <table class="table table-sm o_report_block_total">
+                            <t t-set="total_currency_id" t-value="doc.sale_id.pricelist_id.currency_id[0]"/>
+                            <t t-set="total_amount_total" t-value="doc.sale_id.amount_total[0]"/>
+                            <t t-set="total_amount_untaxed" t-value="doc.sale_id.amount_untaxed"/>
+                            <t t-set="total_amount_by_groups" t-value="doc.sale_id.tax_totals"/>
+                            <tr class="border-black o_subtotal">
+                                <td>
+                                    <strong>Sous total HT</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="total_amount_untaxed"
+                                          t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                </td>
+                            </tr>
+                            <t t-foreach="total_amount_by_groups" t-as="total_amount_by_group">
+                                <tr>
+                                    <t t-if="len(total_amount_by_group) == 1 and total_amount_untaxed == total_amount_by_group[2]">
+                                        <td>
+                                            <span t-esc="total_amount_by_group[0]"/>
+                                        </td>
+                                        <td class="text-right o_price_total">
+                                            <span t-esc="total_amount_by_group[3]"/>
+                                        </td>
+                                    </t>
+                                    <t t-else="">
+                                        <td>
+                                            <span t-esc="total_amount_by_group[0]"/>
+                                            <!--<span>-->
+                                            <!--  <span>on</span>-->
+                                            <!--  <t t-esc="total_amount_by_group[4]"/>-->
+                                            <!--</span>-->
+                                        </td>
+                                        <td class="text-right o_price_total">
+                                            <span t-esc="total_amount_by_group[3]"/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                            <t t-if="total_amount_by_groups is None">
+                                <tr>
+                                    <td>TVA</td>
+                                    <td class="text-right">
+                                        <span t-esc="total_amount_total - total_amount_untaxed"
+                                              t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                    </td>
+                                </tr>
+                            </t>
+                            <tr class="border-black o_total">
+                                <td>
+                                    <strong>Total TTC</strong>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="total_amount_total"
+                                          t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:15px">
+                        <span t-field="doc.sale_id.note"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span t-if="doc.sale_id.comment"/>
+                        <span t-field="doc.sale_id.comment"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" t-if="doc.sale_id.partner_id.lang == &quot;fr_FR&quot;">
+                        <span style="left: 45.1298px; top: 782.766px; font-size: 10px; font-family: sans-serif; transform: scaleX(0.980492);">
+                            (1) - Pour les commandes en différé, cette date est susceptible de
+                        </span>
+                        <span style="left: 457.069px; top: 782.766px; font-size: 10px; font-family: sans-serif; transform: scaleX(0.983555);">
+                            modification en fonction notamment du contrôle qualité final.
+                        </span>
+                        <span style="left: 45.1298px; top: 803.265px; font-size: 10px; font-family: sans-serif; transform: scaleX(0.981233);">
+                            - Livraison sous les 24 à 48h après expédition selon engagements du transporteur.
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:15px"
+                         t-if="doc.sale_id.partner_id.lang == &quot;en_US&quot;">
+                        <span>
+                            <b>FAILING ANY COMMENT FROM YOU WITHIN 48 HOURS, YOUR ORDER WILL BE SHIPPED ON THE
+                                ABOVE MENTIONED DATE.
+                            </b>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:15px">
+                        <span>Nous certifions que tous ces produits sont d'origine française et peuvent circuler
+                            librement dans l'Union Européenne.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="main_template_2">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="ibjb_studio.transfer_report_copy_2"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_transfer_report_copy_2" model="ir.actions.report">
+        <field name="name">Transfer Report copy (2)</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.main_template_2</field>
+        <field name="report_name">ibjb_studio.main_template_2</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

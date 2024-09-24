@@ -13,10 +13,17 @@
     'version': '17.0.1.0.0',
     'license': 'LGPL-3',
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts','helpdesk', 'l10n_fr','project','stock','crm','maintenance','hr','hr_attendance'],
+    'depends': ['base', 'contacts','helpdesk', 'l10n_fr','project','stock','crm','maintenance','hr','hr_attendance','sale_stock','sale_subscription','stock_delivery','purchase_stock','product_expiry','stock_barcode'],
     # always loaded
     'data': [
         "security/ir.model.access.csv",
+        "data/hr_mail_template.xml",
+        "data/helpdesk_mail_template.xml",
+        "report/stock_paperformat.xml",
+        "report/report_picking_copy_2.xml",
+        "report/transfer_report_copy(1).xml",
+        "report/picking_operations_copy_4.xml",
+        "report/transfer_report_copy(2).xml",
         "views/res_company_views.xml",
         "views/helpdesk_ticket_views.xml",
         "views/helpdesk_ticket_type_views.xml",

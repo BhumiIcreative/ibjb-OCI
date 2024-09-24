@@ -11,4 +11,12 @@
             </field>
         </field>
     </record>
+
+    <record id="action_ticket_type" model="ir.actions.act_window">
+        <field name="name">Type de ticket</field>
+        <field name="res_model">helpdesk.ticket.type</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 </odoo>

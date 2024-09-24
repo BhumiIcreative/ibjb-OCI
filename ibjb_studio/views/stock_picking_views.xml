@@ -10,6 +10,138 @@
                 <!-- Add the 'Customs code' field -->
                 <field name="codedouane_bl"/>
             </xpath>
+            <xpath expr="//field[@name='move_ids_without_package']//tree[1]" position="after">
+                <form string="Mouvements de stocks" create="0" edit="0">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_get_account_moves" icon="fa-usd" class="oe_stat_button"
+                                    string="Accounting Entries" type="object"/>
+                        </div>
+                        <group>
+                            <group name="main_group" colspan="2">
+                                <group name="main_group_1">
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="reference"/>
+                                    <field name="location_id"/>
+                                    <field name="location_dest_id"/>
+                                </group>
+                                <group name="main_group_2">
+                                    <field name="product_id"/>
+                                    <label for="product_uom_qty"/>
+                                    <div class="o_row">
+                                        <field name="product_uom_qty"/>
+                                        <field name="product_uom_category_id" invisible="1"/>
+                                        <field name="product_uom" options="{'no_open': True, 'no_create': True}"
+                                               groups="uom.group_uom"/>
+                                    </div>
+                                    <!--                                    <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_ids_without_package']/tree[1]/field[@name='name']"-->
+                                    <!--                                           position="move"/>-->
+                                    <!--                                                                    <field name="date_expected" invisible="1"/>-->
+                                    <field name="date" invisible="state != 'done'"/>
+                                </group>
+                            </group>
+                        </group>
+                        <group name="origin_grp" string="Origin">
+                            <field name="origin"/>
+                            <field name="group_id"/>
+                            <field name="procure_method"
+                                   groups="stock.group_adv_location" readonly="state != 'draft'"/>
+                            <field name="purchase_line_id"/>
+                        </group>
+                        <group name="linked_group" string="Related Movements" groups="base.group_no_one"
+                               colspan="2">
+                            <field name="move_orig_ids" string="Original Movements" readonly="1">
+                                <tree>
+                                    <field name="location_id"/>
+                                    <field name="location_dest_id"/>
+                                    <field name="product_uom_qty"/>
+                                    <field name="product_uom"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                            <field name="move_dest_ids" string="Destination Movements" readonly="1">
+                                <tree>
+                                    <field name="location_id"/>
+                                    <field name="location_dest_id"/>
+                                    <field name="product_uom_qty"/>
+                                    <field name="product_uom"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </xpath>
+            <field name="origin" position="after">
+                <field name="is_expdition_bloque" widget="boolean_toggle"/>
+                <field name="blbr_faita"/>
+                <field name="blbr_faitle"/>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="bl_codetiers" invisible="br_codetiers"/>
+                <field name="br_codetiers" invisible="bl_codetiers"/>
+                <field name="client_reference"/>
+                <field name="inventory_settingociadmin" invisible="1"/>
+                <field name="abonnementsurbl"/>
+            </field>
+            <field name="move_type" position="after">
+                <field name="product_reference"/>
+            </field>
+            <field name="location_dest_id" position="attributes">
+                <attribute name="invisible">picking_type_code == 'outgoing'</attribute>
+            </field>
+            <field name="scheduled_date" position="attributes">
+                <attribute name="required">id</attribute>
+                <!--                <attribute name="readonly">id == azerty</attribute>-->
+            </field>
+            <xpath expr="//group//div[1]" position="before">
+                <field name="bl_abobdc"/>
+            </xpath>
+
+            <xpath expr="//group[2]/label[1]" position="before">
+                <field name="is_blbr_imprimer_ouinon"/>
+            </xpath>
+            <xpath expr="//group[2]/label[1]" position="before">
+                <field name="bl_dateexpetsht"/>
+            </xpath>
+            <page name="note" position="after">
+                <page name="preparation_elements" string="Preparation elements">
+                    <group>
+                        <group>
+                            <field name="bl_poids"/>
+                            <field name="bl_dimension"/>
+                            <field name="bl_port"/>
+                            <field name="blbr_remarque"/>
+                        </group>
+                        <group>
+                            <field name="bl_prepareele_1"/>
+                            <field name="bl_prepareepar_id"/>
+                            <field name="bl_verifieele"/>
+                            <field name="bl_verifieepar"/>
+                            <field name="bl_btverif_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="blbr_qtecrg"/>
+                        <field name="blbr_lotcrg"/>
+                        <field name="blbr_crgs"/>
+                        <field name="blbr_analyse"/>
+                    </group>
+                </page>
+            </page>
+            <notebook position="after">
+                <group>
+                    <group name="bl_commentairetxt">
+                        <field name="bl_commentairetxt"/>
+                    </group>
+                    <group name="bl_conditionvente">
+                        <field name="bl_conditionvente"/>
+                    </group>
+                </group>
+            </notebook>
         </field>
     </record>
 
@@ -18,12 +150,48 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.vpicktree"/>
         <field name="arch" type="xml">
-           <field name="name" position="before">
-               <field name="is_expdition_bloque"/>
-           </field>
+            <field name="name" position="before">
+                <field name="id" groups="base.group_no_one"/>
+                <field name="is_blbr_imprimer_ouinon"/>
+                <!--                <xpath expr="//field[@name='partner_id']" position="move"/>-->
+                <!--                <xpath expr="//field[@name='scheduled_date']" position="move"/>-->
+                <field name="is_expdition_bloque"/>
+                <field name="bl_abobdc"/>
+                <field name="product_id"/>
+                <field name="bl_transporteur"/>
+            </field>
+            <field name="state" position="after">
+                <field name="create_uid"/>
+                <field name="date_commande"/>
+                <field name="bl_dateexpetsht"/>
+            </field>
         </field>
     </record>
 
+    <record id="view_picking_internal_search_inherit" model="ir.ui.view">
+        <field name="name">view.stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="move_line_ids"/>
+                <field name="bl_codetiers"/>
+                <field name="br_codetiers"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="view_picking_withcarrier_out_form_inherit" model="ir.ui.view">
+        <field name="name">view.stock.picking.tree.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock_delivery.view_picking_withcarrier_out_form"/>
+        <field name="arch" type="xml">
+            <group name="carrier_data" position="inside">
+                <field name="total_weight"/>
+            </group>
+        </field>
+    </record>
 
 
     <!-- Add a new submenu under the stock move menu -->
@@ -33,4 +201,6 @@
         <field name="action" ref="action_helpdesk_source"/>  <!-- Add the appropriate action -->
         <field name="sequence">4</field>
     </record>
+
+
 </odoo>
