@@ -53,5 +53,42 @@
             </field>
         </record>
 
+        <!-- Form view -->
+        <record id="purchase_order_form_inherit" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='products']//field[@name='invoice_lines']" position="replace">
+                </xpath>
+                <xpath expr="//page[@name='products']//field[@name='price_unit']" position="attributes">
+                    <attribute name="readonly"/>
+                </xpath>
+                <xpath expr="//sheet[1]/group[1]/group[1]/field[3]" position="attributes">
+                    <attribute name="force_save"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                  <field name="oci_achat_devis_codetiers" string="Code tiers"/>
+                </xpath>
+                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='currency_id']" position="after">
+                  <xpath expr="//field[@name='fiscal_position_id']" position="move"/>
+                </xpath>
+                <xpath expr="//field[@name='origin']" position="after">
+                  <xpath expr="//field[@name='user_id']" position="move"/>
+                  <field name="oci_achats_acheteur" string="Acheteur"/>
+                </xpath>
+                <xpath expr="//field[@name='sequence']" position="after">
+                  <field name="id" attrs="{}" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree[1]/field[@name='name']" position="after">
+                  <field name="oci_product_reference" string="Compte"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree[1]/field[@name='date_planned']" position="attributes">
+                  <attribute name="required"/>
+                </xpath>
+            </field>
+        </record>
+
+
     </data>
 </odoo>
