@@ -8,13 +8,51 @@
             <xpath expr="//form//sheet//div[@name='button_box']//button[@name='%(maintenance.hr_equipment_request_action_from_equipment)d']"
                    position="after">
                 <button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-folder-open">
-                    <field name="aueov_sale_order_count" string="Ventes" widget="statinfo"/>
+                    <field name="aueov_sale_order_count" string="Sales" widget="statinfo"/>
                 </button>
                 <button name="action_view_sale_subscription" type="object" class="oe_stat_button" icon="fa-folder-open">
-                    <field name="abonnement_equipement_sale_subscription_count" string="Contrats"
+                    <field name="abonnement_equipement_sale_subscription_count" string="Contracts"
                            widget="statinfo"/>
                 </button>
+                <xpath expr="//field[@name='equipment_assign_to']" position="attributes">
+                    <attribute name="widget">selection</attribute>
+                </xpath>
+                <xpath expr="//field[@name='employee_id']" position="attributes">
+                    <attribute name="invisible">equipment_assign_to != employee</attribute>
+                </xpath>
             </xpath>
         </field>
+    </record>
+
+    <record id="maintenance_repatriation_status" model="ir.ui.menu">
+        <!--        <field eval="False" name="active"/>-->
+        <field name="name">Repatriation Status</field>
+        <field name="parent_id" ref="maintenance.menu_maintenance_configuration"/>
+        <field name="action" ref="base.action_open_website"/>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="maintenance_equipments_menu" model="ir.ui.menu">
+        <field eval="True" name="active"/>
+        <field name="name">Equipments</field>
+        <field name="parent_id" ref="maintenance.menu_maintenance_title"/>
+        <field name="action" ref="base.action_open_website"/>
+        <field name="sequence">3</field>
+    </record>
+
+    <record id="maintenance_version" model="ir.ui.menu">
+        <field name="action" ref="ibjb_studio.action_maintenance_version"/>
+        <field eval="True" name="active"/>
+        <field name="name">Version</field>
+        <field name="parent_id" ref="ibjb_studio.maintenance_equipments_menu"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="" model="ir.ui.menu">
+        <field name="action" ref="ibjb_studio.action_maintenance_etapes_pretform"/>
+        <field eval="True" name="active"/>
+        <field name="name">Loan Steps</field>
+        <field name="parent_id" ref="maintenance.menu_maintenance_configuration"/>
+        <field name="sequence">1</field>
     </record>
 </odoo>

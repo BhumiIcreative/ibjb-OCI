@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+ibjb_studio.access_maintenance_version,access_maintenance_version,ibjb_studio.model_maintenance_version,base.group_user,1,1,1,1
+ibjb_studio.access_maintenance_etapes_pret,access_maintenance_etapes_pret,ibjb_studio.model_maintenance_etapes_pret,base.group_user,1,1,1,1
