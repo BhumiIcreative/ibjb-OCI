@@ -10,4 +10,4 @@ class PurchaseOrderLine(models.Model):
         string=(_("Product Reference")),
         readonly=True,
         copy=False,
-    )
+    )  # No need to migarte this fields as it is related field

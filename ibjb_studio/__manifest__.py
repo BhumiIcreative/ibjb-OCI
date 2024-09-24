@@ -21,6 +21,8 @@
     ],
     "data": [
         "data/action_add_fields.xml",
+        "report/report_purchase.xml",
+        "report/ir_actions_report_templates.xml",
         "views/sale_subscription_views.xml",
         "views/partner_view.xml",
         "views/purchase_views.xml",
