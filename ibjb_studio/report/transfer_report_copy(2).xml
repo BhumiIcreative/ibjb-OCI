@@ -23,7 +23,7 @@
                     <div class="col">
                         <span>
                             <b style="margin-left:505px">N° TVA:</b>
-<!--                            <span t-field="doc.sale_id.partner_id.tva"/>-->
+                            <!--                            <span t-field="doc.sale_id.partner_id.tva"/>-->
                         </span>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="col">
                         <span>
                             <b style="margin-left:505px">Code client:</b>
-<!--                            <span t-field="doc.sale_id.partner_id.customer_code"/>-->
+                            <!--                            <span t-field="doc.sale_id.partner_id.customer_code"/>-->
                         </span>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="col-5 offset-2"/>
                 </div>
                 <div class="row">
-                    <div class="col h2" style="margin-top:20px">
+                    <div class="col h6" style="margin-top:20px">
                         <span style="margin-left:50px">Confirmation de commande</span>
                         <span t-field="doc.sale_id.name"/>
                     </div>
@@ -61,34 +61,42 @@
                         </span>
                     </div>
                 </div>
-                <div class="row" style="margin-top:15px">
-                    <div class="col-auto mw-100 mb-2">
-                        <span>
-                            <strong>Votre référence:</strong>
-                            <br/>
-                        </span>
-                        <span t-field="doc.sale_id.client_order_ref"/>
+                <div class="container" style="margin-top: 15px;">
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <span>
+                                <strong>Votre référence:</strong>
+                                <br/>
+                            </span>
+                            <span t-field="doc.sale_id.client_order_ref"/>
+                        </div>
                     </div>
-                    <div class="col-auto mw-100 mb-2">
-                        <span>
-                            <strong>Date de commande:</strong>
-                            <br/>
-                        </span>
-                        <span t-field="doc.sale_id.date_order"/>
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <span>
+                                <strong>Date de commande:</strong>
+                                <br/>
+                            </span>
+                            <span t-field="doc.sale_id.date_order"/>
+                        </div>
                     </div>
-                    <div class="col-auto mw-100 mb-2">
-                        <span>
-                            <strong>Date d'expédition(1):</strong>
-                            <br/>
-                        </span>
-<!--                        <span t-field="doc.sale_id.x_studio_oci_bdc_dateexpsht"/>-->
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <span>
+                                <strong>Date d'expédition(1):</strong>
+                                <br/>
+                            </span>
+                            <!-- <span t-field="doc.sale_id.x_studio_oci_bdc_dateexpsht"/> -->
+                        </div>
                     </div>
-                    <div class="col-auto mw-100 mb-2">
-                        <span>
-                            <strong>Transporteur:</strong>
-                            <br/>
-                        </span>
-<!--                        <span t-field="doc.sale_id.oci_saleorder_codetiers"/>-->
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <span>
+                                <strong>Transporteur:</strong>
+                                <br/>
+                            </span>
+                            <!-- <span t-field="doc.sale_id.oci_saleorder_codetiers"/> -->
+                        </div>
                     </div>
                 </div>
                 <table class="table o_report_block_table" style="margin-top:20px">
@@ -154,12 +162,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="row">
-                    <div class="col-5"/>
-                    <div class="col-5 offset-2">
-                        <table class="table table-sm o_report_block_total">
-                            <t t-set="total_currency_id" t-value="doc.sale_id.pricelist_id.currency_id[0]"/>
-                            <t t-set="total_amount_total" t-value="doc.sale_id.amount_total[0]"/>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-4">
+                        <table class="table table-sm o_report_block_total" >
+                            <t t-set="total_currency_id" t-value="doc.sale_id.pricelist_id.currency_id"/>
+                            <t t-set="total_amount_total" t-value="doc.sale_id.amount_total"/>
                             <t t-set="total_amount_untaxed" t-value="doc.sale_id.amount_untaxed"/>
                             <t t-set="total_amount_by_groups" t-value="doc.sale_id.tax_totals"/>
                             <tr class="border-black o_subtotal">
@@ -171,30 +178,6 @@
                                           t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
                                 </td>
                             </tr>
-                            <t t-foreach="total_amount_by_groups" t-as="total_amount_by_group">
-                                <tr>
-                                    <t t-if="len(total_amount_by_group) == 1 and total_amount_untaxed == total_amount_by_group[2]">
-                                        <td>
-                                            <span t-esc="total_amount_by_group[0]"/>
-                                        </td>
-                                        <td class="text-right o_price_total">
-                                            <span t-esc="total_amount_by_group[3]"/>
-                                        </td>
-                                    </t>
-                                    <t t-else="">
-                                        <td>
-                                            <span t-esc="total_amount_by_group[0]"/>
-                                            <!--<span>-->
-                                            <!--  <span>on</span>-->
-                                            <!--  <t t-esc="total_amount_by_group[4]"/>-->
-                                            <!--</span>-->
-                                        </td>
-                                        <td class="text-right o_price_total">
-                                            <span t-esc="total_amount_by_group[3]"/>
-                                        </td>
-                                    </t>
-                                </tr>
-                            </t>
                             <t t-if="total_amount_by_groups is None">
                                 <tr>
                                     <td>TVA</td>
@@ -223,8 +206,9 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <span t-if="doc.sale_id.comment"/>
-                        <span t-field="doc.sale_id.comment"/>
+                        <!--                        comment field is defined in boy subscriptions module-->
+                        <!--                        <span t-if="doc.sale_id.comment"/>-->
+                        <!--                        <span t-field="doc.sale_id.comment"/>-->
                     </div>
                 </div>
                 <div class="row">
