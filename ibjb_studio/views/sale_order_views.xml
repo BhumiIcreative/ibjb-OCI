@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- actions  -->
+    <record id="action_ventes" model="ir.actions.act_window" >
+        <field name="name">Ventes</field>
+        <field name="res_model">sale.order</field>
+        <field name="context">{'search_default_field_aueov_id': active_id,'default_field_aueov_id': active_id}</field>
+        <field name="domain">[('field_aueov_id', '=', active_id)]</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

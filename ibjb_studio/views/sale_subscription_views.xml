@@ -44,8 +44,8 @@
     <record id="action_contrats" model="ir.actions.act_window">
         <field name="name">Contrats</field>
         <field name="res_model">sale.order</field>
-        <field name="context">{'search_default_abonnement_equipement': active_id,'default_abonnement_equipement': active_id}</field>
-        <field name="domain">[('abonnement_equipement', '=', active_id)]</field>
+        <field name="context">{'search_default_abonnement_equipement_id': active_id,'default_abonnement_equipement_id': active_id}</field>
+        <field name="domain">[('is_subscription', '=', True),('abonnement_equipement_id', '=', active_id)]</field>
         <field name="target">current</field>
         <field name="limit">80</field>
         <field name="view_mode">tree,form</field>
