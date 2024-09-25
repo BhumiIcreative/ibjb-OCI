@@ -2,13 +2,13 @@
 <odoo>
     <!-- Action for PDF report type -->
     <record id="maintenance_equipment_historique_maintenance_template" model="ir.actions.report">
-        <field name="name">Maintenance history</field>
+        <field name="name">Maintenance History</field>
         <field name="model">maintenance.equipment</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">ibjb_studio.report_historique_maintenance_action</field>
         <field name="report_file">ibjb_studio.report_historique_maintenance_action</field>
         <field name="paperformat_id" ref="ibjb_studio.paperformat_report_template"/>
-        <field name="print_report_name">'Maintenance history'</field>
+        <field name="print_report_name">'Maintenance History'</field>
         <field name="binding_model_id" ref="maintenance.model_maintenance_equipment"/>
         <field name="binding_type">report</field>
     </record>

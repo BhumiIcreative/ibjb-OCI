@@ -111,4 +111,18 @@
             </xpath>
         </field>
     </record>
+
+    <record id="menu_account_partner_cat" model="ir.ui.menu">
+        <field name="action" ref="ibjb_studio.action_account_partner_cat"/>
+        <field name="name">Third Party Accounting Category</field>
+        <field name="parent_id" ref="account.account_account_menu"/>
+        <field name="sequence">4</field>
+    </record>
+
+    <record id="menu_naf_code" model="ir.ui.menu">
+        <field name="action" ref="ibjb_studio.action_naf_code"/>
+        <field name="name">NAF Code</field>
+        <field name="parent_id" ref="account.account_account_menu"/>
+        <field name="sequence">12</field>
+    </record>
 </odoo>

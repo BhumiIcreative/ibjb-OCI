@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!--custom header footer for Equipment Maintenance-->
     <template id="custom_external_layouts_for_header_footer_equipement_maintenance_template">
         <t t-if="not o" t-set="o" t-value="doc"/>
         <t t-if="not company">
@@ -18,16 +19,11 @@
         <div class="footer" style="color:black!important;">
             <div class="text-left"
                  style="color:black;!important;font-size: 10px !important;">
-                <!--                <div t-if="report_type == 'pdf'" align="center">-->
-                <!--                    Page:-->
-                <!--                    <span class="page"/>-->
-                <!--                    /-->
-                <!--                    <span class="topage"/>-->
-                <!--                </div>-->
             </div>
         </div>
     </template>
 
+    <!--Report template for Equipment Maintenance Report-->
     <template id="report_equipement_maintenance_without_header_data">
         <t t-call="ibjb_studio.custom_external_layouts_for_header_footer_equipement_maintenance_template">
             <t t-if="not o" t-set="o" t-value="doc"/>
@@ -61,15 +57,17 @@
                             </div>
                             <br/>
                             <br/>
-                            <div class="col-12" style="font-size: 1rem; color: black; line-height: 1.8;">
+                            <div class="col-12" style="font-size: 1.2rem; color: black; line-height: 1.8;">
                                 <div class="row">
                                     <div class="col-6" style="text-align: left;">
                                         <strong>
                                             <span>Owner :</span>
+                                            <span t-field="doc.client_utilisateur_id.name"/>
                                         </strong>
                                         <br/>
                                         <strong>
                                             <span>Contract in place :</span>
+                                            <span t-field="doc.contrats_1_ids.sale_order_template_id.name"/>
                                         </strong>
                                     </div>
                                     <div class="col-6" style="text-align: left;">
@@ -79,6 +77,7 @@
                                         <br/>
                                         <strong>
                                             <span>End of validity :</span>
+                                            <span t-field="doc.contrats_1_ids.end_date"/>
                                         </strong>
                                     </div>
                                 </div>
@@ -112,10 +111,10 @@
                                             <span t-field="doc.serial_no"/>
                                         </td>
                                         <td style="text-align: left;border-right: hidden;background-color: #CEDEE7;color:black;">
-                                            <!--                                            <strong><span t-field="doc."></strong>-->
+                                            <span t-field="doc.field_ixm1S"/>
                                         </td>
                                         <td style="text-align: left;border-right: hidden;background-color: #CEDEE7;color:black;">
-                                            <!--                                            <strong>Date Màj</strong>-->
+                                            <span t-field="doc.date_mise_jour"/>
                                         </td>
                                         <td style="text-align: left;border-right: hidden;background-color: #CEDEE7;color:black;">
                                             <span t-field="doc.effective_date"/>
@@ -165,7 +164,8 @@
                                 <t t-foreach="doc.maintenance_ids" t-as="maintenance">
                                     <tr>
                                         <td style="text-align: left;border:0 solid transparent;color:black;background-color: #EFEFEF;">
-                                            <span t-field="maintenance.create_date" t-options='{"format": "MM/dd/yyyy"}'/>
+                                            <span t-field="maintenance.create_date"
+                                                  t-options='{"format": "MM/dd/yyyy"}'/>
                                         </td>
                                         <td style="text-left: left;border:0 solid transparent;color:black;background-color: #EFEFEF;">
                                             <span t-field="maintenance.close_date"
@@ -175,10 +175,10 @@
                                             <span t-field="maintenance.name"/>
                                         </td>
                                         <td style="text-align: left;border:0 solid transparent;color:black;background-color: #EFEFEF;">
-<!--                                            <span style="width:100px;" t-field="maintenance.description"/>-->
+<!--                                            <span style="width:100px;" t-field="maintenance.description_maintenance"/>-->
                                         </td>
                                         <td style="text-align: left;border:0 solid transparent;color:black;background-color: #EFEFEF;">
-                                            <!--                                            <span t-field="maintenance.name"/>-->
+                                            <!--                                            <span t-field="maintenance.maintenance_solution"/>-->
                                         </td>
                                     </tr>
                                 </t>
@@ -190,6 +190,7 @@
         </t>
     </template>
 
+    <!-- Use the standard web HTML container layout for the report -->
     <template id="report_equipement_maintenance_action">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">

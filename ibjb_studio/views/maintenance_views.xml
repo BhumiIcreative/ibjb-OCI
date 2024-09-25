@@ -1,37 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- Inherit the maintenance equipment form view -->
     <record id="inherit_hr_equipment_view_form" model="ir.ui.view">
         <field name="name">maintenance.equipment.form</field>
         <field name="model">maintenance.equipment</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_view_form"/>
         <field name="arch" type="xml">
+            <!-- Add new buttons for viewing related Sales Orders and Subscriptions -->
             <xpath expr="//form//sheet//div[@name='button_box']//button[@name='%(maintenance.hr_equipment_request_action_from_equipment)d']"
                    position="after">
                 <button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-folder-open">
-                    <field name="aueov_sale_order_count" string="Sales" widget="statinfo"/>
+                    <field name="aueov_sale_order_count" string="Ventes" widget="statinfo"/>
                 </button>
-                <button name="action_view_sale_subscription" type="object" class="oe_stat_button" icon="fa-folder-open">
+                <button name="%(action_contrats)d" type="action" class="oe_stat_button" icon="fa-folder-open">
                     <field name="abonnement_equipement_sale_subscription_count" string="Contracts"
                            widget="statinfo"/>
                 </button>
-                <xpath expr="//field[@name='equipment_assign_to']" position="attributes">
-                    <attribute name="widget">selection</attribute>
-                </xpath>
-                <xpath expr="//field[@name='employee_id']" position="attributes">
-                    <attribute name="invisible">equipment_assign_to != employee</attribute>
-                </xpath>
             </xpath>
+
+            <!-- Set the equipment_assign_to field as a selection widget -->
+            <xpath expr="//field[@name='equipment_assign_to']" position="attributes">
+                <attribute name="widget">selection</attribute>
+            </xpath>
+
+            <!-- Hide employee_id field when equipment is not assigned to an employee -->
+            <xpath expr="//field[@name='employee_id']" position="attributes">
+                <attribute name="invisible">equipment_assign_to != 'employee'</attribute>
+            </xpath>
+
+            <!-- Hide department_id field when equipment is assigned to employee or other -->
+            <xpath expr="//field[@name='department_id']" position="attributes">
+                <attribute name="invisible">equipment_assign_to == 'employee' or equipment_assign_to == 'other'
+                </attribute>
+            </xpath>
+
+            <!-- Modify assign_date field attributes -->
+            <xpath expr="//field[@name='assign_date']" position="attributes">
+                <attribute name="groups"/>
+                <attribute name="string">Order date</attribute>
+            </xpath>
+
+            <!-- Move fields effective_date and warranty_date after assign_date -->
+            <xpath expr="//field[@name='assign_date']" position="after">
+                <xpath expr="//field[@name='effective_date']" position="move"/>
+                <xpath expr="//field[@name='warranty_date']" position="move"/>
+            </xpath>
+
+            <!-- Modify cost field label to "Purchase price" -->
+            <xpath expr="//field[@name='cost']" position="attributes">
+                <attribute name="string">Purchase price</attribute>
+            </xpath>
+
+            <!-- Add fields related to contract details after cost field -->
+            <xpath expr="//field[@name='cost']" position="after">
+                <field name="contrat_en_cours" string="current_contract" invisible="1"/>
+                <field name="date_fin_contrat" string="Contract_end_date" invisible="1"/>
+                <field name="contrat_type" string="Standard contract" invisible="1"/>
+            </xpath>
+
+            <!-- Modify effective_date field label to "Installation date" -->
+            <xpath expr="//field[@name='effective_date']" position="attributes">
+                <attribute name="string">Installation date</attribute>
+            </xpath>
+
+            <!-- Modify warranty_date field label to "End date of warranty year 1" -->
+            <xpath expr="//field[@name='warranty_date']" position="attributes">
+                <attribute name="string">End date of warranty year 1</attribute>
+            </xpath>
+
+            <!-- Add a new field 'client_utilisateur_id' after the 'category_id' field -->
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="client_utilisateur_id"/>
+            </xpath>
+
+            <!-- Add a new field 'proprietaire_id' after the 'equipment_assign_to' field -->
+            <xpath expr="//field[@name='equipment_assign_to']" position="after">
+                <field name="proprietaire_id"/>
+            </xpath>
+
+            <!-- Add two new fields, 'field_ixm1S' and 'date_mise_jour', after the 'serial_no' field -->
+            <xpath expr="//field[@name='serial_no']" position="after">
+                <field name="field_ixm1S"/>
+                <field name="date_mise_jour"/>
+            </xpath>
+
         </field>
     </record>
 
-    <record id="maintenance_repatriation_status" model="ir.ui.menu">
-        <!--        <field eval="False" name="active"/>-->
+    <!-- Add a new menu item for Repatriation Status under Maintenance Configuration -->
+    <record id="maintenance_repatriation_status_menu" model="ir.ui.menu">
+        <field eval="False" name="active"/>
         <field name="name">Repatriation Status</field>
         <field name="parent_id" ref="maintenance.menu_maintenance_configuration"/>
         <field name="action" ref="base.action_open_website"/>
         <field name="sequence">4</field>
     </record>
 
+    <!-- Add a new menu item for Equipments under Maintenance -->
     <record id="maintenance_equipments_menu" model="ir.ui.menu">
         <field eval="True" name="active"/>
         <field name="name">Equipments</field>
@@ -40,7 +105,8 @@
         <field name="sequence">3</field>
     </record>
 
-    <record id="maintenance_version" model="ir.ui.menu">
+    <!-- Add a sub-menu item for Version under Equipments -->
+    <record id="maintenance_version_menu" model="ir.ui.menu">
         <field name="action" ref="ibjb_studio.action_maintenance_version"/>
         <field eval="True" name="active"/>
         <field name="name">Version</field>
@@ -48,7 +114,8 @@
         <field name="sequence">1</field>
     </record>
 
-    <record id="" model="ir.ui.menu">
+    <!-- Add a sub-menu item for Loan Steps under Maintenance Configuration -->
+    <record id="maintenance_etapes_pret_menu" model="ir.ui.menu">
         <field name="action" ref="ibjb_studio.action_maintenance_etapes_pretform"/>
         <field eval="True" name="active"/>
         <field name="name">Loan Steps</field>
