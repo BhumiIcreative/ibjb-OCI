@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Inherit the employee form view to customize the visibility of certain fields -->
+    <record id="inherit_hr_employee_form_view" model="ir.ui.view">
+        <field name="name">hr.employee.form.view</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <!-- Make the first label in the first group invisible -->
+            <xpath expr="//group//group[1]//label" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Hide the address format div in the first group -->
+            <xpath expr="//group//group[1]//div[@class='o_address_format']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Make the 'certificate' field in the 'personal_information' tab invisible -->
+            <xpath expr="//notebook//page[@name='personal_information']//group//group[4]//field[@name='certificate']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit the employee tree view to add fields to the list view -->
+    <record id="inherit_hr_employee_tree_view" model="ir.ui.view">
+        <field name="name">hr.employee.tree.view</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <!-- Insert the 'id' field before the 'name' field in the tree view -->
+            <xpath expr="//tree//field[@name='name']" position="before">
+                <field name="id"/>
+            </xpath>
+
+            <!-- Insert the 'barcode' field after the 'name' field in the tree view -->
+            <xpath expr="//tree//field[@name='name']" position="after">
+                <field name="barcode"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

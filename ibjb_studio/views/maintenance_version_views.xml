@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Tree view for the maintenance_version model-->
+        <record id="maintenance_version_tree_view" model="ir.ui.view">
+            <field name="name">maintenance.version.tree</field>
+            <field name="model">maintenance.version</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for the maintenance_version model -->
+        <record id="maintenance_version_form_view" model="ir.ui.view">
+            <field name="name">maintenance.version.form</field>
+            <field name="model">maintenance.version</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for the maintenance_version model -->
+        <record id="action_maintenance_version" model="ir.actions.act_window">
+            <field name="name">Version</field>
+            <field name="res_model">maintenance.version</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

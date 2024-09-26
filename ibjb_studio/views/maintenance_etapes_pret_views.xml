@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Tree view for the maintenance_etapes_pret model-->
+        <record id="maintenance_etapes_pret_tree_view" model="ir.ui.view">
+            <field name="name">maintenance.etapes.pret.tree</field>
+            <field name="model">maintenance.etapes.pret</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for the maintenance_etapes_pret model -->
+        <record id="maintenance_etapes_pretform_view" model="ir.ui.view">
+            <field name="name">maintenance.etapes.pret.form</field>
+            <field name="model">maintenance.etapes.pret</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for the maintenance_etapes_pret model -->
+        <record id="action_maintenance_etapes_pretform" model="ir.actions.act_window">
+            <field name="name">Version</field>
+            <field name="res_model">maintenance.etapes.pret</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
