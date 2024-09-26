@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="facture_export_non_ce_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <!--div[1]-->
+                        <div class="row">
+                            <div class="col">
+                                <i>
+                                    <font style="font-size: 11px;">15F_Fact_EX - fr Rev B 07/2020</font>
+                                </i>
+                            </div>
+                        </div>
+
+                        <!--div[2]-->
+                        <div class="row address">
+                            <div class="col-5"/>
+                            <div class="col-5 offset-2">
+                                <div t-field="doc.partner_id"
+                                     t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
+                            </div>
+                        </div>
+
+                        <!--div[3]-->
+                        <div class="row">
+                            <div class="col">
+                                <span style="margin-left:528px;">
+                                    <b>VAT No.:
+                                        <span t-field="doc.partner_id.vat"/>
+                                        <br/>
+                                    </b>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[4]-->
+                        <div class="row">
+                            <div class="col">
+                                <span style="margin-left:528px;">
+                                    <b>Customer code:
+                                        <span t-field="doc.partner_id.customer_code"/>
+                                        <br/>
+                                    </b>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[5]-->
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-6">
+                                <span>Please make an electronic wire transfer "all banking charges for the applicant".
+                                    <br/>
+                                    <span style="font-weight: bolder;">SOCIETE GENERALE BANK</span>
+                                    <br/>
+                                    <span style="font-weight: bolder;">IBAN </span>: FR76 3000 3036 2400 0200 0163 674
+                                    <br/>
+                                    <span style="font-weight: bolder;">BIC :</span> SOGEFRPP
+                                    <br/>
+                                </span>
+                            </div>
+                            <div class="col-6">
+                                <span>VAT exemption, article 262, I of the General Tax Code</span>
+                            </div>
+                        </div>
+                        <!--div[6]-->
+                        <div class="row">
+                            <div t-if="doc.move_type == 'out_invoice'" class="col h2"
+                                 style="margin-top:10px;margin-left:50px;">
+                                <span>Invoice No.
+                                    <span t-field="doc.name"/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[7]-->
+                        <div class="row">
+                            <div t-if="doc.move_type == 'out_refund'" class="col h2" style="margin-top:10px">
+                                <span style="margin-left:50px">To have</span>
+                                <span t-field="doc.number"/>
+                            </div>
+                        </div>
+
+                        <!--div[8]-->
+                        <div class="row" style="margin-top:10px;">
+                            <!--div[8][1]-->
+                            <div class="col-auto mw-100 mb-2">
+                                <span>
+                                    <strong>Your reference:</strong>
+                                    <br/>
+                                </span>
+                                <span t-field="doc.name"/>
+                            </div>
+
+                            <!--div[8][2]-->
+                            <div class="col-auto mw-100 mb-2">
+                                <span>
+                                    <strong>Invoice date:</strong>
+                                    <br/>
+                                </span>
+                                <span t-field="doc.invoice_date"/>
+                            </div>
+
+                            <!--div[8][3]-->
+                            <div class="col-auto mw-100 mb-2">
+                                <span>
+                                    <strong>Order No.:</strong>
+                                    <br/>
+                                </span>
+                                <span t-field="doc.invoice_origin"/>
+                            </div>
+                        </div>
+
+                        <!--div[8]after table[1]-->
+                        <table class="table o_report_block_table" style="margin-top:20px;">
+                            <thead>
+                                <!--table[1]tr[1]-->
+                                <tr>
+                                    <!--table[1]tr[1]th[1]-->
+                                    <th class="align-middle text-center">
+                                        <span>Référence produit</span>
+                                    </th>
+                                    <!--table[1]tr[1]th[2]-->
+                                    <th class="align-middle text-center">
+                                        <span>Description</span>
+                                    </th>
+                                    <!--table[1]tr[1]th[3]-->
+                                    <th class="align-middle text-center">
+                                        <span>Quantité</span>
+                                    </th>
+                                    <!--table[1]tr[1]th[4]-->
+                                    <th class="align-middle text-center">
+                                        <span>Prix unit. HT</span>
+                                    </th>
+                                    <!--table[1]tr[1]th[5]-->
+                                    <th class="align-middle text-center">
+                                        <span>Montant (HT)</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.invoice_line_ids" t-as="table_line">
+                                    <!--table[1]/tbody[1]/tr[1]/td[1]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.product_id.default_code"/>
+                                    </td>
+                                    <!--table[1]/tbody[1]/tr[1]/td[2]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.name"/>
+                                    </td>
+                                    <!--table[1]/tbody[1]/tr[1]/td[3]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.quantity"/>
+                                        <span t-field="table_line.product_uom_id.display_name"/>
+                                    </td>
+                                    <!--table[1]/tbody[1]/tr[1]/td[4]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.price_unit"/>
+                                        <span>€</span>
+                                    </td>
+                                    <!--table[1]/tbody[1]/tr[1]/td[5]-->
+                                    <td class="text-right" style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--div[9]-->
+                        <div class="row">
+                            <div class="col-5"/>
+                            <div class="col-5 offset-2">
+                                <table class="table table-sm o_report_block_total">
+                                    <t t-set="total_currency_id" t-value="doc.currency_id"/>
+                                    <t t-set="total_amount_total" t-value="doc.amount_total"/>
+                                    <t t-set="total_amount_untaxed" t-value="doc.amount_untaxed"/>
+                                    <t t-set="total_amount_by_groups" t-value="doc.tax_totals"/>
+                                    <tr class="border-black o_subtotal">
+                                        <td style="border-right:hidden;">
+                                            <strong>Subtotal excluding VAT</strong>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="total_amount_untaxed"
+                                                  t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                        </td>
+                                    </tr>
+                                    <t t-if="total_amount_by_groups is None">
+                                        <tr>
+                                            <td style="border-right:hidden;">Taxes</td>
+                                            <td class="text-right">
+                                                <span t-esc="total_amount_total - total_amount_untaxed"
+                                                      t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr class="border-black o_total">
+                                        <td style="border-right:hidden;">
+                                            <strong>Net to pay</strong>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="total_amount_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!--div[10]-->
+                        <div class="row">
+                            <div class="col" style="margin-top:10px;">
+                                <span t-field="doc.narration"/>
+                            </div>
+                        </div>
+
+                        <!--div[11]-->
+                        <div class="row">
+                            <div class="col" style="margin-top:10px;">
+                                <span>Please use the following communication for your payment :</span>
+                                <span t-field="doc.name"/>
+                            </div>
+                        </div>
+
+                        <!--div[12]-->
+                        <div class="row">
+                        </div>
+
+                        <!--div[13]-->
+                        <div class="row">
+                            <div class="col" style="margin-top:10px;">
+                                <span>
+                                    <font style="font-size: 10px;">In the event that full payment
+                                        is not made on the date agreed by the parties, the seller
+                                        reserves the right to take back the item delivered and terminate the contract.
+                                        No discount will be granted in the event of early payment. In the event of late
+                                        or
+                                        non-payment, late payment penalties are due the day following the payment
+                                        date shown on the invoice, and calculated at the interest rate
+                                        applied by the European Central Bank to its most recent refinancing
+                                        operation plus 10 percentage points and without a reminder being
+                                        necessary. In accordance with Articles 441-6 of the French Commercial Code and
+                                        D. 441.5 of the French Commercial Code, any late payment for a professional
+                                        automatically entails,
+                                        in addition to late payment penalties, an obligation for the
+                                        debtor to pay a fixed compensation of €40 for recovery costs. Additional
+                                        compensation may be claimed,
+                                        upon supporting documents, when the recovery costs incurred are greater
+                                        than the amount of the fixed compensation.
+                                    </font>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[14]-->
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <b>Delivery address:
+                                        <br/>
+                                    </b>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[15]-->
+                        <div class="row">
+                            <div class="col-3">
+                                <div t-field="doc.partner_shipping_id"
+                                     t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2">
+                                <span>
+                                    <strong>Payment Terms:</strong>
+                                    <br/>
+                                </span>
+                                <span t-field="doc.invoice_payment_term_id.name"/>
+                            </div>
+                            <div class="col-auto mw-100 mb-2">
+                                <span>
+                                    <strong>Due date:</strong>
+                                    <span t-field="doc.invoice_date_due"/>
+                                    <br/>
+                                </span>
+                            </div>
+                            <div class="col-3"/>
+                        </div>
+
+                        <!--div[16]-->
+                        <div class="row">
+                            <div class="col" style="margin-top:15px">
+                                <span>We certify that all products are of French origin and can circulate
+                                    freely within the European community.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
