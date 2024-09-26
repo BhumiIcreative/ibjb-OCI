@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Define a new or modified form view for the helpdesk ticket model -->
+    <record id="view_helpdesk_ticket_form_inherit" model="ir.ui.view">
+        <field name="name">view.helpdesk.ticket.form.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <field name="ticket_type_id" position="after">
+                <field name="oci_asst_ouinonfp"/>
+                <field name="field_AxWS3" widget="many2many_tags"/>
+                <field name="assistance_maintenance_ids" widget="many2many_tags"/>
+                <field name="precisions" invisible="ticket_type_id != 8"/>
+                <field name="alerte_sq" invisible="1"/>
+                <field name="ouverture_fiche_progres" invisible="1"/>
+                <field name="tache_ficheprogres_id" domain="[('project_id','=',6)]" context="{'default_project_id':6}"
+                       invisible="1"/>
+            </field>
+            <field name="priority" position="after">
+                <field name="source_id"/>
+                <field name="gamme_id"/>
+                <field name="ouvert_par_id"/>
+                <field name="ouvert_le"/>
+            </field>
+            <xpath expr="/form[1]/sheet[1]/group[1]" position="after">
+                <group name="studio_group_QK10t">
+                    <group name="studio_group_QK10t_left" string="Left title"/>
+                    <group name="studio_group_QK10t_right" string="Affected device">
+                        <field name="assistance_article_id"/>
+                        <field name="assistance_numerolot_id"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Define a new or modified tree view for the helpdesk ticket model -->
+    <record id="view_helpdesk_ticket_tree_inherit" model="ir.ui.view">
+        <field name="name">view.helpdesk.ticket.tree.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="gamme_id"/>
+            </field>
+            <field name="stage_id" position="after">
+                <field name="ouverture_fiche_progres"/>
+                <field name="ouvert_par_id"/>
+                <field name="ouvert_le"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Define an action for displaying unassigned helpdesk tickets -->
+    <record id="helpdesk.helpdesk_ticket_action_unassigned" model="ir.actions.act_window">
+        <field name="context">{'search_default_team_id': active_id, 'search_default_unassigned': True}</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="search_view_id" ref="helpdesk.helpdesk_tickets_view_search"/>
+        <field name="target">current</field>
+        <field name="view_mode">kanban,form,activity,tree</field>
+    </record>
+
+    <record id="action_helpdesk_assistance" model="ir.actions.act_window">
+        <field name="name">Assistance</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="context">{'search_default_partner_id': active_id, 'default_partner_id': active_id}</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="action_ticket_linked" model="ir.actions.act_window">
+        <field name="name">Related ticket(s)</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="context">{'tache_ficheprogres_id': active_id,
+            'tache_ficheprogres_id': active_id}
+        </field>
+        <field name="domain">[('tache_ficheprogres_id', '=', active_id)]</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Define a new or modified form view for the helpdesk ticket type model -->
+    <record id="view_helpdesk_ticket_type_tree_inherit" model="ir.ui.view">
+        <field name="name">view.helpdesk.ticket.type.tree.inherit</field>
+        <field name="model">helpdesk.ticket.type</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_type_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="before">
+                <field name="id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_ticket_type" model="ir.actions.act_window">
+        <field name="name">Type de ticket</field>
+        <field name="res_model">helpdesk.ticket.type</field>
+        <field name="target">current</field>
+        <field name="limit">80</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="transfer_report_copy_1">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div class="row">
+                    <div class="col">
+                        <span>
+                            <i>16F BR Rev F 07/2020</i>
+                        </span>
+                    </div>
+                </div>
+                <div class="row address">
+                    <div class="col-5"/>
+                    <div class="col-5 offset-2">
+                        <div t-field="doc.partner_id" t-options-widget="'contact'"
+                             t-options-fields="['name', 'address']"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span style="margin-left:505px">
+                            <b>Code tiers:
+<!--                                <span t-field="doc.partner_id.customer_code"/>-->
+                            </b>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>Responsable Achats:
+                            <span t-field="doc.purchase_id.user_id.name"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>Acheteur:
+<!--                            <span t-field="doc.purchase_id.oci_achats_acheteur.name"/>-->
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col h2" style="margin-top:20px">
+                        <span>Bon de réception
+                            <span t-field="doc.name"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:10px">
+                    <div class="col-3">
+                        <strong>Numéro de commande:</strong>
+                         <br/>
+                        <span t-field="doc.origin"/>
+                    </div>
+                    <div class="col-3">
+                        <strong>Date de la commande:</strong>
+                         <br/>
+                        <span t-field="doc.purchase_id.date_order"/>
+                    </div>
+                    <div class="col-3">
+                        <strong>Date de réception:</strong>
+                         <br/>
+                        <span t-field="doc.blbr_faitle"/>
+                    </div>
+                </div>
+                <table class="table o_report_block_table" style="margin-top:50px">
+                    <thead>
+                        <tr>
+                            <th class="align-middle text-center">Référence interne</th>
+                            <th class="align-middle text-center">Description</th>
+                            <th class="align-middle text-center">Article</th>
+                            <th class="align-middle text-center">Lot / Numéro de série</th>
+                            <th class="align-middle text-center">Quantité</th>
+                            <th class="align-middle text-center">Prix unitaire HT</th>
+                            <th class="align-middle text-center">Sous-total HT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="doc.move_ids" t-as="table_line">
+                            <td>
+                                <span t-field="table_line.product_id.code"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.name"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.product_id.name"/>
+                            </td>
+                            <td>
+<!--                                <span t-field="table_line.actual_lot_id.name"/>-->
+                            </td>
+                            <td>
+                                <span t-field="table_line.quantity"/>
+                                <span t-field="table_line.product_uom.display_name"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.price_unit"/>
+                                €
+                            </td>
+                            <td>
+                                <t t-set="subtotal_ht"
+                                   t-value="round(table_line.quantity * table_line.purchase_line_id.price_unit, 2)"/>
+                                <span t-esc="'{0:,.2f}'.format(subtotal_ht).replace(',', ' ').replace('.', ',')"/>
+                                €
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col" style="margin-left:550px">
+                        Total HT bon d'achat:
+                        <span t-field="doc.purchase_id.amount_untaxed"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="main_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="ibjb_studio.transfer_report_copy_1"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_transfer_report_copy_1" model="ir.actions.report">
+        <field name="name">Transfer Report copy (1)</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.main_template</field>
+        <field name="report_name">ibjb_studio.main_template</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

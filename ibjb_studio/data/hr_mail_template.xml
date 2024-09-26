@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="presence_notification" model="mail.template">
+        <field name="name">Presence Notification Automatique</field>
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+        <field name="email_to">odoo@ibjb.fr</field>
+        <field name="reply_to">admin@ibjb.fr</field>
+        <field name="subject">| Notification Badgeuse - ${object.employee_id.display_name} | ${object.id} |
+            ${object.employee_id.barcode} | ${object.check_in} | ${object.check_out} |
+        </field>
+        <field name="body_html">
+            <![CDATA[
+        <p style="margin:0px 0 1rem 0;font-size:13px;font-family:'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;">
+            &nbsp;<br>
+        </p>
+        ]]>
+        </field>
+    </record>
+</odoo>

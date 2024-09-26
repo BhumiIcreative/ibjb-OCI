@@ -12,3 +12,10 @@ from . import maintenance_version
 from . import maintenance_etapes_pret
 from . import account_partner_cat
 from . import naf_code
+from . import res_company
+from . import helpdesk_ticket
+from . import helpdesk_source
+from . import ticket_gamme
+from . import hr_attendance
+from . import stock_move
+from . import stock_picking

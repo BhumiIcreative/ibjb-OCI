@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Add a new submenu under the contacts configuration menu -->
+    <record id="res_partner_gamme_menu" model="ir.ui.menu">
+        <field name="name">Gamme</field>
+        <field name="parent_id" ref="contacts.res_partner_menu_config"/>
+        <field name="action" ref="action_helpdesk_source"/>  <!-- Add the appropriate action -->
+        <field name="sequence">5</field>
+    </record>
+</odoo>
