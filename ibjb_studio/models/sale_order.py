@@ -39,6 +39,7 @@ class SaleOrder(models.Model):
         store=True,
         copy=False,
         readonly=True,
+    )
 
     field_aueov_id = fields.Many2one(
         "maintenance.equipment", string=(_("Equipement de maintenance"))

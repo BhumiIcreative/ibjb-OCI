@@ -47,9 +47,9 @@
         "views/hr_employee_views.xml",
         "views/sale_order_views.xml",
         "views/maintenance_views.xml",
-        "views/account_move_views.xml",
         "views/account_partner_cat_views.xml",
         "views/naf_code_views.xml",
+        "views/account_move_views.xml",
         "views/sale_subscription_views.xml",
         "views/partner_view.xml",
         "views/purchase_views.xml",
@@ -62,7 +62,7 @@
         "views/res_users_views.xml",
         "views/hr_attendance_views.xml",
         "views/res_partner_views.xml",
-        "views/stock_picking_views.xml"
+        "views/stock_picking_views.xml",
 
         "report/report_paperformat.xml",
         "report/maintenance_reports.xml",
