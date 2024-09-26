@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="action_report_purchase_order" model="ir.actions.report">
+    <record id="action_ibjb_report_purchase_order" model="ir.actions.report">
         <field name="name">Demande de prix 1</field>
         <field name="model">purchase.order</field>
         <field name="report_type">qweb-pdf</field>
