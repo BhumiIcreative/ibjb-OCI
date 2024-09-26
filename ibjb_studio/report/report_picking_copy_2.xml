@@ -246,14 +246,4 @@
         </t>
     </template>
 
-
-    <record id="action_report_picking_operations_copy_2" model="ir.actions.report">
-        <field name="name">Picking Operations copy(2)</field>
-        <field name="model">stock.picking</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">ibjb_studio.report_picking</field>
-        <field name="report_name">ibjb_studio.report_picking</field>
-        <field name="binding_model_id" ref="stock.model_stock_picking"/>
-        <field name="binding_type">report</field>
-    </record>
 </odoo>

@@ -37,16 +37,14 @@
     "data": [
         "security/ir.model.access.csv",
         "security/maintenance_security.xml",
-
         "data/action_add_fields.xml",
         "data/hr_mail_template.xml",
         "data/helpdesk_mail_template.xml",
-
         "views/maintenance_version_views.xml",
         "views/maintenance_etapes_pret_views.xml",
         "views/hr_employee_views.xml",
         "views/sale_order_views.xml",
-        # "views/maintenance_views.xml",
+        "views/maintenance_views.xml",
         "views/account_partner_cat_views.xml",
         "views/naf_code_views.xml",
         "views/account_move_views.xml",
@@ -63,7 +61,10 @@
         "views/hr_attendance_views.xml",
         "views/res_partner_views.xml",
         "views/stock_picking_views.xml",
-
+        "report/stock_picking_reports_actions.xml",
+        "report/transfer_report_1.xml",
+        "report/transfer_report_2.xml",
+        "report/transfer_report_3.xml",
         "report/report_paperformat.xml",
         "report/maintenance_reports.xml",
         "report/historique_maintenance_template.xml",

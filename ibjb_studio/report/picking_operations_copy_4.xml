@@ -295,15 +295,4 @@
             </t>
         </t>
     </template>
-
-    <record id="action_report_picking_operations_copy_4" model="ir.actions.report">
-        <field name="name">Picking Operations copy(4)</field>
-        <field name="model">stock.picking</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">ibjb_studio.report_picking_copy_4</field>
-        <field name="report_name">ibjb_studio.report_picking_copy_4</field>
-        <field name="binding_model_id" ref="stock.model_stock_picking"/>
-        <field name="binding_type">report</field>
-        <field name="paperformat_id" ref="ibjb_studio.paperformat_picking_operation_copy_4"/>
-    </record>
 </odoo>

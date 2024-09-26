@@ -125,13 +125,4 @@
         </t>
     </template>
 
-    <record id="action_report_transfer_report_copy_1" model="ir.actions.report">
-        <field name="name">Transfer Report copy (1)</field>
-        <field name="model">stock.picking</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">ibjb_studio.main_template</field>
-        <field name="report_name">ibjb_studio.main_template</field>
-        <field name="binding_model_id" ref="stock.model_stock_picking"/>
-        <field name="binding_type">report</field>
-    </record>
 </odoo>

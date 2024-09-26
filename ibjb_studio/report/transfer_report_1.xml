@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="transfer_report_1">
+        <t t-name="transfer_report_1">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <!-- Header Section -->
+                    <div class="row">
+                        <div class="col">
+                            <span>
+                                <font style="font-size: 12px;">15FBLMAG Rev F 07/2020</font>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-6">
+                            <span>
+                                <b>Adresse de livraison:</b>
+                            </span>
+                        </div>
+                        <div class="col-6">
+                            <span>
+                                <b style="margin-left:72px;">Adresse de facturation:</b>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row address">
+                        <div class="col-5">
+                            <div t-field="doc.sale_id.partner_shipping_id" t-options-widget="'contact'"
+                                 t-options-fields="['name', 'address']"/>
+                        </div>
+                        <div class="col-5 offset-2">
+                            <div t-field="doc.sale_id.partner_invoice_id" t-options-widget="'contact'"
+                                 t-options-fields="['name', 'address']"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span style="margin-left:505px;">
+                                <b>N°TVA intracommunautaire:
+                                    <span t-field="doc.partner_id.vat"/>
+                                    <br/>
+                                </b>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span style="margin-left:505px;">
+                                <b>Code client :
+                                    <span t-field="doc.partner_id.customer_code"/>
+                                    <br/>
+                                </b>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col h2" style="margin-left:20px;">
+                            <span>Bon de livraison
+                                <span t-field="doc.name"/>
+                                <br/>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 col-auto mw-100 mb-2">
+                            <span>
+                                <strong>Référence commande:</strong>
+                                <br/>
+                            </span>
+                            <span t-field="doc.origin"/>
+                        </div>
+                        <div class="col-3 col-auto mw-100 mb-2">
+                            <span>
+                                <strong>Référence client:</strong>
+                                <br/>
+                            </span>
+                            <span t-field="doc.client_reference"/>
+                        </div>
+                        <div class="col-3 col-auto mw-100 mb-2">
+                            <span>
+                                <strong>Date de la commande:</strong>
+                                <br/>
+                            </span>
+                            <span t-field="doc.sale_id.date_order"/>
+                        </div>
+                        <div class="col-3 col-auto mw-100 mb-2">
+                            <span>
+                                <strong>Date d'expédition:</strong>
+                                <br/>
+                            </span>
+                            <span t-field="doc.scheduled_date"/>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-3 col-auto mw-100 mb-2">
+                            <span>
+                                <strong>Transporteur:</strong>
+                                <br/>
+                            </span>
+                            <span t-field="doc.bl_transporteur"/>
+                        </div>
+                        <div class="col-3"/>
+                        <div class="col-3"/>
+                        <div class="col-3"/>
+                    </div>
+                    <table class="table o_report_block_table" style="margin-top:30px;">
+                        <thead>
+                            <tr>
+                                <th class="align-middle text-center">
+                                    <span>Reference article</span>
+                                </th>
+                                <th class="align-middle text-center">
+                                    <span>Article</span>
+                                </th>
+                                <th class="align-middle text-center">
+                                    <span>Quantité</span>
+                                </th>
+                                <th class="align-middle text-center">
+                                    <span>N°lot</span>
+                                </th>
+                                <th class="align-middle text-center">
+                                    <span>Date de péremption</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.move_line_ids" t-as="table_line">
+                                <td>
+                                    <span t-field="table_line.product_id.default_code"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.product_id.display_name"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.qty_done"/>
+                                    <span t-field="table_line.product_uom_id.display_name"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.lot_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.expiration_date"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="col" style="margin-top:10px;">
+                            <span t-field="doc.sale_id.note"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-top:10px;">
+                            <!--                            <span t-if="doc.sale_id.comment">Commentaire:-->
+                            <!--                                <span t-field="doc.sale_id.comment"/>-->
+                            <br/>
+                            <!--                            </span>-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="margin-top:20px;">
+                            <span>
+                                <font style="font-size: 14px;">Nous certifions que tous les produits sont d'origine
+                                    française et
+                                    peuvent circuler librement dans la communauté Européenne.
+                                </font>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+
+    </template>
+
+    <template id="transfer_report_1_main">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="ibjb_studio.transfer_report_1" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+</odoo>
