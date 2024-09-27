@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_pircelist_offer">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <t t-set="company" t-value="user.company_id"/>
+                <div class="row">
+                    <div class="col">
+                        <span style="margin-left:600px;">
+                            <i>15F OP-EN Rev A 07/2020</i>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col h2" style="margin-top:20px">
+                        <span>
+                            <u>
+                                <u>PRICE OFFER</u>
+                            </u>
+                            <span t-field="doc.offre_de_prix_annee"
+                                  class="o_underline"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:20px;">
+                        <span style="margin-left:505px;">To the attention of:</span>
+                        <span t-field="doc.pricelist_alintentionde"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:20px">
+                        <span>Customer reference :
+                            <span t-field="doc.istprice_codetiers"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>Reference offer :
+                            <span t-field="doc.pricelist_orderref"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <table class="table table-sm o_main_table" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th class="align-middle text-center">
+                                <span>Product reference</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Product name
+                                    <br/>
+                                </span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Minimum order quantity</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Unit Price ex-VAT
+                                    <br/>
+                                </span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Comment / Details</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr t-foreach="doc.item_ids" t-as="table_line">
+                            <td>
+                                <span t-field="table_line.field_MqbX7"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.display_name"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.min_quantity"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.price"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.pricelist_coms"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col">
+                        <span>Nota bene :
+                            <span t-field="doc.pricelist_comeventuel"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>Offer
+                            <span t-field="doc.pricelist_orderref"/>
+                            <span>valid until
+                                <span t-field="doc.datelifeend"/>
+                                <br/>
+                            </span>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col" style="margin-top:20px;">
+                        <span style="margin-left:600px">Done in
+                            <span t-field="doc.pricelist_faitle"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span style="margin-left:600px">Date :
+                            <span t-field="doc.pricelist_faita"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:30px"
+                         t-if="doc.is_listprice_france is True">
+                        <span t-field="doc.listprice_francetext"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:20px;">
+                        <span t-field="doc.listprice_horsfrancetext2"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span t-field="doc.listprice_horsfrancetext"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:50px">
+                        <span>
+                            <b>Terms of payment :</b>
+                            <span t-field="doc.pricelist_conditionspaiement"/>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="product_pircelist_offer_main">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="ibjb_studio.product_pircelist_offer"/>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherit_product_price_list_form" model="ir.ui.view">
+        <field name="name">product.price.list.form.inherit</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/div[not(@name)][1]" position="after">
+                <group>
+                    <group>
+                        <field name="offre_de_prix"/>
+                        <field name="offre_de_prix_annee" required="offre_de_prix"/>
+                        <field name="listprice_referencepdf" invisible="1"/>
+                        <field name="listprice_nomclient_id" required="offre_de_prix"
+                               help="Please complete the CONTACT SHEET!"/>
+                        <field name="pricelist_alintentionde" required="offre_de_prix"/>
+                        <field name="istprice_codetiers" invisible="not listprice_nomclient_id"/>
+                        <field name="pricelist_orderref"/>
+                    </group>
+                    <group>
+                        <field name="datelifeend"/>
+                        <field name="pricelist_faitle"/>
+                        <field name="pricelist_faita"/>
+                        <field name="is_listprice_france"/>
+                        <field name="listprice_francetext2"/>
+                        <field name="listprice_francetext" invisible="not is_listprice_france"/>
+                        <field name="is_listprice_horsfrance"/>
+                        <field name="listprice_horsfrancetext" invisible="not is_listprice_horsfrance"/>
+                        <field name="pricelist_conditionspaiement"/>
+                        <field name="listprice_horsfrancetext2" invisible="not is_listprice_horsfrance"/>
+                        <field name="pricelist_comeventuel"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='item_ids']/tree[2]/field[@name='name']" position="before">
+                <field name="field_MqbX7"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="inherit_product_price_list_tree" model="ir.ui.view">
+        <field name="name">product.price.list.tree.inherit</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="offre_de_prix"/>
+                <field name="offre_de_prix_annee"/>
+                <field name="datelifeend"/>
+            </field>
+
+            <field name="currency_id" position="after">
+                <field name="create_uid"/>
+                <field name="create_date"/>
+            </field>
+        </field>
+    </record>
+</odoo>

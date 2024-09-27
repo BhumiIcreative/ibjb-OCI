@@ -61,6 +61,8 @@
         "views/hr_attendance_views.xml",
         "views/res_partner_views.xml",
         "views/stock_picking_views.xml",
+        "views/product_pricelist_views.xml",
+        "report/product_pricelist_copy_1.xml",
         "report/stock_picking_reports_actions.xml",
         "report/transfer_report_1.xml",
         "report/transfer_report_2.xml",
@@ -80,6 +82,9 @@
         "report/account_move_facture_ce_intracommunautaire_template.xml",
         "report/account_move_facture_export_non_ce_template.xml",
         "report/sale_report_view.xml",
+        "report/product_pricelist_priceoffer.xml",
+        "report/product_pricelist_actions.xml",
+
     ],
     "installable": True,
     "auto_install": False,

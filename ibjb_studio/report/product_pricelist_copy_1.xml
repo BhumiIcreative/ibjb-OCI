@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_price_list_copy_1">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <t t-set="company" t-value="user.company_id"/>
+                <div class="row">
+                    <div class="col">
+                        <span style="margin-left:600px">
+                            <i>
+                                <font style="font-size: 11px;">15F OP-FR Rev A 07/2020</font>
+                            </i>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col h2" style="margin-top:20px">
+                        <span>
+                            <u>
+                                <u>OFFRE DE PRIX</u>
+                            </u>
+                            <span t-field="doc.offre_de_prix_annee"
+                                  class="o_underline"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row address">
+                    <div class="col-5"/>
+                </div>
+                <div class="row address">
+                    <div class="col-5 offset-2"/>
+                </div>
+                <div class="row address">
+                    <div class="col-5"/>
+                    <div class="col-5 offset-2">
+                        <div t-field="doc.listprice_nomclient_id" t-options-widget="'contact'"
+                             t-options-fields="['name', 'address']"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:20px">
+                        <span style="margin-left:505px">À l’attention de
+                            <div style="position: absolute; left: -99999px;">À l’attention de
+                                <br/>
+                                <br/>
+                                En savoir plus sur
+                                <a href="https://www.lalanguefrancaise.com/orthographe/attention-de-ou-a-intention-de/">
+                                    https://www.lalanguefrancaise.com/orthographe/attention-de-ou-a-intention-de/
+                                </a>
+                            </div>
+                            <span t-field="doc.pricelist_alintentionde"/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:20px">
+                        <span>Référence client :
+                            <span t-field="doc.istprice_codetiers"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>Offre référence :
+                            <span t-field="doc.pricelist_orderref"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <table class="table o_report_block_table" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th class="align-middle text-center">
+                                <span>Référence produit</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Nom produit
+                                    <br/>
+                                </span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Quantité min.</span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Prix HT
+                                    <br/>
+                                </span>
+                            </th>
+                            <th class="align-middle text-center">
+                                <span>Commentaire / Précisions</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="doc.item_ids" t-as="table_line" class="table table-sm o_main_table">
+                            <td>
+                                <span t-field="table_line.field_MqbX7"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.display_name"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.min_quantity"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.price"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.pricelist_coms"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col">
+                        <span>Note :
+                            <span t-field="doc.pricelist_comeventuel"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:20px">
+                        <span>Offre
+                            <span t-field="doc.pricelist_orderref"/>
+                            <span>valable jusqu'au
+                                <span t-field="doc.datelifeend"/>
+                                <br/>
+                            </span>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span style="margin-left:600px">Fait à
+                            <span t-field="doc.pricelist_faitle"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span style="margin-left:600px">Le
+                            <span t-field="doc.pricelist_faita"/>
+                            <br/>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:20px">
+                        <span t-field="doc.listprice_francetext2"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span t-field="doc.listprice_francetext"/>
+                    </div>
+                </div>
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top:50px">
+                        <span>
+                            <b>Conditions de paiement :</b>
+                            <span t-field="doc.pricelist_conditionspaiement"/>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="product_pircelist_offer_copy_1_main">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="ibjb_studio.product_price_list_copy_1"/>
+            </t>
+        </t>
+    </template>
+</odoo>
