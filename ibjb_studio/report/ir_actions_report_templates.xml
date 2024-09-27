@@ -561,4 +561,277 @@
       </xpath>
   </template>
 
+   <!-- Sale order -->
+  <template id="report_sale_order_cmd">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="doc">
+        <t t-call="web.external_layout">
+          <div class="page">
+            <!-- div 1 -->
+              <div class="row">
+                <div class="col">
+                  <span class="o_italic">15F CfCdeFrance Rev C 07/2020</span>
+                </div>
+              </div>
+              <!-- div 2 -->
+              <div class="row address">
+                <div class="col-5"/>
+                <div class="col-5 offset-2">
+                  <div t-field="doc.partner_id" t-options="{'widget': 'contact', 'fields': ['name', 'address']}"/>
+                </div>
+              </div>
+              <!-- div 3 -->
+              <div class="row">
+                <div class="col">
+                  <span>
+                    <b style="margin-left:505px">N°TVA:</b>
+                    <span t-field="doc.partner_id.vat"/>
+                  </span>
+                </div>
+              </div>
+              <!-- div 4 -->
+              <div class="row">
+                <div class="col">
+                  <span style="margin-left:505px">
+                    <b>Code client: <span t-field="doc.partner_id.customer_code"/><br/></b>
+                  </span>
+                </div>
+              </div>
+              <!-- div 5 -->
+              <div class="row">
+                <div class="col">
+                  <span>
+                    <b>Adresse de livraison:<br/></b>
+                  </span>
+              </div>
+              </div>
+              <!-- div 6 -->
+              <div class="row address">
+                <div class="col-5">
+                  <div t-field="doc.partner_shipping_id" t-options="{'widget':'contact', fields:['name', 'address']}"/>
+                </div>
+                <div class="col-5 offset-2"/>
+              </div>
+              <!-- div 7 -->
+              <div class="row">
+                <div t-if="doc.state == 'draft' or doc.state == 'sent'" class="col h2" style="margin-top:10px">
+                  <span style="margin-left:50px">Devis</span>
+                  <span t-field="doc.name"/>
+                </div>
+              </div>
+              <!-- div 8 -->
+              <div class="row">
+                <div t-if="doc.state == 'sale'" class="col h2" style="margin-top:10px">
+                  <span style="margin-left:50px">Confirmation de commande <span t-field="doc.name"/><br/></span>
+                </div>
+              </div>
+              <!-- div 9 -->
+              <div class="row">
+                <div class="col" style="margin-top:10px">
+                  <span>Cher client,<br/>Nous avons bien reçu votre demande et nous vous en remercions.<br/></span>
+                </div>
+              </div>
+              <!-- div 10 -->
+              <div class="row" style="margin-top:10px">
+                <div class="col-3 col-auto mw-100 mb-2">
+                  <span>
+                    <strong>Votre référence:</strong>
+                    <br/>
+                  </span>
+                  <span t-field="doc.client_order_ref"/>
+                </div>
+                <div class="col-3 col-auto mw-100 mb-2">
+                  <span>
+                    <strong>Date de la commande:</strong>
+                    <br/>
+                  </span>
+                  <span t-field="doc.date_order"/>
+                </div>
+                <div class="col-3 col-auto mw-100 mb-2">
+                  <span>
+                    <strong>Transporteur:</strong>
+                    <br/>
+                  </span>
+                </div>
+              </div>
+              <table class="table o_report_block_table align-middle text-center" style="margin-top:10px">
+                <thead>
+                  <tr>
+                    <th>
+                      <span>Référence article</span>
+                    </th>
+                    <th>
+                      <span>Description</span>
+                    </th>
+                    <th>
+                      <span>Quantité</span>
+                    </th><!-- 
+                    <th>
+                      <span>N°Lot</span>
+                    </th> -->
+                    <!-- <th>
+                      <span>Date de péremption</span>
+                    </th> -->
+                    <th>
+                      <span>Prix unit. HT</span>
+                    </th>
+                    <th>
+                      <span>TVA</span>
+                    </th>
+                    <th>
+                      <span>Total HT</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table table-sm o_main_table" t-foreach="doc.order_line" t-as="table_line">
+                    <td>
+                      <span t-field="table_line.product_id.default_code"/>
+                    </td>
+                    <td>
+                      <span t-field="table_line.name"/>
+                    </td>
+                    <td>
+                      <span t-field="table_line.product_uom_qty"/>
+                      <span t-field="table_line.product_uom.display_name"/>
+                    </td>
+                    <!-- <td>
+                      <span t-field="table_line.lot_id.name"/>
+                    </td>
+                    <td>
+                      <span t-field="table_line.lot_id.life_date"/>
+                    </td> -->
+                    <td>
+                      <span t-field="table_line.price_unit"/>
+                      <span>€</span>
+                    </td>
+                    <td>
+                      <t t-foreach="table_line.tax_id"  t-as="tax" t-key="line_tax">
+                        <span t-esc="tax.description"/>
+                      </t>
+                    </td>
+                    <td>
+                      <span t-field="table_line.price_subtotal"/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- div 11 -->
+              <div class="row">
+                <div class="col" t-if='doc.state == "draft" or doc.state == "sent"'>
+                  <span>Cette offre est valable jusqu'au</span>
+                  <span t-field="doc.validity_date"/>
+                </div>
+              </div>
+              <!-- div 12 -->
+              <div class="row">
+                <div class="col-5"/>
+                <div class="col-5 offset-2">
+                  <table class="table table-sm o_report_block_total">
+                    <t t-set="tax_totals" t-value="doc.tax_totals"/>
+                    <t t-call="sale.document_tax_totals"/>
+                  </table>
+                </div>
+              </div>
+              <!-- div 13 -->
+              <div class="row">
+                <div class="col" t-if='doc.partner_id.lang == "fr_FR" and doc.state == "sale"' style="margin-top:10px">
+                  <span>
+                    <font style="font-size: 14px;">(1) - Pour les commandes en différé, cette date est susceptible de
+                    modification en fonction notamment du contrôle qualité final.</font>
+                    <br/>
+                    <font style="font-size: 14px;">       - Livraison sous les 24 à 48h après expédition selon engagements du transporteur.</font>
+                    <br/>
+                  </span>
+                </div>
+              </div>
+              <!-- div 14 -->
+              <div class="row">
+                <div t-if='doc.sale_order_option_ids != "" and doc.state != "sale"' class="col" style="margin-top:15px">
+                  <span>
+                    <font style="font-size: 24px; margin-left:50px;">Produits Optionnels</font>
+                    <br/>
+                  </span>
+                </div>
+              </div>
+              <table class="table o_report_block_table align-middle text-center" t-if='doc.sale_order_option_ids and doc.state != "sale"'>
+                <thead>
+                  <tr>
+                    <th>
+                      <span>Article</span>
+                    </th>
+                    <th>
+                      <span>Description</span>
+                    </th>
+                    <th>
+                      <span>Prix unit. HT</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr t-foreach="doc.sale_order_option_ids" t-as="table_line" class="table table-sm o_main_table">
+                    <td>
+                      <span t-field="table_line.product_id.display_name"/>
+                    </td>
+                    <td>
+                      <span t-field="table_line.name"/>
+                    </td>
+                    <td>
+                      <span t-field="table_line.price_unit"/>
+                      <span>€</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- div 15 -->
+              <div class="row">
+                <div class="col" style="margin-top:10px">
+                  <span t-field="doc.note"/>
+                </div>
+              </div>
+              <!-- div 16 -->
+              <div class="row">
+                <div class="col" t-if='doc.partner_id.lang == "en_US" and docs.state == "sale"'>
+                  <span>
+                    <b>FAILING ANY COMMENT FROM YOU WITHIN 48 HOURS, YOUR
+                    ORDER WILL BE SHIPPED ON THE ABOVE MENTIONED DATE.</b>
+                </span>
+                </div>
+              </div>
+              <!-- div 17 -->
+              <!-- <div class="row">
+                <div class="col" style="margin-top:10px">
+                  <span t-if="doc.comment">Commentaire:</span>
+                  <span t-field="doc.comment"/>
+                </div>
+              </div> -->
+              <!-- div 18 -->
+              <div class="row"/>
+              <!-- div 19 -->
+              <div class="row">
+                <div class="col">
+                  <span>Nous certifions que tous ces produits sont d'origine française et peuvent circuler librement dans l'Union Européenne.</span>
+                </div>
+              </div>
+          </div>
+        </t>
+      </t>
+    </t>
+  </template>
+
+  <template id="tax_groups_totals_inherit" inherit_id="account.tax_groups_totals">
+    <!-- <t t-foreach="tax_totals['groups_by_subtotal'][subtotal_to_show]" t-as="amount_by_group">
+      <t t-set="display_tax_base" t-value="tax_totals['display_tax_base']"/>
+      <tr>
+          <t t-if="tax_totals['display_tax_base']">
+            <xpath expr="/t/tr[1]/t/td[1]/span[2]" position='replace'/>
+          </t>
+        </tr>
+      </t> -->
+    <xpath expr="//t[@t-else='']/td[1]/span[2]" position='replace'>
+    </xpath>
+    <xpath expr="//t[@t-else='']/td[1]/span[2]" position='replace'>
+    </xpath>
+  </template>
+
 </odoo>
