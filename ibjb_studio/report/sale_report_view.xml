@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_ibjb_report_sale_order_cmd" model="ir.actions.report">
+        <field name="name">Quote / Conf cmd backup created from 0</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.report_sale_order_cmd</field>
+        <field name="report_file">ibjb_studio.report_sale_order_cmd</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_ibjb_report_sale_order_backup" model="ir.actions.report">
+        <field name="name">Quote / Backup order</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sale.report_saleorder</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_ibjb_report_sale_order_without_lot" model="ir.actions.report">
+        <field name="name">Quote / Order confirmation (without lot)</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.report_sale_order_without_lot</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_ibjb_report_saleorder_copy_2" model="ir.actions.report">
+        <field name="name">Quotation / Order copy(2)</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sale.report_saleorder_copy_2</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_ibjb_report_saleorder_copy_4" model="ir.actions.report">
+        <field name="name">Quote / Discount</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sale.report_saleorder_copy_4</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_ibjb_report_saleorder_proforma_invoice" model="ir.actions.report">
+        <field name="name">Proforma Invoice</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">sale.report_saleorder_proforma_invoice</field>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

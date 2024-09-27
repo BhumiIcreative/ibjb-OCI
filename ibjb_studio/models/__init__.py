@@ -19,3 +19,4 @@ from . import ticket_gamme
 from . import hr_attendance
 from . import stock_move
 from . import stock_picking
+from . import product_pricelist

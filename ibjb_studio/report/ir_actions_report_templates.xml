@@ -1,427 +1,428 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_purchase_order">
-        <t t-call="web.html_container">
-          <t t-foreach="docs" t-as="doc">
-            <t t-call="web.external_layout">
-              <div class="page">
-                  <div class="row">
-                    <div class="col">
+  <!-- Purchase order -->
+  <template id="report_purchase_order">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+          <t t-call="web.external_layout">
+            <div class="page">
+                <div class="row">
+                  <div class="col">
+                    <span>
+                      <i>
+                        <font style="font-size: 11px;">16F DdePx Rev A 07/2020</font>
+                      </i>
+                    </span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col" style="margin-top: 15px;">
+                     <span>
+                      <b>Deliver to:<br/></b>
+                    </span>
+                  </div>
+                </div>
+                <div class="row address">
+                  <div class="col-5">
+                    <div t-field="res_company.partner_id"
+                    t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
+                  </div>
+                  <div class="col-5 offset-2">
+                      <div t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
+                  </div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                  <div class="col h2" style="margin-top: 10px;">
+                    <span style="margin-top: 50px;">Price request <span t-field="doc.name"/><br/></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3">
+                    <span>
+                      <strong>Purchasing Manager:</strong>
+                      <br/>
+                    </span>
+                    <span t-field="doc.user_id.display_name"/>
+                  </div>
+                  <div class="col-3">
                       <span>
-                        <i>
-                          <font style="font-size: 11px;">16F DdePx Rev A 07/2020</font>
-                        </i>
+                      <strong>Buyer:</strong>
+                      <br/>
                       </span>
-                    </div>
+                      <span t-field="doc.oci_achats_acheteur.display_name"/>
                   </div>
-                  <div class="row">
-                    <div class="col" style="margin-top: 15px;">
-                       <span>
-                        <b>Deliver to:<br/></b>
-                      </span>
-                    </div>
-                  </div>
-                  <div class="row address">
-                    <div class="col-5">
-                      <div t-field="res_company.partner_id"
-                      t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
-                    </div>
-                    <div class="col-5 offset-2">
-                        <div t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
-                    </div>
-                  </div>
-                  <div class="row" style="margin-top: 10px;">
-                    <div class="col h2" style="margin-top: 10px;">
-                      <span style="margin-top: 50px;">Price request <span t-field="doc.name"/><br/></span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-3">
+                  <div class="col-3">
                       <span>
-                        <strong>Purchasing Manager:</strong>
-                        <br/>
+                      <strong>Order reference:</strong>
+                      <br/>
                       </span>
-                      <span t-field="doc.user_id.display_name"/>
-                    </div>
-                    <div class="col-3">
-                        <span>
-                        <strong>Buyer:</strong>
-                        <br/>
-                        </span>
-                        <span t-field="doc.oci_achats_acheteur.display_name"/>
-                    </div>
-                    <div class="col-3">
-                        <span>
-                        <strong>Order reference:</strong>
-                        <br/>
-                        </span>
-                        <span t-field="doc.name"/>
-                    </div>
-                    <div class="col-3">
-                        <span>
-                        <strong>Order date:</strong>
-                        <br/>
-                        </span>
-                        <span t-field="doc.date_order"/>
-                    </div>
+                      <span t-field="doc.name"/>
                   </div>
-                  <div class="row" style="margin-top: 10px;">
-                    <div class="col-3">
+                  <div class="col-3">
                       <span>
-                        <strong>Date requested:</strong>
-                        <br/>
+                      <strong>Order date:</strong>
+                      <br/>
                       </span>
-                      <span t-field="doc.date_planned"/>
-                    </div>
-                    <div class="col-3"/>
-                    <div class="col-3"/>
-                    <div class="col-3"/>
+                      <span t-field="doc.date_order"/>
                   </div>
-                  <table class="table o_report_block_table" style="margin-top: 20px;">
-                    <thead>
-                      <tr>
-                        <th class="align-middle text-center">
-                          <span>Reference</span>
-                        </th>
-                        <th class="align-middle text-center">
-                            <span>Designation</span>
-                        </th>
-                        <th class="align-middle text-center">
-                            <span>Quantity</span>
-                        </th>
-                        <th class="align-middle text-center">
-                            <span>Prix unit. HT</span>
-                        </th>
-                        <th class="align-middle text-center">
-                            <span>Amount HT</span>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr t-foreach="doc.order_line" t-as="table_line">
-                        <td>
-                          <span t-field="table_line.product_id.default_code"/>
-                        </td>
-                        <td>
-                            <span t-field="table_line.name"/>
-                        </td>
-                        <td>
-                            <span t-field="table_line.product_qty"/>
-                            <span t-field="table_line.product_uom.display_name"/>
-                        </td>
-                        <td>
-                            <span t-field="table_line.price_unit"/>
-                            <span>€</span>
-                        </td>
-                        <td>
-                            <span t-field="table_line.price_subtotal"/>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="row">
-                    <div class="col" style="margin-top: 20px;">
-                      <span>
-                        <b>Total HT:<span t-field="doc.amount_untaxed"/><br/></b>
-                      </span>
-                    </div>
+                </div>
+                <div class="row" style="margin-top: 10px;">
+                  <div class="col-3">
+                    <span>
+                      <strong>Date requested:</strong>
+                      <br/>
+                    </span>
+                    <span t-field="doc.date_planned"/>
                   </div>
-                  <div class="row">
-                    <div class="col" style="margin-top: 50px;">
-                      <span><b>Docteur Marc MENU</b><br/>Président Directeur Général<br/></span>
-                    </div>
+                  <div class="col-3"/>
+                  <div class="col-3"/>
+                  <div class="col-3"/>
+                </div>
+                <table class="table o_report_block_table" style="margin-top: 20px;">
+                  <thead>
+                    <tr>
+                      <th class="align-middle text-center">
+                        <span>Reference</span>
+                      </th>
+                      <th class="align-middle text-center">
+                          <span>Designation</span>
+                      </th>
+                      <th class="align-middle text-center">
+                          <span>Quantity</span>
+                      </th>
+                      <th class="align-middle text-center">
+                          <span>Prix unit. HT</span>
+                      </th>
+                      <th class="align-middle text-center">
+                          <span>Amount HT</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr t-foreach="doc.order_line" t-as="table_line">
+                      <td>
+                        <span t-field="table_line.product_id.default_code"/>
+                      </td>
+                      <td>
+                          <span t-field="table_line.name"/>
+                      </td>
+                      <td>
+                          <span t-field="table_line.product_qty"/>
+                          <span t-field="table_line.product_uom.display_name"/>
+                      </td>
+                      <td>
+                          <span t-field="table_line.price_unit"/>
+                          <span>€</span>
+                      </td>
+                      <td>
+                          <span t-field="table_line.price_subtotal"/>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row">
+                  <div class="col" style="margin-top: 20px;">
+                    <span>
+                      <b>Total HT:<span t-field="doc.amount_untaxed"/><br/></b>
+                    </span>
                   </div>
-              </div>
-            </t>
+                </div>
+                <div class="row">
+                  <div class="col" style="margin-top: 50px;">
+                    <span><b>Docteur Marc MENU</b><br/>Président Directeur Général<br/></span>
+                  </div>
+                </div>
+            </div>
           </t>
         </t>
-    </template>
+      </t>
+  </template>
 
-    <template id="report_supplier_order_1">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="web.external_layout">
-                    <div class="page">
-                        <div class="row">
-                            <div class="col">
-                                <span style="width: 200px; display: inline-block; float: right;">16F BdCE Rev F<br/></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span>
-                                  <b>Delivery address:<br/></b>
-                                </span>
-                          </div>
-                        </div>
-                        <div class="row address">
-                          <div class="col-5">
-                            <div t-field="res_company.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
-                          </div>
-                          <div class="col-5 offset-2">
-                            <div t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col h2" style="margin-top: 10px;">
-                            <span style="margin-top: 50px;">Purchase order <span t-field="doc.name"/><br/></span>
-                          </div>
-                        </div>
-                        <div class="row" style="margin-top: 15px;">
-                          <div class="col-3">
-                            <span>
-                              <strong>Order reference:</strong>
-                              <br/>
-                            </span>
-                            <span t-field="doc.name"/>
-                          </div>
-                          <div class="col-3">
-                            <span>
-                              <strong>Order placed by:</strong>
-                              <br/>
-                            </span>
-                            <span t-field="doc.oci_achats_acheteur.display_name"/>
-                          </div>
-                          <div class="col-3">
-                            <span>
-                              <strong>Order date:</strong>
-                              <br/>
-                            </span>
-                            <span t-field="doc.date_order"/>
-                          </div>
-                          <div class="col-3">
-                            <span>
-                              <strong>Supplier reference:</strong>
-                              <br/>
-                            </span>
-                            <span t-field="doc.partner_ref"/>
-                          </div>
-                        </div>
-                        <div class="row" style="margin-top: 10px;">
-                          <div class="col-3">
-                            <span>
-                              <strong>Desired date:</strong>
-                              <br/>
-                            </span>
-                            <span t-field="doc.date_planned"/>
-                          </div>
-                          <div class="col-3"/>
-                          <div class="col-3"/>
-                          <div class="col-3"/>
-                        </div>
-                        <table class="table o_report_block_table" style="margin-top: 20px;">
-                          <thead>
-                            <tr>
-                                <th class="align-middle text-center">
-                                    <span>Internal reference</span>
-                                </th>
-                                <th class="align-middle text-center">
-                                    <span>Description</span>
-                                </th>
-                                <th class="align-middle text-center">
-                                    <span>Date requested</span>
-                                </th>
-                                <th class="align-middle text-center">
-                                    <span>Quantity</span>
-                                </th>
-                                <th class="align-middle text-center">
-                                    <span>Prix unit. HT</span>
-                                </th>
-                                <th class="align-middle text-center">
-                                    <span>Amount HT</span>
-                                </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr t-foreach="doc.order_line" t-as="table_line">
-                                <td>
-                                    <span t-field="table_line.product_id.default_code"/>
-                                </td>
-                                <td>
-                                    <span t-field="table_line.name"/>
-                                </td>
-                                <td>
-                                    <span t-field="table_line.date_planned"/>
-                                </td>
-                                <td>
-                                    <span t-field="table_line.product_qty"/>
-                                    <span t-field="table_line.product_uom.display_name"/>
-                                </td>
-                                <td>
-                                    <span t-field="table_line.price_unit" t-options='{"widget":"monetary"}'/>
-                                </td>
-                                <td>
-                                    <span t-field="table_line.price_subtotal"/>
-                                </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <div class="row">
-                          <div class="col-5"/>
-                          <div class="col-5 offset-2">
-                            <table class="table table-sm o_report_block_total">
-                              <t t-set="total_currency_id" t-value="doc.currency_id"/>
-                              <t t-set="total_amount_total" t-value="doc.amount_total"/>
-                              <t t-set="total_amount_untaxed" t-value="doc.amount_untaxed"/>
-                              <t t-set="total_amount_by_groups" t-value="None"/>
-                              <tr class="border-black o_subtotal" t-if="total_amount_untaxed">
-                                <td>
-                                  <strong>Untaxed Amount</strong>
-                                </td>
-                                <td class="text-right" >
-                                  <span t-esc="total_amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
-                                </td>
-                              </tr>
-                              <t t-foreach="total_amount_by_groups" t-as="total_amount_by_group">
-                                <tr>
-                                  <t t-if="len(total_amount_by_group) == 1 and total_amount_untaxed == total_amount_by_group[2]">
-                                    <td>
-                                      <span t-esc="total_amount_by_group[0]"/>
-                                    </td>
-                                    <td class="text-right o_price_total">
-                                      <span t-esc="total_amount_by_group[3]"/>
-                                    </td>
-                                  </t>
-                                  <t t-else="">
-                                    <td>
-                                      <span t-esc="total_amount_by_group[0]"/>
-                                      <span>
-                                        <span>à</span>
-                                        <t t-esc="total_amount_by_group[4]"/>
-                                      </span>
-                                    </td>
-                                    <td class="text-right o_price_total">
-                                      <span t-esc="total_amount_by_group[3]"/>
-                                    </td>
-                                  </t>
-                                </tr>
-                              </t>
-                              <t t-if="total_amount_by_groups is None and total_amount_untaxed">
-                                <tr >
-                                  <td>TVA</td>
-                                  <td class="text-right" >
-                                    <span t-esc="total_amount_total - total_amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
-                                  </td>
-                                </tr>
-                              </t>
-                              <tr class="border-black o_total">
-                                <td>
-                                  <strong>Total</strong>
-                                </td>
-                                <td class="text-right">
-                                  <span t-esc="total_amount_total" t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
-                                </td>
-                              </tr>
-                            </table>
-                          </div>
-                        </div>
-                        <div class="row">
+  <template id="report_supplier_order_1">
+      <t t-call="web.html_container">
+          <t t-foreach="docs" t-as="doc">
+              <t t-call="web.external_layout">
+                  <div class="page">
+                      <div class="row">
                           <div class="col">
-                            <span>
-                              <p><b>Rodolphe ROGGERO<br/></b>Directeur général<br/></p>
-                            </span>
+                              <span style="width: 200px; display: inline-block; float: right;">16F BdCE Rev F<br/></span>
                           </div>
+                      </div>
+                      <div class="row">
+                          <div class="col">
+                              <span>
+                                <b>Delivery address:<br/></b>
+                              </span>
                         </div>
-                        <div class="row">
+                      </div>
+                      <div class="row address">
+                        <div class="col-5">
+                          <div t-field="res_company.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
                         </div>
-                    </div>
-                </t>
-            </t>
-        </t>
-    </template>
+                        <div class="col-5 offset-2">
+                          <div t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col h2" style="margin-top: 10px;">
+                          <span style="margin-top: 50px;">Purchase order <span t-field="doc.name"/><br/></span>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top: 15px;">
+                        <div class="col-3">
+                          <span>
+                            <strong>Order reference:</strong>
+                            <br/>
+                          </span>
+                          <span t-field="doc.name"/>
+                        </div>
+                        <div class="col-3">
+                          <span>
+                            <strong>Order placed by:</strong>
+                            <br/>
+                          </span>
+                          <span t-field="doc.oci_achats_acheteur.display_name"/>
+                        </div>
+                        <div class="col-3">
+                          <span>
+                            <strong>Order date:</strong>
+                            <br/>
+                          </span>
+                          <span t-field="doc.date_order"/>
+                        </div>
+                        <div class="col-3">
+                          <span>
+                            <strong>Supplier reference:</strong>
+                            <br/>
+                          </span>
+                          <span t-field="doc.partner_ref"/>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top: 10px;">
+                        <div class="col-3">
+                          <span>
+                            <strong>Desired date:</strong>
+                            <br/>
+                          </span>
+                          <span t-field="doc.date_planned"/>
+                        </div>
+                        <div class="col-3"/>
+                        <div class="col-3"/>
+                        <div class="col-3"/>
+                      </div>
+                      <table class="table o_report_block_table" style="margin-top: 20px;">
+                        <thead>
+                          <tr>
+                              <th class="align-middle text-center">
+                                  <span>Internal reference</span>
+                              </th>
+                              <th class="align-middle text-center">
+                                  <span>Description</span>
+                              </th>
+                              <th class="align-middle text-center">
+                                  <span>Date requested</span>
+                              </th>
+                              <th class="align-middle text-center">
+                                  <span>Quantity</span>
+                              </th>
+                              <th class="align-middle text-center">
+                                  <span>Prix unit. HT</span>
+                              </th>
+                              <th class="align-middle text-center">
+                                  <span>Amount HT</span>
+                              </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr t-foreach="doc.order_line" t-as="table_line">
+                              <td>
+                                  <span t-field="table_line.product_id.default_code"/>
+                              </td>
+                              <td>
+                                  <span t-field="table_line.name"/>
+                              </td>
+                              <td>
+                                  <span t-field="table_line.date_planned"/>
+                              </td>
+                              <td>
+                                  <span t-field="table_line.product_qty"/>
+                                  <span t-field="table_line.product_uom.display_name"/>
+                              </td>
+                              <td>
+                                  <span t-field="table_line.price_unit" t-options='{"widget":"monetary"}'/>
+                              </td>
+                              <td>
+                                  <span t-field="table_line.price_subtotal"/>
+                              </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="row">
+                        <div class="col-5"/>
+                        <div class="col-5 offset-2">
+                          <table class="table table-sm o_report_block_total">
+                            <t t-set="total_currency_id" t-value="doc.currency_id"/>
+                            <t t-set="total_amount_total" t-value="doc.amount_total"/>
+                            <t t-set="total_amount_untaxed" t-value="doc.amount_untaxed"/>
+                            <t t-set="total_amount_by_groups" t-value="None"/>
+                            <tr class="border-black o_subtotal" t-if="total_amount_untaxed">
+                              <td>
+                                <strong>Untaxed Amount</strong>
+                              </td>
+                              <td class="text-right" >
+                                <span t-esc="total_amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                              </td>
+                            </tr>
+                            <t t-foreach="total_amount_by_groups" t-as="total_amount_by_group">
+                              <tr>
+                                <t t-if="len(total_amount_by_group) == 1 and total_amount_untaxed == total_amount_by_group[2]">
+                                  <td>
+                                    <span t-esc="total_amount_by_group[0]"/>
+                                  </td>
+                                  <td class="text-right o_price_total">
+                                    <span t-esc="total_amount_by_group[3]"/>
+                                  </td>
+                                </t>
+                                <t t-else="">
+                                  <td>
+                                    <span t-esc="total_amount_by_group[0]"/>
+                                    <span>
+                                      <span>à</span>
+                                      <t t-esc="total_amount_by_group[4]"/>
+                                    </span>
+                                  </td>
+                                  <td class="text-right o_price_total">
+                                    <span t-esc="total_amount_by_group[3]"/>
+                                  </td>
+                                </t>
+                              </tr>
+                            </t>
+                            <t t-if="total_amount_by_groups is None and total_amount_untaxed">
+                              <tr >
+                                <td>TVA</td>
+                                <td class="text-right" >
+                                  <span t-esc="total_amount_total - total_amount_untaxed" t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                </td>
+                              </tr>
+                            </t>
+                            <tr class="border-black o_total">
+                              <td>
+                                <strong>Total</strong>
+                              </td>
+                              <td class="text-right">
+                                <span t-esc="total_amount_total" t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <span>
+                            <p><b>Rodolphe ROGGERO<br/></b>Directeur général<br/></p>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="row">
+                      </div>
+                  </div>
+              </t>
+          </t>
+      </t>
+  </template>
 
-    <template id="report_purchaseorder_document_customization" inherit_id="purchase.report_purchaseorder_document">
-        <xpath expr="/t/t/div/div[1]" position="after">
-          <div class="row" style="margin-top:20px">
-              <span>
-                <b>Delivery address:<br/></b>
-              </span>
-              <div class="col-5">
-                <div t-field="res_company.partner_id" t-options="{'widget': 'contact', 'fields': ['name', 'address']}"/>
-              </div>
-              <div class="col-5 offset-2">
-                <div t-field="o.partner_id" t-options="{'widget':'contact', 'fields': ['name', 'address']}"/>
-              </div>
+  <template id="report_purchaseorder_document_customization" inherit_id="purchase.report_purchaseorder_document">
+      <xpath expr="/t/t/div/div[1]" position="after">
+        <div class="row" style="margin-top:20px">
+            <span>
+              <b>Delivery address:<br/></b>
+            </span>
+            <div class="col-5">
+              <div t-field="res_company.partner_id" t-options="{'widget': 'contact', 'fields': ['name', 'address']}"/>
+            </div>
+            <div class="col-5 offset-2">
+              <div t-field="o.partner_id" t-options="{'widget':'contact', 'fields': ['name', 'address']}"/>
+            </div>
+        </div>
+      </xpath>
+      <xpath expr="/t/t/div/div[hasclass('mt-4')]/h2[3]" position="attributes">
+        <attribute name="style">margin-top:20px; margin-bottom:20px;</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/div[4]" position="replace"/>
+      <xpath expr="/t/t/div/div[hasclass('mt-4')]" position="inside">
+        <div class="row">
+          <div class="col-3">
+            <span>
+              <strong>Order reference:</strong>
+              <br/>
+            </span>
+            <span t-field="o.name"/>
           </div>
-        </xpath>
-        <xpath expr="/t/t/div/div[hasclass('mt-4')]/h2[3]" position="attributes">
-          <attribute name="style">margin-top:20px; margin-bottom:20px;</attribute>
-        </xpath>
-        <xpath expr="/t[1]/t[1]/div[1]/div[4]" position="replace"/>
-        <xpath expr="/t/t/div/div[hasclass('mt-4')]" position="inside">
-          <div class="row">
-            <div class="col-3">
-              <span>
-                <strong>Order reference:</strong>
-                <br/>
-              </span>
-              <span t-field="o.name"/>
-            </div>
-            <div class="col-3">
-              <span>
-                <strong>Order placed by:<br/></strong>
-              </span>
-              <span t-field="o.oci_achats_acheteur.display_name"/>
-            </div>
-            <div class="col-3">
-              <span>
-                <strong>Order date:</strong>
-                <br/>
-              </span>
-              <span t-field="o.date_order"/>
-            </div>
-            <div class="col-3">
-              <span>
-                <strong>Supplier reference:</strong>
-                <br/>
-              </span>
-              <span t-field="o.partner_ref"/>
-            </div>
+          <div class="col-3">
+            <span>
+              <strong>Order placed by:<br/></strong>
+            </span>
+            <span t-field="o.oci_achats_acheteur.display_name"/>
           </div>
-          <div class="row" style="margin-top:10px">
-            <div class="col-3">
-              <span>
-                <strong>Desired date:</strong>
-                <br/>
-              </span>
-              <span t-field="o.date_planned"/>
-            </div>
+          <div class="col-3">
+            <span>
+              <strong>Order date:</strong>
+              <br/>
+            </span>
+            <span t-field="o.date_order"/>
           </div>
-        </xpath>
-        <xpath expr="/t/t/div/div[5]" position="after">
-          <div class="row">
-            <div class="col">
-              <span><b>Docteur Marc MENU</b><br/>Président Directeur Général<br/></span>
-            </div>
+          <div class="col-3">
+            <span>
+              <strong>Supplier reference:</strong>
+              <br/>
+            </span>
+            <span t-field="o.partner_ref"/>
           </div>
-        </xpath>
-        <xpath expr="/t/t/div/table" position="attributes">
-          <attribute name="style" separator=";" add="margin-top:20px"/>
-        </xpath>
-        <xpath expr="/t/t/div/table/thead/tr/th[1]" position="before">
-          <th>
-            <span>Internal reference</span>
-          </th>
-        </xpath>
-        <xpath expr="/t/t/div/table//td[@id='product']" position="inside">
-          <td>
-            <span t-field="line.product_id.default_code"/>
-          </td>
-        </xpath>
-        <xpath expr="/t/t/div/table/thead/tr/th[7]/strong" position="replace">
-          <strong>Amount HT<br/></strong>
-        </xpath>
-        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]//td[2]" position="replace"/>
-        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[3]" position="replace"/>
-        <xpath expr="/t/t/div/table/thead/tr/th[6]/strong" position="replace">
-          <strong>Amount € HT<br/></strong>
-        </xpath>
-        <xpath expr="/t/t/div/table/thead/tr/th[5]/strong" position="replace">
-          <strong>Unit price<br/>€ HT<br/></strong>
-        </xpath>
-    </template>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <div class="col-3">
+            <span>
+              <strong>Desired date:</strong>
+              <br/>
+            </span>
+            <span t-field="o.date_planned"/>
+          </div>
+        </div>
+      </xpath>
+      <xpath expr="/t/t/div/div[5]" position="after">
+        <div class="row">
+          <div class="col">
+            <span><b>Docteur Marc MENU</b><br/>Président Directeur Général<br/></span>
+          </div>
+        </div>
+      </xpath>
+      <xpath expr="/t/t/div/table" position="attributes">
+        <attribute name="style" separator=";" add="margin-top:20px"/>
+      </xpath>
+      <xpath expr="/t/t/div/table/thead/tr/th[1]" position="before">
+        <th>
+          <span>Internal reference</span>
+        </th>
+      </xpath>
+      <xpath expr="/t/t/div/table//td[@id='product']" position="inside">
+        <td>
+          <span t-field="line.product_id.default_code"/>
+        </td>
+      </xpath>
+      <xpath expr="/t/t/div/table/thead/tr/th[7]/strong" position="replace">
+        <strong>Amount HT<br/></strong>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]//td[2]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[3]" position="replace"/>
+      <xpath expr="/t/t/div/table/thead/tr/th[6]/strong" position="replace">
+        <strong>Amount € HT<br/></strong>
+      </xpath>
+      <xpath expr="/t/t/div/table/thead/tr/th[5]/strong" position="replace">
+        <strong>Unit price<br/>€ HT<br/></strong>
+      </xpath>
+  </template>
 
-<!-- address layout -->
+  <!-- address layout -->
   <template id="report_web_layout_customization" inherit_id="web.address_layout">
       <xpath expr="//t[@t-if='information_block']" position="replace"/>
       <xpath expr="//div[@name='address']" position="replace"/>
@@ -559,4 +560,5 @@
         </div>
       </xpath>
   </template>
+
 </odoo>

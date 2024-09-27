@@ -79,6 +79,7 @@
         "report/acccount_move_report.xml",
         "report/account_move_facture_ce_intracommunautaire_template.xml",
         "report/account_move_facture_export_non_ce_template.xml",
+        "report/sale_report_view.xml",
     ],
     "installable": True,
     "auto_install": False,
