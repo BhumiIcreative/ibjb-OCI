@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, _
+from odoo import fields, models
 
 
 class SaleOrderLine(models.Model):
@@ -8,7 +8,7 @@ class SaleOrderLine(models.Model):
     # No need to migarte below fields as they are all related field
     oci_bdc_comptecompt = fields.Char(
         related="product_id.property_account_income_id.display_name",
-        string=(_("Product reference")),
+        string="Product reference",
         readonly=True,
         copy=False,
     )

@@ -1,29 +1,27 @@
 # -*- coding: utf-8 -*-
-from odoo import fields, models, _
+from odoo import fields, models
 from odoo.addons.ibjb_studio import common
 
 
 class Partner(models.Model):
     _inherit = "res.partner"
 
-    customer_code = fields.Char(string=(_("Code Tiers")), copy=False)
+    customer_code = fields.Char(string="Code Tiers", copy=False)
 
-    customer_contact = fields.Char(string=(_("Contact")), copy=False)
+    customer_contact = fields.Char(string="Contact", copy=False)
 
     field_aD1p5 = fields.Selection(
         related="lang",
-        string=(_("Language")),
+        string="Language",
         help=(
-            _(
                 "All emails and documents sent to this contact will be translated into this language."
-            )
         ),
         store=True,
         copy=False,
         readonly=False,
     )
 
-    tva = fields.Char(string=(_("TVA")), copy=False)
+    tva = fields.Char(string="TVA", copy=False)
 
     def Update_partner_studio_fields(self):
         """
