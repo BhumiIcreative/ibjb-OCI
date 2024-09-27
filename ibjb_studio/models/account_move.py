@@ -1,25 +1,21 @@
+# -*- coding: utf-8 -*-
+
 from odoo import fields, models, api, _
 
 
-class AccountInvoice(models.Model):
+class AccountMove(models.Model):
     _inherit = "account.move"
 
     vat_customer = fields.Char(
         related="partner_id.vat",
-        string=(_("Customer VAT No.")),
+        string="Customer VAT No.",
         help="Tax identification number. Complete this if the contact is subject to government "
-             "taxes. Used in some legal statements",
-    )
-    oci_codetiersfact = fields.Char(string=(_("Third party code")))
+             "taxes. Used in some legal statements")
+    oci_codetiersfact = fields.Char(string="Third party code")
     oci_compta_langcustomer = fields.Selection(
         [],
-        help=(
-            _(
-                "All emails and documents sent to this contact will be translated "
-                "into this language."
-            )
-        ),
-        string=(_("Customer language")),
+        help="All emails and documents sent to this contact will be translated into this language.",
+        string="Customer language"
     )
     amount_tax_signed_stored = fields.Monetary(
         string="VAT", compute="_compute_amount_tax_signed_stored", store=True

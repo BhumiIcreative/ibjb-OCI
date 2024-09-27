@@ -23,4 +23,54 @@
         <field name="binding_model_id" ref="account.model_account_move"/>
         <field name="binding_type">report</field>
     </record>
+
+    <record id="account.account_invoices_without_payment" model="ir.actions.report">
+        <field name="name">Factures sans paiement</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">account.report_invoice</field>
+        <field name="report_file">account.report_invoice</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="attachment"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- QWeb Reports -->
+    <record id="account.account_invoices" model="ir.actions.report">
+        <field name="name">Facture France</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">account.report_invoice_with_payments</field>
+        <field name="report_file">account.report_invoice_with_payments</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="attachment"/>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">report</field>
+        <field name="groups_id" eval="[(4, ref('account.group_account_invoice')),
+ (4, ref('account.group_account_readonly'))]"/>
+    </record>
+
+    <record id="account_move_facture_facto_cic" model="ir.actions.report">
+        <field name="name">Facture Facto (cic)</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.facture_facto_cic_template</field>
+        <field name="report_file">ibjb_studio.facture_facto_cic_template</field>
+        <field name="print_report_name">'Facture Facto (cic)'</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="account_move_facture_franchise_de_tva_template" model="ir.actions.report">
+        <field name="name">Facture Franchise de TVA</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field eval="[(6, 0, [ref('account.group_account_invoice')])]" name="groups_id"/>
+        <field name="report_name">ibjb_studio.facture_franchise_de_tva_template</field>
+        <field name="report_file">ibjb_studio.facture_franchise_de_tva_template</field>
+        <field name="print_report_name">'Facture Franchise de TVA'</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
 </odoo>

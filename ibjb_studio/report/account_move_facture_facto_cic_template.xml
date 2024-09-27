@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="facture_facto_cic_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <!--div[1]-->
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <i style="font-size: 11px;">15F FactureFR facto Rev A 07/2020</i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[2]-->
+                        <div class="row address">
+                            <div class="col-5"/>
+                            <div class="col-5 offset-2">
+                                <div t-field="doc.partner_id"
+                                     t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
+                            </div>
+                        </div>
+
+                        <!--div[3]-->
+                        <div class="row">
+                            <div class="col">
+                                <span style="margin-left:505px;">
+                                    <b>N° TVA:
+                                        <span t-field="doc.partner_id.vat"/>
+                                        <br/>
+                                    </b>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[4]-->
+                        <div class="row">
+                            <div class="col">
+                                <span style="margin-left:505px;">
+                                    <b>Code client:
+                                        <span t-field="doc.partner_id.customer_code"/>
+                                        <br/>
+                                    </b>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[5]-->
+                        <div class="row">
+                            <div class="col">
+                                <span>Veuillez effectuer un virement électronique "tous frais bancaires pour le
+                                    demandeur".
+                                    <br/>
+                                    <b>Banque CIC - CM-CIC FACTOR</b>
+                                    <br/>
+                                    <b>IBAN</b>: FR76 1197 8000 0101 3312 17070 74
+                                    <br/>
+                                    <b>BIC :</b>
+                                    CMCIFRPPXXX
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[6]-->
+                        <div class="row">
+                            <div t-if="doc.move_type == 'out_invoice'" class="col h2" style="margin-top:15px;">
+                                <span style="margin-left:50px;">Facture N°
+                                    <span t-field="doc.name"/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[7]-->
+                        <div class="row">
+                            <div t-if="doc.move_type == 'out_refund'" class="col h2" style="margin-top:10px;">
+                                <span style="margin-left:50px;">Avoir</span>
+                                <span t-field="doc.name"/>
+                            </div>
+                        </div>
+
+                        <!--div[8]-->
+                        <div class="row" style="margin-top:15px;">
+
+                            <!--div[8][1]-->
+                            <div class="col-auto mw-100 mb-2">
+                                <span>
+                                    <strong>Votre référence:</strong>
+                                    <br/>
+                                </span>
+                                <span t-field="doc.name"/>
+                            </div>
+
+                            <!--div[8][2]-->
+                            <div class="col-auto mw-100 mb-2">
+                                <span>
+                                    <strong>Date de facture:</strong>
+                                    <br/>
+                                </span>
+                                <span t-field="doc.invoice_date"/>
+                            </div>
+
+                            <!--div[8][3]-->
+                            <div class="col-auto mw-100 mb-2">
+                                <span>
+                                    <strong>N° commande:</strong>
+                                    <br/>
+                                </span>
+                                <span t-field="doc.invoice_origin"/>
+                            </div>
+                        </div>
+
+                        <!--div[8]/table[1]-->
+                        <table class="table o_report_block_table" style="margin-top:30px;">
+                            <thead>
+                                <!--table[1]tr[1]-->
+                                <tr>
+                                    <!--table[1]tr[1]th[1]-->
+                                    <th class="align-middle text-center">
+                                        <span>Référence article</span>
+                                    </th>
+
+                                    <!--table[1]tr[1]th[2]-->
+                                    <th class="align-middle text-center">
+                                        <span>Description</span>
+                                    </th>
+
+                                    <!--table[1]tr[1]th[3]-->
+                                    <th class="align-middle text-center">
+                                        <span>Quantité</span>
+                                    </th>
+
+                                    <!--table[1]tr[1]th[4]-->
+                                    <th class="align-middle text-center">
+                                        <span>Prix unit. HT</span>
+                                    </th>
+
+                                    <!--table[1]tr[1]th[5]-->
+                                    <th class="align-middle text-center">
+                                        <span>TVA</span>
+                                    </th>
+
+                                    <!--table[1]tr[1]th[6]-->
+                                    <th class="align-middle text-center">
+                                        <span>Montant (HT)</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.invoice_line_ids" t-as="table_line"
+                                    class="table table-sm o_main_table">
+                                    <!--table[1]/tbody[1]/tr[1]/td[1]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.product_id.default_code"/>
+                                    </td>
+
+                                    <!--table[1]/tbody[1]/tr[1]/td[2]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.name"/>
+                                    </td>
+
+                                    <!--table[1]/tbody[1]/tr[1]/td[3]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.product_uom_id.display_name"/>
+                                    </td>
+
+                                    <!--table[1]/tbody[1]/tr[1]/td[4]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <span t-field="table_line.price_unit"/>
+                                        <span>€</span>
+                                    </td>
+
+                                    <!--table[1]/tbody[1]/tr[1]/td[5]-->
+                                    <td style="border-bottom: 0 solid transparent;">
+                                        <t t-foreach="table_line.tax_ids" t-as="tax">
+                                            <span t-field="tax.description"/>
+                                        </t>
+                                    </td>
+
+
+                                    <!--table[1]/tbody[1]/tr[1]/td[6]-->
+                                    <td class="text-right">
+                                        <span t-field="table_line.price_subtotal"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--div[9]-->
+                        <div class="row">
+                            <div class="col-5"/>
+                            <div class="col-5 offset-2">
+                                <table class="table table-sm o_report_block_total">
+                                    <t t-set="total_currency_id" t-value="doc.currency_id"/>
+                                    <t t-set="total_amount_total" t-value="doc.amount_total"/>
+                                    <t t-set="total_amount_untaxed" t-value="doc.amount_untaxed"/>
+                                    <t t-set="total_amount_by_groups" t-value="doc.tax_totals"/>
+                                    <tr class="border-black o_subtotal">
+                                        <td>
+                                            <strong>Sous total HT
+                                                <br/>
+                                            </strong>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="total_amount_untaxed"
+                                                  t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                        </td>
+                                    </tr>
+                                    <!--                                    <t t-foreach="total_amount_by_groups" t-as="total_amount_by_group">-->
+                                    <!--                                        <tr>-->
+                                    <!--                                            <t t-if="len(total_amount_by_group) == 1 and total_amount_untaxed == total_amount_by_group[2]">-->
+                                    <!--                                                <td>-->
+                                    <!--                                                    <span t-esc="total_amount_by_group[0]"/>-->
+                                    <!--                                                </td>-->
+                                    <!--                                                <td class="text-right o_price_total">-->
+                                    <!--                                                    <span t-esc="total_amount_by_group[3]"/>-->
+                                    <!--                                                </td>-->
+                                    <!--                                            </t>-->
+                                    <!--                                            <t t-else="">-->
+                                    <!--                                                <td>-->
+                                    <!--                                                    <span t-esc="total_amount_by_group[0]"/>-->
+                                    <!--                                                </td>-->
+                                    <!--                                                <td class="text-right o_price_total">-->
+                                    <!--                                                    <span t-esc="total_amount_by_group[3]"/>-->
+                                    <!--                                                </td>-->
+                                    <!--                                            </t>-->
+                                    <!--                                        </tr>-->
+                                    <!--                                    </t>-->
+                                    <t t-if="total_amount_by_groups is None">
+                                        <tr>
+                                            <td>Taxes</td>
+                                            <td class="text-right">
+                                                <span t-esc="total_amount_total - total_amount_untaxed"
+                                                      t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr class="border-black o_total">
+                                        <td>
+                                            <strong>Total TTC
+                                                <br/>
+                                            </strong>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="total_amount_total"
+                                                  t-options="{'widget': 'monetary', 'display_currency': total_currency_id}"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!--div[10]-->
+                        <div class="row">
+                            <div class="col">
+                                <span style="margin-top:10px;">
+                                    <b>CM-CIC Factor within the scope of the article L313-23 to L313-35 of
+                                        the french financial and monetary code. In order to be fully discharged
+                                        from this Debt, payment should be made by check to<br/>CM-CIC Factor<br/>CIC
+                                        Direction des Grands Comptes<br/>57, rue de la Victoire 75009 PARIS France
+                                        <br/>
+                                        Tel : +33(1).49.74.56.00<br/>Or by wire transfer :<br/>Bank CIC - CM-CIC Factor
+                                        - BIC CMCIFRPPXXX - IBAN FR76 1197 8000 0101 3676 17070 55
+                                        <br/>
+                                    </b>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[11]-->
+                        <div class="row">
+                            <span>
+                                <b>CM-CIC Factor within the scope of the article L313-23 to L313-35 of
+                                    the french financial and monetary code. In order to be fully discharged
+                                    from this Debt, payment should be made by check to<br/>CM-CIC Factor<br/>CIC
+                                    Direction des Grands Comptes<br/>57, rue de la Victoire 75009 PARIS France<br/>Tel :
+                                    +33(1).49.74.56.00<br/>Or by wire transfer :<br/>Bank CIC - CM-CIC Factor - BIC
+                                    CMCICFRP1FAC - IBAN FR76 1197 8000 0101 3676 17070 55
+                                    <br/>
+                                </b>
+                                <br/>
+                                <br/>
+                            </span>
+                        </div>
+
+                        <!--div[12]-->
+                        <div class="row">
+                            <div class="col" style="margin-top:20px;">
+                                <span t-field="doc.narration"/>
+                            </div>
+                        </div>
+
+                        <!--div[13]-->
+                        <div class="row">
+                            <div class="col" style="margin-top:10px;">
+                                <span>
+                                    <font style="font-size: 11px;">
+                                        <font style="font-size: 10px;">Tout montant TTC non réglé à l'échéance donnera
+                                            lieu au paiement par le
+                                            client de pénalités. Le taux d'intérêt des pénalités de retard est égal
+                                            au taux directeur (taux de refinancement ou Refi) semestriel de la
+                                            Banque centrale européenne (BCE) la plus récente majoré de 10 points.
+                                            Ces pénalités sont exigibles de plein droit et seront d'office portées
+                                            au débit du compte client. Aucun rappel ou mise en demeure ne sont
+                                            nécessaires pour faire courir les pénalités de retard. Elles courent dès
+                                            le jour suivant la date de règlement portée sur la facture. De plus,
+                                            nous nous réservons le droit de suspendre la livraison des commandes en
+                                            cours. Aucun escompte ne sera consenti en cas de paiement anticipé. En
+                                            cas de retard de paiement, l'acheteur devra une indemnité forfaitaire
+                                            pour frais de recouvrement d'un montant de 40 euros, de plein droit et
+                                            sans notification préalable. Nous pourrons demander à l'acheteur une
+                                            indemnisation complémentaire si les frais de recouvrement effectivement
+                                            engagés dépassaient ce montant, sur présentation des justificatifs.
+                                        </font>
+                                    </font>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--div[14]-->
+                        <div class="row">
+                            <div class="col" style="margin-top:10px;">
+                                <b>Adresse de livraison:
+                                    <br/>
+                                </b>
+                            </div>
+                        </div>
+
+                        <!--div[15]-->
+                        <div class="row">
+                            <!--div[14]/div[1]-->
+                            <div class="col-3">
+                                <div t-field="doc.partner_shipping_id"
+                                     t-options='{"widget": "contact", "fields": ["name", "address"]}'/>
+                            </div>
+
+                            <!--div[14]/div[2]-->
+                            <div class="col-3">
+                                <span>
+                                    <strong>Conditions de paiement:</strong>
+                                    <br/>
+                                </span>
+                                <span t-field="doc.invoice_payment_term_id.name"/>
+                            </div>
+
+                            <!--div[14]/div[3]-->
+                            <div class="col-3">
+                                <span>
+                                    <strong>Date d'échéance:</strong>
+                                    <br/>
+                                    <span t-field="doc.invoice_date_due"/>
+                                </span>
+                            </div>
+
+                            <!--div[14]/div[4]-->
+                            <div class="col-3"/>
+                        </div>
+
+                        <!--div[15]-->
+                        <div class="row">
+                            <div t-if="doc.partner_id.lang == 'en_US'" class="col" style="margin-top:10px;">
+                                <span>We certify that all the goods are French origin and can circulate in the European
+                                    Community.
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

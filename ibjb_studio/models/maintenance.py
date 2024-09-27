@@ -7,39 +7,33 @@ class MaintenanceEquipment(models.Model):
     _inherit = "maintenance.equipment"
 
     aueov_sale_order_count = fields.Integer(
-        string=(_("Equipement de maintenance count")),
+        string="Equipement de maintenance count",
         compute="_compute_aueov_sale_order_count",
         readonly=False,
     )
 
     abonnement_equipement_sale_subscription_count = fields.Integer(
-        string=(_("Equipement de maintenance count")),
+        string="Equipement de maintenance count",
         compute="_compute_sale_subscription_count",
         readonly=False,
     )
     contrats_1_ids = fields.One2many(
-        "sale.order", "abonnement_equipement_id", string=(_("Contracts"))
+        "sale.order", "abonnement_equipement_id", string="Contracts"
     )
     contrat_en_cours = fields.Char(
-        related="contrats_1_ids.name", readonly=False, string=(_("current_contract"))
+        related="contrats_1_ids.name", readonly=False, string="current_contract"
     )
     date_fin_contrat = fields.Date(
         related="contrats_1_ids.end_date",
         store=True,
         readonly=False,
-        help=(
-            _(
-                "If set, the subscription will be marked as 'To renew' 1 month before the selected date and will be "
-                "closed on that date."
-            )
-        ),
-        string=(_("Contract_end_date")),
-    )
+        help="If set, the subscription will be marked as 'To renew' 1 month before the selected date and will be "
+             "closed on that date.", string="Contract_end_date")
     contrat_type = fields.Char(related="contrats_1_ids.sale_order_template_id.name")
-    client_utilisateur_id = fields.Many2one("res.partner", string=(_("User client")))
-    proprietaire_id = fields.Many2one("res.partner", string=(_("Owner")))
-    field_ixm1S = fields.Many2one("maintenance.version", string=(_("Version")))
-    date_mise_jour = fields.Date(string=(_("Date Updated")))
+    client_utilisateur_id = fields.Many2one("res.partner", string="User client")
+    proprietaire_id = fields.Many2one("res.partner", string="Owner")
+    field_ixm1S = fields.Many2one("maintenance.version", string="Version")
+    date_mise_jour = fields.Date(string="Date Updated")
 
     def _compute_aueov_sale_order_count(self):
         """
