@@ -79,6 +79,7 @@
                 <field name="is_expdition_bloque" widget="boolean_toggle"/>
                 <field name="blbr_faita"/>
                 <field name="blbr_faitle"/>
+                <field name="bl_transporteur"/>
             </field>
             <field name="partner_id" position="after">
                 <field name="bl_codetiers" invisible="br_codetiers"/>

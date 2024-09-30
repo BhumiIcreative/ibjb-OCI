@@ -86,10 +86,12 @@
                                 </span>
                             </th>
                             <th class="align-middle text-center">
-                                <span>Quantité min.</span>
+                                <span>Prix unitaire HT
+                                    <br/>
+                                </span>
                             </th>
                             <th class="align-middle text-center">
-                                <span>Prix HT
+                                <span>Quantité min.
                                     <br/>
                                 </span>
                             </th>
@@ -99,7 +101,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr t-foreach="doc.item_ids" t-as="table_line" class="table table-sm o_main_table">
+                        <tr t-foreach="doc.item_ids" t-as="table_line">
                             <td>
                                 <span t-field="table_line.field_MqbX7"/>
                             </td>
@@ -107,13 +109,13 @@
                                 <span t-field="table_line.display_name"/>
                             </td>
                             <td>
-                                <span t-field="table_line.min_quantity"/>
-                            </td>
-                            <td>
                                 <span t-field="table_line.price"/>
                             </td>
                             <td>
-                                <span t-field="table_line.pricelist_coms"/>
+                                <span t-field="table_line.min_quantity"/>
+                            </td>
+                            <td>
+                                <span t-field="table_line.oci_pricelist_coms"/>
                             </td>
                         </tr>
                     </tbody>

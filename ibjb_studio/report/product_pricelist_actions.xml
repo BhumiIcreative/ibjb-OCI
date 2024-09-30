@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <!-- Report action for the Picking Operations (copy 2) -->
+    <!-- Report action for the Product price lists -->
     <record id="action_product_pircelist_offer" model="ir.actions.report">
         <field name="name">Price offer EN</field>
         <field name="model">product.pricelist</field>
@@ -11,7 +11,7 @@
         <field name="binding_type">report</field>
     </record>
 
-    <!-- Report action for the Picking Operations (copy 2) -->
+    <!-- Report action for the Product price lists copy -->
     <record id="action_product_pircelist_offer_copy1" model="ir.actions.report">
         <field name="name">Price offer EN copy 1</field>
         <field name="model">product.pricelist</field>

@@ -45,12 +45,16 @@
                             <div class="col">
                                 <span>
                                     <b style="margin-left:730px">Code client:</b>
-                                    <!--                                    <span t-field="o.sale_id.oci_saleorder_codetiers"/>-->
+                                    <span t-field="o.sale_id.oci_saleorder_codetiers"/>
                                     <br/>
                                 </span>
                             </div>
                         </div>
                         <div class="row">
+                            <font style="font-size: 13px;">Poids :<br/>Dimensions :<br/>Port :<br/>Préparée le     
+                                /     /    
+                                    par<br/>Vérifiée    le      /     /         par
+                            </font>
                         </div>
                         <div class="row">
                         </div>
@@ -234,23 +238,7 @@
                             <div class="col-3"/>
                         </div>
                         <div class="row">
-                            <div class="col" style="margin-top:10px">
-                                <span>
-                                    <font style="font-size: 14px;">Poids :</font>
-                                    <br/>
-                                    <font style="font-size: 14px;">Dimensions :</font>
-                                    <br/>
-                                    <font style="font-size: 14px;">Port :</font>
-                                    <br/>
-                                    <br/>
-                                    <font style="font-size: 14px;">Préparée le      /     /         par</font>
-                                    <br/>
-                                    <font style="font-size: 14px;">Vérifiée    le      /     /         par
-                                    </font>
-                                    <br/>
-                                    <br/>
-                                </span>
-                            </div>
+
                         </div>
                         <table class="table table-sm"
                                t-if="o.package_level_ids and o.picking_type_entire_packs">

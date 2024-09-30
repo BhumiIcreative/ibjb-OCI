@@ -21,7 +21,7 @@
                     <div class="col">
                         <span style="margin-left:505px">
                             <b>Code tiers:
-<!--                                <span t-field="doc.partner_id.customer_code"/>-->
+                                <span t-field="doc.partner_id.customer_code"/>
                             </b>
                         </span>
                     </div>
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="col">
                         <span>Acheteur:
-<!--                            <span t-field="doc.purchase_id.oci_achats_acheteur.name"/>-->
+                            <span t-field="doc.purchase_id.oci_achats_acheteur.name"/>
                         </span>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                                 <span t-field="table_line.product_uom.display_name"/>
                             </td>
                             <td>
-                                <span t-field="table_line.price_unit"/>
+                                <span t-field="table_line.purchase_line_id.price_unit"/>
                                 €
                             </td>
                             <td>
