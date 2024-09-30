@@ -12,7 +12,7 @@
     </record>
 
     <record id="action_ibjb_report_sale_order_backup" model="ir.actions.report">
-        <field name="name">Quote / Backup order</field>
+        <field name="name">Quote / order Backup</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">sale.report_saleorder</field>
@@ -33,7 +33,7 @@
         <field name="name">Quotation / Order copy(2)</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">sale.report_saleorder_copy_2</field>
+        <field name="report_name">ibjb_studio.report_saleorder_copy_2</field>
         <field name="binding_model_id" ref="sale.model_sale_order"/>
         <field name="binding_type">report</field>
     </record>
@@ -42,7 +42,7 @@
         <field name="name">Quote / Discount</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">sale.report_saleorder_copy_4</field>
+        <field name="report_name">ibjb_studio.report_saleorder_copy_4</field>
         <field name="binding_model_id" ref="sale.model_sale_order"/>
         <field name="binding_type">report</field>
     </record>
@@ -51,7 +51,7 @@
         <field name="name">Proforma Invoice</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">sale.report_saleorder_proforma_invoice</field>
+        <field name="report_name">ibjb_studio.report_saleorder_proforma_invoice</field>
         <field name="binding_model_id" ref="sale.model_sale_order"/>
         <field name="binding_type">report</field>
     </record>
