@@ -601,7 +601,7 @@
               <div class="row">
                 <div class="col">
                   <span>
-                    <b>Adresse de livraison:<br/></b>
+                    <b>Delivery address:<br/></b>
                   </span>
               </div>
               </div>
@@ -622,34 +622,34 @@
               <!-- div 8 -->
               <div class="row">
                 <div t-if="doc.state == 'sale'" class="col h2" style="margin-top:10px">
-                  <span style="margin-left:50px">Confirmation de commande <span t-field="doc.name"/><br/></span>
+                  <span style="margin-left:50px">Order confirmation<span t-field="doc.name"/><br/></span>
                 </div>
               </div>
               <!-- div 9 -->
               <div class="row">
                 <div class="col" style="margin-top:10px">
-                  <span>Cher client,<br/>Nous avons bien reçu votre demande et nous vous en remercions.<br/></span>
+                  <span>Dear Sir,<br/>We have received your request and we thank you.<br/></span>
                 </div>
               </div>
               <!-- div 10 -->
               <div class="row" style="margin-top:10px">
                 <div class="col-3 col-auto mw-100 mb-2">
                   <span>
-                    <strong>Votre référence:</strong>
+                    <strong>Your reference:</strong>
                     <br/>
                   </span>
                   <span t-field="doc.client_order_ref"/>
                 </div>
                 <div class="col-3 col-auto mw-100 mb-2">
                   <span>
-                    <strong>Date de la commande:</strong>
+                    <strong>Order date:</strong>
                     <br/>
                   </span>
                   <span t-field="doc.date_order"/>
                 </div>
                 <div class="col-3 col-auto mw-100 mb-2">
                   <span>
-                    <strong>Transporteur:</strong>
+                    <strong>Carrier:</strong>
                     <br/>
                   </span>
                 </div>
@@ -658,13 +658,13 @@
                 <thead>
                   <tr>
                     <th>
-                      <span>Référence article</span>
+                      <span>Article reference</span>
                     </th>
                     <th>
                       <span>Description</span>
                     </th>
                     <th>
-                      <span>Quantité</span>
+                      <span>Quantity</span>
                     </th><!-- 
                     <th>
                       <span>N°Lot</span>
@@ -719,7 +719,7 @@
               <!-- div 11 -->
               <div class="row">
                 <div class="col" t-if='doc.state == "draft" or doc.state == "sent"'>
-                  <span>Cette offre est valable jusqu'au</span>
+                  <span>This offer is valid until</span>
                   <span t-field="doc.validity_date"/>
                 </div>
               </div>
@@ -737,10 +737,10 @@
               <div class="row">
                 <div class="col" t-if='doc.partner_id.lang == "fr_FR" and doc.state == "sale"' style="margin-top:10px">
                   <span>
-                    <font style="font-size: 14px;">(1) - Pour les commandes en différé, cette date est susceptible de
-                    modification en fonction notamment du contrôle qualité final.</font>
+                    <font style="font-size: 14px;">(1) - For delayed orders, this date may change
+                    modification depending in particular on the final quality control.</font>
                     <br/>
-                    <font style="font-size: 14px;">       - Livraison sous les 24 à 48h après expédition selon engagements du transporteur.</font>
+                    <font style="font-size: 14px;">       - Delivery within 24 to 48 hours after shipment depending on the carrier's commitments.</font>
                     <br/>
                   </span>
                 </div>
@@ -749,7 +749,7 @@
               <div class="row">
                 <div t-if='doc.sale_order_option_ids != "" and doc.state != "sale"' class="col" style="margin-top:15px">
                   <span>
-                    <font style="font-size: 24px; margin-left:50px;">Produits Optionnels</font>
+                    <font style="font-size: 24px; margin-left:50px;">Optional Products</font>
                     <br/>
                   </span>
                 </div>

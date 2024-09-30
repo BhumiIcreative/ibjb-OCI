@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# from dataclasses import fields
-
+# from dataclasses import fieldss
 from odoo import models, fields
+from odoo.addons.ibjb_studio import common
 
 
 class PricelistItem(models.Model):
@@ -13,7 +13,7 @@ class PricelistItem(models.Model):
         copy=False,
         store=True,
         readonly=False,
-    )
+    ) # No need to migarte this fields as it is related field
 
     oci_pricelist_coms = fields.Text(
         string="New Multiline Text",
@@ -27,4 +27,14 @@ class PricelistItem(models.Model):
         store=True,
     )
 
-    pricelist_coms = fields.Text(string="New Multiline Text")
+    def Update_product_pricelist_item_studio_fields(self):
+        """
+        server action code to migrate Product pricelist items studio fields data to custom fields.
+        """
+        migration_fields = {
+            "x_studio_oci_pricelist_coms": "oci_pricelist_coms",
+            "x_studio_x_studio_saleorder_pricelist_productdate": "saleorder_pricelist_productdate",
+        }
+        for rec in self:
+            for x_field, field in migration_fields.items():
+                common.set_customer_field(rec, x_field, field)

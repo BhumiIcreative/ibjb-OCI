@@ -51,7 +51,6 @@
         "views/sale_subscription_views.xml",
         "views/partner_view.xml",
         "views/purchase_views.xml",
-        "views/sale_order_views.xml",
         "views/res_company_views.xml",
         "views/helpdesk_ticket_views.xml",
         "views/helpdesk_ticket_type_views.xml",
