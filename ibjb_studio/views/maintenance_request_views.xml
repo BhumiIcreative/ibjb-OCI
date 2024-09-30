@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="ibjb_studio_hr_equipment_request_view_form" model="ir.ui.view">
+        <field name="name">maintenance.request.form.view</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                <group name="studio_group_Nxz1F">
+                    <group>
+                        <field name="pret_de_matriel_" widget="boolean_toggle"/>
+                        <field name="demande_de_pret_id"
+                               invisible="pret_de_matriel_ == False"/>
+                        <!--                           attrs="{&quot;invisible&quot;: [[&quot;x_studio_pret_de_matriel_&quot;,&quot;=&quot;,False]]}"/>-->
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="maintenance_contact" string="Client"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

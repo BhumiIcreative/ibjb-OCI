@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="maintenance_request_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table class="table o_report_block_table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span>Name</span>
+                                    </th>
+                                    <th>
+                                        <span>Opening date</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.demande_de_pret_id.equipment_id.maintenance_ids"
+                                    t-as="table_line">
+                                    <td>
+                                        <span t-field="table_line.display_name"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
