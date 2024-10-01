@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit crm for add fields -->
+    <record model="ir.ui.view" id="crm_lead_view_form">
+        <field name="name">Crm lead view form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='opportunity_partner']" position="inside">
+                <field name="crm_helpdesk_ticket_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

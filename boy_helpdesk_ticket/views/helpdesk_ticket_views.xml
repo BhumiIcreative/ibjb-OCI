@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit helpdesk ticket for add fields and smart buttons -->
+    <record model="ir.ui.view" id="boy_helpdesk_ticket_view_form">
+        <field name="name">Boy helpdesk ticket view form</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" name="open_customer_maintenance_request" icon="fa-ticket" type="object">
+                    <div class="o_field_widget o_stat_info">
+                        <div class="d-flex align-items-baseline gap-1">
+                            <span class="o_stat_value order-1">
+                                <field name="maintenance_request_count" nolabel="1"/>
+                            </span>
+                            <span class="o_stat_text order-2">Maintenance</span>
+                        </div>
+                    </div>
+                </button>
+                <button class="oe_stat_button" name="open_customer_crm_lead" icon="fa-briefcase" type="object">
+                    <div class="o_field_widget o_stat_info">
+                        <div class="d-flex align-items-baseline gap-1">
+                            <span class="o_stat_value order-1">
+                                <field name="crm_lead_count" nolabel="1"/>
+                            </span>
+                            <span class="o_stat_text order-2">Opportunity</span>
+                        </div>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='priority']" position="after">
+                <field name="open_on"/>
+                <field name="close_date"/>
+                <field name="close_days"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="boy_helpdesk_ticket_button_view_form">
+        <field name="name">Boy helpdesk ticket button view form</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="oci_sav.oci_sav_helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <button name='%(oci_sav.action_maintenance_new)d' position="replace">
+                <button name="%(oci_sav.action_maintenance_new)d" string="Create maintenance" type="action"
+                        groups="helpdesk.group_helpdesk_user"
+                        context="{'default_name': name,
+              'default_description': description,
+              'default_maintenance_contact': partner_id,
+              'default_maintenance_helpdesk_ticket_id': id}"/>
+            </button>
+        </field>
+    </record>
+</odoo>

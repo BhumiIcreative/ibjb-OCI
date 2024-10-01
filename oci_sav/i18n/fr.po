@@ -1,0 +1,58 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oci_sav
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-06 10:15+0000\n"
+"PO-Revision-Date: 2024-09-06 10:15+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: oci_sav
+#: model:ir.model.fields,field_description:oci_sav.field_maintenance_request__maintenance_contact
+msgid "Client"
+msgstr "Client"
+
+#. module: oci_sav
+#: model_terms:ir.ui.view,arch_db:oci_sav.oci_sav_helpdesk_ticket_view_form
+msgid "Create maintenance"
+msgstr "Créer maintenance"
+
+#. module: oci_sav
+#: model_terms:ir.ui.view,arch_db:oci_sav.oci_sav_helpdesk_ticket_view_form
+msgid "Create opportunity"
+msgstr "Créer opportunité"
+
+#. module: oci_sav
+#: model:ir.model,name:oci_sav.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Ticket de support"
+
+#. module: oci_sav
+#. odoo-python
+#: code:addons/oci_sav/models/helpdesk_ticket.py:0
+#, python-format
+msgid "Lead Converted"
+msgstr "Prospect converti"
+
+#. module: oci_sav
+#: model:ir.actions.act_window,name:oci_sav.action_maintenance_new
+msgid "Maintenance"
+msgstr "Maintenance"
+
+#. module: oci_sav
+#: model:ir.model,name:oci_sav.model_maintenance_request
+msgid "Maintenance Request"
+msgstr "Demande de maintenance"
+
+#. module: oci_sav
+#: model:ir.actions.act_window,name:oci_sav.action_opportunity_new
+msgid "Opportunity"
+msgstr "Opportunité"

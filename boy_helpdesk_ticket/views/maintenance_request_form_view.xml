@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit maintenance for add fields -->
+    <record model="ir.ui.view" id="maintenance_request_view_form">
+        <field name="name">Maintenance request view form</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
+        <field name="arch" type="xml">
+            <field name="employee_id" position="after">
+                <field name="maintenance_helpdesk_ticket_id"/>
+            </field>
+        </field>
+    </record>
+</odoo>

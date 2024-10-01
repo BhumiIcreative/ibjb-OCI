@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit helpdesk ticket to add buttons and fields for oppertunity and maintenance  -->
+    <record model="ir.ui.view" id="oci_sav_helpdesk_ticket_view_form">
+      <field name="name">OCI SAV helpdesk ticket view form</field>
+      <field name="model">helpdesk.ticket</field>
+      <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//header" position="inside">
+          <field name="partner_email" invisible="1"/>
+          <field name="tag_ids" invisible="1"/>
+          <button name="action_opportunity_new" string="Create opportunity" type="object" groups="helpdesk.group_helpdesk_user" invisible=" not partner_id"/>
+          <button name="%(oci_sav.action_maintenance_new)d" string="Create maintenance" type="action" groups="helpdesk.group_helpdesk_user"
+            context="{'default_name': name,
+              'default_description': description,
+              'default_maintenance_contact': partner_id}"/>
+        </xpath>
+      </field>
+    </record>
+</odoo>

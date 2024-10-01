@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Action for oppertunity -->
+    <record id="action_opportunity_new" model="ir.actions.act_window">
+        <field name="name">Opportunity</field>
+        <field name="res_model">crm.lead</field>
+        <field name="view_mode">form,tree</field>
+    </record>
+</odoo>
