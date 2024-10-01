@@ -30,5 +30,15 @@
             <field name="state">code</field>
             <field name="code">if records: records.Update_purchase_order_studio_fields()</field>
         </record>
+
+         <!-- stock quant -->
+        <record id="model_stock_quant_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio stock quant fields</field>
+            <field name="model_id" ref="stock.model_stock_quant"/>
+            <field name="binding_model_id" ref="stock.model_stock_quant"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_stock_quant_studio_fields()</field>
+        </record>
     </data>
 </odoo>

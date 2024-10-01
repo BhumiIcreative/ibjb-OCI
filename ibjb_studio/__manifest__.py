@@ -91,6 +91,7 @@
         "report/maintenance_request_report_template.xml",
         "report/maintenance_request_loan_equipment_removal_checklist_template.xml",
         "report/maintenance_request_report.xml",
+        "report/report_stockinventory.xml",
 
     ],
     "installable": True,

@@ -22,3 +22,4 @@ from . import stock_picking
 from . import product_pricelist
 from . import product_pricelist_item
 from . import maintenance_request
+from . import stock_quant
