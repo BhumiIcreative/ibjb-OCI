@@ -35,8 +35,7 @@ class ResCompany(models.Model):
     blbr_lotcrg = fields.Char(_('Corrected batch'))
     blbr_qtecrg = fields.Char(_('Corrected quantity'))
     blbr_remarque = fields.Text(_('Noticed'))
-    inventory_settingociadmin = fields.Selection([('en_US', 'English'), ('fr_FR', 'French / Français')],
-                                                 _('Customer language'), related='partner_id.lang')
+    inventory_settingociadmin = fields.Selection(string='Customer language', related='partner_id.lang')
     total_weight = fields.Float(_('Total Weight'))
     bl_transporteur = fields.Selection([
         ("chronopost", "Chronopost"),

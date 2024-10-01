@@ -8,15 +8,15 @@
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
                 <group name="studio_group_Nxz1F">
                     <group>
-                        <field name="pret_de_matriel_" widget="boolean_toggle"/>
+                        <field name="pret_de_matriel" widget="boolean_toggle"/>
                         <field name="demande_de_pret_id"
-                               invisible="pret_de_matriel_ == False"/>
-                        <!--                           attrs="{&quot;invisible&quot;: [[&quot;x_studio_pret_de_matriel_&quot;,&quot;=&quot;,False]]}"/>-->
+                               invisible="pret_de_matriel == False"/>
+                        <!--                           attrs="{&quot;invisible&quot;: [[&quot;x_studio_pret_de_matriel&quot;,&quot;=&quot;,False]]}"/>-->
                     </group>
                 </group>
             </xpath>
             <xpath expr="//field[@name='employee_id']" position="after">
-                <field name="maintenance_contact" string="Client"/>
+                <field name="maintenance_contact_id" string="Client"/>
             </xpath>
         </field>
     </record>

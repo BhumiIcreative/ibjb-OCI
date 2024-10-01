@@ -24,7 +24,7 @@
                                 <span>
                                     <h3>
                                         <font style="font-size: 24px;">Client :</font>
-                                        <span t-field="doc.maintenance_contact.display_name"/>
+                                        <span t-field="doc.maintenance_contact_id.display_name"/>
                                     </h3>
                                 </span>
                             </div>
