@@ -12,32 +12,7 @@
                         </span>
                     </div>
                 </div>
-                <div class="row address">
-                    <div class="col-5"/>
-                    <div class="col-5 offset-2">
-                        <div t-field="doc.sale_id.partner_id" t-options-widget="'contact'"
-                             t-options-fields="['name', 'address']"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <span>
-                            <b style="margin-left:505px;">N° TVA:</b>
-                            <span t-field="doc.sale_id.partner_id.tva"/>
-                        </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <span>
-                            <b style="margin-left:505px;">Code client:</b>
-                            <span t-field="doc.sale_id.partner_id.customer_code"/>
-                        </span>
-                    </div>
-                </div>
             </div>
-
-
             <div class="row address">
                 <div class="col-5">
                     <div t-field="doc.sale_id.partner_id" t-options-widget="'contact'"
@@ -267,14 +242,11 @@
         </t>
     </template>
 
-
-
-<template id="main_template_2">
-<t t-call="web.html_container">
-    <t t-foreach="docs" t-as="doc">
-        <t t-call="ibjb_studio.transfer_report_copy_2"/>
-    </t>
-</t>
-</template>
-
-        </odoo>
+    <template id="main_template_2">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="ibjb_studio.transfer_report_copy_2"/>
+            </t>
+        </t>
+    </template>
+</odoo>

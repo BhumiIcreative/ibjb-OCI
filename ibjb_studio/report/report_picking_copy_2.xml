@@ -12,7 +12,16 @@
                         <div class="row">
                             <div class="col">
                                 <span>
-                                    <i>15FBP Révision D Juillet 2020</i>
+                                    <i>
+                                        <font style="font-size: 11px;">15F BLEX Rev F 07/2020</font>
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <b style="margin-left:520px;">Invoicing address:</b>
                                     <br/>
                                 </span>
                             </div>
@@ -20,7 +29,7 @@
                         <div class="row address">
                             <div class="col-5"/>
                             <div class="col-5 offset-2">
-                                <div t-field="o.partner_id" t-options-widget="'contact'"
+                                <div t-field="o.sale_id.partner_invoice_id" t-options-widget="'contact'"
                                      t-options-fields="['name', 'address']"/>
                             </div>
                         </div>
@@ -34,7 +43,7 @@
                         <div class="row">
                             <div class="col">
                                 <span>
-                                    <b>Adresse de livraison :</b>
+                                    <b>Delivery address :</b>
                                     <br/>
                                 </span>
                             </div>
@@ -49,37 +58,68 @@
                         <div class="row">
                             <div class="col">
                                 <span>ID customer:
-                                    <!--                                            <span t-field="o.sale_id.x_studio_oci_saleorder_codetiers"/>-->
+                                    <span t-field="o.sale_id.oci_saleorder_codetiers"/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="margin-top:20px;">
+                                <span>
+                                    <b>BANK KOLB</b>
+                                    <br/>
+                                    <b>IBAN :</b>
+                                    FR76 1325 9041 5310 5811 0020 064
+                                    <br/>
+                                    <b>BIC :</b>
+                                    KOLBFR21
                                     <br/>
                                 </span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col h2" style="margin-top:30px">
-                                <span>Bordereau de préparation
+                                <span>PACKING LIST
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span style="margin-left:550px;">Fait à
+                                    <span t-field="o.blbr_faita"/>
+                                    <span>le</span>
+                                    <span t-field="o.blbr_faitle"/>
                                     <br/>
                                 </span>
                             </div>
                         </div>
                         <br/>
-                        <h1 t-field="o.name" class="mt0 float-left"/>
+                        <h1 t-field="o.name" class="mt0 float-left" groups="base.group_no_one"/>
                         <div class="clearfix"/>
-                        <table class="table table-sm" style="margin-top:10px">
+                        <table class="table table-sm table-borderless" style="margin-top:10px">
                             <thead>
-                                <tr>
+                                <tr >
                                     <th t-if="o.origin">
-                                        <strong>Référence commande
+                                        <strong>Order ref
                                             <br/>
                                         </strong>
                                     </th>
                                     <th>
-                                        <span>Date de confirmation</span>
+                                        <span>Customer ref
+                                            <br/>
+                                        </span>
                                     </th>
                                     <th>
-                                        <strong>Etat</strong>
+                                        <span>Shipping date
+                                            <br/>
+                                        </span>
                                     </th>
-                                    <th name="td_sched_date_h" width="20%">
-                                        <strong>Date planifiée</strong>
+
+                                    <th>
+                                        <span>Delivery note ref.
+                                            <br/>
+                                        </span>
                                     </th>
                                     <th t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id">
                                         <strong>Transporteur</strong>
@@ -95,13 +135,13 @@
                                         <span t-field="o.origin"/>
                                     </td>
                                     <td>
-                                        <span t-field="o.sale_id.date_order"/>
+                                        <span t-field="o.client_reference"/>
                                     </td>
                                     <td>
-                                        <span t-field="o.state"/>
-                                    </td>
-                                    <td name="td_sched_date" width="20%">
                                         <span t-field="o.scheduled_date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.name"/>
                                     </td>
                                     <td t-if="o.picking_type_id.code == 'outgoing' and o.carrier_id">
                                         <span t-field="o.carrier_id"/>
@@ -115,7 +155,7 @@
                         </table>
                         <br/>
                         <br/>
-                        <table class="table table-sm" t-if="o.move_line_ids">
+                        <table class="table table-sm table-borderless" t-if="o.move_line_ids">
                             <t t-set="has_barcode"
                                t-value="any([move_ids_without_package.product_id and move_ids_without_package.product_id.sudo().barcode or move_ids_without_package.package_id for move_ids_without_package in o.move_line_ids])"/>
                             <t t-set="has_serial_number"
@@ -124,23 +164,27 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        <span>Reférence</span>
+                                        <span>Reference</span>
                                     </th>
                                     <th>
-                                        <strong>Article</strong>
+                                        <strong>Product
+                                            <br/>
+                                        </strong>
                                     </th>
                                     <th>
-                                        <strong>Qté</strong>
+                                        <strong>Quantité</strong>
                                     </th>
                                     <th>
-                                        <span>Lot</span>
+                                        <span>Batch Nr
+                                            <br/>
+                                        </span>
                                     </th>
                                     <th>
                                         <span>Expery</span>
                                     </th>
-                                    <th t-if="o.picking_type_id.code != 'outgoing'">
-                                        <strong>À</strong>
-                                    </th>
+                                    <!--                                    <th t-if="o.picking_type_id.code != 'outgoing'">-->
+                                    <!--                                        <strong>À</strong>-->
+                                    <!--                                    </th>-->
                                     <th width="15%" class="text-center" t-if="has_barcode">
                                         <strong>Code-barre de l'article</strong>
                                     </th>
@@ -157,7 +201,7 @@
 
                                             </td>
                                             <td>
-                                                <span t-field="ml.product_id.display_name"/>
+                                                <span t-field="ml.product_id.default_code"/>
                                                 <br/>
                                                 <span t-field="ml.product_id.description_picking"/>
                                             </td>
@@ -172,14 +216,14 @@
                                             <td>
                                                 <span t-field="ml.lot_id.expiration_date"/>
                                             </td>
-                                            <td t-if="o.picking_type_id.code != 'outgoing'">
-                                                <div>
-                                                    <span t-field="ml.location_dest_id"/>
-                                                    <t t-if="ml.result_package_id">
-                                                        <span t-field="ml.result_package_id"/>
-                                                    </t>
-                                                </div>
-                                            </td>
+                                            <!--                                            <td t-if="o.picking_type_id.code != 'outgoing'">-->
+                                            <!--                                                <div>-->
+                                            <!--                                                    <span t-field="ml.location_dest_id"/>-->
+                                            <!--                                                    <t t-if="ml.result_package_id">-->
+                                            <!--                                                        <span t-field="ml.result_package_id"/>-->
+                                            <!--                                                    </t>-->
+                                            <!--                                                </div>-->
+                                            <!--                                            </td>-->
                                             <td width="15%" class="text-center" t-if="has_barcode">
                                                 <t t-if="product_barcode != move.product_id.barcode">
                                                     <span t-if="move.product_id and move.product_id.barcode">
@@ -202,6 +246,61 @@
                                 </t>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <b>
+                                        <font style="font-size: 14px;">Weight :</font>
+                                    </b>
+                                    <span t-field="o.bl_poids"/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <b>
+                                        <font style="font-size: 14px;">Dimensions :</font>
+                                    </b>
+                                    <span t-field="o.bl_dimension"/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <b>
+                                        <font style="font-size: 14px;">Remark :</font>
+                                    </b>
+                                    <span t-field="o.bl_port"/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <b>
+                                        <font style="font-size: 14px;">Port :</font>
+                                    </b>
+                                    <span t-field="o.blbr_remarque"/>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="margin-top:20px;">
+                                <span>
+                                    <font style="font-size: 14px">We certify that all products are of French origin and
+                                        can circulate in
+                                        the European Community.
+                                    </font>
+                                    <br/>
+                                </span>
+                            </div>
+                        </div>
                         <table class="table table-sm"
                                t-if="o.package_level_ids and o.picking_type_entire_packs">
                             <thead>
@@ -232,6 +331,8 @@
                                 </tr>
                             </tbody>
                         </table>
+
+
                         <t t-set="no_reserved_product"
                            t-value="o.move_ids.filtered(lambda x: x.product_uom_qty != x.availability and x.move_line_ids and x.state != 'done')"/>
                         <p t-if="o.state in ['draft', 'waiting', 'confirmed'] or no_reserved_product">
@@ -245,5 +346,4 @@
             </t>
         </t>
     </template>
-
 </odoo>

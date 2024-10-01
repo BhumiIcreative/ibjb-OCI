@@ -77,6 +77,7 @@
         "report/report_purchase.xml",
         "report/ir_actions_report_templates.xml",
         "report/stock_paperformat.xml",
+        "report/picking_operations.xml",
         "report/stock_picking_reports_actions.xml",
         "report/report_picking_copy_2.xml",
         "report/transfer_report_copy(1).xml",

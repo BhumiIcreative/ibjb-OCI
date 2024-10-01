@@ -85,7 +85,7 @@
                                 <span t-field="table_line.price"/>
                             </td>
                             <td>
-                                <span t-field="table_line.pricelist_coms"/>
+                                <span t-field="table_line.oci_pricelist_coms"/>
                             </td>
                         </tr>
                     </tbody>

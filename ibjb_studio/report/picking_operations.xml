@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <template id="report_picking_copy_4">
+    <template id="report_picking_base">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
@@ -23,6 +23,11 @@
                         </div>
                         <div class="row">
                             <div class="col">
+                                <span t-field="o.br_codetiers"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <span>
                                     <b style="margin-left:730px">Adresse de livraison:</b>
                                     <br/>
@@ -35,12 +40,6 @@
                                 <div t-field="o.sale_id.partner_shipping_id" t-options-widget="'contact'"
                                      t-options-fields="['name', 'address']"/>
                             </div>
-                        </div>
-                        <div class="row">
-                            <font style="font-size: 13px;">Poids :<br/>Dimensions :<br/>Port :<br/>Préparée le     
-                                /     /    
-                                    par<br/>Vérifiée    le      /     /         par
-                            </font>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -65,55 +64,55 @@
                             </div>
                         </div>
                         <br/>
-                        <table class="table table-borderless" style="border: none;margin-top:-20px;">
+                        <table class="table borderless" style="margin-top:-20px;">
                             <thead>
                                 <tr>
-                                    <th t-if="o.origin" style="border:0 transparent;border-bottom:hidden;">
+                                    <th t-if="o.origin">
                                         <strong>Référence commande
                                             <br/>
                                         </strong>
                                     </th>
-                                    <th style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <th>
                                         <span>Référence client</span>
                                     </th>
-                                    <th style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <th>
                                         <span>Date de confirmation</span>
                                     </th>
-                                    <th style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <th>
                                         <strong>Etat</strong>
                                     </th>
-                                    <th name="td_sched_date_h" width="20%" style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <th name="td_sched_date_h" width="20%">
                                         <strong>Date planifiée</strong>
                                     </th>
-                                    <th style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <th>
                                         <span>Transporteur</span>
                                     </th>
-                                    <th t-if="o.weight" style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <th t-if="o.weight">
                                         <strong>Poids</strong>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td t-if="o.origin" style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <td t-if="o.origin">
                                         <span t-field="o.origin"/>
                                     </td>
-                                    <td style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <td>
                                         <span t-field="o.client_reference"/>
                                     </td>
-                                    <td style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <td>
                                         <span t-field="o.sale_id.date_order"/>
                                     </td>
-                                    <td style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <td>
                                         <span t-field="o.state"/>
                                     </td>
-                                    <td name="td_sched_date" width="20%" style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <td name="td_sched_date" width="20%">
                                         <span t-field="o.scheduled_date"/>
                                     </td>
-                                    <td style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <td>
                                         <span t-field="o.bl_transporteur"/>
                                     </td>
-                                    <td t-if="o.weight" style="border:0 transparent;border-bottom:hidden;border:right:hidden;">
+                                    <td t-if="o.weight">
                                         <span t-field="o.weight"/>
                                         <span t-field="o.weight_uom_name"/>
                                     </td>
@@ -228,50 +227,11 @@
                             </tbody>
                         </table>
                         <div class="row">
-                            <div class="col-3"/>
-                            <div class="col-3"/>
-                            <div class="col-3"/>
+                            <font style="font-size: 13px;">Poids :<br/>Dimensions :<br/>Port :<br/>Préparée le     
+                                /     /    
+                                    par<br/>Vérifiée    le      /     /         par
+                            </font>
                         </div>
-                        <div class="row">
-                        </div>
-                        <table class="table table-sm"
-                               t-if="o.package_level_ids and o.picking_type_entire_packs">
-                            <thead>
-                                <tr>
-                                    <th width="25%">Colis</th>
-                                    <th width="25%" class="text-center">Code Barre</th>
-                                    <th width="25%" class="text-left">Source</th>
-                                    <th width="25%" class="text-right">Destination</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr t-foreach="o.package_level_ids.sorted(key=lambda p: p.package_id.name)"
-                                    t-as="package">
-                                    <t t-set="package" t-value="package.with_context(picking_id=o.id)"/>
-                                    <td>
-                                        <span t-field="package.package_id.name"/>
-                                    </td>
-                                    <td>
-                                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', package.package_id.name, 600, 100)"
-                                             style="width:300px;height:50px" alt="Code Barre"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="package.location_id"/>
-                                    </td>
-                                    <td>
-                                        <span t-field="package.location_dest_id"/>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <t t-set="no_reserved_product"
-                           t-value="o.move_ids.filtered(lambda x: x.product_uom_qty != x.availability and x.move_line_ids and x.state!='done')"/>
-                        <p t-if="o.state in ['draft', 'waiting', 'confirmed'] or no_reserved_product">
-                            <i class="fa fa-exclamation-triangle"/>
-                            Tous les produits n'ont pas pu être réservés. Cliquez sur le bouton "Vérifier la
-                            disponibilité" pour essayer de réserver les produits.
-                        </p>
-                        <p t-field="o.note"/>
                     </div>
                 </t>
             </t>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-     <!-- Report action for the Picking Operations (copy 2) -->
+    <!-- Report action for the Picking Operations (copy 2) -->
     <record id="action_report_picking_operations_copy_2" model="ir.actions.report">
         <field name="name">Picking Operations copy(2)</field>
         <field name="model">stock.picking</field>
@@ -16,7 +16,7 @@
     <record id="action_report_picking_operations_copy_4" model="ir.actions.report">
         <field name="name">Picking Operations copy(4)</field>
         <field name="model">stock.picking</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-html</field>
         <field name="report_name">ibjb_studio.report_picking_copy_4</field>
         <field name="report_name">ibjb_studio.report_picking_copy_4</field>
         <field name="binding_model_id" ref="stock.model_stock_picking"/>
@@ -24,7 +24,7 @@
         <field name="paperformat_id" ref="ibjb_studio.paperformat_picking_operation_copy_4"/>
     </record>
 
-     <!-- Report action for Transfer Report (copy 1) -->
+    <!-- Report action for Transfer Report (copy 1) -->
     <record id="action_report_transfer_report_copy_1" model="ir.actions.report">
         <field name="name">Transfer Report copy (1)</field>
         <field name="model">stock.picking</field>
@@ -46,7 +46,7 @@
         <field name="binding_type">report</field>
     </record>
 
-     <!-- Report action for Transfer Report 1 -->
+    <!-- Report action for Transfer Report 1 -->
     <record id="action_transfer_report_1" model="ir.actions.report">
         <field name="name">Transfer Report 1</field>
         <field name="model">stock.picking</field>
@@ -79,4 +79,16 @@
         <field name="binding_type">report</field>
     </record>
 
+
+    <!-- Report action for picking Operations base -->
+    <record id="stock.action_report_picking" model="ir.actions.report">
+        <field name="name">Picking Operations</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.report_picking_base</field>
+        <field name="report_file">iibjb_studio.report_picking_base</field>
+        <field name="binding_model_id" ref="model_stock_picking"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="ibjb_studio.paperformat_picking_operation_copy_4"/>
+    </record>
 </odoo>
