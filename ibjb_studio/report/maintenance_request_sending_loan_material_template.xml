@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <template id="maintenance_request_loan_equipment_removal_checklist">
+    <template id="maintenance_request_sending_loan_material_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="web.external_layout">
                     <div class="page">
                         <div class="row">
                             <div class="col h2">
-                                <span style="margin-left:10px;">REMOVAL OF LOAN EQUIPMENT FOR RECOVERY</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <span>
+                                <span style="margin-left:160px;">
                                     <b>
-                                        <font style="font-size: 24px;">Agreed pick-up date :</font>
+                                        SENDING LOAN MATERIAL
                                     </b>
                                 </span>
                             </div>
@@ -22,35 +17,49 @@
                         <div class="row">
                             <div class="col">
                                 <span>
+                                    <b>
+                                        <font style="font-size: 24px;">Date sent :</font>
+                                    </b>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <span>
                                     <h3>
-                                        <font style="font-size: 24px;">Client :</font>
-                                        <span t-field="doc.maintenance_contact.display_name"/>
+                                        <b>
+                                            <font style="font-size: 24px;">Customer : </font>
+                                            <span t-field="doc.maintenance_contact.display_name"/>
+                                        </b>
                                     </h3>
                                 </span>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col">
                                 <span> </span>
                             </div>
                         </div>
+
                         <table class="table o_report_block_table">
                             <thead>
                                 <tr>
-                                    <th style="background-color:#003163;color:#FFFFFF;">
+                                    <th style="background-color:#003163;color:#FFFFFF;text-align:left;">
                                         <span>SUBJECT OF INTERVENTION</span>
                                     </th>
-                                    <th style="background-color:#003163;color:#FFFFFF;">
-                                        <span>EQUIPMENT READY</span>
+                                    <th style="background-color:#003163;color:#FFFFFF;text-align:left;">
+                                        <span>LOAN EQUIPMENT</span>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr t-foreach="docs" t-as="table_line">
-                                    <td>
+                                    <td style="color:black;">
                                         <span t-field="table_line.display_name"/>
                                     </td>
-                                    <td style="background-color:#FFFFFF">
+                                    <td style="background-color:white;">
                                         <span t-field="table_line.equipment_id.display_name"/>
                                     </td>
                                 </tr>
@@ -64,17 +73,13 @@
                         </div>
 
                         <div class="row">
-                        </div>
-
-                        <div class="row">
-                        </div>
-
-                        <div class="row">
                             <div class="col">
                                 <span>
-                                    <font style="font-size: 24px;">
-                                        <b>Beyond the loaned K-Matic, the items that must be in the package are :</b>
-                                    </font>
+                                    <b>
+                                        <font style="font-size: 24px;">Beyond the loaned K-Matic, the items that must be
+                                            in the package are :
+                                        </font>
+                                    </b>
                                 </span>
                             </div>
                         </div>
@@ -88,8 +93,8 @@
                         <div class="row">
                             <div class="col">
                                 <span>
-                                    <span style="color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
-                                        □ Completed customer decontamination certificate signed by the customer
+                                    <span style="background-color: rgb(255, 255, 255); color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
+                                        □ Completed IBJB decontamination certificate signed for the loan K-Matic
                                     </span>
                                 </span>
                             </div>
@@ -98,9 +103,9 @@
                         <div class="row">
                             <div class="col">
                                 <span>
-                                    <span style="color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
-                                        □ Loan equipment transport tracking sheet completed and signed by the customer
-                                        on the "return" section
+                                    <span style="background-color: rgb(255, 255, 255); color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
+                                        □ Loan equipment transport tracking sheet completed and signed on the "outbound"
+                                        section
                                     </span>
                                 </span>
                             </div>
@@ -120,7 +125,7 @@
                             <div class="col">
                                 <span>
                                     <span style="color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
-                                        □ Original box or from the loan machine + labels "Top" / "Bottom" / "Fragile"
+                                        □ K-Matic Paper User Manual
                                     </span>
                                 </span>
                             </div>
@@ -128,23 +133,12 @@
 
                         <div class="row">
                             <div class="col">
-                                <span> </span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
                                 <span>
-                                    <font style="font-size: 24px;">
-                                        <b>On the package must be affixed :</b>
-                                    </font>
+                                    <span style="color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
+                                        □ Pre-filled customer decontamination certificate, to be completed and signed by
+                                        the customer when sending their K-Matic to be repaired
+                                    </span>
                                 </span>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <span> </span>
                             </div>
                         </div>
 
@@ -152,7 +146,38 @@
                             <div class="col">
                                 <span>
                                     <span style="color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
-                                        □ Transport slip provided by IBJB
+                                        □ Pre-filled customer equipment transport tracking sheet, to be completed
+                                        signed by the customer) sending their K-Matic to be repaired
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <span style="color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
+                                        □ Transport slip for K-Matic removal to be repaired (if date agreed)
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <span style="color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
+                                        □ “Top” / “Bottom” / “Fragile” labels on the box
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <span>
+                                    <span style="color: rgb(73, 80, 87); font-family: Noto, &quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif; font-size: 18px;">
+                                        □ BL automaton
                                     </span>
                                 </span>
                             </div>

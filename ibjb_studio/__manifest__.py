@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 {
     "name": "IBJB Studio",
     "version": "17.0.1.0.0",
@@ -34,7 +35,8 @@
         'stock_delivery',
         'purchase_stock',
         'product_expiry',
-        'stock_barcode'
+        'stock_barcode',
+        'web'
     ],
     "data": [
         "security/ir.model.access.csv",
@@ -90,6 +92,9 @@
         "report/account_move_facture_franchise_de_tva_template.xml",
         "report/maintenance_request_report_template.xml",
         "report/maintenance_request_loan_equipment_removal_checklist_template.xml",
+        "report/maintenance_request_sending_customer_material_template.xml",
+        "report/maintenance_request_customer_material_removal_template.xml",
+        "report/maintenance_request_sending_loan_material_template.xml",
         "report/maintenance_request_report.xml",
         "report/report_stockinventory.xml",
 

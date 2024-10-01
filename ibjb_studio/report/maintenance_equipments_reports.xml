@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Action for PDF report type -->
+    <!-- Action for Maintenance History PDF report -->
     <record id="maintenance_equipment_historique_maintenance_template" model="ir.actions.report">
         <field name="name">Maintenance History</field>
         <field name="model">maintenance.equipment</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-html</field>
         <field name="report_name">ibjb_studio.report_historique_maintenance_action</field>
         <field name="report_file">ibjb_studio.report_historique_maintenance_action</field>
         <field name="paperformat_id" ref="ibjb_studio.paperformat_report_template"/>
@@ -13,11 +13,11 @@
         <field name="binding_type">report</field>
     </record>
 
-    <!-- Action for PDF report type -->
+    <!-- Action for Maintenance Equipment PDF report -->
     <record id="equipment_maintenance_template" model="ir.actions.report">
         <field name="name">Maintenance Equipment Report</field>
         <field name="model">maintenance.equipment</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">qweb-html</field>
         <field name="report_name">ibjb_studio.report_equipement_maintenance_action</field>
         <field name="report_file">ibjb_studio.report_equipement_maintenance_action</field>
         <field name="paperformat_id" ref="ibjb_studio.paperformat_report_template_equipement_maintenance"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <!-- Action for PDF report type -->
+    <!-- Action for Maintenance Request PDF report -->
     <record id="action_maintenance_request_report" model="ir.actions.report">
         <field name="name">Maintenance Request Report</field>
         <field name="model">maintenance.request</field>
@@ -12,6 +12,7 @@
         <field name="binding_type">report</field>
     </record>
 
+    <!-- Action for Checklist 4: Removal of loan equipment report -->
     <record id="action_maintenance_loan_equipment_removal_checklist_report" model="ir.actions.report">
         <field name="name">Checklist 4: Removal of loan equipment</field>
         <field name="model">maintenance.request</field>
@@ -19,6 +20,42 @@
         <field name="report_name">ibjb_studio.maintenance_request_loan_equipment_removal_checklist</field>
         <field name="report_file">ibjb_studio.maintenance_request_loan_equipment_removal_checklist</field>
         <field name="print_report_name">'Checklist 4: Removal of loan equipment'</field>
+        <field name="binding_model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Action for Checklist 3: Sending Customer Material report -->
+    <record id="action_maintenance_sending_customer_material" model="ir.actions.report">
+        <field name="name">Checklist 3: Sending Customer Material</field>
+        <field name="model">maintenance.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.maintenance_request_sending_customer_material</field>
+        <field name="report_file">ibjb_studio.maintenance_request_sending_customer_material</field>
+        <field name="print_report_name">'Checklist 3: Sending Customer Material'</field>
+        <field name="binding_model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Action for Checklist 2: Customer material removal report -->
+    <record id="action_maintenance_request_customer_material_removal" model="ir.actions.report">
+        <field name="name">Checklist 2: Customer material removal</field>
+        <field name="model">maintenance.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.maintenance_request_customer_material_removal_template</field>
+        <field name="report_file">ibjb_studio.maintenance_request_customer_material_removal_template</field>
+        <field name="print_report_name">'Checklist 2: Customer material removal'</field>
+        <field name="binding_model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Action for Checklist 1: Sending loan material report -->
+    <record id="action_maintenance_request_sending_loan_material" model="ir.actions.report">
+        <field name="name">Checklist 1: Sending loan material</field>
+        <field name="model">maintenance.request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ibjb_studio.maintenance_request_sending_loan_material_template</field>
+        <field name="report_file">ibjb_studio.maintenance_request_sending_loan_material_template</field>
+        <field name="print_report_name">'Checklist 1: Sending loan material'</field>
         <field name="binding_model_id" ref="maintenance.model_maintenance_request"/>
         <field name="binding_type">report</field>
     </record>
