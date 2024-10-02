@@ -9,7 +9,7 @@
         - Life date on stock move lines.
         - Actual lot ID and count of move lines on stock moves.""",
     "license": "LGPL-3",
-    "depends": ["stock", "product_expiry", "boy_stock_location"],
+    "depends": ["stock", "product_expiry"],
     "data": [
         "views/stock_move_line_views.xml",
         "views/stock_picking_views.xml",
