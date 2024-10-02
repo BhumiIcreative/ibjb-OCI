@@ -24,7 +24,7 @@ class MaintenanceEquipment(models.Model):
         related="contrats_1_ids.name", readonly=False, string="current_contract"
     )
     date_fin_contrat = fields.Date(
-        related="contrats_1_ids.end_date",
+            related="contrats_1_ids.end_date",
         store=True,
         readonly=False,
         help="If set, the subscription will be marked as 'To renew' 1 month before the selected date and will be "
@@ -34,6 +34,7 @@ class MaintenanceEquipment(models.Model):
     proprietaire_id = fields.Many2one("res.partner", string="Owner")
     field_ixm1S = fields.Many2one("maintenance.version", string="Version")
     date_mise_jour = fields.Date(string="Date Updated")
+    date_de_vente = fields.Date(string="Order date")
 
     def _compute_aueov_sale_order_count(self):
         """

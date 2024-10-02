@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Report template for Maintenance History -->
+    <template id="monitoring_interventions_report_template">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+
+                    <img class="img-fluid" style="width:20%;height:auto;"
+                         src="/ibjb_studio/static/src/iibjb_logo.png"/>
+
+                    <div class="row">
+                        <div class="col">
+                            <span>
+                                <font class="text-epsilon" style="">
+                                    <font style="font-size: 24px;margin-left:150px;color:#E46F78 !important;">FICHE
+                                        EQUIPEMENT : 
+                                    </font>
+                                </font>
+                            </span>
+                            <span class="text-epsilon h4" style="color:#E46F78 !important;" t-field="doc.display_name"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <span>
+                                <font style="font-size: 18px;">
+                                    <b>Propriétaire : </b>
+                                </font>
+                            </span>
+                            <span class="h5" t-field="doc.proprietaire_id.display_name"/>
+                        </div>
+                        <div class="col-6">
+                            <span>
+                                <b>
+                                    <font style="font-size: 18px;">Code Client : </font>
+                                </b>
+                            </span>
+                            <span class="h5" t-field="doc.proprietaire_id.customer_code"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <span>
+                                <font style="font-size: 18px;">
+                                    <b>Contrat en place : </b>
+                                </font>
+                            </span>
+                        </div>
+                        <div class="col-6">
+                            <span>
+                                <b>
+                                    <font style="font-size: 18px;">Fin de validité : </font>
+                                </b>
+                            </span>
+                            <span t-field="doc.date_fin_contrat"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <span> </span>
+                        </div>
+                    </div>
+
+                    <table class="table o_report_block_table" style="border:0 solid transparent;">
+                        <thead style="background-color:#A5C6CE;">
+                            <tr>
+                                <th style="text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Numéro de série</span>
+                                </th>
+                                <th style="text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Version</span>
+                                </th>
+                                <th style="text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Date Mise-à-jour</span>
+                                </th>
+                                <th style="text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>date de contrôle à réception</span>
+                                </th>
+                                <th style="text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Date d'installation</span>
+                                </th>
+                                <th style="text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Date Fin de Garantie</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody style="background-color:#CEDEE7;">
+                            <tr t-foreach="docs" t-as="table_line">
+                                <td>
+                                    <span t-field="table_line.serial_no"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.field_ixm1S.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.date_mise_jour"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.effective_date"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.assign_date"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.warranty_date"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+                        <div class="col h2">
+                            <span>
+                                <font style="font-size: 14px;">
+                                    <b>HISTORIQUE DE MAINTENANCE / INTERVENTIONS (P=Préventive / C=Curative)</b>
+                                </font>
+                            </span>
+                        </div>
+                    </div>
+
+                    <table class="table o_report_block_table small" style="border:0 solid transparent;">
+                        <thead>
+                            <tr style="background-color:#636363;color:#FFFFFF;">
+                                <th style="width:50px;text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Date ouverture</span>
+                                </th>
+                                <th style="width:50px;text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Date fermeture</span>
+                                </th>
+                                <th style="width:150px;text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Titre</span>
+                                </th>
+                                <th style="width:100px;text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Description</span>
+                                </th>
+                                <th style="text-align:left;border-bottom:hidden;white-space: nowrap;">
+                                    <span>Solution</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color:#EFEFEF;" t-foreach="doc.maintenance_ids" t-as="table_line">
+                                <td>
+                                    <!--                                    <span t-field="table_line.date_ouverture"/>-->
+                                </td>
+                                <td>
+                                    <span t-field="table_line.close_date"/>
+                                </td>
+                                <td>
+                                    <span t-field="table_line.display_name"/>
+                                </td>
+                                <td>
+                                    <!--                                    <span t-field="table_line.description_maintenance"/>-->
+                                </td>
+                                <td>
+                                    <!--                                    <span t-field="table_line.maintenance_solution"/>-->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
