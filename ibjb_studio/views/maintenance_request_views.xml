@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- Form view -->
     <record id="ibjb_studio_hr_equipment_request_view_form" model="ir.ui.view">
         <field name="name">maintenance.request.form.view</field>
         <field name="model">maintenance.request</field>
@@ -19,5 +20,40 @@
                 <field name="maintenance_contact_id" string="Client"/>
             </xpath>
         </field>
+    </record>
+
+    <!-- Search view -->
+    <record id="ibjb_studio_inherit_hr_equipment_request_view_search" model="ir.ui.view">
+        <field name="name">hr.equipment.request.view.search.inherit</field>
+        <field name="mode">extension</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='done']" position="attributes">
+                <!-- scrap records filter domain -->
+              <attribute name="domain">[["stage_id.id","=",4]]</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Server action    -->
+    <record id="action_closing_date_dump" model="ir.actions.server">
+        <field name="name">Closing Date Dump</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="binding_model_id" ref="maintenance.model_maintenance_request" />
+        <field name="binding_type">action</field>
+        <field name="sequence">5</field>
+        <field name="state">code</field>
+        <field name="code">record[("close_date")] = False</field>
+    </record>
+
+    <record id="action_update_opening_date" model="ir.actions.server">
+        <field name="name">Update Opening date if empty</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="binding_model_id" ref="maintenance.model_maintenance_request" />
+        <field name="binding_type">action</field>
+        <field name="sequence">5</field>
+        <field name="state">code</field>
+        <field name="code">record[("date_ouverture")] = record.create_date.date()</field>
     </record>
 </odoo>
