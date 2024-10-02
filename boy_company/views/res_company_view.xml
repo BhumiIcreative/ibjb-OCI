@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="boy_view_company_form" model="ir.ui.view">
+        <field name="name">boy view res company form</field>
+        <field name="model">res.company</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <!-- Add 'legal_form' field before the 'website' field -->
+            <field name="website" position="before">
+                <field name="legal_form"/>
+            </field>
+            <!-- Add 'fax' field after the 'phone' field, using a phone widget -->
+            <field name="phone" position="after">
+                <field name="fax" widget="phone"/>
+            </field>
+            <!-- Add 'rcs' field after the 'company_registry' field -->
+            <field name="company_registry" position="after">
+                <field name="rcs"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- paperformat for sale order report-->
+    <record id="paperformat_custom" model="report.paperformat">
+        <field name="name">Custom Paper Format</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">20</field>
+        <field name="margin_bottom">50</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+    </record>
+
+    <!-- Inherit and update the existing report action -->
+    <record id="sale_pdf_quote_builder.action_report_saleorder_raw" model="ir.actions.report">
+        <field name="paperformat_id" ref="boy_sale_order.paperformat_custom"/>
+    </record>
+</odoo>

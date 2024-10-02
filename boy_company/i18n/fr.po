@@ -1,0 +1,45 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* boy_company
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-06 08:51+0000\n"
+"PO-Revision-Date: 2024-09-06 08:51+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: boy_company
+#: model:ir.model,name:boy_company.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: boy_company
+#. odoo-python
+#: code:addons/boy_company/models/res_company.py:0
+#: model:ir.model.fields,field_description:boy_company.field_res_company__fax
+#, python-format
+msgid "FAX"
+msgstr "FAX"
+
+#. module: boy_company
+#. odoo-python
+#: code:addons/boy_company/models/res_company.py:0
+#: model:ir.model.fields,field_description:boy_company.field_res_company__legal_form
+#, python-format
+msgid "Legal form and capital"
+msgstr "Forme Juridique et capital"
+
+#. module: boy_company
+#. odoo-python
+#: code:addons/boy_company/models/res_company.py:0
+#: model:ir.model.fields,field_description:boy_company.field_res_company__rcs
+#, python-format
+msgid "RCS"
+msgstr "RCS"
