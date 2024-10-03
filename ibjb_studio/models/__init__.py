@@ -23,3 +23,4 @@ from . import product_pricelist
 from . import product_pricelist_item
 from . import maintenance_request
 from . import stock_quant
+from . import oci_helpdesk_type_ticket

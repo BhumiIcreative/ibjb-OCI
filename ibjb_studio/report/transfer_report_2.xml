@@ -37,7 +37,7 @@
                                  t-options-fields="['name', 'address']"/>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col">
                             <span style="margin-left:505px;">
                                 <b>N°TVA intracommunautaire:

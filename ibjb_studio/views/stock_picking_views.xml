@@ -10,71 +10,71 @@
                 <!-- Add the 'Customs code' field -->
                 <field name="codedouane_bl"/>
             </xpath>
-            <xpath expr="//field[@name='move_ids_without_package']//tree[1]" position="after">
-                <form string="Mouvements de stocks" create="0" edit="0">
-                    <header>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done"/>
-                    </header>
-                    <sheet>
-                        <div class="oe_button_box" name="button_box">
-                            <button name="action_get_account_moves" icon="fa-usd" class="oe_stat_button"
-                                    string="Accounting Entries" type="object"/>
-                        </div>
-                        <group>
-                            <group name="main_group" colspan="2">
-                                <group name="main_group_1">
-                                    <field name="company_id" invisible="1"/>
-                                    <field name="reference"/>
-                                    <field name="location_id"/>
-                                    <field name="location_dest_id"/>
-                                </group>
-                                <group name="main_group_2">
-                                    <field name="product_id"/>
-                                    <label for="product_uom_qty"/>
-                                    <div class="o_row">
-                                        <field name="product_uom_qty"/>
-                                        <field name="product_uom_category_id" invisible="1"/>
-                                        <field name="product_uom" options="{'no_open': True, 'no_create': True}"
-                                               groups="uom.group_uom"/>
-                                    </div>
-                                    <!--                                    <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_ids_without_package']/tree[1]/field[@name='name']"-->
-                                    <!--                                           position="move"/>-->
-                                    <!--                                                                    <field name="date_expected" invisible="1"/>-->
-                                    <field name="date" invisible="state != 'done'"/>
-                                </group>
-                            </group>
-                        </group>
-                        <group name="origin_grp" string="Origin">
-                            <field name="origin"/>
-                            <field name="group_id"/>
-                            <field name="procure_method"
-                                   groups="stock.group_adv_location" readonly="state != 'draft'"/>
-                            <field name="purchase_line_id"/>
-                        </group>
-                        <group name="linked_group" string="Related Movements" groups="base.group_no_one"
-                               colspan="2">
-                            <field name="move_orig_ids" string="Original Movements" readonly="1">
-                                <tree>
-                                    <field name="location_id"/>
-                                    <field name="location_dest_id"/>
-                                    <field name="product_uom_qty"/>
-                                    <field name="product_uom"/>
-                                    <field name="state"/>
-                                </tree>
-                            </field>
-                            <field name="move_dest_ids" string="Destination Movements" readonly="1">
-                                <tree>
-                                    <field name="location_id"/>
-                                    <field name="location_dest_id"/>
-                                    <field name="product_uom_qty"/>
-                                    <field name="product_uom"/>
-                                    <field name="state"/>
-                                </tree>
-                            </field>
-                        </group>
-                    </sheet>
-                </form>
-            </xpath>
+<!--            <xpath expr="//field[@name='move_ids_without_package']//tree[1]" position="after">-->
+<!--                <form string="Mouvements de stocks" create="0" edit="0">-->
+<!--                    <header>-->
+<!--                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done"/>-->
+<!--                    </header>-->
+<!--                    <sheet>-->
+<!--                        <div class="oe_button_box" name="button_box">-->
+<!--                            <button name="action_get_account_moves" icon="fa-usd" class="oe_stat_button"-->
+<!--                                    string="Accounting Entries" type="object"/>-->
+<!--                        </div>-->
+<!--                        <group>-->
+<!--                            <group name="main_group" colspan="2">-->
+<!--                                <group name="main_group_1">-->
+<!--                                    <field name="company_id" invisible="1"/>-->
+<!--                                    <field name="reference"/>-->
+<!--                                    <field name="location_id"/>-->
+<!--                                    <field name="location_dest_id"/>-->
+<!--                                </group>-->
+<!--                                <group name="main_group_2">-->
+<!--                                    <field name="product_id"/>-->
+<!--                                    <label for="product_uom_qty"/>-->
+<!--                                    <div class="o_row">-->
+<!--                                        <field name="product_uom_qty"/>-->
+<!--                                        <field name="product_uom_category_id" invisible="1"/>-->
+<!--                                        <field name="product_uom" options="{'no_open': True, 'no_create': True}"-->
+<!--                                               groups="uom.group_uom"/>-->
+<!--                                    </div>-->
+<!--                                    &lt;!&ndash;                                    <xpath expr="//form[1]/sheet[1]/notebook[1]/page[2]/field[@name='move_ids_without_package']/tree[1]/field[@name='name']"&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                           position="move"/>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                                    <field name="date_expected" invisible="1"/>&ndash;&gt;-->
+<!--                                    <field name="date" invisible="state != 'done'"/>-->
+<!--                                </group>-->
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                        <group name="origin_grp" string="Origin">-->
+<!--                            <field name="origin"/>-->
+<!--                            <field name="group_id"/>-->
+<!--                            <field name="procure_method"-->
+<!--                                   groups="stock.group_adv_location" readonly="state != 'draft'"/>-->
+<!--                            <field name="purchase_line_id"/>-->
+<!--                        </group>-->
+<!--                        <group name="linked_group" string="Related Movements" groups="base.group_no_one"-->
+<!--                               colspan="2">-->
+<!--                            <field name="move_orig_ids" string="Original Movements" readonly="1">-->
+<!--                                <tree>-->
+<!--                                    <field name="location_id"/>-->
+<!--                                    <field name="location_dest_id"/>-->
+<!--                                    <field name="product_uom_qty"/>-->
+<!--                                    <field name="product_uom"/>-->
+<!--                                    <field name="state"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                            <field name="move_dest_ids" string="Destination Movements" readonly="1">-->
+<!--                                <tree>-->
+<!--                                    <field name="location_id"/>-->
+<!--                                    <field name="location_dest_id"/>-->
+<!--                                    <field name="product_uom_qty"/>-->
+<!--                                    <field name="product_uom"/>-->
+<!--                                    <field name="state"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                        </group>-->
+<!--                    </sheet>-->
+<!--                </form>-->
+<!--            </xpath>-->
             <field name="origin" position="after">
                 <field name="is_expdition_bloque" widget="boolean_toggle"/>
                 <field name="blbr_faita"/>

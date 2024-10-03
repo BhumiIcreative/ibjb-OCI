@@ -7,19 +7,19 @@ from odoo import models, _, fields
 class ResCompany(models.Model):
     _inherit = 'stock.picking'
 
-    is_expdition_bloque = fields.Boolean(_('Shipping blocked'))  # x_studio_expdition_bloque
-    client_reference = fields.Char(_('Customer Reference'), related='sale_id.client_order_ref')  # x_studio_field_LQ1TX
-    product_reference = fields.Char(_('Product Reference'), related='sale_id.client_order_ref')  # x_studio_field_itTx0
-    date_commande = fields.Datetime(_('order date'), related='sale_id.date_order')  # x_studio_field_n2pvH
+    is_expdition_bloque = fields.Boolean(_('Shipping blocked'))
+    client_reference = fields.Char(_('Customer Reference'), related='sale_id.client_order_ref')
+    product_reference = fields.Char(_('Product Reference'), related='sale_id.client_order_ref')
+    date_commande = fields.Datetime(_('order date'), related='sale_id.date_order')
     abonnementsurbl = fields.Char(_('Subscription'),
-                                  related='sale_id.subscription_id.display_name')  # x_studio_oci_abonnementsurbl
+                                  related='sale_id.subscription_id.display_name')
     bl_abobdc = fields.Char(_('Linked subscription'),
-                            related='sale_id.subscription_id.display_name')  # x_studio_oci_bl_abobdc
-    bl_btverif_id = fields.Many2one('hr.employee', _('BT verified by'))  # x_studio_oci_bl_btverif
+                            related='sale_id.subscription_id.display_name')
+    bl_btverif_id = fields.Many2one('hr.employee', _('BT verified by'))
     bl_commentairetxt = fields.Text(_('Order comment'))
     bl_conditionvente = fields.Text(_('Conditions of sale'))
     bl_codetiers = fields.Char(_('Third party code BL'))
-    br_codetiers = fields.Char(_('BR third party code'))
+    br_codetiers = fields.Char(_('BR third party code'),related="purchase_id.oci_achat_devis_codetiers")
     bl_dimension = fields.Char(_('Dimension'))
     bl_poids = fields.Char(_('Weight'))
     bl_port = fields.Char(_('Port'))

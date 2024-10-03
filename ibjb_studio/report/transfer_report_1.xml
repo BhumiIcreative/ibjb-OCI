@@ -34,7 +34,7 @@
                                  t-options-fields="['name', 'address']"/>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col">
                             <span style="margin-left:505px;">
                                 <b>N°TVA intracommunautaire:
@@ -125,7 +125,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr t-foreach="doc.move_line_ids" t-as="table_line">
+                            <tr t-foreach="doc.move_line_ids" t-as="table_line" class="text-center">
                                 <td>
                                     <span t-field="table_line.product_id.default_code"/>
                                 </td>

@@ -6,21 +6,54 @@
         <field name="model">helpdesk.ticket</field>
         <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
         <field name="arch" type="xml">
-            <field name="ticket_type_id" position="after">
+            <field name="priority" position="attributes">
+                <attribute name="help">
+                    Indiquez de 1 à 3 étoiles selon les 3 niveaux d’urgence : - Fort :
+                    immobilisation complète du système chez le client, pas de solution de back-up (Easy-K) &gt;
+                    réponse nécessaire dans les 24 à 72h max - Moyen : fonctionnement altéré mais réglages
+                    intermédiaires ponctuels par le client permettant l’utilisation par ce dernier (sans risque sur
+                    la coloration) &gt; réponse dans les 3 à 5 jours ouvrés max - Faible : intervention à prévoir
+                    dès que possible mais fonctionnement opérationnel de l’automate tout de même, ou solution de
+                    back-up dispo (Easy-K) &gt; réponse dans les 5 à 7 jours ouvrés max
+                </attribute>
+            </field>
+            <field name="email_cc" position="after">
                 <field name="oci_asst_ouinonfp"/>
                 <field name="field_AxWS3" widget="many2many_tags"/>
                 <field name="assistance_maintenance_ids" widget="many2many_tags"/>
+                <field name="tag_ids" position="move"/>
                 <field name="precisions" invisible="ticket_type_id != 8"/>
-                <field name="alerte_sq" invisible="1"/>
+                <field name="alerte_sq" invisible="0"/>
                 <field name="ouverture_fiche_progres" invisible="1"/>
                 <field name="tache_ficheprogres_id" domain="[('project_id','=',6)]" context="{'default_project_id':6}"
                        invisible="1"/>
+
             </field>
             <field name="priority" position="after">
                 <field name="source_id"/>
                 <field name="gamme_id"/>
+                <field name="create_uid" readonly="id"
+                       invisible="1"/>
                 <field name="ouvert_par_id"/>
+                <field name="create_date" readonly="id"
+                       invisible="1"/>
                 <field name="ouvert_le"/>
+                <field name="close_date"/>
+                <field name="close_hours"/>
+            </field>
+            <field name="partner_id" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="partner_name"/>
+                <field name="partner_email"/>
+            </field>
+            <field name="ticket_type_id" position="attributes">
+                <attribute name="domain">[("name","!=","Incident"),("name","!=","Question")]</attribute>
+                <attribute name="required">1</attribute>
+            </field>
+            <field name="partner_email" position="after">
+                <field name="ticket_type_id" position="move"/>
             </field>
             <xpath expr="/form[1]/sheet[1]/group[1]" position="after">
                 <group name="studio_group_QK10t">
@@ -44,9 +77,14 @@
                 <field name="gamme_id"/>
             </field>
             <field name="stage_id" position="after">
+                <field name="ticket_type_id"/>
                 <field name="ouverture_fiche_progres"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
                 <field name="ouvert_par_id"/>
                 <field name="ouvert_le"/>
+                <field name="close_date"/>
+                <field name="close_hours"/>
             </field>
         </field>
     </record>
@@ -60,13 +98,14 @@
         <field name="view_mode">kanban,form,activity,tree</field>
     </record>
 
-    <record id="action_helpdesk_assistance" model="ir.actions.act_window">
+    <record id="helpdesk_ticket_action_main_my" model="ir.actions.act_window">
         <field name="name">Assistance</field>
+        <field eval="False" name="binding_model_id"/>
         <field name="res_model">helpdesk.ticket</field>
         <field name="target">current</field>
         <field name="limit">80</field>
-        <field name="context">{'search_default_partner_id': active_id, 'default_partner_id': active_id}</field>
-        <field name="domain">[('partner_id', '=', active_id)]</field>
+        <field name="context">{'search_default_partner_id': False, 'default_partner_id': False}</field>
+        <field name="domain">[('partner_id', '=', False)]</field>
         <field name="view_mode">tree,form</field>
     </record>
 
@@ -76,11 +115,10 @@
         <field name="res_model">helpdesk.ticket</field>
         <field name="target">current</field>
         <field name="limit">80</field>
-        <field name="context">{'tache_ficheprogres_id': active_id,
-            'tache_ficheprogres_id': active_id}
+        <field name="context">{'tache_ficheprogres_id': False,
+            'tache_ficheprogres_id': False}
         </field>
-        <field name="domain">[('tache_ficheprogres_id', '=', active_id)]</field>
+        <field name="domain">[('tache_ficheprogres_id', '=', False)]</field>
         <field name="view_mode">tree,form</field>
     </record>
-
 </odoo>
