@@ -11,3 +11,9 @@ class ProductTemplate(models.Model):
         copy=False,
         store=True,
     )
+    oci_famille_article_id = fields.Many2one(
+        'family',
+        string="Famille d'article",
+        copy=False,
+        translate=False,
+    )

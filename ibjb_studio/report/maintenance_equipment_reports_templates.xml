@@ -80,7 +80,7 @@
                                         <span t-field="doc.serial_no"/>
                                     </td>
                                     <td style="background-color:#CEE7F7;color:#000000;">
-                                        <span t-field="table_line.field_ixm1S.display_name"/>
+                                        <span t-field="table_line.field_ixm1S_id.display_name"/>
                                     </td>
                                     <td style="background-color:#CEE7F7;color:#000000;">
                                         <span t-field="table_line.date_mise_jour"/>
@@ -287,7 +287,7 @@
                                     <span t-field="table_line.serial_no"/>
                                 </td>
                                 <td>
-                                    <span t-field="table_line.field_ixm1S.name"/>
+                                    <span t-field="table_line.field_ixm1S_id.name"/>
                                 </td>
                                 <td>
                                     <span t-field="table_line.date_mise_jour"/>

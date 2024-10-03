@@ -32,7 +32,7 @@ class MaintenanceEquipment(models.Model):
     contrat_type = fields.Char(related="contrats_1_ids.sale_order_template_id.name")
     client_utilisateur_id = fields.Many2one("res.partner", string="User client")
     proprietaire_id = fields.Many2one("res.partner", string="Owner")
-    field_ixm1S = fields.Many2one("maintenance.version", string="Version")
+    field_ixm1S_id = fields.Many2one("maintenance.version", string="Version")
     date_mise_jour = fields.Date(string="Date Updated")
     date_de_vente = fields.Date(string="Order date")
 
@@ -61,11 +61,6 @@ class MaintenanceEquipment(models.Model):
         """
             Compute the number of Sale Subscriptions associated with the current record.
         """
-        # self.abonnement_equipement_sale_subscription_count = self.env['sale.order'].search_count(
-        #     [('abonnement_equipement_id', 'in', self.ids), ('is_subscription', '=', True)]
-        # )
-        self.abonnement_equipement_sale_subscription_count = self.env[
-            "sale.order"
-        ].search_count(
-            [("field_aueov_id", "in", self.ids), ("is_subscription", "=", True)]
+        self.abonnement_equipement_sale_subscription_count = self.env['sale.order'].search_count(
+            [('abonnement_equipement_id', 'in', self.ids), ('is_subscription', '=', True)]
         )

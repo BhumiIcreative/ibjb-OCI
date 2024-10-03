@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Action for the family model -->
+        <record id="ibjb_studio_action_product_template" model="ir.actions.act_window">
+            <field name="name">Article</field>
+            <field name="res_model">product.template</field>
+            <field name="context">{'search_default_oci_famille_article_id': active_id,'default_oci_famille_article_id': active_id}
+            </field>
+            <field name="domain">[('oci_famille_article_id', '=', active_id)]</field>
+            <field name="limit">80</field>
+            <field name="target">current</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Tree view for the family model-->
+        <record id="naf_code_tree_view" model="ir.ui.view">
+            <field name="name">family.tree.view</field>
+            <field name="model">family</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="id"/>
+                    <field name="name" string="Nom des familles"/>
+                    <field name="oci_famille_article_product_template_count"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for the family model -->
+        <record id="naf_code_form_view" model="ir.ui.view">
+            <field name="name">family.form.view</field>
+            <field name="model">family</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" icon="fa-cube" type="action"
+                                    name="%(ibjb_studio_action_product_template)d">
+                                <field name="oci_famille_article_product_template_count" string="Article(s)"
+                                       widget="statinfo"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h1>
+                                <!-- Required name field for the family -->
+                                <field name="name" required="1"/>
+                            </h1>
+                        </div>
+                        <group name="studio_group_25daf4">
+                            <group name="family_group_left">
+                                <!-- Description field for the family article -->
+                                <field name="oci_famillearticle_description" string="Description"/>
+                            </group>
+                            <group name="family_group_right"/>
+                        </group>
+                    </sheet>
+                    <!-- Chatter section for messaging and followers -->
+                    <div class="oe_chatter" name="studio_div_aa8f36">
+                        <!-- Field to manage message followers -->
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <!-- Field to display message history -->
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for the family model -->
+        <record id="action_family" model="ir.actions.act_window">
+            <field name="name">Family</field>
+            <field name="res_model">family</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help">
+                This is your new action by default, it contains a list view and a form view.
+                You can start customizing these screens by clicking on the Studio icon in the
+                top right corner (you can also customize this help message there).
+            </field>
+        </record>
+
+        <!-- Menu item for 'Famille d'article' under the parent menu 'Product Configuration in Stock' -->
+        <record id="menu_family" model="ir.ui.menu">
+            <field name="action" ref="action_family"/>
+            <field eval="True" name="active"/>
+            <field name="name">Famille d'article</field>
+            <field name="parent_id" ref="stock.menu_product_in_config_stock"/>
+        </record>
+    </data>
+</odoo>

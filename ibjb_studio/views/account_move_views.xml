@@ -1,25 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="inherit_account_invoice_bill_tree" model="ir.ui.view">
+
+    <!-- Customization of the account invoice filter view to add new fields and filters -->
+    <record id="ibjb_studio_view_account_invoice_filter" model="ir.ui.view">
+        <field name="name">account.invoice.filter</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+
+            <!-- Target the 'date' field in the existing view and insert the 'amount_residual' field right after it -->
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="amount_residual"/>
+            </xpath>
+
+            <!-- Target the 'due_date' filter and insert a new filter to group invoices by 'move_type' after it -->
+            <xpath expr="//filter[@name='due_date']" position="after">
+                <filter context="{'group_by': 'move_type'}" name="group_by_type" string="Type"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Define a new view modification for the account.move model -->
+    <record id="ibjb_studio_account_invoice_bill_tree" model="ir.ui.view">
         <field name="name">account.move.tree</field>
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_in_invoice_bill_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='amount_tax_signed']" position="replace">
-            </xpath>
+
+            <!-- Replace the 'amount_tax_signed' field -->
+            <xpath expr="//field[@name='amount_tax_signed']" position="replace"/>
+
+            <!-- Move 'invoice_date' field before the 'name' field -->
             <xpath expr="//field[@name='name']" position="before">
                 <xpath expr="//field[@name='invoice_date']" position="move"/>
             </xpath>
+
+            <!-- Insert 'invoice_origin' after 'invoice_partner_display_name' -->
             <xpath expr="//field[@name='invoice_partner_display_name']" position="after">
                 <field name="invoice_origin"/>
                 <xpath expr="//field[@name='invoice_date_due']" position="move"/>
                 <xpath expr="//field[@name='amount_residual_signed']" position="move"/>
                 <xpath expr="//field[@name='state']" position="move"/>
             </xpath>
+
+            <!-- Add 'amount_untaxed_signed' and 'amount_tax_signed_stored' after 'ref' field -->
             <xpath expr="//field[@name='ref']" position="after">
                 <field name="amount_untaxed_signed" string="HT" sum="HT" widget="monetary"/>
                 <field name="amount_tax_signed_stored" sum="VAT" widget="monetary"/>
             </xpath>
+
+            <!-- Modify 'amount_total_signed' field attributes -->
             <xpath expr="//field[@name='amount_total_signed']" position="attributes">
                 <attribute name="string">VAT included</attribute>
                 <attribute name="sum">VAT included</attribute>
@@ -28,11 +58,13 @@
         </field>
     </record>
 
-    <record id="inherit_account_view_move_form" model="ir.ui.view">
+    <!-- Define a new view modification for the account.move model -->
+    <record id="ibjb_studio_account_view_move_form" model="ir.ui.view">
         <field name="name">account.move.form</field>
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
+            <!-- Inherit from the existing 'view_move_form' view -->
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                 <field name="oci_codetiersfact" invisible="move_type not in ['out_invoice']"/>
                 <field name="oci_compta_langcustomer" invisible="move_type not in ['out_invoice']"/>
@@ -42,45 +74,66 @@
         </field>
     </record>
 
-    <record id="inherit_view_out_invoice_tree" model="ir.ui.view">
+    <!-- Define a new view modification for the account.move model -->
+    <record id="ibjb_studio_view_out_invoice_tree" model="ir.ui.view">
         <field name="name">account.move.tree.view</field>
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_out_invoice_tree"/>
         <field name="arch" type="xml">
+            <!-- Replace 'amount_tax_signed' field with two fields: 'amount_untaxed_signed' and 'amount_tax_signed_stored' -->
             <xpath expr="//field[@name='amount_tax_signed']" position="replace">
                 <field name="amount_untaxed_signed" string="HT" sum="HT" widget="monetary"/>
                 <field name="amount_tax_signed_stored" string="VAT" sum="VAT" widget="monetary"/>
             </xpath>
+
+            <!-- Remove the existing 'amount_untaxed_signed' field -->
             <xpath expr="//field[@name='amount_untaxed_signed']" position="replace"/>
+
+            <!-- Insert 'oci_codetiersfact' before the 'invoice_date' field -->
             <xpath expr="//field[@name='invoice_date']" position="before">
                 <field name="oci_codetiersfact"/>
             </xpath>
+
+            <!-- Set 'name' field to be readonly when the state is not 'draft' -->
             <xpath expr="//tree/field[@name='name']" position="attributes">
                 <attribute name="readonly">state not in ('draft')</attribute>
             </xpath>
+
+            <!-- Add 'invoice_payment_term_id' field after the 'invoice_date_due' field -->
             <xpath expr="//field[@name='invoice_date_due']" position="after">
                 <field name="invoice_payment_term_id"/>
             </xpath>
         </field>
     </record>
 
-    <record id="inherit_account_view_form" model="ir.ui.view">
+    <record id="ibjb_studio_account_view_form" model="ir.ui.view">
+        <!-- Define a new view modification for the account.move model -->
         <field name="name">account.move.form</field>
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form"/>
+        <!-- Inherit from the existing 'view_move_form' view -->
         <field name="arch" type="xml">
+            <!-- Insert 'invoice_origin' field after 'invoice_date', visible only for vendor bills (in_invoice) -->
             <xpath expr="//field[@name='invoice_date']" position="after">
                 <field name="invoice_origin" readonly="False" invisible="move_type not in ['in_invoice']"/>
             </xpath>
+
+            <!-- Customization of the 'invoice_line_ids' field -->
             <xpath expr="//field[@name='invoice_line_ids']" position="inside">
                 <form>
+                    <!-- Hide 'display_type' and 'sequence' fields -->
                     <field name="display_type" invisible="1"/>
                     <field name="sequence" invisible="1"/>
+
+                    <!-- Main group for editing lines, only visible if 'display_type' is not set -->
                     <group invisible="display_type != False">
                         <group>
+                            <!-- Hidden fields for partner, move type, and company -->
                             <field name="partner_id" invisible="1"/>
                             <field name="move_type" invisible="1"/>
                             <field name="company_id" invisible="1"/>
+
+                            <!-- Editable product and quantity fields with contextual information -->
                             <field name="product_id" context="{'partner_id': partner_id}"/>
                             <label for="quantity"/>
                             <div>
@@ -88,30 +141,37 @@
                                 <field name="product_uom_category_id" class="oe_inline" groups="uom.group_uom"/>
                                 <field name="product_uom_id" class="oe_inline" groups="uom.group_uom"/>
                             </div>
+                            <!-- Unit price and discount fields, with discount restricted by user group -->
                             <field name="price_unit"/>
                             <field name="discount" groups="product.group_discount_per_so_line"/>
                             <field name="currency_id" invisible="1"/>
                         </group>
                         <group>
-                            <!--                            <field name="purchase_id" invisible="context.get('type') in ('out_invoice', 'out_refund')"/>-->
+                            <!-- Account and tax fields with context and domain restrictions -->
                             <field domain="[('company_id', '=', company_id)]" name="account_id"
                                    groups="account.group_account_user"/>
                             <field name="subscription_id"/>
                             <field name="tax_ids" context="{'type': move_type}"
                                    domain="[('type_tax_use','!=','none'),('company_id', '=', company_id)]"
                                    widget="many2many_tags" options="{'no_create': True}"/>
+                            <!-- Read-only company field for multi-company setups -->
                             <field name="company_id" groups="base.group_multi_company" readonly="1"/>
                         </group>
                     </group>
+
+                    <!-- Conditional labels for description, section, and note fields based on 'display_type' -->
                     <label for="name" string="Description" invisible="display_type != False"/>
                     <label for="name" string="Section" invisible="display_type != 'line_section'"/>
                     <label for="name" string="Note" invisible="display_type != 'line_note'"/>
+
+                    <!-- Field for the line description (name) -->
                     <field name="name"/>
                 </form>
             </xpath>
         </field>
     </record>
 
+    <!-- Create a new menu item for "Third Party Accounting Category" -->
     <record id="menu_account_partner_cat" model="ir.ui.menu">
         <field name="action" ref="ibjb_studio.action_account_partner_cat"/>
         <field name="name">Third Party Accounting Category</field>
@@ -119,6 +179,7 @@
         <field name="sequence">4</field>
     </record>
 
+    <!-- Create a new menu item for "NAF Code" -->
     <record id="menu_naf_code" model="ir.ui.menu">
         <field name="action" ref="ibjb_studio.action_naf_code"/>
         <field name="name">NAF Code</field>

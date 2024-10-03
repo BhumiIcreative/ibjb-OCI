@@ -6,7 +6,7 @@ from . import sale_order_line
 from . import res_partner
 from . import purchase_order
 from . import purchase_order_line
-from . import maintenance
+from . import maintenance_equipment
 from . import account_move
 from . import maintenance_version
 from . import maintenance_etapes_pret
@@ -23,4 +23,11 @@ from . import product_pricelist
 from . import product_pricelist_item
 from . import maintenance_request
 from . import stock_quant
+<<<<<<< Updated upstream
 from . import oci_helpdesk_type_ticket
+=======
+from . import family
+from . import stock_lot
+from . import stock_quant
+from . import product
+>>>>>>> Stashed changes
