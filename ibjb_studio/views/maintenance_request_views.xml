@@ -1,23 +1,144 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Form view -->
-    <record id="ibjb_studio_hr_equipment_request_view_form" model="ir.ui.view">
-        <field name="name">maintenance.request.form.view</field>
+    <record id="ibjb_studio_inherit_hr_equipment_request_view_form" model="ir.ui.view">
+        <field name="name">maintenance.request.form.view.inherit</field>
         <field name="model">maintenance.request</field>
         <field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="maintenance_contact_id"/>
+                <field name="maintenance_contact_interlocuteur_id"/>
+                <field name="oci_maintenance_liee_id"/>
+            </xpath>
+            <xpath expr="//field[@name='maintenance_type']" position="after">
+                <field name="description" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='request_date']" position="attributes">
+              <attribute name="readonly"/>
+            </xpath>
+            <xpath expr="//field[@name='request_date']" position="after">
+              <field name="date_ouverture"/>
+            </xpath>
+            <xpath expr="//field[@name='close_date']" position="attributes">
+              <attribute name="groups"/>
+              <attribute name="readonly"/>
+              <attribute name="invisible"/>
+            </xpath>
+            <xpath expr="//field[@name='maintenance_type']" position="attributes">
+              <attribute name="invisible">suivi_de_prt</attribute>
+            </xpath>
+            <xpath expr="//field[@name='maintenance_type']" position="after">
+              <field name="sous_traitant_id"/>
+            </xpath>
+            <xpath expr="//field[@name='maintenance_team_id']" position="attributes">
+                <field name="required"/>
+              <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+              <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='schedule_date']" position="attributes">
+              <attribute name="invisible">1</attribute>
+            </xpath>
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
-                <group name="studio_group_Nxz1F">
-                    <group>
-                        <field name="pret_de_matriel" widget="boolean_toggle"/>
-                        <field name="demande_de_pret_id"
-                               invisible="pret_de_matriel == False"/>
-                        <!--                           attrs="{&quot;invisible&quot;: [[&quot;x_studio_pret_de_matriel&quot;,&quot;=&quot;,False]]}"/>-->
+                <group name="group_Nxz1F">
+                    <group name="group_Nxz1F_left" string="Loan Management">
+                      <field name="pret_de_matriel" invisible="suivi_de_prt" widget="boolean_toggle"/>
+                      <field name="demande_de_pret_id" invisible="not pret_de_matriel"/>
+                      <field name="suivi_de_prt" invisible=" pret_de_matriel" widget="boolean_toggle"/>
+                      <field name="etape_du_prt_id" invisible="not suivi_de_prt"/>
                     </group>
                 </group>
+                <notebook name="notebook_yCBmq" invisible="not suivi_de_prt">
+                    <page name="page_yCBmq" string="Sending Loan Material">
+                      <group name="group_yCBmq">
+                        <group name="group_yCBmq_left" string="Checklist">
+                          <field name="oci_maint_date_envoi_pret"/>
+                          <field name="ad_ibjb_complte"/>
+                          <field name="fiche_prt_complte_sur_partie_aller"/>
+                          <field name="flacons_de_transport"/>
+                          <field name="manuel_papier"/>
+                          <field name="ad_client_vierge_pour_automate_client_aller"/>
+                          <field name="fiche_transport_vierge"/>
+                          <field invisible="1" name="fiche_transp_vierge_1_filename"/>
+                          <field filename="fiche_transp_vierge_1_filename" name="fiche_transp_vierge_1"/>
+                          <field name="haut_bas_fragile_sur_carton"/>
+                          <field name="bl_automate"/>
+                        </group>
+                      </group>
+                    </page>
+                    <page name="page_RIhZE" string="Customer material removal">
+                      <group name="group_RIhZE">
+                        <group name="group_RIhZE_left" string="Checklist">
+                          <field name="oci_maint_date_enlev_client"/>
+                          <field name="ad_client_complte"/>
+                          <field invisible="1" name="ad_client_2_filename"/>
+                          <field filename="ad_client_2_filename" name="ad_client_2"/>
+                          <field name="fiche_transport_complte_sur_partie_aller"/>
+                          <field name="flacons_de_transport_2"/>
+                          <field name="carton_dorigine_ou_dfaut_carton_de_lautomate_de_prt"/>
+                          <field name="bt_transport_automate_client_aller"/>
+                        </group>
+                      </group>
+                    </page>
+                    <page name="page_0axrg" string="Customer material shipment">
+                      <group name="group_0axrg">
+                        <group name="group_0axrg_left" string="Checklist">
+                          <field name="oci_maint_date_envoi_client"/>
+                          <field name="ad_ibjb_completee"/>
+                          <field name="fiche_transport_complte_sur_partie_retour"/>
+                          <field name="flacons_de_transport_1"/>
+                          <field name="ri_complt_et_sign"/>
+                          <field invisible="1" name="ri_signe_3_filename"/>
+                          <field filename="ri_signe_3_filename" name="ri_signe_3"/>
+                          <field name="ad_client_vierge_pour_automate_prt_retour"/>
+                          <field name="carton_origine_hautbas_ou_carton_automate_prt_hautbas"/>
+                          <field name="bl_automate_client"/>
+                        </group>
+                      </group>
+                    </page>
+                    <page name="page_Jqqvy" string="Removal of loan equipment">
+                      <group name="group_Jqqvy">
+                        <group name="group_Jqqvy_left" string="Checklist">
+                          <field name="oci_maint_date_enlv_pret"/>
+                          <field name="ad_client_complte_1"/>
+                          <field name="bt_pour_transport_automate_prt_retour"/>
+                          <field name="fiche_prt_complte_sur_partie_retour"/>
+                          <field name="flacons_de_transport_3"/>
+                          <field name="carton_de_lautomate_de_prt_avec_les_tiquettes_hautbas"/>
+                        </group>
+                      </group>
+                    </page>
+                  </notebook>
+                <group name="group_PQAJP">
+                    <xpath expr="//field[@name='description']" position="move"/>
+                </group>
+                <group name="group_IhtD0">
+                    <field name="maintenance_solution" placeholder="Solution..."/>
+                    <field name="conclusion_et_conseils_au_client"/>
+                    <field name="systme_conforme_aux_spcifications_fabricant" widget="boolean_toggle"/>
+                </group>
             </xpath>
-            <xpath expr="//field[@name='employee_id']" position="after">
-                <field name="maintenance_contact_id" string="Client"/>
+        </field>
+    </record>
+
+    <!-- Tree view -->
+    <record id="ibjb_studio_inherit_hr_equipment_request_view_tree" model="ir.ui.view">
+        <field name="name">maintenance.request.tree.view.inherit</field>
+        <field name="model">maintenance.request</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_request_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='request_date']" position="after">
+              <field name="equipment_id" groups="base.group_multi_company"/>
+              <field name="description"/>
+              <field name="maintenance_solution"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+              <field name="suivi_de_prt"/>
+            </xpath>
+            <xpath expr="//field[@name='stage_id']" position="after">
+              <field name="create_date"/>
             </xpath>
         </field>
     </record>

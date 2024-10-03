@@ -424,6 +424,7 @@ class MaintenanceRequest(models.Model):
         server action code to migrate Product pricelist items studio fields data to custom fields.
         """
         migration_fields = {
+            'x_studio_ad_client_2': 'ad_client_2',
             "x_studio_ad_client_2_filename": "ad_client_2_filename",
             "x_studio_ad_client_3": "ad_client_3",
             "x_studio_ad_client_complte": "ad_client_complte",
