@@ -23,4 +23,9 @@ class ProductTemplate(models.Model):
     listprice_horsfrancetext2 = fields.Text(string="Mandatory text HFR 1")
     pricelist_comeventuel = fields.Text(string="Possible comment")
     listprice_francetext2 = fields.Text(string="Mandatory text FR 1")
+    oci_datelifeend = fields.Date(
+        string="End date",
+        copy=False,
+        store=True
+    )
 

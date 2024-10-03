@@ -17,3 +17,19 @@ class SaleOrderLine(models.Model):
         readonly=True,
         copy=False,
     )
+
+    oci_codedouane = fields.Char(
+        related="product_template_id.article_codedouane",
+        copy=False,
+        readonly=True,
+        store=False,
+    )
+
+
+    oci_bdc_comptecompt = fields.Char(
+        related="product_id.property_account_income_id.display_name",
+        string="Product reference",
+        copy=False,
+        readonly=True,
+        store=False,
+    )

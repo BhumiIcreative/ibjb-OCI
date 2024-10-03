@@ -22,6 +22,23 @@ class Partner(models.Model):
     )
 
     tva = fields.Char(string="TVA", copy=False)
+    oci_contact_transporteur = fields.Selection(
+        selection=[
+            ("DHL","DHL"),
+            ("DPD","DPD"),
+            ("TNT","TNT"),
+            ("TSE","TSE"),
+            ("ENLEVEMENT","ENLEVEMENT"),
+            ("CHRONOPOST","CHRONOPOST"),
+            ("CHRONOPOST INTERNATIONAL","CHRONOPOST INTERNATIONAL"),
+            ("TNT INTERNATIONAL","TNT INTERNATIONAL"),
+            ("Transporteur client / Customer carrier","Transporteur client / Customer carrier")
+        ],
+        copy=False,
+        string="Transportor",
+        store=True,
+        tracking=True
+    )
 
     def Update_partner_studio_fields(self):
         """

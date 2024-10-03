@@ -11,23 +11,130 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+
+    <!-- Server action -->
+    <record id="action_transportor" model="ir.actions.server">
+        <field name="name"> </field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order" />
+        <field name="binding_type">action</field>
+        <field name="sequence">5</field>
+        <field name="state">object_write</field>
+    </record>
+
     <!-- Inheriting the sale order form view to add a new tab for maintenance equipment -->
     <record id="inherit_view_order_form" model="ir.ui.view">
         <field name="name">sale.order.form.view</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//form//sheet//notebook" position="inside">
-                <!-- Adding a new page inside the notebook for maintenance equipment -->
-                <page name="maintenance_equipment" string="Equipement">
-                    <group>
-                        <group>
-                            <!-- Custom field for maintenance equipment -->
-                            <field name="field_aueov_id"/>
-                        </group>
-                    </group>
-                </page>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+              <!-- <attribute name="attrs">{}</attribute> -->
+            </xpath>
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+              <field name="oci_saleorder_codetiers"/>
+              <field name="oci_vente_langcustomer" groups="base.group_user"/>
+              <xpath expr="//field[@name='client_order_ref']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='sale_order_template_id']" position="after">
+              <xpath expr="//field[@name='fiscal_position_id']" position="move"/>
+              <field name="customer_vat" invisible="0"/>
+              <field name="tva_msg_europe" style="color : red;" help="Affiche un message quand il s'agit d'un pays d'Europe" readonly="1" invisible="not customer_vat or (fiscal_position_id !=2 or not partner_id)"/>
+            </xpath>
+            <xpath expr="//field[@name='validity_date']" position="before">
+              <xpath expr="//field[@name='date_order']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='date_order']" position="attributes">
+              <attribute name="invisible"/>
+              <attribute name="required"/>
+              <attribute name="readonly"/>
+            </xpath>
+            <xpath expr="//field[@name='date_order']" position="after">
+              <xpath expr="//field[@name='expected_date']" position="move"/>
+              <field name="oci_bdc_dateexpsht"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="before">
+              <field name="oci_sale_priceliste_enddate"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+              <field name="saleorder_order_carrier"/>
+              <field name="oci_bdc_transporteur" />
+            </xpath>
+            <!-- <xpath expr="//field[@name='carrier_id']" position="attributes">
+              <attribute name="attrs">{"readonly": [["state","not in",["draft","sent"]]]}</attribute>
+              <attribute name="invisible">1</attribute>
+            </xpath> -->
+            <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+              <group name="group_BXZQi" string="/!\ ATTENTION /!\">
+                <field name="oci_chplie_customercomment1"/>
+              </group>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']//tree[1]/field[@name='product_id']" position="after">
+              <field name="oci_codedouane" invisible="1"/>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='name']" position="after">
+              <field name="oci_bdc_comptecompt" string="Account"/>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='product_uom']" position="attributes">
+              <attribute name="required"> not display_type</attribute>
+              <attribute name="readonly">1</attribute>
+            </xpath>
+            <!-- <xpath expr="//field[@name='lot_count']" position="attributes">
+              <attribute name="string">Nb lots</attribute>
+            </xpath> -->
+            <xpath expr="//page[@name='order_lines']//tree[1]/field[@name='price_subtotal']" position="after">
+              <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='tax_id']" position="move"/>
+              <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_tax']" position="move"/>
+            </xpath>
+            <!-- <xpath expr="//field[@name='comment']" position="attributes">
+              <attribute name="help">Commentaire de devis / commande</attribute>
+            </xpath> -->
+
+
+
+            <!-- Start from here tomorrow -->
+            <xpath expr="//field[@name='effective_date']" position="attributes">
+              <!-- <attribute name="attrs">{}</attribute> -->
+            </xpath>
+            <xpath expr="//field[@name='require_payment']" position="after">
+              <field name="purchase_order_reference" invisible="1" readonly="0" required="0"/>
+            </xpath>
+            <xpath expr="//page[@name='other_information']//field[@name='invoice_status']" position="attributes">
+              <attribute name="invisible">state not in ["sale","done"]</attribute>
+              <attribute name="readonly"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+              <page name="page_xXWnD" string="Equipement">
+                <group name="group_xXWnD">
+                  <group name="group_xXWnD_left">
+                    <field name="field_aueov_id"/>
+                  </group>
+              </group>
+              </page>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']//tree[1]/field[@name='tax_id']" position="attributes">
+              <attribute name="string">TVA applicable</attribute>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_tax']" position="attributes">
+              <!-- <attribute name="attrs">{}</attribute> -->
+              <attribute name="invisible"/>
+              <attribute name="string">TVA</attribute>
+            </xpath>
+            <xpath expr="//field[@name='expected_date']" position="attributes">
+              <!-- <attribute name="attrs">{}</attribute> -->
+              <attribute name="groups"/>
+            </xpath>
+            <xpath expr="//field[@name='date_order']" position="attributes">
+              <!-- <attribute name="attrs"/> -->
             </xpath>
         </field>
     </record>
+
+    <!-- Menu items -->
+    <!-- <menuitem name="Purchase orders"
+            id="sale.menu_sale_order"
+            groups="sales_team.group_sale_salesman"
+            action="sale.action_orders"
+            parent_id="sale.sale_order_menu"
+            sequence="2"/> -->
 </odoo>
