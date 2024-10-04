@@ -649,6 +649,13 @@
                 </div>
                 <div class="col-3 col-auto mw-100 mb-2">
                   <span>
+                    <strong>Shipping Date:</strong>
+                    <br/>
+                  </span>
+                  <span t-field="doc.oci_bdc_transporteur"/>
+                </div>
+                <div class="col-3 col-auto mw-100 mb-2">
+                  <span>
                     <strong>Carrier:</strong>
                     <br/>
                   </span>
@@ -941,20 +948,20 @@
                 </span>
                 <span t-field="doc.date_order"/>
               </div>
-              <!-- <div class="col-auto mw-100 mb-2" t-if="doc.state == &quot;sale&quot;">
+              <div class="col-auto mw-100 mb-2" t-if="doc.state == 'sale'">
                 <span>
-                  <strong>Date d'expédition(1):</strong>
+                  <strong>Shipping date: </strong>
                   <br/>
                 </span>
-                <span t-field="doc.x_studio_oci_bdc_dateexpsht"/>
-              </div> -->
-              <!-- <div class="col-auto mw-100 mb-2">
+                <span t-field="doc.oci_bdc_dateexpsht"/>
+              </div>
+              <div class="col-auto mw-100 mb-2">
                 <span>
                   <strong>Transporteur:</strong>
                   <br/>
                 </span>
-                <span t-field="doc.x_studio_oci_bdc_transporteur"/>
-              </div> -->
+                <span t-field="doc.oci_bdc_transporteur"/>
+              </div>
             </div>
             <table class="table o_report_block_table" style="margin-top:10px">
               <thead>
@@ -1031,7 +1038,7 @@
               </tbody>
             </table>
             <div class="row">
-              <div class="col" t-if="doc.state == &quot;draft&quot; or doc.state == &quot;sent&quot;">
+              <div class="col" t-if="doc.state == 'draft' or doc.state == 'sent'">
                 <span>This offer is valid until</span>
                 <span t-field="doc.validity_date"/>
               </div>
@@ -1203,16 +1210,16 @@
             <table class="table">
               <thead>
                 <th class="text-right">Date </th>
-                <!-- <th class="text-right">Référence de la commande</th> -->
+                <th class="text-right">Purchase order reference</th>
                 <th class="text-left">Date EXP</th>
                 <th class="text-right">Carrier</th>
               </thead>
               <td>
                 <span t-field="o.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}"/>
               </td>
-              <!-- <td>
-                <span t-field="o.x_studio_purchase_order_reference"/>
-              </td> -->
+              <td>
+                <span t-field="o.purchase_order_reference"/>
+              </td>
               <td>
                 <span t-field="o.carrier_id"/>
               </td>
@@ -1730,10 +1737,18 @@
               </div>
               <div class="col-3 col-auto mw-100 mb-2" t-if='doc.state != "sale"'>
                 <span>
-                  <strong>Transporter:</strong>
+                  <strong>Date of quotation: </strong>
                   <br/>
                 </span>
                 <span t-field="doc.date_order"/>
+              </div>
+
+              <div class="col-3 col-auto mw-100 mb-2">
+                <span>
+                  <strong>Transporter:</strong>
+                  <br/>
+                </span>
+                <span t-field="doc.oci_bdc_transporteur"/>
               </div>
               <!-- <div class="col-3">
                 <span>
