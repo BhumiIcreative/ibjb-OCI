@@ -8,12 +8,12 @@
         <field name="subject">| Notification Badgeuse - ${object.employee_id.display_name} | ${object.id} |
             ${object.employee_id.barcode} | ${object.check_in} | ${object.check_out} |
         </field>
-        <field name="body_html">
-            <![CDATA[
-        <p style="margin:0px 0 1rem 0;font-size:13px;font-family:'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;">
-            &nbsp;<br>
-        </p>
-        ]]>
+        <field name="body_html" type="html">
+            <div>
+                <p style="margin:0px 0 1rem 0;font-size:13px;font-family:'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;">
+                    <br/>
+                </p>
+            </div>
         </field>
     </record>
 </odoo>

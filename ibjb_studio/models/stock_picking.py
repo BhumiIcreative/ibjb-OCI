@@ -18,7 +18,7 @@ class ResCompany(models.Model):
     bl_btverif_id = fields.Many2one('hr.employee', _('BT verified by'))
     bl_commentairetxt = fields.Text(_('Order comment'))
     bl_conditionvente = fields.Text(_('Conditions of sale'))
-    bl_codetiers = fields.Char(_('Third party code BL'))
+    bl_codetiers = fields.Char(_('Third party code BL'),related='sale_id.oci_saleorder_codetiers')
     br_codetiers = fields.Char(_('BR third party code'),related="purchase_id.oci_achat_devis_codetiers")
     bl_dimension = fields.Char(_('Dimension'))
     bl_poids = fields.Char(_('Weight'))

@@ -6,33 +6,39 @@
         <field name="email_to">odoo-mail-urgence@ibjb.fr</field>
         <field name="email_cc">r.bazillon@ibjb.fr; rgral@oci.fr</field>
         <field name="subject">Ticket ${object.id}</field>
-        <field name="body_html">
-            <![CDATA[
-        <div style="background:#F0F0F0;color:#515166;padding:10px 0px;font-family:Arial,Helvetica,sans-serif;font-size:14px;">
-            <table style="border-collapse:collapse;width:600px;margin:5px auto;">
-                <tbody>
-                    <tr>
-                        <td>
-                            <a href="/" style="background-color:transparent;text-decoration-thickness:auto;color:rgb(0, 135, 132);">
-                                <img src="/web/binary/company_logo" style="border-style:none;vertical-align:baseline;max-width:100px;">
-                            </a>
-                        </td>
-                        <td style="text-align:right;vertical-align:middle;"><br></td>
-                    </tr>
-                </tbody>
-            </table>
-            <table style="border-collapse:collapse;width:600px;margin:0px auto;background:white;border:1px solid #e1e1e1;">
-                <tbody>
-                    <tr>
-                        <td style="padding:15px 20px 10px 20px;">Description: ${object.description}<br></td>
-                    </tr>
-                    <tr>
-                        <td style="padding:15px 20px 10px 20px;">OdooBot<br></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        ]]>
+        <field name="body_html" type="html">
+            <div style="background:#F0F0F0;color:#515166;padding:10px 0px;font-family:Arial,Helvetica,sans-serif;font-size:14px;">
+                <table style="border-collapse:collapse;width:600px;margin:5px auto;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="/"
+                                   style="background-color:transparent;text-decoration-thickness:auto;color:rgb(0, 135, 132);">
+                                    <img src="/web/binary/company_logo"
+                                         style="border-style:none;vertical-align:baseline;max-width:100px;"/>
+                                </a>
+                            </td>
+                            <td style="text-align:right;vertical-align:middle;">
+                                <br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table style="border-collapse:collapse;width:600px;margin:0px auto;background:white;border:1px solid #e1e1e1;">
+                    <tbody>
+                        <tr>
+                            <td style="padding:15px 20px 10px 20px;">Description: ${object.description}
+                                <br/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding:15px 20px 10px 20px;">OdooBot
+                                <br/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </field>
     </record>
 </odoo>

@@ -76,7 +76,12 @@
         <field eval="False" name="binding_model_id"/>
         <field name="name">Send Quality Service Alert Email</field>
         <field name="sequence">5</field>
-<!--        <field name="state">email</field>-->
+        <field name="code">
+            if records:
+               template = env.ref('ibjb_studio.ticket_alerte_service')
+               for record in records:
+                   template.send_mail(record.id, force_send=True)
+        </field>
     </record>
 
 
@@ -129,7 +134,7 @@
         <field name="state">object_write</field>
     </record>
 
-     <record id="action_auto_assign_client_anomaly" model="ir.actions.server">
+    <record id="action_auto_assign_client_anomaly" model="ir.actions.server">
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
         <field eval="False" name="binding_model_id"/>
         <field name="name">Assigned to Automatic Client Anomaly</field>

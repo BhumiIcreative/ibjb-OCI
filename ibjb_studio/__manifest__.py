@@ -44,6 +44,7 @@
         "data/hr_mail_template.xml",
         "data/helpdesk_mail_template.xml",
         "data/helpdesk_server_actions.xml",
+        "data/attendance_ir_actions_server.xml",
         "views/maintenance_version_views.xml",
         "views/maintenance_etapes_pret_views.xml",
         "views/hr_employee_views.xml",

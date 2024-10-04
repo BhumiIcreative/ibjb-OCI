@@ -1,60 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="notifications_badgeuse" model="ir.actions.server">
-        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
-        <field name="name">Badger http-POST notifications</field>
-        <field name="sequence">5</field>
-        <field name="state">code</field>
-        <field name="code"><![CDATA[
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered
-#  - record: record on which the action is triggered
-#  - records: recordset of all records on which the action is triggered in multi-mode
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - float_compare: Odoo function to compare floats based on specific precisions
-#  - log: log(message, level='info'): logging function to record debug information
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-]]></field>
-    </record>
-
-    <record id="notifications_badgeuse" model="ir.actions.server">
-        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
-        <field name="name">♪ ♫ Badger Notifications ♫ ♪</field>
-        <field name="sequence">5</field>
-        <field name="state">email</field>
-        <field name="code"><![CDATA[
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered
-#  - record: record on which the action is triggered
-#  - records: recordset of all records on which the action is triggered in multi-mode
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - float_compare: Odoo function to compare floats based on specific precisions
-#  - log: log(message, level='info'): logging function to record debug information
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-]]></field>
-    </record>
-
     <record id="notifications_sortie" model="ir.actions.server">
         <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
-        <field name="name">♪ ♫ Release Notifications ♫ ♪</field>
+        <field eval="False" name="binding_model_id"/>
+        <field name="name">Notifications Sorties</field>
         <field name="sequence">5</field>
-        <field name="state">email</field>
-        <field name="code"><![CDATA[
-# Available variables:
-#  - env: Odoo Environment on which the action is triggered
-#  - model: Odoo Model of the record on which the action is triggered
-#  - record: record on which the action is triggered
-#  - records: recordset of all records on which the action is triggered in multi-mode
-#  - time, datetime, dateutil, timezone: useful Python libraries
-#  - float_compare: Odoo function to compare floats based on specific precisions
-#  - log: log(message, level='info'): logging function to record debug information
-#  - Warning: Warning Exception to use with raise
-# To return an action, assign: action = {...}
-]]></field>
+        <field name="state">mail_post</field>
+    </record>
+
+    <record id="notifications_badgeuse" model="ir.actions.server">
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+        <field ref="hr_attendance.model_hr_attendance" name="binding_model_id"/>
+        <field name="name">Notifications Badgeuse</field>
+        <field name="sequence">5</field>
+        <field name="state">code</field>
+        <field name="code">
+            if records:
+                 template = env.ref('ibjb_studio.presence_notification')
+                 for record in records:
+                    template.send_mail(record.id, force_send=True)
+        </field>
+    </record>
+
+    <record id="notifications_badgeuse_2" model="ir.actions.server">
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+        <field eval="False" name="binding_model_id"/>
+        <field name="name">Notifications Badgeuse</field>
+        <field name="sequence">5</field>
+        <field name="state">mail_post</field>
+    </record>
+
+    <record id="notifications_badgeuse_http_post" model="ir.actions.server">
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+        <field eval="False" name="binding_model_id"/>
+        <field name="name">Notifications Badgeuse</field>
+        <field name="sequence">5</field>
+        <field name="state">code</field>
     </record>
 
 

@@ -7,4 +7,4 @@ from odoo import models, _, fields
 class HrAttendance(models.Model):
     _inherit = 'hr.attendance'
 
-    badge = fields.Char(_('BadgeID'))
+    badge = fields.Char(_('BadgeID'),related='employee_id.barcode')
