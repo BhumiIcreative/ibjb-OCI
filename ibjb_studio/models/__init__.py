@@ -23,11 +23,7 @@ from . import product_pricelist
 from . import product_pricelist_item
 from . import maintenance_request
 from . import stock_quant
-<<<<<<< Updated upstream
 from . import oci_helpdesk_type_ticket
-=======
 from . import family
 from . import stock_lot
-from . import stock_quant
 from . import product
->>>>>>> Stashed changes

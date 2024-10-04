@@ -23,7 +23,6 @@
         "purchase",
         "hr",
         'sale_management',
-        # "sale"
         'helpdesk',
         'l10n_fr',
         'project',
