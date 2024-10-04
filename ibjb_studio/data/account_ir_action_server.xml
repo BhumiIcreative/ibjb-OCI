@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Define a server action to update the "amount_tax_signed_stored" field if empty -->
+    <record id="action_maj_opened" model="ir.actions.server">
+        <field name="name">MAJ ouvert par si vide</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="sequence">5</field>
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+            record[("amount_tax_signed_stored")] = record['amount_tax_signed']
+        </field>
+    </record>
+</odoo>

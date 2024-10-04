@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Server action to update 'pricelist_faita' field with the record's creation date -->
+    <record id="action_server_pricelist_date" model="ir.actions.server">
+        <field name="name">Price list date</field>
+        <field name="model_id" ref="product.model_product_pricelist"/>
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="code">
+            record[("pricelist_faita")] = record.create_date
+        </field>
+        <field name="sequence">5</field>
+        <field name="state">code</field>
+    </record>
+
+    <!-- Server action to update the 'pricelist_orderref' field if it's empty -->
+    <record id="action_server_maj_reference_order" model="ir.actions.server">
+        <field name="name">OCI - MAJ reference order</field>
+        <field name="model_id" ref="product.model_product_pricelist"/>
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="code">
+            if not record.pricelist_orderref:
+            record.write({
+            'pricelist_orderref': env['ir.sequence'].next_by_code('oci_pricelist_orderref') })
+        </field>
+        <field name="sequence">5</field>
+        <field name="state">code</field>
+    </record>
+
+    <!-- Duplicate action to update 'pricelist_orderref', likely an alternative action -->
+    <record id="action_server_oci_maj_reference_order" model="ir.actions.server">
+        <field name="name">OCI MAJ Reference Order</field>
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="code">
+            if not record.pricelist_orderref:
+            record.write({
+            'pricelist_orderref': env['ir.sequence'].next_by_code('oci_pricelist_orderref')
+            })
+        </field>
+        <field name="model_id" ref="product.model_product_pricelist"/>
+        <field name="sequence">5</field>
+        <field name="state">code</field>
+    </record>
+</odoo>

@@ -10,7 +10,7 @@ class ProductTemplate(models.Model):
     offre_de_prix = fields.Boolean(string="Price offer")
     listprice_nomclient_id = fields.Many2one('res.partner', string="Customer Name")
     pricelist_alintentionde = fields.Char(string="To the attention of")
-    istprice_codetiers = fields.Char(string="Code tiers",related="listprice_nomclient_id.customer_code")
+    istprice_codetiers = fields.Char(string="Code tiers", related="listprice_nomclient_id.customer_code")
     pricelist_orderref = fields.Char(string="Offer reference")
     datelifeend = fields.Date(string="End date")
     pricelist_faitle = fields.Char(string="Made at")
@@ -19,13 +19,18 @@ class ProductTemplate(models.Model):
     listprice_francetext = fields.Text(string="Mandatory text FR 2")
     is_listprice_horsfrance = fields.Boolean(string="Price offer outside France")
     listprice_horsfrancetext = fields.Text(string="Mandatory text HFR 2")
-    pricelist_conditionspaiement = fields.Char(string="Payment terms",related="listprice_nomclient_id.property_payment_term_id.display_name")
+    pricelist_conditionspaiement = fields.Char(string="Payment terms",
+                                               related="listprice_nomclient_id.property_payment_term_id.display_name")
     listprice_horsfrancetext2 = fields.Text(string="Mandatory text HFR 1")
     pricelist_comeventuel = fields.Text(string="Possible comment")
     listprice_francetext2 = fields.Text(string="Mandatory text FR 1")
-    oci_datelifeend = fields.Date(
-        string="End date",
-        copy=False,
-        store=True
+    notes = fields.Text(string="Notes")
+    date_life_start = fields.Date(string="Start date")
+    address = fields.Char(
+        string="Address",
+        related="listprice_nomclient_id.contact_address",
+        readonly=True,
+        store=False,
     )
-
+    textbul = fields.Char(string="Info")
+    warming = fields.Char(string="Warming")

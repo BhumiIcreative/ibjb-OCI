@@ -18,18 +18,29 @@ class MaintenanceEquipment(models.Model):
         readonly=False,
     )
     contrats_1_ids = fields.One2many(
-        "sale.order", "abonnement_equipement_id", string="Contracts"
+        "sale.order", "abonnement_equipement_id",
+        string="Contracts",
     )
     contrat_en_cours = fields.Char(
-        related="contrats_1_ids.name", readonly=False, string="current_contract"
+        related="contrats_1_ids.name",
+        readonly=False,
+        store=True,
+        string="current_contract",
+        tracking=True
     )
     date_fin_contrat = fields.Date(
-            related="contrats_1_ids.end_date",
+        related="contrats_1_ids.end_date",
         store=True,
         readonly=False,
+        tracking=True,
         help="If set, the subscription will be marked as 'To renew' 1 month before the selected date and will be "
              "closed on that date.", string="Contract_end_date")
-    contrat_type = fields.Char(related="contrats_1_ids.sale_order_template_id.name")
+    contrat_type = fields.Char(
+        related="contrats_1_ids.sale_order_template_id.name",
+        string="Contrat type",
+        store=True,
+        readonly=False,
+    )
     client_utilisateur_id = fields.Many2one("res.partner", string="User client")
     proprietaire_id = fields.Many2one("res.partner", string="Owner")
     field_ixm1S_id = fields.Many2one("maintenance.version", string="Version")

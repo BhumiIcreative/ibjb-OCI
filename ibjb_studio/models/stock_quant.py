@@ -12,8 +12,6 @@ class StockQuant(models.Model):
         store=True,
         string="Expiration date",
         readonly=False,
-        copy=False,
-        translate=False,
         help="This is the date when goods with this serial number become dangerous and should no longer be consumed.")
 
     coutlot_lot = fields.Float(
@@ -21,8 +19,6 @@ class StockQuant(models.Model):
         string="Coût du lot",
         readonly=True,
         store=True,
-        copy=False,
-        translate=False,
     )
 
     categorie = fields.Char(
@@ -30,14 +26,11 @@ class StockQuant(models.Model):
         string="Category",
         readonly=True,
         store=True,
-        copy=False,
         translate=True
     )
 
     invenory_coutxqty = fields.Float(
         string="Cout x Qty",
-        copy=False,
-        translate=False
     )
 
     active = fields.Boolean(
@@ -46,7 +39,14 @@ class StockQuant(models.Model):
         help="If unchecked, it will allow you to hide the product without removing it.",
         store=True,
         readonly=True,
-        traslate=False,
+    )
+
+    catg_art = fields.Char(
+        related="product_id.categ_id.name",
+        string="Product reference",
+        readonly=True,
+        translate=True,
+        store=True
     )
 
     ref_interne_1 = fields.Char(
@@ -54,6 +54,14 @@ class StockQuant(models.Model):
         readonly=True,
         store=True,
         copy=False,
+    )
+
+    ref_interne_1 = fields.Char(
+        related="product_id.default_code",
+        string="ref_interne",
+        store=True,
+        readonly=True,
+        translate=False,
     )
 
     field_WfwqV = fields.Datetime(

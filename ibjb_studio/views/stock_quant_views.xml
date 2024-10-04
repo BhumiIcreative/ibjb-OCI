@@ -1,20 +1,99 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- Inherit the stock quant tree view and add custom fields -->
     <record id="ibjb_studio_view_stock_quant_tree" model="ir.ui.view">
         <field name="name">view.stock.quant.tree.inherit</field>
         <field name="model">stock.quant</field>
-        <field name="inherit_id" ref="stock.view_stock_quant_tree"/>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable"/>
         <field name="arch" type="xml">
+            <!-- Add the 'categorie' field after the 'product_id' field -->
             <xpath expr="//field[@name='product_id']" position="after">
                 <field name="categorie"/>
             </xpath>
+
+            <!-- Add 'date_de_premption' and 'coutlot_lot' fields after the 'lot_id' field -->
             <xpath expr="//field[@name='lot_id']" position="after">
                 <field name="date_de_premption"/>
                 <field name="coutlot_lot"/>
             </xpath>
+
+            <!-- Add 'invenory_coutxqty' field after the 'product_uom_id' field -->
             <xpath expr="//field[@name='product_uom_id']" position="after">
                 <field name="invenory_coutxqty"/>
             </xpath>
         </field>
+    </record>
+
+    <!-- Inherit the stock quant form view and add the 'active' field -->
+    <record id="ibjb_studio_view_stock_quant_form" model="ir.ui.view">
+        <field name="name">view.stock.quant.form.inherit</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_form"/>
+        <field name="arch" type="xml">
+            <!-- Add 'active' field after the 'location_id' field -->
+            <xpath expr="//field[@name='location_id']" position="after">
+                <field name="active"/>
+            </xpath>
+            <!-- Add fields after the 'product_id' field -->
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="ref_interne_1"/>
+                <field name="catg_art" string="Catégorie article"/>
+                <field name="field_WfwqV" string="Date de péremption"/>
+                <field name="oci_inventaire_note"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Define an action to list articles by location -->
+    <record id="action_articles_by_location" model="ir.actions.act_window">
+        <field name="name">Articles par emplacements</field>
+        <field name="help">
+            This is your new action ; by default, it contains a list view and a form view.
+            You can start customizing these screens by clicking on the Studio icon in the
+            top right corner (you can also customize this help message there).
+        </field>
+        <field name="limit">80</field>
+        <field name="res_model">stock.quant</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Define an action to filter stock quantities by lot -->
+    <record id="action_quantity" model="ir.actions.act_window">
+        <field name="context">{'search_default_lot_id': active_id,'default_lot_id': active_id}</field>
+        <field name="domain">[('lot_id', '=', active_id)]</field>
+        <field name="limit">80</field>
+        <field name="name">Quantity</field>
+        <field name="res_model">stock.quant</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Add a menu item for "Articles par emplacements" under the stock inventory control -->
+    <record id="menu_articles_by_location" model="ir.ui.menu">
+        <field name="action" ref="action_articles_by_location"/>
+        <field eval="True" name="active"/>
+        <field name="name">Articles par emplacements</field>
+        <field name="parent_id" ref="stock.menu_stock_inventory_control"/>
+        <field name="sequence">1</field>
+    </record>
+
+    <!-- Define a filter for grouping articles by location -->
+    <record id="filter_articles_by_location" model="ir.filters">
+        <field eval="False" name="active"/>
+        <field name="context">{'group_by': ['location_id']}</field>
+        <field name="domain">[("location_id.usage", "=", "internal")]</field>
+        <field name="model_id">stock.quant</field>
+        <field name="name">Articles par emplacements</field>
+    </record>
+
+    <!-- Corrected duplicate filter, make the filter active -->
+    <record id="filter_articles_by_location" model="ir.filters">
+        <field eval="True" name="active"/>
+        <field name="context">{'group_by': ['location_id']}</field>
+        <field name="domain">[["location_id.usage","=","internal"]]</field>
+        <field name="model_id">stock.quant</field>
+        <field name="name">Articles par emplacements</field>
     </record>
 </odoo>

@@ -50,7 +50,7 @@ class SaleOrder(models.Model):
     )
 
     oci_sale_priceliste_enddate = fields.Date(
-        related="pricelist_id.oci_datelifeend",
+        related="pricelist_id.datelifeend",
         string="End of validity of price list",
         store=True,
         copy=False,

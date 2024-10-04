@@ -1,60 +1,192 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- Inherit the product price list form view to add custom fields -->
     <record id="inherit_product_price_list_form" model="ir.ui.view">
         <field name="name">product.price.list.form.inherit</field>
         <field name="model">product.pricelist</field>
         <field name="inherit_id" ref="product.product_pricelist_view"/>
         <field name="arch" type="xml">
+            <!-- Insert custom fields after the first group in the form -->
             <xpath expr="//form[1]/sheet[1]/div[not(@name)][1]" position="after">
                 <group>
                     <group>
+                        <!-- Custom fields added to the price list form -->
+                        <field name="id"/>
                         <field name="offre_de_prix"/>
                         <field name="offre_de_prix_annee" required="offre_de_prix"/>
-                        <field name="listprice_referencepdf" invisible="1"/>
                         <field name="listprice_nomclient_id" required="offre_de_prix"
                                help="Please complete the CONTACT SHEET!"/>
                         <field name="pricelist_alintentionde" required="offre_de_prix"/>
+                        <field name="textbul" readonly="1"/>
+                        <field name="address" invisible="not listprice_nomclient_id"/>
                         <field name="istprice_codetiers" invisible="not listprice_nomclient_id"/>
+                        <field name="pricelist_conditionspaiement"/>
                         <field name="pricelist_orderref"/>
+                        <field name="listprice_referencepdf" invisible="1"/>
                     </group>
                     <group>
+                        <!-- Additional fields for date and location-specific details -->
+                        <field name="date_life_start"/>
                         <field name="datelifeend"/>
                         <field name="pricelist_faitle"/>
                         <field name="pricelist_faita"/>
+                        <field name="warming"
+                               invisible="is_listprice_france == False or is_listprice_horsfrance == False"
+                               readonly="1"/>
                         <field name="is_listprice_france"/>
                         <field name="listprice_francetext2"/>
                         <field name="listprice_francetext" invisible="not is_listprice_france"/>
                         <field name="is_listprice_horsfrance"/>
-                        <field name="listprice_horsfrancetext" invisible="not is_listprice_horsfrance"/>
-                        <field name="pricelist_conditionspaiement"/>
                         <field name="listprice_horsfrancetext2" invisible="not is_listprice_horsfrance"/>
+                        <field name="listprice_horsfrancetext" invisible="not is_listprice_horsfrance"/>
                         <field name="pricelist_comeventuel"/>
+
+                        <!-- Move the discount policy field to a new position -->
+                        <xpath expr="//field[@name='discount_policy']" position="move"/>
                     </group>
                 </group>
             </xpath>
 
-            <xpath expr="//field[@name='item_ids']/tree[2]/field[@name='name']" position="before">
+            <!-- Add a notes field after the currency_id field -->
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="notes" string="Notes"/>
+            </xpath>
+
+            <!-- Hide the company_id field -->
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Insert custom fields in the price list rules section -->
+            <xpath expr="//notebook/page[@name='pricelist_rules']/field[@name='item_ids']/tree/field[@name='product_tmpl_id']"
+                   position="before">
+                <field name="saleorder_pricelist_productdate"/>
                 <field name="field_MqbX7"/>
+            </xpath>
+
+            <!-- Insert price fields in the price list rules section -->
+            <xpath expr="//notebook/page[@name='pricelist_rules']/field[@name='item_ids']/tree/field[@name='product_tmpl_id']"
+                   position="after">
+                <field name="price"/>
+            </xpath>
+
+            <!-- Add a field after the date_end field in price list rules -->
+            <xpath expr="//notebook/page[@name='pricelist_rules']/field[@name='item_ids']/tree/field[@name='date_end']"
+                   position="after">
+                <field name="oci_pricelist_coms"/>
+            </xpath>
+
+            <!-- Define a form for price list items -->
+            <xpath expr="//notebook/page[@name='pricelist_rules']/field[@name='item_ids']/tree"
+                   position="after">
+                <form string="Price list items">
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <!-- Define fields for product application and pricing logic -->
+                            <field name="applied_on" widget="selection"/>
+                            <field name="categ_id" invisible="applied_on != '2_product_category'"
+                                   required="applied_on == '2_product_category'"/>
+                            <field name="product_tmpl_id" invisible="applied_on != '1_product'"
+                                   required="applied_on == '1_product'"/>
+                            <field name="field_MqbX7" readonly="1"/>
+                            <field name="product_id" invisible="applied_on != '0_product_variant'"
+                                   required="applied_on == '0_product_variant'"/>
+                        </group>
+                        <group>
+                            <!-- Fields for setting price calculation parameters -->
+                            <field name="min_quantity"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="oci_pricelist_coms"/>
+                        </group>
+                    </group>
+                    <separator string="Price calculation"/>
+                    <group>
+                        <group>
+                            <!-- Price calculation methods (fixed, percentage, formula) -->
+                            <!--                            <label for="compute_price" string="Calculate the price"/>-->
+                            <div>
+                                <field name="compute_price" widget="radio"/>
+                                <field name="currency_id" invisible="1"/>
+                                <div invisible="compute_price != 'fixed'">
+                                    <field name="fixed_price" nolabel="1" widget="monetary"
+                                           options="{'currency_field': 'currency_id'}"/>
+                                </div>
+                                <div invisible="compute_price != 'percentage'">
+                                    <field name="percent_price" nolabel="1" class="oe_inline"/>%
+                                </div>
+                            </div>
+                        </group>
+                    </group>
+
+                    <!-- Note regarding unit of measurement -->
+                    <div class="oe_grey" groups="uom.group_uom">
+                        <p>The calculated price is expressed in the item's default unit of measurement.</p>
+                    </div>
+                    <group col="6" invisible="compute_price != 'formula'">
+                        <!-- Fields for formula-based price calculation -->
+                        <field name="base" colspan="6"/>
+                        <!--                        <label for="" string="New price ="/>-->
+                        <div>
+                            <span invisible="base != 'list_price'">Public Price -</span>
+                            <span invisible="base != 'standard_price'">Cost -</span>
+                            <span invisible="base != 'pricelist'">Other Price list -</span>
+                        </div>
+                        <!--                        <label for="price_discount"/>-->
+                        <div class="o_row">
+                            <field name="price_discount"/>
+                            <span>%</span>
+                        </div>
+                        <label string=" + " for="price_surcharge"/>
+                        <field name="price_surcharge" nolabel="1"/>
+                        <field name="price_round"/>
+                        <field name="price_min_margin"/>
+                        <field name="price_max_margin"/>.
+                        <field name="company_id" invisible="1"/>
+                        <field name="base_pricelist_id" invisible="base != 'pricelist'" required="base == 'pricelist'"
+                               readonly="base != 'pricelist'"/>
+                    </group>
+                </form>
             </xpath>
         </field>
     </record>
 
-
+    <!-- Inherit the price list tree view to add new fields -->
     <record id="inherit_product_price_list_tree" model="ir.ui.view">
         <field name="name">product.price.list.tree.inherit</field>
         <field name="model">product.pricelist</field>
         <field name="inherit_id" ref="product.product_pricelist_view_tree"/>
         <field name="arch" type="xml">
+            <!-- Add custom fields in the tree view -->
             <field name="name" position="after">
                 <field name="offre_de_prix"/>
+                <field name="listprice_nomclient_id"/>
                 <field name="offre_de_prix_annee"/>
+                <field name="date_life_start"/>
                 <field name="datelifeend"/>
             </field>
 
+            <!-- Add creation details fields -->
             <field name="currency_id" position="after">
                 <field name="create_uid"/>
                 <field name="create_date"/>
             </field>
         </field>
+    </record>
+
+    <!-- Action to open the Price List related to a specific client -->
+    <record id="action_price_list" model="ir.actions.act_window">
+        <field name="context">{'search_default_listprice_nomclient_id':
+            active_id,'default_listprice_nomclient_id': active_id}
+        </field>
+        <field name="domain">[('listprice_nomclient_id', '=', active_id)]</field>
+        <field name="limit">80</field>
+        <field name="name">Price list</field>
+        <field name="res_model">product.pricelist</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
     </record>
 </odoo>
