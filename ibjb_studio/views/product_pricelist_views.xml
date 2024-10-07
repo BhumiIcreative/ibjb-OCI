@@ -107,7 +107,7 @@
                     <group>
                         <group>
                             <!-- Price calculation methods (fixed, percentage, formula) -->
-                            <!--                            <label for="compute_price" string="Calculate the price"/>-->
+                            <label for="compute_price" string="Calculate the price"/>
                             <div>
                                 <field name="compute_price" widget="radio"/>
                                 <field name="currency_id" invisible="1"/>
@@ -129,13 +129,12 @@
                     <group col="6" invisible="compute_price != 'formula'">
                         <!-- Fields for formula-based price calculation -->
                         <field name="base" colspan="6"/>
-                        <!--                        <label for="" string="New price ="/>-->
                         <div>
                             <span invisible="base != 'list_price'">Public Price -</span>
                             <span invisible="base != 'standard_price'">Cost -</span>
                             <span invisible="base != 'pricelist'">Other Price list -</span>
                         </div>
-                        <!--                        <label for="price_discount"/>-->
+                        <label for="price_discount"/>
                         <div class="o_row">
                             <field name="price_discount"/>
                             <span>%</span>
