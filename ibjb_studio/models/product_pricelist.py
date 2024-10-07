@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+
 from odoo import fields, models
+from odoo.addons.ibjb_studio import common
 
 
 class ProductTemplate(models.Model):
@@ -34,3 +36,36 @@ class ProductTemplate(models.Model):
     )
     textbul = fields.Char(string="Info")
     warming = fields.Char(string="Warming")
+
+    def Update_product_pricelist_studio_fields(self):
+        """
+            server action code to migrate Product Price list studio fields data to custom fields.
+        """
+        migration_fields = {
+            "x_studio_notes": "notes",
+            "x_studio_offre_de_prix": "offre_de_prix",
+            "x_studio_oci_datelifeend": "datelifeend",
+            "x_studio_oci_datelifestart": "date_life_start",
+            "x_studio_oci_listprice_nomclient": "listprice_nomclient_id",
+            "x_studio_oci_listprice_codetiers": "address",
+            "x_studio_field_i1oej": "istprice_codetiers",
+            "x_studio_oci_pricelist_faitle": "pricelist_faitle",
+            "x_studio_oci_pricelist_faita": "pricelist_faita",
+            "x_studio_oci_textbul": "textbul",
+            "x_studio_x_studio_x_studio_offre_de_prix_annee": "offre_de_prix_annee",
+            "x_studio_oci_listprice_referencepdf": "listprice_referencepdf",
+            "x_studio_oci_listprice_france": "is_listprice_france",
+            "x_studio_oci_listprice_francetext": "listprice_francetext",
+            "x_studio_oci_listprice_horsfrance": "is_listprice_horsfrance",
+            "x_studio_oci_listprice_horsfrancetext": "listprice_horsfrancetext",
+            "x_studio_field_4jjJH": "warming",
+            "x_studio_oci_pricelist_conditionspaiement": "pricelist_conditionspaiement",
+            "x_studio_oci_pricelist_alintentionde": "pricelist_alintentionde",
+            "x_studio_oci_pricelist_comeventuel": "pricelist_comeventuel",
+            "x_studio_oci_pricelist_orderref": "pricelist_orderref",
+            "x_studio_x_studio_oci_listprice_francetext2": "listprice_francetext2",
+            "x_studio_x_studio_oci_listprice_horsfrancetext2": "listprice_horsfrancetext2",
+        }
+        for rec in self:
+            for x_field, field in migration_fields.items():
+                common.set_customer_field(rec, x_field, field)

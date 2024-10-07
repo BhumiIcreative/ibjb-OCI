@@ -15,7 +15,7 @@ class StockQuant(models.Model):
         help="This is the date when goods with this serial number become dangerous and should no longer be consumed.")
 
     coutlot_lot = fields.Float(
-        related="lot_id.oci_lot_cout",
+        related="lot_id.lot_cout",
         string="Coût du lot",
         readonly=True,
         store=True,
@@ -85,7 +85,16 @@ class StockQuant(models.Model):
         server action code to migrate stock quant studio fields data to custom fields.
         """
         migration_fields = {
+            "x_studio_date_de_premption": "date_de_premption",
+            "x_studio_oci_coutlot_lot": "coutlot_lot",
+            "x_studio_catgorie": "categorie",
+            "x_studio_oci_invenory_coutxqty": "invenory_coutxqty",
+            "x_studio_actif": "active",
+            "x_studio_catg_art": "catg_art",
+            "x_studio_field_WfwqV": "field_WfwqV",
             "x_studio_oci_inventaire_note": "oci_inventaire_note",
+            "x_studio_ref_interne_1": "ref_interne_1",
+
         }
         for rec in self:
             for x_field, field in migration_fields.items():

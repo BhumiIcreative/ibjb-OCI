@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models, api, _
+from odoo.addons.ibjb_studio import common
 
 
 class AccountMove(models.Model):
@@ -42,3 +43,17 @@ class AccountMove(models.Model):
         """
         for record in self:
             record.amount_tax_signed_stored = record.amount_tax_signed
+
+    def Update_account_move_studio_fields(self):
+        """
+            server action code to migrate Account Move studio fields data to custom fields.
+        """
+        migration_fields = {
+            "x_studio_vat_customer": "vat_customer",
+            "x_studio_oci_codetiersfact": "oci_codetiersfact",
+            "x_studio_oci_compta_langcustomer": "oci_compta_langcustomer",
+            "x_studio_amount_tax_signed_stored": "amount_tax_signed_stored",
+        }
+        for rec in self:
+            for x_field, field in migration_fields.items():
+                common.set_customer_field(rec, x_field, field)

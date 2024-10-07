@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_server_quarantine_new_batch" model="ir.actions.server">
+        <field name="name">Quarantine new batch</field>
+        <field name="model_id" ref="stock.model_stock_lot"/>
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="code"></field>
+        <field name="sequence">5</field>
+        <field name="state">object_write</field>
+    </record>
+
+    <record id="action_server_expiry_date_alert" model="ir.actions.server">
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="code"></field>
+        <field name="model_id" ref="stock.model_stock_lot"/>
+        <field name="name">Expiry date alert</field>
+        <field name="sequence">5</field>
+        <field name="state">next_activity</field>
+    </record>
+
+    <record id="action_server_duplicate_expiry_date_alert" model="ir.actions.server">
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="code"></field>
+        <field name="model_id" ref="stock.model_stock_lot"/>
+        <field name="name">Expiry date alert</field>
+        <field name="sequence">5</field>
+        <field name="state">next_activity</field>
+    </record>
+</odoo>

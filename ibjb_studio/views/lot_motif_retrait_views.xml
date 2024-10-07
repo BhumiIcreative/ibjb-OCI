@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Tree view for the lot_motif_retrait model-->
+        <record id="lot_motif_retrait_tree_view" model="ir.ui.view">
+            <field name="name">lot.motif.retrait.tree.view</field>
+            <field name="model">lot.motif.retrait</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for the lot_motif_retrait model -->
+        <record id="lot_motif_retrait_form_view" model="ir.ui.view">
+            <field name="name">lot.motif.retrait.form.view</field>
+            <field name="model">lot.motif.retrait</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for the lot_motif_retrait model -->
+        <record id="action_lot_motif_retrait" model="ir.actions.act_window">
+            <field name="name">Reason for withdrawal</field>
+            <field name="res_model">lot.motif.retrait</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Define the menu item for 'Reason for Withdrawal' -->
+        <record id="menu_reason_for_withdrawal" model="ir.ui.menu">
+            <field name="action" ref="action_lot_motif_retrait"/>
+            <field eval="True" name="active"/>
+            <field name="name">Reason for withdrawal</field>
+            <field name="parent_id" ref="stock.menu_product_in_config_stock"/>
+            <field name="sequence">3</field>
+        </record>
+    </data>
+</odoo>

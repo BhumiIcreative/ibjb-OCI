@@ -8,3 +8,4 @@ access_helpdesk_source,access_helpdesk_source,model_helpdesk_source,base.group_u
 access_ticket_gamme,access_ticket_gamme,model_ticket_gamme,base.group_user,1,1,1,1
 access_oci_helpdesk_type_ticket,access_oci_helpdesk_type_ticket,model_oci_helpdesk_type_ticket,base.group_user,1,1,1,1
 ibjb_studio.access_family,access_family,ibjb_studio.model_family,base.group_user,1,1,1,1
+ibjb_studio.access_lot_motif_retrait,access_lot_motif_retrait,ibjb_studio.model_lot_motif_retrait,base.group_user,1,1,1,1

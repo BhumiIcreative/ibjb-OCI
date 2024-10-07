@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models, _
+from odoo import fields, models
 from odoo.addons.ibjb_studio import common
 
 
-class MaintenanceEtapesPret(models.Model):
-    _name = "maintenance.etapes.pret"
-    _description = "This Model is Maintenance Loan Steps"
+class LotMotifRetrait(models.Model):
+    _name = 'lot.motif.retrait'
+    _description = "Model for Stock Lot Withdrawal Reasons (Motif de Retrait)"
 
     name = fields.Char(string="Name")
 
-    def Update_maintenance_etapes_pret_studio_fields(self):
+    def Update_lot_motif_retrait_studio_fields(self):
         """
-            server action code to migrate Maintenance Loan Steps studio fields data to custom fields.
+            server action code to migrate Stock Lot Withdrawal Reasons studio fields data to custom fields.
         """
         migration_fields = {
             "x_name": "name",

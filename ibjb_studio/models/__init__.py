@@ -27,3 +27,4 @@ from . import oci_helpdesk_type_ticket
 from . import family
 from . import stock_lot
 from . import product
+from . import lot_motif_retrait

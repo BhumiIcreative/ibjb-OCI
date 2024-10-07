@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Inherits the production lot form view to add custom fields -->
+    <record id="ibjb_studio_view_production_lot_form" model="ir.ui.view">
+        <field name="name">stock.production.lot.form.inherit</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Adding new fields after the main group -->
+            <xpath expr="//group[@name='main_group']" position="after">
+                <group>
+                    <group>
+                        <field name="use_date"/>
+                        <field name="removal_date"/>
+                        <field name="cout_x_quantit"/>
+                    </group>
+                    <group>
+                        <field name="expiration_date"/>
+                        <field name="alert_date"/>
+                    </group>
+                </group>
+            </xpath>
+
+            <!-- Adding a badge for expiration alert -->
+            <xpath expr="//div[hasclass('oe_title')]" position="inside">
+                <field name="product_expiry_alert" invisible="1"/>
+                <span class="badge badge-danger" invisible="product_expiry_alert == False">Expiration Alert
+                </span>
+            </xpath>
+
+            <!-- Adding fields after the reference field -->
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="lot_cout"/>
+                <field name="inventory_lot_kmdispo"/>
+            </xpath>
+
+            <!-- Changing the label of the first group -->
+            <xpath expr="//form[1]/sheet[1]/group[not(@name)][1]/group[1]" position="attributes">
+                <attribute name="string">IH/BM Reagents</attribute>
+            </xpath>
+
+            <!-- Moving existing fields to a different position -->
+            <xpath expr="//form[1]/sheet[1]/group[not(@name)][1]/group[1]" position="inside">
+                <xpath expr="//field[@name='expiration_date']" position="move"/>
+                <xpath expr="//field[@name='alert_date']" position="move"/>
+                <xpath expr="//field[@name='removal_date']" position="move"/>
+                <field name="motif_de_retrait_id"/>
+                <field name="lot_pvcontrolekmatic_filename" invisible="1"/>
+                <xpath expr="//field[@name='use_date']" position="move"/>
+            </xpath>
+
+            <!-- Changing the label of the second group -->
+            <xpath expr="//form[1]/sheet[1]/group[not(@name)][1]/group[2]" position="attributes">
+                <attribute name="string">Kleihauer</attribute>
+            </xpath>
+
+            <!-- Adding fields to the second group -->
+            <xpath expr="//form[1]/sheet[1]/group[not(@name)][1]/group[2]" position="inside">
+                <field name="lot_date_stock"/>
+                <field filename="lot_pvcontrolekmatic_filename" name="lot_pvcontrolekmatic"/>
+                <field name="lot_versionihm"/>
+                <field name="lot_versionmoteur"/>
+                <field name="lot_versionrfid"/>
+                <field name="lot_versionmanuel"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherits the search view for production lots to add filters -->
+    <record id="ibjb_search_product_lot_filter" model="ir.ui.view">
+        <field name="name">stock.production.lot.search.inherit</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.search_product_lot_filter"/>
+        <field name="arch" type="xml">
+            <!-- Adding product quantity field after product ID -->
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="product_qty"/>
+            </xpath>
+
+            <!-- Adding a separator after expiration alerts filter -->
+            <xpath expr="//filter[@name='expiration_alerts']" position="after">
+                <separator name="separator_bQEth"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherits the production lot tree view to add columns -->
+    <record id="ibjb_view_production_lot_tree" model="ir.ui.view">
+        <field name="name">stock.production.lot.tree.inherit</field>
+        <field name="model">stock.lot</field>
+        <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+        <field name="arch" type="xml">
+            <!-- Adding inventory category field after lot name -->
+            <xpath expr="//tree[1]/field[@name='name']" position="after">
+                <field name="inventory_lot_catgory"/>
+            </xpath>
+
+            <!-- Adding various fields after the creation date -->
+            <xpath expr="//field[@name='create_date']" position="after">
+                <field name="expiration_date"/>
+                <field name="product_qty"/>
+                <field name="lot_cout"/>
+                <field name="cout_x_quantit"/>
+                <field name="removal_date"/>
+                <field name="motif_de_retrait_id"/>
+                <field name="stock_cout_du_lot_unitaire"/>
+                <field name="sale_order_ids"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

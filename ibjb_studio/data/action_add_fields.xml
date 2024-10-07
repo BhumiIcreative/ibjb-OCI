@@ -50,5 +50,95 @@
             <field name="state">code</field>
             <field name="code">if records: records.Update_maintenance_request_studio_fields()</field>
         </record>
+
+        <!-- Account Move -->
+        <record id="model_account_move_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Account Move fields</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_account_move_studio_fields()</field>
+        </record>
+
+        <!-- Maintenance Equipment -->
+        <record id="model_stock_quant_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Maintenance Equipment fields</field>
+            <field name="model_id" ref="maintenance.model_maintenance_equipment"/>
+            <field name="binding_model_id" ref="maintenance.model_maintenance_equipment"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_maintenance_equipment_studio_fields()</field>
+        </record>
+
+        <!-- Family -->
+        <record id="model_family_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Maintenance Equipment fields</field>
+            <field name="model_id" ref="ibjb_studio.model_family"/>
+            <field name="binding_model_id" ref="ibjb_studio.model_family"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_family_studio_fields()</field>
+        </record>
+
+        <!-- Product Price list -->
+        <record id="model_product_pricelist_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Product Pricelist fields</field>
+            <field name="model_id" ref="product.model_product_pricelist"/>
+            <field name="binding_model_id" ref="product.model_product_pricelist"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_product_pricelist_studio_fields()</field>
+        </record>
+
+        <!-- Account Partner Category -->
+        <record id="model_account_partner_cat_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Account Partner Category fields</field>
+            <field name="model_id" ref="ibjb_studio.model_account_partner_cat"/>
+            <field name="binding_model_id" ref="ibjb_studio.model_account_partner_cat"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_account_partner_cat_studio_fields()</field>
+        </record>
+
+        <!-- Lot Motif Retrait -->
+        <record id="model_lot_motif_retrait_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Stock Lot Withdrawal Reasons fields</field>
+            <field name="model_id" ref="ibjb_studio.model_lot_motif_retrait"/>
+            <field name="binding_model_id" ref="ibjb_studio.model_lot_motif_retrait"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_lot_motif_retrait_studio_fields()</field>
+        </record>
+
+        <!-- Maintenance Etapes Pret -->
+        <record id="model_maintenance_etapes_pret_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Maintenance Loan Steps fields</field>
+            <field name="model_id" ref="ibjb_studio.model_maintenance_etapes_pret"/>
+            <field name="binding_model_id" ref="ibjb_studio.model_maintenance_etapes_pret"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_maintenance_etapes_pret_studio_fields()</field>
+        </record>
+
+        <!-- Maintenance Version -->
+        <record id="model_maintenance_version_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Maintenance Version fields</field>
+            <field name="model_id" ref="ibjb_studio.model_maintenance_version"/>
+            <field name="binding_model_id" ref="ibjb_studio.model_maintenance_version"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_maintenance_version_studio_fields()</field>
+        </record>
+
+        <!-- Naf Code -->
+        <record id="model_naf_code_add_fields" model="ir.actions.server">
+            <field name="name">Migrate studio Naf Code fields</field>
+            <field name="model_id" ref="ibjb_studio.model_naf_code"/>
+            <field name="binding_model_id" ref="ibjb_studio.model_naf_code"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">if records: records.Update_naf_code_studio_fields()</field>
+        </record>
     </data>
 </odoo>
