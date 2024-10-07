@@ -31,9 +31,12 @@
                     </tree>
                 </field>
             </xpath>
+            <xpath expr="//field[@name='standard_price']" position="before">
+                <field name="valuation" invisible="1"/>
+            </xpath>
             <xpath expr="//field[@name='standard_price']" position="attributes">
-<!--                <attribute name="readonly">valuation.property_valuation == 'real_time'</attribute>-->
-                <!--                <attribute name="invisible">categ_id == 'CMUP' or 'Produit Fini'</attribute>-->
+                <attribute name="readonly">valuation == 'real_time'</attribute>
+                <attribute name="invisible">categ_id == 'CMUP' or 'Produit Fini'</attribute>
             </xpath>
             <xpath expr="//field[@name='property_account_income_id']" position="attributes">
                 <attribute name="required">sale_ok == True</attribute>
