@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<!-- actions  -->
-    <record id="action_ventes" model="ir.actions.act_window" >
+    <!-- actions  -->
+    <record id="action_ventes" model="ir.actions.act_window">
         <field name="name">Ventes</field>
         <field name="res_model">sale.order</field>
         <field name="context">{'search_default_field_aueov_id': active_id,'default_field_aueov_id': active_id}</field>
@@ -14,9 +14,9 @@
 
     <!-- Server action -->
     <record id="action_transportor" model="ir.actions.server">
-        <field name="name"> </field>
+        <field name="name"></field>
         <field name="model_id" ref="sale.model_sale_order"/>
-        <field name="binding_model_id" ref="sale.model_sale_order" />
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
         <field name="binding_type">action</field>
         <field name="sequence">5</field>
         <field name="state">object_write</field>
@@ -29,103 +29,189 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="attributes">
-              <!-- <attribute name="attrs">{}</attribute> -->
+                <!-- <attribute name="attrs">{}</attribute> -->
             </xpath>
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
-              <field name="oci_saleorder_codetiers"/>
-              <field name="oci_vente_langcustomer" groups="base.group_user"/>
-              <xpath expr="//field[@name='client_order_ref']" position="move"/>
+                <field name="oci_saleorder_codetiers"/>
+                <field name="oci_vente_langcustomer" groups="base.group_user"/>
+                <xpath expr="//field[@name='client_order_ref']" position="move"/>
             </xpath>
             <xpath expr="//field[@name='sale_order_template_id']" position="after">
-              <xpath expr="//field[@name='fiscal_position_id']" position="move"/>
-              <field name="customer_vat" invisible="0"/>
-              <field name="tva_msg_europe" style="color : red;" help="Affiche un message quand il s'agit d'un pays d'Europe" readonly="1" invisible="not customer_vat or (fiscal_position_id !=2 or not partner_id)"/>
+                <xpath expr="//field[@name='fiscal_position_id']" position="move"/>
+                <field name="customer_vat" invisible="0"/>
+                <field name="tva_msg_europe" style="color : red;"
+                       help="Affiche un message quand il s'agit d'un pays d'Europe" readonly="1"
+                       invisible="not customer_vat or (fiscal_position_id !=2 or not partner_id)"/>
             </xpath>
             <xpath expr="//field[@name='validity_date']" position="before">
-              <xpath expr="//field[@name='date_order']" position="move"/>
+                <xpath expr="//field[@name='date_order']" position="move"/>
             </xpath>
             <xpath expr="//field[@name='date_order']" position="attributes">
-              <attribute name="invisible"/>
-              <attribute name="required"/>
-              <attribute name="readonly"/>
+                <attribute name="invisible"/>
+                <attribute name="required"/>
+                <attribute name="readonly"/>
             </xpath>
             <xpath expr="//field[@name='date_order']" position="after">
-              <xpath expr="//field[@name='expected_date']" position="move"/>
-              <field name="oci_bdc_dateexpsht"/>
+                <xpath expr="//field[@name='expected_date']" position="move"/>
+                <field name="oci_bdc_dateexpsht"/>
             </xpath>
             <xpath expr="//field[@name='payment_term_id']" position="before">
-              <field name="oci_sale_priceliste_enddate"/>
+                <field name="oci_sale_priceliste_enddate"/>
             </xpath>
             <xpath expr="//field[@name='payment_term_id']" position="after">
-              <field name="saleorder_order_carrier"/>
-              <field name="oci_bdc_transporteur" />
+                <field name="saleorder_order_carrier"/>
+                <field name="oci_bdc_transporteur"/>
             </xpath>
             <!-- <xpath expr="//field[@name='carrier_id']" position="attributes">
               <attribute name="attrs">{"readonly": [["state","not in",["draft","sent"]]]}</attribute>
               <attribute name="invisible">1</attribute>
             </xpath> -->
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
-              <group name="group_BXZQi" string="/!\ ATTENTION /!\">
-                <field name="oci_chplie_customercomment1"/>
-              </group>
+                <group name="group_BXZQi" string="/!\ ATTENTION /!\">
+                    <field name="oci_chplie_customercomment1"/>
+                </group>
             </xpath>
             <xpath expr="//page[@name='order_lines']//tree[1]/field[@name='product_id']" position="after">
-              <field name="oci_codedouane" invisible="1"/>
+                <field name="oci_codedouane" invisible="1"/>
             </xpath>
-            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='name']" position="after">
-              <field name="oci_bdc_comptecompt" string="Account"/>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='name']"
+                   position="after">
+                <field name="oci_bdc_comptecompt" string="Account"/>
             </xpath>
-            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='product_uom']" position="attributes">
-              <attribute name="required"> not display_type</attribute>
-              <attribute name="readonly">1</attribute>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='product_uom']"
+                   position="attributes">
+                <attribute name="required">not display_type</attribute>
+                <attribute name="readonly">1</attribute>
             </xpath>
             <!-- <xpath expr="//field[@name='lot_count']" position="attributes">
               <attribute name="string">Nb lots</attribute>
             </xpath> -->
             <xpath expr="//page[@name='order_lines']//tree[1]/field[@name='price_subtotal']" position="after">
-              <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='tax_id']" position="move"/>
-              <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_tax']" position="move"/>
+                <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='tax_id']"
+                       position="move"/>
+                <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_tax']"
+                       position="move"/>
             </xpath>
             <!-- <xpath expr="//field[@name='comment']" position="attributes">
               <attribute name="help">Commentaire de devis / commande</attribute>
             </xpath> -->
 
 
-
             <!-- Start from here tomorrow -->
             <xpath expr="//field[@name='effective_date']" position="attributes">
-              <!-- <attribute name="attrs">{}</attribute> -->
+                <!-- <attribute name="attrs">{}</attribute> -->
             </xpath>
             <xpath expr="//field[@name='require_payment']" position="after">
-              <field name="purchase_order_reference" invisible="1" readonly="0" required="0"/>
+                <field name="purchase_order_reference" invisible="1" readonly="0" required="0"/>
             </xpath>
             <xpath expr="//page[@name='other_information']//field[@name='invoice_status']" position="attributes">
-              <attribute name="invisible">state not in ["sale","done"]</attribute>
-              <attribute name="readonly"/>
+                <attribute name="invisible">state not in ["sale","done"]</attribute>
+                <attribute name="readonly"/>
             </xpath>
             <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
-              <page name="page_xXWnD" string="Equipement">
-                <group name="group_xXWnD">
-                  <group name="group_xXWnD_left">
-                    <field name="field_aueov_id"/>
-                  </group>
-              </group>
-              </page>
+                <page name="page_xXWnD" string="Equipement">
+                    <group name="group_xXWnD">
+                        <group name="group_xXWnD_left">
+                            <field name="field_aueov_id"/>
+                        </group>
+                    </group>
+                </page>
             </xpath>
             <xpath expr="//page[@name='order_lines']//tree[1]/field[@name='tax_id']" position="attributes">
-              <attribute name="string">TVA applicable</attribute>
+                <attribute name="string">TVA applicable</attribute>
             </xpath>
-            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_tax']" position="attributes">
-              <!-- <attribute name="attrs">{}</attribute> -->
-              <attribute name="invisible"/>
-              <attribute name="string">TVA</attribute>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_tax']"
+                   position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="invisible"/>
+                <attribute name="string">TVA</attribute>
             </xpath>
             <xpath expr="//field[@name='expected_date']" position="attributes">
-              <!-- <attribute name="attrs">{}</attribute> -->
-              <attribute name="groups"/>
+                <attribute name="groups"/>
             </xpath>
-            <xpath expr="//field[@name='date_order']" position="attributes">
-              <!-- <attribute name="attrs"/> -->
+        </field>
+    </record>
+    <record id="ibjb_studio_inherit_sale_order_view_search_inherit_quotation" model='ir.ui.view'>
+        <field name='name'>sale.order.search.inherit</field>
+        <field name='model'>sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//search[1]/field[@name='name']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']" position="after">
+                <field name="name"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="ibjb_studio_inherit_view_sales_order_filter" model='ir.ui.view'>
+        <field name='name'>sale.order.filter.inherit</field>
+        <field name='model'>sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//filter[@name='order_month']" position="after">
+                <filter context="{'group_by': 'partner_invoice_id'}" name="partner_invoice_id"
+                        string="Adresse de facturation"/>
+                <filter context="{'group_by': 'invoice_status'}" name="invoice_status"
+                        string="Etat de la Facture"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="ibjb_studio_inherit_view_quotation_tree" model='ir.ui.view'>
+        <field name='name'>sale.order.tree.inherit</field>
+        <field name='model'>sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//tree" position="attributes">
+                <attribute name="banner_route">/sales/sale_quotation_onboarding_panel</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="ibjb_studio_inherit_view_quotation_tree_with_onboarding" model='ir.ui.view'>
+        <field name='name'>sale.order.tree.quotation.inherit</field>
+        <field name='model'>sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='amount_total']" position="replace">
+                <field name="amount_untaxed"/>
+            </xpath>
+            <xpath expr="//field[@name='create_date']" position="after">
+                <field name="date_order"/>
+                <field name="oci_bdc_dateexpsht"/>
+                <field name="oci_saleorder_codetiers"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="invoice_status"/>
+                <field name="create_date"/>
+                <field name="create_uid"/>
+                <field name="subscription_id"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="ibjb_studio_inherit_view_order_tree" model='ir.ui.view'>
+        <field name='name'>sale.order.tree.order.inherit</field>
+        <field name='model'>sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='date_order']" position="after">
+                <field name="oci_bdc_dateexpsht"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="client_order_ref"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="amount_untaxed" widget="monetary"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_total']" position="attributes">
+                <attribute name="sum"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_status']" position="after">
+                <field name="create_date"/>
+                <field name="create_uid"/>
+                <field name="subscription_id"/>
             </xpath>
         </field>
     </record>

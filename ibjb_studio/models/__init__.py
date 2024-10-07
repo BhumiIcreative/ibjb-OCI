@@ -28,3 +28,4 @@ from . import family
 from . import stock_lot
 from . import product
 from . import lot_motif_retrait
+from . import immuno_hemato

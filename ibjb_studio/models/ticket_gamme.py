@@ -8,4 +8,4 @@ class TicketGamme(models.Model):
     _name = 'ticket.gamme'
     _description = 'Ticket Gamme'
 
-    name = fields.Char()
+    name = fields.Char('Name')

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="immuno_hemato_form_view" model="ir.ui.view">
+        <field name="name">immuno.hemato.form.view</field>
+        <field name="model">immuno.hemato</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="IMMUNO-HEMATO">
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" required="1"/>
+                        </h1>
+                    </div>
+                    <group name="group_73f85e">
+                        <group name="group_73f85e_left"/>
+                        <group name="group_73f85e_right"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_immuno_hemato" model="ir.actions.act_window">
+        <field name="name">Immuno hemato</field>
+        <field name="res_model">immuno.hemato</field>
+        <field name="view_mode">tree,form</field>
+        <field name="binding_type">action</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This is your new action ; by default, it contains a list view and a form view.
+            </p>
+            <p>
+                You can start customizing these screens by clicking on the Studio icon on the
+                top right corner (you can also customize this help message there).
+            </p>
+        </field>
+    </record>
+</odoo>

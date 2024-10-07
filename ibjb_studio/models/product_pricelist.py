@@ -69,3 +69,4 @@ class ProductTemplate(models.Model):
         for rec in self:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)
+

@@ -6,9 +6,87 @@
         <field name='model'>product.template</field>
         <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name='arch' type='xml'>
+            <xpath expr="//button[@name='action_view_sales']" position="after">
+                <button class="oe_stat_button" icon="fa-shopping-basket" type="action" name="745">
+                    <field name="product_tmpl_id_product_pricelist_item_count" string="Liste(s) de prix"
+                           widget="statinfo"/>
+                </button>
+            </xpath>
+            <xpath expr="//page[@name='general_information']/group[1]/group[@name='group_general']/field[@name='detailed_type']"
+                   position="before">
+                <field name="is_delete"/>
+                <field name="qty_av"/>
+            </xpath>
             <xpath expr="//field[@name='categ_id']" position="after">
-                <field name="oci_famille_article_id"/>
+                <field name="oci_famille_article_id" required="1"/>
+            </xpath>
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="article_codedouane"/>
+            </xpath>
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="immuno_hemato_id"/>
+                <field name="gamme_article_ids">
+                    <tree string="oci_ticket_gamme">
+                        <field name="name"/>
+                    </tree>
+                </field>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+<!--                <attribute name="readonly">valuation.property_valuation == 'real_time'</attribute>-->
+                <!--                <attribute name="invisible">categ_id == 'CMUP' or 'Produit Fini'</attribute>-->
+            </xpath>
+            <xpath expr="//field[@name='property_account_income_id']" position="attributes">
+                <attribute name="required">sale_ok == True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='property_account_expense_id']" position="attributes">
+                <attribute name="required">purchase_ok == True</attribute>
             </xpath>
         </field>
     </record>
+    <record id="ibjb_inherit_product_template_search_form_view_stock" model='ir.ui.view'>
+        <field name='name'>product.template.search.form.view.stock</field>
+        <field name='model'>product.template</field>
+        <field name="inherit_id" ref="stock.product_template_search_form_view_stock"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='warehouse_id']" position="after">
+                <field name="default_code"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="ibjb_oci_inherit_product_template_tree_view" model='ir.ui.view'>
+        <field name='name'>product.template.tree.view</field>
+        <field name='model'>product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name='arch' type='xml'>
+            <xpath expr="//field[@name='product_variant_count']" position="before">
+                <field name="id"/>
+            </xpath>
+            <xpath expr="//field[@name='uom_id']" position="after">
+                <field name="uom_po_id"/>
+                <field name="weight"/>
+                <field name="volume"/>
+                <field name="property_account_expense_id" groups="account.group_account_manager"/>
+                <field name="property_account_income_id" groups="account.group_account_manager"/>
+                <field name="create_date"/>
+                <field name="create_uid"/>
+                <field name="write_date"/>
+                <field name="write_uid"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_article_by_product_template" model="ir.actions.act_window">
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_oci_famille_article':
+            active_id,'default_oci_famille_article': active_id}
+        </field>
+        <field name="domain">[('oci_famille_article', '=', active_id)]</field>
+        <field name="name">Article</field>
+        <field name="limit">80</field>
+        <field name="res_model">product.template</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
 </odoo>

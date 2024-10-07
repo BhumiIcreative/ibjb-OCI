@@ -72,6 +72,7 @@
         "views/maintenance_request_views.xml",
         "views/oci_helpdesk_type_ticket.xml",
         "views/family_views.xml",
+        "views/immuno_hemato_views.xml",
         "views/product_template_views.xml",
         "views/stock_quant_views.xml",
         "views/lot_motif_retrait_views.xml",
