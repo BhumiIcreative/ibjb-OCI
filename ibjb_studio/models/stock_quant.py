@@ -48,14 +48,6 @@ class StockQuant(models.Model):
         translate=True,
         store=True
     )
-
-    ref_interne_1 = fields.Char(
-        related="product_id.default_code",
-        readonly=True,
-        store=True,
-        copy=False,
-    )
-
     ref_interne_1 = fields.Char(
         related="product_id.default_code",
         string="ref_interne",

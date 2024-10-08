@@ -56,19 +56,6 @@ class MaintenanceEquipment(models.Model):
             [("field_aueov_id", "in", self.ids)]
         )
 
-    def action_view_sale_order(self):
-        """
-            Action to view Sale Orders related to the current record.
-        """
-        sale_order = self.env["sale.order"].search([("field_aueov_id", "in", self.ids)])
-        return {
-            "type": "ir.actions.act_window",
-            "name": _("Sales"),
-            "res_model": "sale.order",
-            "view_mode": "tree,form",
-            "domain": [("id", "in", sale_order.ids)],
-        }
-
     def _compute_sale_subscription_count(self):
         """
             Compute the number of Sale Subscriptions associated with the current record.
