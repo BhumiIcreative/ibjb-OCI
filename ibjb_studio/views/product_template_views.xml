@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- form view -->
+    <!--Inheriting the existing form view for product.template-->
     <record id="ibjb_oci_product_template_only_form_view" model='ir.ui.view'>
         <field name='name'>product.template.form.view</field>
         <field name='model'>product.template</field>
         <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name='arch' type='xml'>
             <xpath expr="//button[@name='action_view_sales']" position="after">
-                <button class="oe_stat_button" icon="fa-shopping-basket" type="action" name="745">
+                <button class="oe_stat_button" icon="fa-shopping-basket" type="action"
+                        name="%(action_product_pricelist_item)d">
                     <field name="product_tmpl_id_product_pricelist_item_count" string="Liste(s) de prix"
                            widget="statinfo"/>
                 </button>
@@ -46,6 +47,7 @@
             </xpath>
         </field>
     </record>
+    <!--Inheriting the existing search view for product.template-->
     <record id="ibjb_inherit_product_template_search_form_view_stock" model='ir.ui.view'>
         <field name='name'>product.template.search.form.view.stock</field>
         <field name='model'>product.template</field>
@@ -56,6 +58,7 @@
             </xpath>
         </field>
     </record>
+    <!--Inheriting the existing tree view for product.template-->
     <record id="ibjb_oci_inherit_product_template_tree_view" model='ir.ui.view'>
         <field name='name'>product.template.tree.view</field>
         <field name='model'>product.template</field>
@@ -77,6 +80,7 @@
             </xpath>
         </field>
     </record>
+    <!-- This record defines an action window for displaying product templates related to an article -->
     <record id="action_article_by_product_template" model="ir.actions.act_window">
         <field eval="False" name="binding_model_id"/>
         <field name="binding_type">action</field>
@@ -91,5 +95,4 @@
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">tree,form</field>
     </record>
-
 </odoo>

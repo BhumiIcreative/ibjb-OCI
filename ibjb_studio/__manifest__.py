@@ -77,6 +77,7 @@
         "views/stock_quant_views.xml",
         "views/lot_motif_retrait_views.xml",
         "views/stock_lot_views.xml",
+        "views/product_pricelist_item_views.xml",
         "report/product_pricelist_copy_1.xml",
         "report/transfer_report_1.xml",
         "report/transfer_report_2.xml",

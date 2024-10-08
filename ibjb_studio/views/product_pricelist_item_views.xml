@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--Inherited the existing tree view for product pricelist item-->
+    <record id="inherit_product_pricelist_item_tree_view" model="ir.ui.view">
+        <field name="name">inherit_product_pricelist_item_tree_view</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_end']" position="after">
+                <field name="write_date"/>
+                <field name="write_uid"/>
+            </xpath>
+        </field>
+    </record>
+    <!--Inherited the existing tree view for product pricelist item-->
+    <record id="inherit_product_pricelist_item_form_view" model="ir.ui.view">
+        <field name="name">inherit_product_pricelist_item_tree_view</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='applied_on']" position="before">
+                <field name="pricelist_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action window for displaying price list items related to a product template -->
+    <record id="action_product_pricelist_item" model="ir.actions.act_window">
+        <field name="context">{'search_default_product_tmpl_id': active_id,'default_product_tmpl_id': active_id}</field>
+        <field name="domain">[('product_tmpl_id', '=', active_id)]</field>
+        <field eval="[(6, 0, [])]" name="groups_id"/>
+        <field name="limit">80</field>
+        <field name="name">Liste(s) de prix</field>
+        <field name="res_model">product.pricelist.item</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

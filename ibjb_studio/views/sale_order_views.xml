@@ -96,10 +96,8 @@
               <attribute name="help">Commentaire de devis / commande</attribute>
             </xpath> -->
 
-
-            <!-- Start from here tomorrow -->
             <xpath expr="//field[@name='effective_date']" position="attributes">
-                <!-- <attribute name="attrs">{}</attribute> -->
+                <attribute name="readonly"/>
             </xpath>
             <xpath expr="//field[@name='require_payment']" position="after">
                 <field name="purchase_order_reference" invisible="1" readonly="0" required="0"/>
@@ -131,6 +129,7 @@
             </xpath>
         </field>
     </record>
+    <!--Inherited the existing search view for sale order-->
     <record id="ibjb_studio_inherit_sale_order_view_search_inherit_quotation" model='ir.ui.view'>
         <field name='name'>sale.order.search.inherit</field>
         <field name='model'>sale.order</field>
@@ -144,6 +143,7 @@
             </xpath>
         </field>
     </record>
+    <!--Inherited the existing filter view for sale order-->
     <record id="ibjb_studio_inherit_view_sales_order_filter" model='ir.ui.view'>
         <field name='name'>sale.order.filter.inherit</field>
         <field name='model'>sale.order</field>
@@ -157,6 +157,7 @@
             </xpath>
         </field>
     </record>
+    <!--Inherited the existing tree quotation view for sale order-->
     <record id="ibjb_studio_inherit_view_quotation_tree" model='ir.ui.view'>
         <field name='name'>sale.order.tree.inherit</field>
         <field name='model'>sale.order</field>
@@ -167,6 +168,7 @@
             </xpath>
         </field>
     </record>
+        <!--Inherited the existing tree quotation view for sale order-->
     <record id="ibjb_studio_inherit_view_quotation_tree_with_onboarding" model='ir.ui.view'>
         <field name='name'>sale.order.tree.quotation.inherit</field>
         <field name='model'>sale.order</field>
@@ -191,6 +193,7 @@
             </xpath>
         </field>
     </record>
+    <!--Inherited the existing tree order view for sale order-->
     <record id="ibjb_studio_inherit_view_order_tree" model='ir.ui.view'>
         <field name='name'>sale.order.tree.order.inherit</field>
         <field name='model'>sale.order</field>
