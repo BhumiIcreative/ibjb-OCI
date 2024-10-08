@@ -61,7 +61,6 @@ class StockQuant(models.Model):
         string="ref_interne",
         store=True,
         readonly=True,
-        translate=False,
     )
 
     field_WfwqV = fields.Datetime(
@@ -69,7 +68,6 @@ class StockQuant(models.Model):
         string="Expiration date",
         readonly=True,
         store=True,
-        copy=False,
         help="This is the date on which the goods with this Serial Number may become dangerous and must not be consumed.",
     )
 

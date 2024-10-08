@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- Action to quarantine new batch -->
     <record id="action_server_quarantine_new_batch" model="ir.actions.server">
         <field name="name">Quarantine new batch</field>
         <field name="model_id" ref="stock.model_stock_lot"/>
@@ -10,6 +11,7 @@
         <field name="state">object_write</field>
     </record>
 
+    <!-- Action for expiry date alert -->
     <record id="action_server_expiry_date_alert" model="ir.actions.server">
         <field eval="False" name="binding_model_id"/>
         <field name="binding_type">action</field>
@@ -20,6 +22,7 @@
         <field name="state">next_activity</field>
     </record>
 
+    <!-- Duplicate action for expiry date alert (possible error) -->
     <record id="action_server_duplicate_expiry_date_alert" model="ir.actions.server">
         <field eval="False" name="binding_model_id"/>
         <field name="binding_type">action</field>

@@ -418,7 +418,6 @@ class MaintenanceRequest(models.Model):
         store=True,
     )
 
-
     def Update_maintenance_request_studio_fields(self):
         """
         server action code to migrate Product pricelist items studio fields data to custom fields.
