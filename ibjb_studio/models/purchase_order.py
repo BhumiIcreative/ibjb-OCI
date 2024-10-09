@@ -20,6 +20,7 @@ class PurchaseOrder(models.Model):
         copy=False,
         ondelete="set null",
     )
+    oci_achat_devis_codetiers = fields.Char("Code tiers",related="partner_id.customer_code")
 
     def Update_purchase_order_studio_fields(self):
         """

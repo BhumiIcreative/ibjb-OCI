@@ -1,10 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <record id="inherit_view_res_partner_kanban_view" model="ir.ui.view">
+        <field name="name">view.purchase.order.filter.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']"
+                   position="after">
+                <field name="customer_code"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="inherit_view_partner_tree" model="ir.ui.view">
+        <field name="name">view.res.partner.tree.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="company_type"/>
+                <field name="type"/>
+                <field name="customer_code"/>
+            </xpath>
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="is_suivi_1"/>
+                <field name="is_sensible_2"/>
+                <field name="street" string="Adresse"/>
+                <field name="street2" string="Complément"/>
+                <field name="zip" string="Code Postal"/>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="property_product_pricelist"/>
+                <field name="create_date"/>
+                <field name="create_uid"/>
+                <field name="write_uid"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="inherit_view_partner_form" model="ir.ui.view">
+        <field name="name">inherit.view.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_open_employees']" position="after">
+                <button class="oe_stat_button" icon="fa-cube" type="action"
+                        name="%(action_equipement_by_maintenance_equipment)d">
+                    <field name="proprietaire_maintenance_equipment_count" string="Equipement"
+                           widget="statinfo"/>
+                </button>
+                <!--                <button class="oe_stat_button" icon="fa-briefcase" type="action" name="691">-->
+                <!--                    <field name="x_x_studio_maintenance_contact__maintenance_request_count" string="Maintenance"-->
+                <!--                           widget="statinfo"/>-->
+                <!--                </button>-->
+                <!--                <button class="oe_stat_button" icon="fa-cubes" type="action" name="757">-->
+                <!--                    <field name="x_name__product_supplierinfo_count" string="Prix fournisseur" widget="statinfo"/>-->
+                <!--                </button>-->
+                <!--                <button class="oe_stat_button" icon="fa-credit-card" type="action" name="762">-->
+                <!--                    <field name="x_partner_id__boy_subscriptions_count" string="Abonnement" widget="statinfo"/>-->
+                <!--                </button>-->
+                <!--                <button class="oe_stat_button" icon="fa-file-o" type="action" name="809">-->
+                <!--                    <field name="x_x_studio_oci_listprice_nomclient__product_pricelist_count" string="Liste de prix"-->
+                <!--                           widget="statinfo"/>-->
+                <!--                </button>-->
+            </xpath>
+        </field>
+    </record>
+    <record id="inherit_customer_statements_tree_view" model="ir.ui.view">
+        <field name="name">view.purchase.order.filter.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account_followup.customer_statements_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='followup_status']" position="after">
+                <field name="comment"/>
+            </xpath>
+        </field>
+    </record>
+
     <!-- Add a new submenu under the contacts configuration menu -->
     <record id="res_partner_gamme_menu" model="ir.ui.menu">
         <field name="name">Gamme</field>
         <field name="parent_id" ref="contacts.res_partner_menu_config"/>
-        <field name="action" ref="action_helpdesk_source"/>  <!-- Add the appropriate action -->
+        <field name="action" ref="action_helpdesk_source"/> <!-- Add the appropriate action -->
         <field name="sequence">5</field>
     </record>
 </odoo>

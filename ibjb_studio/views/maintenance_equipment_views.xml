@@ -123,4 +123,18 @@
         <field name="parent_id" ref="maintenance.menu_maintenance_configuration"/>
         <field name="sequence">1</field>
     </record>
+    <record id="action_equipement_by_maintenance_equipment" model="ir.actions.act_window">
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_proprietaire':
+            active_id,'default_proprietaire': active_id}
+        </field>
+        <field name="domain">[('proprietaire_id', '=', active_id)]</field>
+        <field name="name">Article</field>
+        <field name="limit">80</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="target">current</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 </odoo>

@@ -1,94 +1,123 @@
 <?xml version="1.0"?>
 <odoo>
-    <data>
-        <!-- Search view -->
-        <record id="view_purchase_order_filter_inherit" model="ir.ui.view">
-            <field name="name">view.purchase.order.filter.inherit</field>
-            <field name="model">purchase.order</field>
-            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
-            <field name="arch" type="xml">
-                <xpath expr="//search[1]/field[@name='name']" position="before">
-                    <xpath expr="//field[@name='partner_id']" position="move"/>
-                </xpath>
-                <xpath expr="//group[@expand='0']" position="inside">
-                  <filter context="{'group_by': 'invoice_status'}" name="group_by_Mq1Zm" string="Etat de la Facturation"/>
-                </xpath>
-                <xpath expr="//field[@name='partner_id']" position="attributes">
-                  <attribute name="operator"/>
-                </xpath>
-            </field>
-        </record>
+    <!-- Search view -->
+    <record id="view_purchase_order_filter_inherit" model="ir.ui.view">
+        <field name="name">view.purchase.order.filter.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search[1]/field[@name='name']" position="before">
+                <xpath expr="//field[@name='partner_id']" position="move"/>
+            </xpath>
+            <xpath expr="//group[@expand='0']" position="inside">
+                <filter context="{'group_by': 'invoice_status'}" name="group_by_Mq1Zm"
+                        string="Etat de la Facturation"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="operator"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_purchase_order_tree" model="ir.ui.view">
+        <field name="name">view.purchase.order.tree.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <xpath expr="//field[@name='state']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_total']" position="after">
+<!--                <field name="subscription_id"/>-->
+                <field name="create_date"/>
+                <field name="create_uid"/>
+                <field name="write_uid"/>
+            </xpath>
+        </field>
+    </record>
 
-        <!-- Tree view -->
-        <record id="purchase.purchase_order_view_tree" model="ir.ui.view">
-            <field name="name">purchase.order.view.tree</field>
-            <field name="model">purchase.order</field>
-            <field name="mode">primary</field>
-            <field name="arch" type="xml">
-            <tree decoration-muted="state == 'cancel'" decoration-info="invoice_status == 'to invoice'" string="Commande fournisseur" class="o_purchase_order" sample="1">
-                    <header>
-                        <button name="action_create_invoice" type="object" string="Create Bills"/>
-                    </header>
-                    <field name="priority" optional="show" widget="priority" nolabel="1"/>
-                    <field name="partner_ref" optional="hide"/>
-                    <field name="name" string="Référence" readonly="1" decoration-bf="1" decoration-info="state in ('draft','sent')"/>
-                    <field name="date_approve" widget="date" column_invisible="context.get('quotation_only', False)" optional="show"/>
-                    <field name="partner_id" readonly="state in ['cancel', 'done', 'purchase']"/>
-                    <field name="state" column_invisible="True"/>
-                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="show" readonly="state in ['cancel', 'done', 'purchase']"/>
-                    <field name="company_id" groups="!base.group_multi_company" column_invisible="True" readonly="state in ['cancel', 'done', 'purchase']"/>
-                    <field name="user_id" widget="many2one_avatar_user" optional="show"/>
-                    <field name="date_order" column_invisible="not context.get('quotation_only', False)" readonly="state in ['cancel', 'done', 'purchase']" optional="show"/>
-                    <field name="activity_ids" widget="list_activity" optional="show"/>
-                    <field name="origin" optional="show"/>
-                    <field name="amount_untaxed" sum="Montant total hors taxe" string="Hors taxe" widget="monetary" optional="hide"/>
-                    <field name="amount_total" sum="Montant total" widget="monetary" optional="show" decoration-bf="1"/>
-                    <field name="create_date"/>
-                    <field name="create_uid"/>
-                    <field name="write_uid"/>
-                    <field name="currency_id" column_invisible="True" readonly="state in ['cancel', 'done', 'purchase']"/>
-                    <field name="invoice_status" widget="badge" decoration-success="invoice_status == 'invoiced'" decoration-info="invoice_status == 'to invoice'" optional="show"/>
-                    <field name="date_planned" column_invisible="context.get('quotation_only', False)" optional="show"/>
-                </tree>
-            </field>
-        </record>
+    <!-- Tree view -->
+    <record id="purchase.purchase_order_view_tree" model="ir.ui.view">
+        <field name="name">purchase.order.view.tree</field>
+        <field name="model">purchase.order</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="state == 'cancel'" decoration-info="invoice_status == 'to invoice'"
+                  string="Commande fournisseur" class="o_purchase_order" sample="1">
+                <header>
+                    <button name="action_create_invoice" type="object" string="Create Bills"/>
+                </header>
+                <field name="priority" optional="show" widget="priority" nolabel="1"/>
+                <field name="partner_ref" optional="hide"/>
+                <field name="name" string="Référence" readonly="1" decoration-bf="1"
+                       decoration-info="state in ('draft','sent')"/>
+                <field name="date_approve" widget="date" column_invisible="context.get('quotation_only', False)"
+                       optional="show"/>
+                <field name="partner_id" readonly="state in ['cancel', 'done', 'purchase']"/>
+                <field name="state" column_invisible="True"/>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"
+                       optional="show" readonly="state in ['cancel', 'done', 'purchase']"/>
+                <field name="company_id" groups="!base.group_multi_company" column_invisible="True"
+                       readonly="state in ['cancel', 'done', 'purchase']"/>
+                <field name="user_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="date_order" column_invisible="not context.get('quotation_only', False)"
+                       readonly="state in ['cancel', 'done', 'purchase']" optional="show"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="origin" optional="show"/>
+                <field name="amount_untaxed" sum="Montant total hors taxe" string="Hors taxe" widget="monetary"
+                       optional="hide"/>
+                <field name="amount_total" sum="Montant total" widget="monetary" optional="show" decoration-bf="1"/>
+                <field name="create_date"/>
+                <field name="create_uid"/>
+                <field name="write_uid"/>
+                <field name="currency_id" column_invisible="True"
+                       readonly="state in ['cancel', 'done', 'purchase']"/>
+                <field name="invoice_status" widget="badge" decoration-success="invoice_status == 'invoiced'"
+                       decoration-info="invoice_status == 'to invoice'" optional="show"/>
+                <field name="date_planned" column_invisible="context.get('quotation_only', False)" optional="show"/>
+            </tree>
+        </field>
+    </record>
 
-        <!-- Form view -->
-        <record id="purchase_order_form_inherit" model="ir.ui.view">
-            <field name="name">purchase.order.form.inherit</field>
-            <field name="model">purchase.order</field>
-            <field name="inherit_id" ref="purchase.purchase_order_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//page[@name='products']//field[@name='invoice_lines']" position="replace">
-                </xpath>
-                <xpath expr="//page[@name='products']//field[@name='price_unit']" position="attributes">
-                    <attribute name="readonly"/>
-                </xpath>
-                <xpath expr="//sheet[1]/group[1]/group[1]/field[3]" position="attributes">
-                    <attribute name="force_save"/>
-                </xpath>
-                <xpath expr="//field[@name='partner_id']" position="after">
-                  <field name="oci_achat_devis_codetiers" string="Code tiers"/>
-                </xpath>
-                <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='currency_id']" position="after">
-                  <xpath expr="//field[@name='fiscal_position_id']" position="move"/>
-                </xpath>
-                <xpath expr="//field[@name='origin']" position="after">
-                  <xpath expr="//field[@name='user_id']" position="move"/>
-                  <field name="oci_achats_acheteur" string="Acheteur"/>
-                </xpath>
-                <xpath expr="//field[@name='sequence']" position="after">
-                  <field name="id" attrs="{}" invisible="1"/>
-                </xpath>
-                <xpath expr="//field[@name='order_line']/tree[1]/field[@name='name']" position="after">
-                  <field name="oci_product_reference" string="Compte"/>
-                </xpath>
-                <xpath expr="//field[@name='order_line']/tree[1]/field[@name='date_planned']" position="attributes">
-                  <attribute name="required"/>
-                </xpath>
-            </field>
-        </record>
-
-
-    </data>
+    <!-- Form view -->
+    <record id="purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='products']//field[@name='invoice_lines']" position="replace">
+            </xpath>
+            <xpath expr="//page[@name='products']//field[@name='price_unit']" position="attributes">
+                <attribute name="readonly"/>
+            </xpath>
+            <xpath expr="//sheet[1]/group[1]/group[1]/field[3]" position="attributes">
+                <attribute name="force_save"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="oci_achat_devis_codetiers" string="Code tiers"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='currency_id']" position="after">
+                <xpath expr="//field[@name='fiscal_position_id']" position="move"/>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <xpath expr="//field[@name='user_id']" position="move"/>
+                <field name="oci_achats_acheteur" string="Acheteur"/>
+            </xpath>
+            <xpath expr="//field[@name='sequence']" position="after">
+                <field name="id" column_invisible="1"/>
+            </xpath>
+            <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='order_line']/tree[1]/field[@name='product_id']"
+                   position="attributes">
+                <attribute name="readonly">state in ('purchase','to approve','done','cancel')</attribute>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree[1]/field[@name='name']" position="after">
+                <field name="oci_product_reference"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree[1]/field[@name='date_planned']" position="attributes">
+                <attribute name="required"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="oci_achat_devis_codetiers"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>

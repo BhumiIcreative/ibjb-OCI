@@ -14,7 +14,7 @@ class Partner(models.Model):
         related="lang",
         string="Language",
         help=(
-                "All emails and documents sent to this contact will be translated into this language."
+            "All emails and documents sent to this contact will be translated into this language."
         ),
         store=True,
         copy=False,
@@ -24,21 +24,40 @@ class Partner(models.Model):
     tva = fields.Char(string="TVA", copy=False)
     oci_contact_transporteur = fields.Selection(
         selection=[
-            ("DHL","DHL"),
-            ("DPD","DPD"),
-            ("TNT","TNT"),
-            ("TSE","TSE"),
-            ("ENLEVEMENT","ENLEVEMENT"),
-            ("CHRONOPOST","CHRONOPOST"),
-            ("CHRONOPOST INTERNATIONAL","CHRONOPOST INTERNATIONAL"),
-            ("TNT INTERNATIONAL","TNT INTERNATIONAL"),
-            ("Transporteur client / Customer carrier","Transporteur client / Customer carrier")
+            ("DHL", "DHL"),
+            ("DPD", "DPD"),
+            ("TNT", "TNT"),
+            ("TSE", "TSE"),
+            ("ENLEVEMENT", "ENLEVEMENT"),
+            ("CHRONOPOST", "CHRONOPOST"),
+            ("CHRONOPOST INTERNATIONAL", "CHRONOPOST INTERNATIONAL"),
+            ("TNT INTERNATIONAL", "TNT INTERNATIONAL"),
+            ("Transporteur client / Customer carrier", "Transporteur client / Customer carrier")
         ],
         copy=False,
         string="Transportor",
         store=True,
         tracking=True
     )
+    customer_code = fields.Char("Code Tiers", copy=False)
+    is_suivi_1 = fields.Boolean("Suivi", copy=False)
+    is_sensible_2 = fields.Boolean("Sensible", copy=False)
+    proprietaire_maintenance_equipment_count = fields.Integer("Propriétaire count",
+                                                              compute='_compute_maintenance_count')
+
+    def _compute_maintenance_count(self):
+        for rec in self:
+            rec.proprietaire_maintenance_equipment_count = 0
+            results = self.env['maintenance.equipment'].read_group(
+                [('proprietaire_id', 'in', self.ids)],
+                ['proprietaire_id'],
+                ['proprietaire_id']
+            )
+            print("\n\n\nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",results)
+            if results:
+                equipment_count_dict = {res['proprietaire_id'][0]: res['proprietaire_id_count'] for res in
+                                        results}
+                rec.proprietaire_maintenance_equipment_count = equipment_count_dict.get(rec.id, 0)
 
     def Update_partner_studio_fields(self):
         """
