@@ -22,6 +22,9 @@
         </field>
     </record>
 
+     <!--
+        Action window for managing helpdesk ticket types, with both tree and form views.
+    -->
     <record id="action_type_de_ticket" model="ir.actions.act_window">
         <field name="name">Type de ticket</field>
         <field name="res_model">oci.helpdesk.type.ticket</field>
@@ -38,7 +41,9 @@
         <field name="limit">80</field>
     </record>
 
-
+    <!--
+        Menu item for accessing helpdesk ticket types, linked to the corresponding action.
+    -->
     <record id="menu_type_de_ticket" model="ir.ui.menu">
         <field name="action" ref="action_type_de_ticket"/>
         <field eval="False" name="active"/>

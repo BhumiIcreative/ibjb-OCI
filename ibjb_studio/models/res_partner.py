@@ -149,6 +149,7 @@ class Partner(models.Model):
             rec.oci_listprice_nomclient_product_pricelist_count = client_count_map.get(rec.id, 0)
 
     def Update_partner_studio_fields(self):
+        print('\n\n\n\nUpdate_partner_studio_fields',self)
         """
         server action code to migrate partners studio fields data to custom fields.
         """

@@ -64,23 +64,25 @@ class MaintenanceEquipment(models.Model):
             [('abonnement_equipement_id', 'in', self.ids), ('is_subscription', '=', True)]
         )
 
-    def Update_maintenance_equipment_studio_fields(self):
-        """
-            server action code to migrate Maintenance Equipment studio fields data to custom fields.
-        """
+    def update_maintenance_equipment_studio_fields(self):
+        print('\n\n\nself', self)
+
         migration_fields = {
             "x_x_studio_field_aueov__sale_order_count": "aueov_sale_order_count",
             "x_x_studio_abonnement_equipement__sale_subscription_count": "abonnement_equipement_sale_subscription_count",
             "x_studio_contrat_en_cours": "contrat_en_cours",
             "x_studio_date_fin_contrat": "date_fin_contrat",
             "x_studio_contrat_type": "contrat_type",
-            # "x_studio_contrats_1": "contrats_1_ids",
             "x_studio_client_utilisateur": "client_utilisateur_id",
             "x_studio_proprietaire": "proprietaire_id",
             "x_studio_field_ixm1S": "field_ixm1S_id",
             "x_studio_date_mise_jour": "date_mise_jour",
             "x_studio_date_de_vente": "date_de_vente",
         }
-        for rec in self:
+
+        maintenance_eqp_orders = self.search([])
+        print('\n\n\nmainten_orders', maintenance_eqp_orders)  # Fetch all sale  records
+        for rec in maintenance_eqp_orders:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)
+

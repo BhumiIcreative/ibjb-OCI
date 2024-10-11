@@ -12,6 +12,8 @@
         </field>
     </record>
 
+
+   <!-- Action window to manage helpdesk ticket types, displaying both tree and form views.-->
     <record id="action_ticket_type" model="ir.actions.act_window">
         <field name="name">Type de ticket</field>
         <field name="res_model">helpdesk.ticket.type</field>

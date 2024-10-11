@@ -419,7 +419,8 @@ class MaintenanceRequest(models.Model):
     )
     maintenance_contact_id = fields.Many2one("res.partner", "Client")
 
-    def Update_maintenance_request_studio_fields(self):
+    def update_maintenance_request_studio_fields(self):
+        print('\n\n\nself',self)
         """
         server action code to migrate Product pricelist items studio fields data to custom fields.
         """
@@ -474,25 +475,27 @@ class MaintenanceRequest(models.Model):
             "x_studio_flacons_de_transport_2": "flacons_de_transport_2",
             "x_studio_flacons_de_transport_3": "flacons_de_transport_3",
             "x_studio_haut_bas_fragile_sur_carton": "haut_bas_fragile_sur_carton",
-            # "x_studio_maintenance_contact": "maintenance_contact",
-            # "x_studio_maintenance_contact_interlocuteur": "maintenance_contact_interlocuteur_id",
+            "x_studio_maintenance_contact": "maintenance_contact",
+            "x_studio_maintenance_contact_interlocuteur": "maintenance_contact_interlocuteur_id",
             "x_studio_maintenance_solution": "maintenance_solution",
             "x_studio_manuel_papier": "manuel_papier",
             "x_studio_oci_maint_date_enlev_client": "oci_maint_date_enlev_client",
             "x_studio_oci_maint_date_enlv_pret": "oci_maint_date_enlv_pret",
             "x_studio_oci_maint_date_envoi_client": "oci_maint_date_envoi_client",
             "x_studio_oci_maint_date_envoi_pret": "oci_maint_date_envoi_pret",
-            # "x_studio_oci_maintenance_liee": "oci_maintenance_liee_id",
+            "x_studio_oci_maintenance_liee": "oci_maintenance_liee_id",
             "x_studio_pret_de_matriel_": "pret_de_matriel",
             "x_studio_ri_complt_et_sign": "ri_complt_et_sign",
             "x_studio_ri_signe_3": "ri_signe_3",
             "x_studio_ri_signe_3_filename": "ri_signe_3_filename",
-            # "x_studio_sous_traitant": "sous_traitant_id",
+            "x_studio_sous_traitant": "sous_traitant_id",
             "x_studio_suivi_de_prt_": "suivi_de_prt",
             "x_studio_systme_conforme_aux_spcifications_fabricant": "systme_conforme_aux_spcifications_fabricant",
             "x_studio_fiche_transp_vierge_1_filename": "fiche_transp_vierge_1_filename",
         }
 
-        for rec in self:
+        mainten_orders = self.search([])
+        print('\n\n\nmainten_orders',mainten_orders)# Fetch all sale  records
+        for rec in mainten_orders:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update sale fields data</field>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">model.update_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="pricelist_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update pricelist fields data</field>
+        <field name="model_id" ref="model_product_pricelist"/>
+        <field name="state">code</field>
+        <field name="code">model.update_pricelist_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="pricelist_update_fields_cron_job_2" model="ir.cron">
+        <field name="name">Update sale order line fields data</field>
+        <field name="model_id" ref="model_sale_order"/>
+        <field name="state">code</field>
+        <field name="code">model.update_sale_order_line_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="maintence_request_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update maintenance request fields data</field>
+        <field name="model_id" ref="maintenance.model_maintenance_request"/>
+        <field name="state">code</field>
+        <field name="code">model.update_maintenance_request_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="maintenance_equipment_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update maintenance equipment fields data</field>
+        <field name="model_id" ref="maintenance.model_maintenance_equipment"/>
+        <field name="state">code</field>
+        <field name="code">model.update_maintenance_equipment_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="res_company_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update company fields data</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">model.update_company_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="helpdesk_ticket_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update Helpdesk Ticket Fields Data</field>
+        <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
+        <field name="state">code</field>
+        <field name="code">model.update_helpdesk_ticket_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="hr_attendance_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update HR Attendance Fields Data</field>
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+        <field name="state">code</field>
+        <field name="code">model.update_hr_attendance_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="stock_picking_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update Stock Picking Fields Data</field>
+        <field name="model_id" ref="stock.model_stock_picking"/>
+        <field name="state">code</field>
+        <field name="code">model.update_stock_picking_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+    <record id="stock_lot_update_fields_cron_job" model="ir.cron">
+        <field name="name">Update Stock Lot Fields Data</field>
+        <field name="model_id" ref="stock.model_stock_lot"/>
+        <field name="state">code</field>
+        <field name="code">model.update_stock_lot_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+    </record>
+
+
+    <record id="ir_cron_product_template_migration" model="ir.cron">
+        <field name="name">Migrate Product Template Fields</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_product_template_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="ir_cron_ticket_gamme_migration" model="ir.cron">
+        <field name="name">Migrate Ticket Gamme Fields</field>
+        <field name="model_id" ref="ibjb_studio.model_ticket_gamme"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_ticket_gamme_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active" eval="True"/>
+    </record>
+
+    <record id="ir_cron_stock_move_migration" model="ir.cron">
+        <field name="name">Migrate Stock Move Studio Fields</field>
+        <field name="model_id" ref="stock.model_stock_move"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_stock_move_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active" eval="True"/>
+    </record>
+
+
+    <record id="ir_cron_service_data_migration" model="ir.cron">
+        <field name="name">Migrate Service Data</field>
+        <field name="model_id" ref="ibjb_studio.model_service_service"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_service_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active" eval="True"/>
+    </record>
+
+
+    <record id="ir_cron_regroupement_migration" model="ir.cron">
+        <field name="name">Migrate Regroupement Fields</field>
+        <field name="model_id" ref="ibjb_studio.model_regroupement_regroupement"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_regroupement_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active" eval="True"/>
+    </record>
+
+</odoo>
+

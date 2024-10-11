@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- Server action to set 'ouvert_le' date if empty -->
     <record id="action_update_opened_date_if_empty_1" model="ir.actions.server">
         <field name="name">SHIFT Open By If Empty</field>
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
@@ -10,6 +11,7 @@
         <field name="code">record[("ouvert_le")] = record.create_date.date()</field>
     </record>
 
+    <!-- Server action to update 'ouvert_par_id' with creator if empty -->
     <record id="action_update_opened_by_if_empty_2" model="ir.actions.server">
         <field name="name">Update opened by svide</field>
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
@@ -20,6 +22,7 @@
         <field name="code">record[("ouvert_par_id")] = record.create_uid</field>
     </record>
 
+    <!-- Server action to clear the closing date -->
     <record id="action_clear_close_date" model="ir.actions.server">
         <field name="name">Dumping the Closing Date</field>
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
@@ -30,6 +33,7 @@
         <field name="code">record[("close_date")] = False</field>
     </record>
 
+    <!-- Server action to set 'ouvert_par_id' to creator at creation -->
     <record id="action_set_opened_by_creator_if_empty" model="ir.actions.server">
         <field name="name">Opened by creator if empty at creation</field>
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
@@ -40,6 +44,7 @@
         <field name="code">record[("ouvert_par_id")] = record.create_uid</field>
     </record>
 
+    <!-- Server action to reset closing date on reopening -->
     <record id="action_reset_close_date_on_reopen" model="ir.actions.server">
         <field name="name">Reset closing date in case of reopening</field>
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
@@ -50,6 +55,7 @@
         <field name="code">record[("close_date")] = False</field>
     </record>
 
+    <!-- Server action for service quality alert (customer anomaly) -->
     <record id="action_alert_service_quality_anomaly_client" model="ir.actions.server">
         <field name="name">Boolean Alerte Service Qualité (Anomalie Client)</field>
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
@@ -59,18 +65,7 @@
         <field name="state">object_write</field>
     </record>
 
-
-    <!--    Without code-->
-
-    <record id="action_alert_service_quality_anomaly_client" model="ir.actions.server">
-        <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
-        <field eval="False" name="binding_model_id"/>
-        <field name="name">Boolean Quality Service Alert (Customer Anomaly)</field>
-        <field name="sequence">5</field>
-        <field name="state">code</field>
-        <field name="state">object_write</field>
-    </record>
-
+    <!-- Server action to send a quality service alert email -->
     <record id="action_send_alert_email_service_quality" model="ir.actions.server">
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
         <field eval="False" name="binding_model_id"/>
@@ -78,13 +73,13 @@
         <field name="sequence">5</field>
         <field name="code">
             if records:
-               template = env.ref('ibjb_studio.ticket_alerte_service')
-               for record in records:
-                   template.send_mail(record.id, force_send=True)
+                template = env.ref('ibjb_studio.ticket_alerte_service')
+                for record in records:
+                    template.send_mail(record.id, force_send=True)
         </field>
     </record>
 
-
+    <!-- Server action for automatic subscribers (Ano client RB/MM) -->
     <record id="action_auto_subscribe_clients_rb_mm" model="ir.actions.server">
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
         <field eval="False" name="binding_model_id"/>
@@ -93,6 +88,7 @@
         <field name="state">followers</field>
     </record>
 
+    <!-- Server action for automatic subscriber (VV admin request) -->
     <record id="action_auto_subscribe_admin_requests_vv" model="ir.actions.server">
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
         <field eval="False" name="binding_model_id"/>
@@ -101,6 +97,7 @@
         <field name="state">followers</field>
     </record>
 
+    <!-- Server action for automatic assignment (Ano client RB) -->
     <record id="action_auto_assign_ano_client_rb" model="ir.actions.server">
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
         <field eval="False" name="binding_model_id"/>
@@ -109,7 +106,7 @@
         <field name="state">followers</field>
     </record>
 
-
+    <!-- Server action for automatic assignment (Call Offer VV) -->
     <record id="action_auto_assign_appel_offre_vv" model="ir.actions.server">
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
         <field eval="False" name="binding_model_id"/>
@@ -118,14 +115,7 @@
         <field name="state">object_write</field>
     </record>
 
-    <record id="action_auto_assign_appel_offre_vv" model="ir.actions.server">
-        <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
-        <field eval="False" name="binding_model_id"/>
-        <field name="name">Assigned to automatic Call Offer VV</field>
-        <field name="sequence">5</field>
-        <field name="state">object_write</field>
-    </record>
-
+    <!-- Server action for automatic assignment (Dmd adm VV) -->
     <record id="action_auto_assign_demand_admin_vv" model="ir.actions.server">
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
         <field eval="False" name="binding_model_id"/>
@@ -134,6 +124,7 @@
         <field name="state">object_write</field>
     </record>
 
+    <!-- Server action for automatic assignment (Client Anomaly) -->
     <record id="action_auto_assign_client_anomaly" model="ir.actions.server">
         <field name="model_id" ref="helpdesk.model_helpdesk_ticket"/>
         <field eval="False" name="binding_model_id"/>

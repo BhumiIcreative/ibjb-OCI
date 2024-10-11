@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models
+from odoo import fields, models,api
 from odoo.addons.ibjb_studio import common
 
 
@@ -37,18 +37,19 @@ class ProductTemplate(models.Model):
     textbul = fields.Char(string="Info")
     warming = fields.Char(string="Warming")
 
-    def Update_product_pricelist_studio_fields(self):
+    @api.model
+    def update_pricelist_studio_fields(self):
         """
-            server action code to migrate Product Price list studio fields data to custom fields.
+        schedule action code to migrate sale studio fields data to custom fields.
         """
         migration_fields = {
             "x_studio_notes": "notes",
-            "x_studio_offre_de_prix": "offre_de_prix",
+            "x_studio_offre_de_prix": "offer_de_prix",
             "x_studio_oci_datelifeend": "datelifeend",
             "x_studio_oci_datelifestart": "date_life_start",
             "x_studio_oci_listprice_nomclient": "listprice_nomclient_id",
-            "x_studio_oci_listprice_codetiers": "address",
-            "x_studio_field_i1oej": "istprice_codetiers",
+            "x_studio_field_i1oej": "address",
+            "x_studio_oci_listprice_codetiers": "istprice_codetiers",
             "x_studio_oci_pricelist_faitle": "pricelist_faitle",
             "x_studio_oci_pricelist_faita": "pricelist_faita",
             "x_studio_oci_textbul": "textbul",
@@ -66,7 +67,8 @@ class ProductTemplate(models.Model):
             "x_studio_x_studio_oci_listprice_francetext2": "listprice_francetext2",
             "x_studio_x_studio_oci_listprice_horsfrancetext2": "listprice_horsfrancetext2",
         }
-        for rec in self:
+        pricelist_orders = self.search([])  # Fetch all sale  records
+        for rec in pricelist_orders:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)
 

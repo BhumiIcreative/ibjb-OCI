@@ -17,4 +17,5 @@ def set_customer_field(self, x_field_name, field):
         x_field_type = get_field_type(self, x_field_name)
         custom_field_type = get_field_type(self, field)
         if x_field_type == custom_field_type:
+            print('\n\n\n\nx_field_type == custom_field_type')
             setattr(self, field, getattr(self, x_field_name, False))

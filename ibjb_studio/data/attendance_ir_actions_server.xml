@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+   <!-- Server action for handling employee check-out notifications in HR attendance.-->
+
     <record id="notifications_sortie" model="ir.actions.server">
         <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
         <field eval="False" name="binding_model_id"/>
@@ -7,6 +9,8 @@
         <field name="sequence">5</field>
         <field name="state">mail_post</field>
     </record>
+
+<!-- Server action for sending notifications via email when a badge use event occurs in HR attendance.-->
 
     <record id="notifications_badgeuse" model="ir.actions.server">
         <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
@@ -22,6 +26,8 @@
         </field>
     </record>
 
+<!--  Server action for handling email notifications for badge use events in HR attendance.-->
+
     <record id="notifications_badgeuse_2" model="ir.actions.server">
         <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
         <field eval="False" name="binding_model_id"/>
@@ -30,6 +36,8 @@
         <field name="state">mail_post</field>
     </record>
 
+<!--  Server action for processing badge use notifications via HTTP POST in HR attendance.-->
+
     <record id="notifications_badgeuse_http_post" model="ir.actions.server">
         <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
         <field eval="False" name="binding_model_id"/>
@@ -37,6 +45,4 @@
         <field name="sequence">5</field>
         <field name="state">code</field>
     </record>
-
-
 </odoo>

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, _, fields
+from odoo import models, _, fields,api
+from odoo.addons.ibjb_studio import common
 
 
 class ResCompany(models.Model):
@@ -48,3 +49,47 @@ class ResCompany(models.Model):
         ("enlevement", "Kidnapping")
     ], _("Carrier"))
     bl_dateexpetsht = fields.Datetime(_('Desired shipping date'),readonly=True)
+
+
+    @api.model
+    def update_stock_picking_studio_fields(self):
+        print('\n\n\nmethod called')
+
+        migration_fields = {
+            "x_studio_expdition_bloque": "is_expdition_bloque",
+            "x_studio_field_LQ1TX": "client_reference",
+            "x_studio_field_itTx0": "product_reference",
+            "x_studio_field_n2pvH": "date_commande",
+            "x_studio_oci_abonnementsurbl": "abonnementsurbl",
+            "x_studio_oci_bl_abobdc": "bl_abobdc",
+            "x_studio_oci_bl_btverif": "bl_btverif_id",
+            "x_studio_oci_bl_codetiers": "bl_codetiers",
+            "x_studio_oci_bl_commentairetxt": "bl_commentairetxt",
+            "x_studio_oci_bl_conditionvente": "bl_conditionvente",
+            "x_studio_oci_bl_dateexpetsht": "bl_dateexpetsht",
+            "x_studio_oci_bl_dimension": "bl_dimension",
+            "x_studio_oci_bl_poids": "bl_poids",
+            "x_studio_oci_bl_port": "bl_port",
+            "x_studio_oci_bl_prepareele_1": "bl_prepareele_1",
+            "x_studio_oci_bl_prepareepar": "bl_prepareepar_id",
+            "x_studio_oci_bl_transporteur": "bl_transporteur",
+            "x_studio_oci_bl_verifieele": "bl_verifieele",
+            "x_studio_oci_bl_verifieepar": "bl_verifieepar",
+            "x_studio_oci_blbr__imprimer_ouinon": "is_blbr_imprimer_ouinon",
+            "x_studio_oci_blbr_analyse": "blbr_analyse",
+            "x_studio_oci_blbr_crgs": "blbr_crgs",
+            "x_studio_oci_blbr_faita": "blbr_faita",
+            "x_studio_oci_blbr_faitle": "blbr_faitle",
+            "x_studio_oci_blbr_lotcrg": "blbr_lotcrg",
+            "x_studio_oci_blbr_qtecrg": "blbr_qtecrg",
+            "x_studio_oci_blbr_remarque": "blbr_remarque",
+            "x_studio_oci_br_codetiers": "br_codetiers",
+            "x_studio_oci_inventory_settingociadmin": "inventory_settingociadmin",
+            "x_studio_total_weight": "total_weight",
+        }
+
+        stock_pickings = self.search([])
+        print('\n\n\nstock_pickings', stock_pickings)  # Fetch all picking records
+        for rec in stock_pickings:
+            for x_field, field in migration_fields.items():
+                common.set_customer_field(rec, x_field, field)

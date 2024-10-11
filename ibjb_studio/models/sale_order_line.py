@@ -1,23 +1,12 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import fields, models
+from odoo import fields, models,api
 
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     # No need to migarte below fields as they are all related field
-    oci_bdc_comptecompt = fields.Char(
-        related="product_id.property_account_income_id.display_name",
-        string="Product reference",
-        readonly=True,
-        copy=False,
-    )
-    oci_codedouane = fields.Char(
-        related="product_template_id.article_codedouane",
-        readonly=True,
-        copy=False,
-    )
 
     oci_codedouane = fields.Char(
         related="product_template_id.article_codedouane",
@@ -34,3 +23,6 @@ class SaleOrderLine(models.Model):
         readonly=True,
         store=False,
     )
+
+
+

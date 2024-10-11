@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import models, _, fields
+from odoo import models, _, fields,api
+from odoo.addons.ibjb_studio import common
 
 
 class HelpdeskTicket(models.Model):
@@ -21,3 +22,29 @@ class HelpdeskTicket(models.Model):
     field_AxWS3 = fields.Many2many('crm.lead', string=_('Existing opportunity'))   # x_studio_field_AxWS3
     source_id = fields.Many2one('helpdesk.source', _('Source'))   # x_studio_source
     gamme_id = fields.Many2one('ticket.gamme', _('Range'))  # x_studio_gamme
+
+    @api.model
+    def update_helpdesk_ticket_studio_fields(self):
+        print('\n\n\nmethod called')
+
+        migration_fields = {
+            "x_studio_alerte_sq": "alerte_sq",
+            "x_studio_oci_asst_ouinonfp": "oci_asst_ouinonfp",
+            "x_studio_ouverture_fiche_progres": "ouverture_fiche_progres",
+            "x_studio_precisions": "precisions",
+            "x_studio_tache_ficheprogres": "tache_ficheprogres_id",
+            "x_studio_assistance_article": "assistance_article_id",
+            "x_studio_assistance_numerolot": "assistance_numerolot_id",
+            "x_studio_ouvert_le": "ouvert_le",
+            "x_studio_ouvert_par": "ouvert_par_id",
+            "x_studio_gamme": "gamme_id",
+            "x_studio_source": "source_id",
+            "x_studio_assistance_maintenance": "assistance_maintenance_ids",
+            "x_studio_field_AxWS3": "field_AxWS3",
+        }
+
+        tickets = self.search([])
+        print('\n\n\nhelpdesk_tickets', tickets)  # Fetch all helpdesk tickets
+        for rec in tickets:
+            for x_field, field in migration_fields.items():
+                common.set_customer_field(rec, x_field, field)

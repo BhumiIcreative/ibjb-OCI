@@ -98,6 +98,10 @@
         <field name="view_mode">kanban,form,activity,tree</field>
     </record>
 
+     <!--
+        Action window for managing helpdesk tickets, filtered by
+        partner ID, showing tickets without an associated partner.
+    -->
     <record id="helpdesk_ticket_action_main_my" model="ir.actions.act_window">
         <field name="name">Assistance</field>
         <field eval="False" name="binding_model_id"/>
@@ -109,7 +113,7 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-
+<!-- Action window to display related helpdesk tickets, filtered by tache_ficheprogres_id -->
     <record id="action_ticket_linked" model="ir.actions.act_window">
         <field name="name">Related ticket(s)</field>
         <field name="res_model">helpdesk.ticket</field>

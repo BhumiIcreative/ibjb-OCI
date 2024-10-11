@@ -36,7 +36,7 @@
         <record id="helpdesk_source_menu" model="ir.ui.menu">
             <field name="name">Source</field>
             <field name="parent_id" ref="helpdesk.helpdesk_menu_config"/>
-            <field name="action" ref="action_helpdesk_source"/>  <!-- Add the appropriate action -->
+            <field name="action" ref="action_helpdesk_source"/>
             <field name="sequence">12</field>
         </record>
 </odoo>

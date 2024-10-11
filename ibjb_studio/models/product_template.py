@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import fields, models
+from odoo import fields, models,api
+from odoo.addons.ibjb_studio import common
 
 
 class ProductTemplate(models.Model):
@@ -36,3 +37,19 @@ class ProductTemplate(models.Model):
             product_template_counts = {result['product_tmpl_id'][0]: result['product_tmpl_id_count'] for result in
                                        grouped_results}
             rec.product_tmpl_id_product_pricelist_item_count = product_template_counts.get(rec.id, 0)
+
+    @api.model
+    def migrate_product_template_fields(self):
+        migration_fields = {
+            'x_studio_article_codedouane': 'article_codedouane',
+            'x_studio_delete': 'is_delete',
+            'x_studio_immuno_hemato': 'immuno_hemato_id',
+            'x_studio_oci_famille_article': 'oci_famille_article_id',
+            'x_studio_many2many_field_5nn_1i9tlt4i6':'gamme_article_ids'
+        }
+
+        product_templates = self.search([])
+        print('\n\n\nhelpdesk_tickets', product_templates)  # Fetch all helpdesk tickets
+        for rec in product_templates:
+            for x_field, field in migration_fields.items():
+                common.set_customer_field(rec, x_field, field)
