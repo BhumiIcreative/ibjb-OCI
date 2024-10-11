@@ -29,7 +29,8 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='partner_id']" position="attributes">
-                <!-- <attribute name="attrs">{}</attribute> -->
+                <attribute name="required"/>
+                <attribute name="readonly"/>
             </xpath>
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                 <field name="oci_saleorder_codetiers"/>
@@ -43,12 +44,7 @@
                        help="Affiche un message quand il s'agit d'un pays d'Europe" readonly="1"
                        invisible="not customer_vat or (fiscal_position_id !=2 or not partner_id)"/>
             </xpath>
-            <xpath expr="//field[@name='validity_date']" position="before">
-                <xpath expr="//field[@name='date_order']" position="move"/>
-            </xpath>
             <xpath expr="//field[@name='date_order']" position="attributes">
-                <attribute name="invisible"/>
-                <attribute name="required"/>
                 <attribute name="readonly"/>
             </xpath>
             <xpath expr="//group[@name='order_details']/field[@name='date_order']" position="after">
@@ -61,10 +57,10 @@
                 <field name="saleorder_order_carrier"/>
                 <field name="oci_bdc_transporteur"/>
             </xpath>
-            <!-- <xpath expr="//field[@name='carrier_id']" position="attributes">
-              <attribute name="attrs">{"readonly": [["state","not in",["draft","sent"]]]}</attribute>
-              <attribute name="invisible">1</attribute>
-            </xpath> -->
+<!--            &lt;!&ndash;            <xpath expr="//field[@name='carrier_id']" position="attributes">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <attribute name="readonly">state not in ["draft","sent"]</attribute>&ndash;&gt;-->
+<!--            &lt;!&ndash;              <attribute name="invisible">1</attribute>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </xpath>&ndash;&gt;-->
             <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
                 <group name="group_BXZQi" string="/!\ ATTENTION /!\">
                     <field name="oci_chplie_customercomment1"/>
@@ -82,18 +78,18 @@
                 <attribute name="required">not display_type</attribute>
                 <attribute name="readonly">1</attribute>
             </xpath>
-            <!-- <xpath expr="//field[@name='lot_count']" position="attributes">
-              <attribute name="string">Nb lots</attribute>
-            </xpath> -->
+<!--            &lt;!&ndash; <xpath expr="//field[@name='lot_count']" position="attributes">-->
+<!--              <attribute name="string">Nb lots</attribute>-->
+<!--            </xpath> &ndash;&gt;-->
             <xpath expr="//page[@name='order_lines']//tree[1]/field[@name='price_subtotal']" position="after">
                 <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='tax_id']"
                        position="move"/>
                 <xpath expr="//page[@name='order_lines']/field[@name='order_line']/tree[1]/field[@name='price_tax']"
                        position="move"/>
             </xpath>
-            <!-- <xpath expr="//field[@name='comment']" position="attributes">
-              <attribute name="help">Commentaire de devis / commande</attribute>
-            </xpath> -->
+<!--            &lt;!&ndash; <xpath expr="//field[@name='comment']" position="attributes">-->
+<!--              <attribute name="help">Commentaire de devis / commande</attribute>-->
+<!--            </xpath> &ndash;&gt;-->
 
             <xpath expr="//field[@name='effective_date']" position="attributes">
                 <attribute name="readonly"/>
@@ -122,9 +118,6 @@
                 <attribute name="readonly">1</attribute>
                 <attribute name="invisible"/>
                 <attribute name="string">TVA</attribute>
-            </xpath>
-            <xpath expr="//field[@name='expected_date']" position="attributes">
-                <attribute name="groups"/>
             </xpath>
         </field>
     </record>
@@ -167,7 +160,7 @@
             </xpath>
         </field>
     </record>
-        <!--Inherited the existing tree quotation view for sale order-->
+    <!--Inherited the existing tree quotation view for sale order-->
     <record id="ibjb_studio_inherit_view_quotation_tree_with_onboarding" model='ir.ui.view'>
         <field name='name'>sale.order.tree.quotation.inherit</field>
         <field name='model'>sale.order</field>
@@ -177,7 +170,7 @@
                 <field name="amount_untaxed"/>
             </xpath>
             <xpath expr="//field[@name='create_date']" position="after">
-<!--                <field name="date_order"/>-->
+                <!--                <field name="date_order"/>-->
                 <field name="oci_bdc_dateexpsht"/>
                 <field name="oci_saleorder_codetiers"/>
             </xpath>

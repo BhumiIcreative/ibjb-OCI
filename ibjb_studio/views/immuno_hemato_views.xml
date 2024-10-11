@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!--Custom immuno hemato form view-->
     <record id="immuno_hemato_form_view" model="ir.ui.view">
         <field name="name">immuno.hemato.form.view</field>
         <field name="model">immuno.hemato</field>
@@ -19,7 +20,7 @@
             </form>
         </field>
     </record>
-
+    <!--Custom immuno hemato action view-->
     <record id="action_immuno_hemato" model="ir.actions.act_window">
         <field name="name">Immuno hemato</field>
         <field name="res_model">immuno.hemato</field>

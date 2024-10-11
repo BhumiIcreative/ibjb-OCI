@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!--Form view for the contact roles model-->
     <record id="contact_roles_form_view" model="ir.ui.view">
         <field name="name">contact.roles.form.view</field>
         <field name="model">contact.roles</field>
@@ -19,7 +20,7 @@
             </form>
         </field>
     </record>
-
+    <!--Action for the contact roles model-->
     <record id="action_contact_roles" model="ir.actions.act_window">
         <field name="name">Roles</field>
         <field name="res_model">contact.roles</field>
@@ -34,5 +35,6 @@
             </p>
         </field>
     </record>
+    <!--Menu for contact roles model-->
     <menuitem action="action_contact_roles" id="ibjb_contact_roles" parent="contacts.res_partner_menu_config"/>
 </odoo>

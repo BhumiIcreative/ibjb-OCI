@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!--Action for product supplierinfo model-->
     <record id="action_product_supplierinfo" model="ir.actions.act_window">
         <field eval="False" name="binding_model_id"/>
         <field name="binding_type">action</field>

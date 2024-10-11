@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!--Form view for the code affaire model-->
     <record id="code_affaire_form_view" model="ir.ui.view">
-        <field name="name">code.affaireform.view</field>
+        <field name="name">code.affaire.form.view</field>
         <field name="model">code.affaire</field>
         <field name="arch" type="xml">
             <form>
@@ -19,7 +20,7 @@
             </form>
         </field>
     </record>
-
+    <!--Action for the code affair model-->
     <record id="action_code_affaire" model="ir.actions.act_window">
         <field name="name">Code Affaire</field>
         <field name="res_model">code.affaire</field>
@@ -34,5 +35,6 @@
             </p>
         </field>
     </record>
+    <!--Menu for custom model-->
     <menuitem action="action_code_affaire" id="ibjb_code_affaire" parent="contacts.res_partner_menu_config"/>
 </odoo>

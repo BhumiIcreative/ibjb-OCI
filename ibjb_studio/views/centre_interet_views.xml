@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!--Custom centre interet form view-->
     <record id="centre_interet_form_view" model="ir.ui.view">
         <field name="name">centre.interet.form.view</field>
         <field name="model">centre.interet</field>
@@ -20,6 +21,7 @@
         </field>
     </record>
 
+    <!--Custom centre interet tree view-->
     <record id="action_centre_interet" model="ir.actions.act_window">
         <field name="name">Center of interests</field>
         <field name="res_model">centre.interet</field>
@@ -34,5 +36,6 @@
             </p>
         </field>
     </record>
+    <!--Custom menu item-->
     <menuitem action="action_centre_interet" id="ibjb_center_interet" parent="contacts.res_partner_menu_config"/>
 </odoo>

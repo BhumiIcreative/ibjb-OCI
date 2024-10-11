@@ -177,7 +177,7 @@
         <field name="state">code</field>
         <field name="code">record[("date_ouverture")] = record.create_date.date()</field>
     </record>
-
+    <!--Action for the maintenance request model-->
     <record id="action_maintenance_request" model="ir.actions.act_window">
         <field eval="False" name="binding_model_id"/>
         <field name="binding_type">action</field>

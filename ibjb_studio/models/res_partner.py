@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import fields, models
 from odoo.addons.ibjb_studio import common
 
@@ -85,6 +86,8 @@ class Partner(models.Model):
     chorus = fields.Char("Chorus", copy=False)
     oci_contact_commentaire = fields.Text("Commentaire", copy=False)
 
+    '''Compute the count of maintenance requests for each maintenance contact'''
+
     def _compute_maintenance_count(self):
         for rec in self:
             rec.proprietaire_maintenance_equipment_count = 0
@@ -97,6 +100,8 @@ class Partner(models.Model):
                 equipment_count_dict = {res['proprietaire_id'][0]: res['proprietaire_id_count'] for res in
                                         results}
                 rec.proprietaire_maintenance_equipment_count = equipment_count_dict.get(rec.id, 0)
+
+    '''Compute the count of maintenance requests associated with each maintenance contact'''
 
     def _compute_maintenance_contact(self):
         for rec in self:
@@ -111,6 +116,8 @@ class Partner(models.Model):
                 }
                 rec.maintenance_contact_maintenance_request_count = contact_count_map.get(rec.id, 0)
 
+    '''Computes the count of supplier info related to each partner'''
+
     def _compute_product_supplier_count(self):
         for rec in self:
             rec.name_product_supplierinfo_count = 0
@@ -124,6 +131,8 @@ class Partner(models.Model):
                     for result in results
                 }
                 rec.name_product_supplierinfo_count = vendor_count_map.get(rec.id, 0)
+
+    '''Computes the count of product pricelists associated with a specific client'''
 
     def _compute_product_pricelist_count(self):
         for rec in self:

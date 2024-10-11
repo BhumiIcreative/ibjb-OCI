@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!--Custom automates client form view-->
     <record id="automates_client_form_view" model="ir.ui.view">
         <field name="name">automates.client.form.view</field>
         <field name="model">automates.client</field>
@@ -19,7 +20,7 @@
             </form>
         </field>
     </record>
-
+        <!--Custom automates client action view-->
     <record id="action_automates_client" model="ir.actions.act_window">
         <field name="name">Automates</field>
         <field name="res_model">automates.client</field>

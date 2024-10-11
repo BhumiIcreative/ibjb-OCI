@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!--custom form view equipement cmf-->
     <record id="equipement_cmf_form_view" model="ir.ui.view">
         <field name="name">equipement.cmf.form.view</field>
         <field name="model">equipement.cmf</field>
@@ -19,7 +20,7 @@
             </form>
         </field>
     </record>
-
+    <!--Action for the equipement cmf model-->
     <record id="action_equipement_cmf" model="ir.actions.act_window">
         <field name="name">Equipement CMF</field>
         <field name="res_model">equipement.cmf</field>

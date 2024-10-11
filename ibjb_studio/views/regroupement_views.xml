@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!--Custom Regroupement form view-->
     <record id="regroupement_regroupement_form_view" model="ir.ui.view">
         <field name="name">regroupement.regroupement.form.view</field>
         <field name="model">regroupement.regroupement</field>
@@ -19,7 +20,7 @@
             </form>
         </field>
     </record>
-
+    <!--Custom Regroupement tree view-->
     <record id="action_regroupement" model="ir.actions.act_window">
         <field name="name">Regroupement</field>
         <field name="res_model">regroupement.regroupement</field>
@@ -34,5 +35,6 @@
             </p>
         </field>
     </record>
+    <!--custom menu-->
     <menuitem action="action_regroupement" id="ibjb_regroupement" parent="contacts.res_partner_menu_config"/>
 </odoo>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!--Form view for the automates bm clients model-->
     <record id="automates_bm_clients_form_view" model="ir.ui.view">
         <field name="name">automates.bm.clients.form.view</field>
         <field name="model">automates.bm.clients</field>
@@ -19,7 +20,7 @@
             </form>
         </field>
     </record>
-
+    <!--Action for the automates bm clients model-->
     <record id="action_automates_bm_clients" model="ir.actions.act_window">
         <field name="name">Equipements BM</field>
         <field name="res_model">automates.bm.clients</field>

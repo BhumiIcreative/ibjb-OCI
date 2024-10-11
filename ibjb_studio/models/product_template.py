@@ -23,6 +23,7 @@ class ProductTemplate(models.Model):
     gamme_article_ids = fields.Many2many('ticket.gamme', 'product_template_x_oci_ticket_gamme_rel', string='Gamme')
     product_tmpl_id_product_pricelist_item_count = fields.Integer("Product Template count", copy=False,
                                                                   compute='_compute_product_template_count')
+
     '''records for each product template and updates the count field.'''
 
     def _compute_product_template_count(self):
