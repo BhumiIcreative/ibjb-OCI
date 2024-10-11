@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import fields, models
+from odoo import fields, models, _
 from odoo.addons.ibjb_studio import common
 
 
@@ -76,8 +76,8 @@ class Partner(models.Model):
     precision_phone = fields.Char("Telephone details", copy=False)
     fax = fields.Char("Fax", copy=False)
     customer_contact_fax = fields.Char("Fax", copy=False)
-    prestataire_maintenance = fields.Boolean("- Prestataire", copy=False)
-    est_un_distributeur = fields.Boolean("- Distributeur", copy=False)
+    prestataire_maintenance = fields.Boolean(string=_("Prestataire"), copy=False)
+    est_un_distributeur = fields.Boolean("Distributeur", copy=False)
     code_naf_id = fields.Many2one('naf.code', "Code NAF", ondelete="set null")
     categorie_comptable_id = fields.Many2one('account.partner.cat', ondelete='set null', string="Categorie Comptable")
     is_oci_contact_constt = fields.Boolean("Consentement total", copy=False)
