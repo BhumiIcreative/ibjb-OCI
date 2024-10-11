@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
+
 {
     "name": "IBJB Studio",
     "version": "17.0.1.0.0",
@@ -57,7 +58,6 @@
         "views/account_move_views.xml",
         "views/sale_subscription_views.xml",
         "views/maintenance_equipment_views.xml",
-        "views/partner_view.xml",
         "views/purchase_views.xml",
         "views/res_company_views.xml",
         "views/helpdesk_ticket_views.xml",
@@ -66,10 +66,10 @@
         "views/ticket_gamme_views.xml",
         "views/res_users_views.xml",
         "views/hr_attendance_views.xml",
+        "views/maintenance_request_views.xml",
+        "views/product_pricelist_views.xml",
         "views/res_partner_views.xml",
         "views/stock_picking_views.xml",
-        "views/product_pricelist_views.xml",
-        "views/maintenance_request_views.xml",
         "views/oci_helpdesk_type_ticket.xml",
         "views/family_views.xml",
         "views/immuno_hemato_views.xml",
@@ -78,6 +78,16 @@
         "views/lot_motif_retrait_views.xml",
         "views/stock_lot_views.xml",
         "views/product_pricelist_item_views.xml",
+        "views/product_supplierinfo_views.xml",
+        "views/regroupement_views.xml",
+        "views/contact_roles_views.xml",
+        "views/centre_interet_views.xml",
+        "views/service_service_views.xml",
+        "views/code_affaire_views.xml",
+        "views/equipement_cmf_views.xml",
+        "views/automates_client_views.xml",
+        "views/automates_bm_clients_views.xml",
+        "views/automates_bm_clients_views.xml",
         "report/product_pricelist_copy_1.xml",
         "report/transfer_report_1.xml",
         "report/transfer_report_2.xml",

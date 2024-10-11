@@ -39,11 +39,51 @@ class Partner(models.Model):
         store=True,
         tracking=True
     )
+    is_confidentiel = fields.Boolean("Confidentiel", copy=False)
     customer_code = fields.Char("Code Tiers", copy=False)
     is_suivi_1 = fields.Boolean("Suivi", copy=False)
     is_sensible_2 = fields.Boolean("Sensible", copy=False)
-    proprietaire_maintenance_equipment_count = fields.Integer("Propriétaire count",
+    proprietaire_maintenance_equipment_count = fields.Integer("Owner account",
                                                               compute='_compute_maintenance_count')
+    maintenance_contact_maintenance_request_count = fields.Integer("Contact count",
+                                                                   compute="_compute_maintenance_contact")
+    name_product_supplierinfo_count = fields.Integer("Supplier price", compute='_compute_product_supplier_count')
+    oci_listprice_nomclient_product_pricelist_count = fields.Integer("Customer name account",
+                                                                     compute='_compute_product_pricelist_count')
+    tva_msg_europe = fields.Char(
+        "/!\ Il est obligatoire d'indiquer le numéro de TVA intracommunautaire client afin que la vente ne soit pas soumise à TVA.",
+        copy=False)
+    country_group_ids_name = fields.Char("Continent", related='country_id.country_group_ids.name', copy=False,
+                                         readonly=False)
+    field_BVkbJ_ids = fields.Many2many('ticket.gamme', 'res_partner_oci_ticket_gamme_rel', "Gamme", copy=False)
+
+    regroupement_id = fields.Many2one('regroupement.regroupement', string="Regroupement", ondelete='set null')
+    role_contact_id = fields.Many2one('contact.roles', ondelete='set null', string="Roles", copy=False)
+    center_interest_id = fields.Many2one("centre.interet", string="Center of interest", ondelete='set null', copy=False)
+    service_id = fields.Many2one("service.service", string="Service", ondelete='set null', copy=False)
+    code_affaire_id = fields.Many2one("code.affaire", string="Code Affaire", ondelete='set null', copy=False)
+    equipements_cmf_ids = fields.Many2many("equipement.cmf", "res_partner_equipement_cmf_rel", store=True,
+                                           string="Equipements CMF", copy=False)
+    field_LTJb8_ids = fields.Many2many("automates.client", "res_partner_automates_client_rel", store=True,
+                                       string="Equipements IH", copy=False)
+    equipements_bm_ids = fields.Many2many("automates.bm.clients", "res_partner_automates_bm_clients_rel",
+                                          store=True,
+                                          string="Equipements BM", copy=False)
+    facebook = fields.Char("Facebook", copy=False)
+    linkedin = fields.Char("Linkedin", copy=False)
+    skype = fields.Char("Skype", copy=False)
+    precision_phone = fields.Char("Telephone details", copy=False)
+    fax = fields.Char("Fax", copy=False)
+    customer_contact_fax = fields.Char("Fax", copy=False)
+    prestataire_maintenance = fields.Boolean("- Prestataire", copy=False)
+    est_un_distributeur = fields.Boolean("- Distributeur", copy=False)
+    code_naf_id = fields.Many2one('naf.code', "Code NAF", ondelete="set null")
+    categorie_comptable_id = fields.Many2one('account.partner.cat', ondelete='set null', string="Categorie Comptable")
+    is_oci_contact_constt = fields.Boolean("Consentement total", copy=False)
+    is_oci_contact_consanonyme = fields.Boolean("Consentement anonyme uniquement", copy=False)
+    is_oci_contact_pasconsentement = fields.Boolean("Pas de consentement", copy=False)
+    chorus = fields.Char("Chorus", copy=False)
+    oci_contact_commentaire = fields.Text("Commentaire", copy=False)
 
     def _compute_maintenance_count(self):
         for rec in self:
@@ -53,11 +93,51 @@ class Partner(models.Model):
                 ['proprietaire_id'],
                 ['proprietaire_id']
             )
-            print("\n\n\nrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",results)
             if results:
                 equipment_count_dict = {res['proprietaire_id'][0]: res['proprietaire_id_count'] for res in
                                         results}
                 rec.proprietaire_maintenance_equipment_count = equipment_count_dict.get(rec.id, 0)
+
+    def _compute_maintenance_contact(self):
+        for rec in self:
+            rec.maintenance_contact_maintenance_request_count = 0
+            results = self.env['maintenance.request'].read_group([('maintenance_contact_id', 'in', self.ids)],
+                                                                 ['maintenance_contact_id'],
+                                                                 ['maintenance_contact_id'])
+            if results:
+                contact_count_map = {
+                    result['maintenance_contact_id'][0]: result['maintenance_contact_id_count']
+                    for result in results
+                }
+                rec.maintenance_contact_maintenance_request_count = contact_count_map.get(rec.id, 0)
+
+    def _compute_product_supplier_count(self):
+        for rec in self:
+            rec.name_product_supplierinfo_count = 0
+            results = self.env['product.supplierinfo'].read_group(
+                [('partner_id', 'in', self.ids)],
+                ['partner_id'],
+                ['partner_id'])
+            if results:
+                vendor_count_map = {
+                    result['partner_id'][0]: result['partner_id_count']
+                    for result in results
+                }
+                rec.name_product_supplierinfo_count = vendor_count_map.get(rec.id, 0)
+
+    def _compute_product_pricelist_count(self):
+        for rec in self:
+            rec.oci_listprice_nomclient_product_pricelist_count = 0
+            results = self.env['product.pricelist'].read_group(
+                [('listprice_nomclient_id', 'in', self.ids)],
+                ['listprice_nomclient_id'],
+                ['listprice_nomclient_id']
+            )
+            client_count_map = {
+                result['listprice_nomclient_id'][0]: result['listprice_nomclient_id_count']
+                for result in results
+            }
+            rec.oci_listprice_nomclient_product_pricelist_count = client_count_map.get(rec.id, 0)
 
     def Update_partner_studio_fields(self):
         """

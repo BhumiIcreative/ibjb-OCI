@@ -417,6 +417,7 @@ class MaintenanceRequest(models.Model):
         copy=False,
         store=True,
     )
+    maintenance_contact_id = fields.Many2one("res.partner", "Client")
 
     def Update_maintenance_request_studio_fields(self):
         """

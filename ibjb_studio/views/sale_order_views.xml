@@ -51,8 +51,7 @@
                 <attribute name="required"/>
                 <attribute name="readonly"/>
             </xpath>
-            <xpath expr="//field[@name='date_order']" position="after">
-                <xpath expr="//field[@name='expected_date']" position="move"/>
+            <xpath expr="//group[@name='order_details']/field[@name='date_order']" position="after">
                 <field name="oci_bdc_dateexpsht"/>
             </xpath>
             <xpath expr="//field[@name='payment_term_id']" position="before">
@@ -178,7 +177,7 @@
                 <field name="amount_untaxed"/>
             </xpath>
             <xpath expr="//field[@name='create_date']" position="after">
-                <field name="date_order"/>
+<!--                <field name="date_order"/>-->
                 <field name="oci_bdc_dateexpsht"/>
                 <field name="oci_saleorder_codetiers"/>
             </xpath>

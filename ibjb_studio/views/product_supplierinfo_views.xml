@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_product_supplierinfo" model="ir.actions.act_window">
+        <field eval="False" name="binding_model_id"/>
+        <field name="binding_type">action</field>
+        <field name="context">{'search_default_partner_id':
+            active_id,'default_partner_id': active_id}
+        </field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+        <field name="name">Article</field>
+        <field name="limit">80</field>
+        <field name="res_model">product.supplierinfo</field>
+        <field name="target">current</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

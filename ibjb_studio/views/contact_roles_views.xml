@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="contact_roles_form_view" model="ir.ui.view">
+        <field name="name">contact.roles.form.view</field>
+        <field name="model">contact.roles</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="contact_roles">
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" required="1"/>
+                        </h1>
+                    </div>
+                    <group name="group_194a59">
+                        <group name="group_194a59_left"/>
+                        <group name="group_194a59_right"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_contact_roles" model="ir.actions.act_window">
+        <field name="name">Roles</field>
+        <field name="res_model">contact.roles</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This is your new action ; by default, it contains a list view and a form view.
+            </p>
+            <p>
+                You can start customizing these screens by clicking on the Studio icon on the
+                top right corner (you can also customize this help message there).
+            </p>
+        </field>
+    </record>
+    <menuitem action="action_contact_roles" id="ibjb_contact_roles" parent="contacts.res_partner_menu_config"/>
+</odoo>

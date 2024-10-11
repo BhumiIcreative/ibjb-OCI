@@ -10,3 +10,11 @@ access_oci_helpdesk_type_ticket,access_oci_helpdesk_type_ticket,model_oci_helpde
 ibjb_studio.access_family,access_family,ibjb_studio.model_family,base.group_user,1,1,1,1
 ibjb_studio.access_lot_motif_retrait,access_lot_motif_retrait,ibjb_studio.model_lot_motif_retrait,base.group_user,1,1,1,1
 ibjb_studio.access_immuno_hemato,access_immuno_hemato,ibjb_studio.model_immuno_hemato,base.group_user,1,1,1,1
+ibjb_studio.access_regroupement_regroupement,access_regroupement_regroupement,ibjb_studio.model_regroupement_regroupement,base.group_user,1,1,1,1
+ibjb_studio.access_contact_roles,access_contact_roles,ibjb_studio.model_contact_roles,base.group_user,1,1,1,1
+ibjb_studio.access_centre_interet,access_centre_interet,ibjb_studio.model_centre_interet,base.group_user,1,1,1,1
+ibjb_studio.access_service_service,access_service_service,ibjb_studio.model_service_service,base.group_user,1,1,1,1
+ibjb_studio.access_code_affaire,access_code_affaire,ibjb_studio.model_code_affaire,base.group_user,1,1,1,1
+ibjb_studio.access_equipement_cmf,access_equipement_cmf,ibjb_studio.model_equipement_cmf,base.group_user,1,1,1,1
+ibjb_studio.access_automates_client,access_automates_client,ibjb_studio.model_automates_client,base.group_user,1,1,1,1
+ibjb_studio.access_automates_bm_clients,access_automates_bm_clients,ibjb_studio.model_automates_bm_clients,base.group_user,1,1,1,1

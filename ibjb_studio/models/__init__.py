@@ -29,3 +29,12 @@ from . import stock_lot
 from . import product
 from . import lot_motif_retrait
 from . import immuno_hemato
+from . import product_supplierinfo
+from . import regroupement
+from . import contact_roles
+from . import centre_interet
+from . import service
+from . import code_affaire
+from . import equipement_cmf
+from . import automates_client
+from . import automates_bm_clients
