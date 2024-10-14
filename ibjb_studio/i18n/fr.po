@@ -4009,7 +4009,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__blbr_lotcrg
 #, python-format
 msgid "Corrected batch"
-msgstr ""
+msgstr "Lot corrigé"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -4017,12 +4017,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__blbr_qtecrg
 #, python-format
 msgid "Corrected quantity"
-msgstr ""
+msgstr "Quantité corrigée"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__lot_cout
 msgid "Cost of the lot"
-msgstr ""
+msgstr "Coût du lot"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_stock_lot__stock_cout_du_lot_unitaire
@@ -4030,37 +4030,39 @@ msgid ""
 "Cost used for stock valuation in standard price and as a first price to set "
 "in average/fifo. Also used as a base price for price lists. Expressed in the"
 " default unit of measurement of the product."
-msgstr ""
+msgstr "Coût utilisé pour la valorisation du stock en prix standard et comme premier prix à fixer "
+"en moyenne/fifo. Également utilisé comme prix de base pour les listes de prix. Exprimé en"
+" unité de mesure par défaut du produit."
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__cout_x_quantit
 msgid "Cost x Quantity"
-msgstr ""
+msgstr "Coûtx Quantité"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_prt_contre_signe
 msgid "Countersigned loan form"
-msgstr ""
+msgstr "Formulaire de prêt contresigné"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_prt_contre_signe_sur_partie_retour
 msgid "Countersigned loan form on “return” part"
-msgstr ""
+msgstr "Formulaire de prêt contresigné sur la partie « retour »"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_transport_contresignee_retour
 msgid "Countersigned transport form on return part"
-msgstr ""
+msgstr "Bon de transport contresigné sur la pièce retour"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_transport_contre_signe
 msgid "Countersigned transport form outbound part"
-msgstr ""
+msgstr "Formulaire de transport contresigné partie sortante"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_quant__invenory_coutxqty
 msgid "Cout x Qty"
-msgstr ""
+msgstr "Coût x Qté"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_quant__coutlot_lot
@@ -4087,7 +4089,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_service_service__create_uid
 #: model:ir.model.fields,field_description:ibjb_studio.field_ticket_gamme__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_partner_cat__create_date
@@ -4109,14 +4111,15 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_service_service__create_date
 #: model:ir.model.fields,field_description:ibjb_studio.field_ticket_gamme__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Créé le"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_stock_picking__date_commande
 msgid ""
 "Creation date of draft/sent orders,\n"
 "Confirmation date of confirmed orders."
-msgstr ""
+msgstr "Date de création des commandes brouillon/envoyées,\n"
+"Date de confirmation des commandes confirmées."
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_menu_cumulative_attendance
@@ -4126,22 +4129,22 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.ui.menu,name:ibjb_studio.menu_cumulative_attendance
 msgid "Cumulative attendance"
-msgstr ""
+msgstr "Fréquentation cumulée"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_client_complte
 msgid "Customer AD completed"
-msgstr ""
+msgstr "Annonce client terminée"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_client_complte_1
 msgid "Customer AD completed 1"
-msgstr ""
+msgstr "Client AD terminé 1"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__listprice_nomclient_id
 msgid "Customer Name"
-msgstr ""
+msgstr "Nom du client"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -4149,41 +4152,41 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__client_reference
 #, python-format
 msgid "Customer Reference"
-msgstr ""
+msgstr "Référence client"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__customer_vat
 msgid "Customer TVA"
-msgstr ""
+msgstr "TVA client"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_bank_statement_line__vat_customer
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_move__vat_customer
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_payment__vat_customer
 msgid "Customer VAT No."
-msgstr ""
+msgstr "Numéro de TVA du client"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_ce_intracommunautaire_template
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Customer code :"
-msgstr ""
+msgstr "Code client :"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_export_non_ce_template
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_facto_cic_template
 msgid "Customer code:"
-msgstr ""
+msgstr "Code client:"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__oci_maint_date_enlev_client
 msgid "Customer collection date"
-msgstr ""
+msgstr "Date de retrait du client"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__oci_maint_date_envoi_client
 msgid "Customer dispatch date"
-msgstr ""
+msgstr "Date d'expédition du client"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_bank_statement_line__oci_compta_langcustomer
@@ -4192,28 +4195,28 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__oci_vente_langcustomer
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__inventory_settingociadmin
 msgid "Customer language"
-msgstr ""
+msgstr "Langue du client"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_inherit_hr_equipment_request_view_form
 msgid "Customer material removal"
-msgstr ""
+msgstr "Enlèvement de matière client"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_inherit_hr_equipment_request_view_form
 msgid "Customer material shipment"
-msgstr ""
+msgstr "Expédition du matériel client"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__oci_listprice_nomclient_product_pricelist_count
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_users__oci_listprice_nomclient_product_pricelist_count
 msgid "Customer name account"
-msgstr ""
+msgstr "Compte au nom du client"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_pircelist_offer
 msgid "Customer reference :"
-msgstr ""
+msgstr "Référence client :"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -4224,14 +4227,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_move__codedouane_bl
 #, python-format
 msgid "Customs code"
-msgstr ""
+msgstr "Code des douanes"
 
 #. module: ibjb_studio
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__res_partner__oci_contact_transporteur__dhl
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__sale_order__oci_bdc_transporteur__dhl
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__stock_picking__bl_transporteur__dhl
 msgid "DHL"
-msgstr ""
+msgstr "DHL"
 
 #. module: ibjb_studio
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__res_partner__oci_contact_transporteur__dpd
@@ -4253,12 +4256,12 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 msgid "Date EXP"
-msgstr ""
+msgstr "Date d'EXP"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_equipment__date_mise_jour
 msgid "Date Updated"
-msgstr ""
+msgstr "Date de mise à jour"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_view_stock_quant_form
@@ -4268,7 +4271,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__lot_date_stock
 msgid "Date of entry into stock"
-msgstr ""
+msgstr "Date d'entrée en stock"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_ibjb_report_purchase_order
@@ -4298,7 +4301,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__bl_dateexpetsht
 #, python-format
 msgid "Desired shipping date"
-msgstr ""
+msgstr "Date d'expédition souhaitée"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_picking
@@ -4342,7 +4345,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_service_service__display_name
 #: model:ir.model.fields,field_description:ibjb_studio.field_ticket_gamme__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom d'affichage"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__est_un_distributeur
@@ -4357,22 +4360,22 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__blbr_faitle
 #, python-format
 msgid "Do it"
-msgstr ""
+msgstr "Fais-le"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_pircelist_offer
 msgid "Done in"
-msgstr ""
+msgstr "Fait en"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Draft invoice"
-msgstr ""
+msgstr "Projet de facture"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_clear_close_date
 msgid "Dumping the Closing Date"
-msgstr ""
+msgstr "Supprimer la date de clôture"
 
 #. module: ibjb_studio
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__res_partner__oci_contact_transporteur__enlevement
@@ -4383,35 +4386,35 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__datelifeend
 msgid "End date"
-msgstr ""
+msgstr "Date de fin"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_hr_equipment_view_form
 msgid "End date of warranty year 1"
-msgstr ""
+msgstr "Date de fin de garantie année 1"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__oci_sale_priceliste_enddate
 msgid "End of validity of price list"
-msgstr ""
+msgstr "Fin de validité de la grille tarifaire"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__lot_versionmoteur
 msgid "Engine version"
-msgstr ""
+msgstr "Version moteur"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_view_order_form
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_view_partner_form
 msgid "Equipement"
-msgstr ""
+msgstr "Équipement"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_equipement_cmf
 #: model:ir.ui.menu,name:ibjb_studio.ibjb_equipement_cmf
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.equipement_cmf_form_view
 msgid "Equipement CMF"
-msgstr ""
+msgstr "Équipement CMF"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__field_aueov_id
@@ -4436,7 +4439,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__equipements_cmf_ids
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_users__equipements_cmf_ids
 msgid "Equipements CMF"
-msgstr ""
+msgstr "Équipements CMF"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__field_LTJb8_ids
@@ -4448,7 +4451,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.ui.menu,name:ibjb_studio.maintenance_equipments_menu
 msgid "Equipments"
-msgstr ""
+msgstr "Équipements"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.view_purchase_order_filter_inherit
@@ -4466,7 +4469,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_helpdesk_ticket__assistance_maintenance_ids
 #, python-format
 msgid "Existing maintenance"
-msgstr ""
+msgstr "Entretien existant"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -4474,19 +4477,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_helpdesk_ticket__field_AxWS3
 #, python-format
 msgid "Existing opportunity"
-msgstr ""
+msgstr "Opportunité existante"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_quant__date_de_premption
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_quant__field_WfwqV
 msgid "Expiration date"
-msgstr ""
+msgstr "Date d'expiration"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_server_duplicate_expiry_date_alert
 #: model:ir.actions.server,name:ibjb_studio.action_server_expiry_date_alert
 msgid "Expiry date alert"
-msgstr ""
+msgstr "Alerte date d'expiration"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__facebook
@@ -4497,7 +4500,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.account_move_facture_facto_cic
 msgid "Facto Invoice (cic)"
-msgstr ""
+msgstr "Facture factuelle (cic)"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_price_list_copy_1
@@ -4515,7 +4518,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_family
 msgid "Family"
-msgstr ""
+msgstr "Famille"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -4538,87 +4541,87 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__bt_tp_cli_aller
 msgid "File 10"
-msgstr ""
+msgstr "Fichier 10"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__bt_transp_pret_4
 msgid "File 11"
-msgstr ""
+msgstr "Fichier 11"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_pret_1
 msgid "File 12"
-msgstr ""
+msgstr "Fichier 12"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_pret_4
 msgid "File 13"
-msgstr ""
+msgstr "Fichier 13"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_transp_2
 msgid "File 14"
-msgstr ""
+msgstr "Fichier 14"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_transp_3
 msgid "File 15"
-msgstr ""
+msgstr "Fichier 15"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_transp_vierge_1
 msgid "File 16"
-msgstr ""
+msgstr "Fichier 16"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fichier
 msgid "File 17"
-msgstr ""
+msgstr "Fichier 17"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ri_signe_3
 msgid "File 18"
-msgstr ""
+msgstr "Fichier 18"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_client_2
 msgid "File 2"
-msgstr ""
+msgstr "Fichier 2"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_client_3
 msgid "File 3"
-msgstr ""
+msgstr "Fichier 3"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_client_vierge_1
 msgid "File 4"
-msgstr ""
+msgstr "Fichier 4"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_ibjb_1
 msgid "File 5"
-msgstr ""
+msgstr "Fichier 5"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_ibjb_3
 msgid "File 6"
-msgstr ""
+msgstr "Fichier 6"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_ibjb_4
 msgid "File 7"
-msgstr ""
+msgstr "Fichier 7"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__bl_automate_fichier
 msgid "File 8"
-msgstr ""
+msgstr "Fichier 8"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__bl_fichier_client
 msgid "File 9"
-msgstr ""
+msgstr "Fichier 9"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__lot_pvcontrolekmatic_filename
@@ -4628,32 +4631,32 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ad_client_2_filename
 msgid "Filename for x_studio_ad_client_2"
-msgstr ""
+msgstr "Nom de fichier pour lot_pvcontrolekmatic"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_transp_vierge_1_filename
 msgid "Filename for x_studio_fiche_transp_vierge_1"
-msgstr ""
+msgstr "Nom de fichier pour x_studio_fiche_transp_vierge_1"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ri_signe_3_filename
 msgid "Filename for x_studio_ri_signe_3"
-msgstr ""
+msgstr "Nom de fichier pour x_studio_ri_signe_3"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Abonnés"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Abonnés (partenaires)"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Icône géniale de police, par exemple. tâches fat"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_product__gamme_article_ids
@@ -4673,18 +4676,18 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "A un message"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_helpdesk_source
 #: model:ir.model,name:ibjb_studio.model_helpdesk_source
 msgid "Helpdesk Source"
-msgstr ""
+msgstr "Source du service d'assistance"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_helpdesk_ticket
 msgid "Helpdesk Ticket"
-msgstr ""
+msgstr "Billet d'assistance"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.maintenance_history_report_template
@@ -4728,12 +4731,12 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_hr_attendance__badge
 msgid "ID used for employee identification."
-msgstr ""
+msgstr "ID utilisé pour l’identification des employés."
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_view_production_lot_form
 msgid "IH/BM Reagents"
-msgstr ""
+msgstr "Réactifs IH/BM"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_product__immuno_hemato_id
@@ -4745,36 +4748,37 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Icône"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Icône pour indiquer une activité d'exception."
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Si cette case est cochée, les nouveaux messages nécessitent votre attention."
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__message_has_error
 #: model:ir.model.fields,help:ibjb_studio.field_family__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Si coché, certains messages ont une erreur de livraison."
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_maintenance_equipment__date_fin_contrat
 msgid ""
 "If set, the subscription will be marked as 'To renew' 1 month before the "
 "selected date and will be closed on that date."
-msgstr ""
+msgstr "S'il est défini, l'abonnement sera marqué comme "À renouveler" 1 mois avant le "
+"date sélectionnée et sera fermé à cette date."
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_stock_quant__active
 msgid ""
 "If unchecked, it will allow you to hide the product without removing it."
-msgstr ""
+msgstr "Si cette case n'est pas cochée, cela vous permettra de masquer le produit sans le supprimer."
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_immuno_hemato
@@ -4810,74 +4814,74 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_hr_equipment_view_form
 msgid "Installation date"
-msgstr ""
+msgstr "Date d'installation"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__maintenance_contact_interlocuteur_id
 msgid "Interlocutor"
-msgstr ""
+msgstr "Interlocuteur"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__oci_chplie_customercomment1
 msgid "Internal note"
-msgstr ""
+msgstr "Note interne"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.account_move_facture_ce_intracommunautaire
 msgid "Intra-Community CE Invoice"
-msgstr ""
+msgstr "Facture CE intracommunautaire"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_ce_intracommunautaire_template
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_export_non_ce_template
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_facto_cic_template
 msgid "Invoice No."
-msgstr ""
+msgstr "Numéro de facture"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Invoice cancelled"
-msgstr ""
+msgstr "Facture annulée"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Invoicing Address :"
-msgstr ""
+msgstr "Adresse de facturation :"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 msgid "Invoicing Address:"
-msgstr ""
+msgstr "Adresse de facturation:"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Invoicing and Shipping Address :"
-msgstr ""
+msgstr "Adresse de facturation et d'expédition :"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 msgid "Invoicing and Shipping Address:"
-msgstr ""
+msgstr "Adresse de facturation et d'expédition :"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Est un suiveur"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Entrée de journal"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__inventory_lot_kmdispo
 msgid "KM Available @IBJB"
-msgstr ""
+msgstr "KM disponible @IBJB"
 
 #. module: ibjb_studio
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__stock_picking__bl_transporteur__enlevement
 msgid "Kidnapping"
-msgstr ""
+msgstr "Enlèvement"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_view_production_lot_form
@@ -4887,13 +4891,13 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_view_partner_form
 msgid "LAST NAME First Name or Site Name"
-msgstr ""
+msgstr "NOM Prénom ou nom du site"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__field_aD1p5
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_users__field_aD1p5
 msgid "Language"
-msgstr ""
+msgstr "Langue"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_partner_cat__write_uid
@@ -4915,7 +4919,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_service_service__write_uid
 #: model:ir.model.fields,field_description:ibjb_studio.field_ticket_gamme__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_partner_cat__write_date
@@ -4937,7 +4941,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_service_service__write_date
 #: model:ir.model.fields,field_description:ibjb_studio.field_ticket_gamme__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_price_list_copy_1
@@ -4947,7 +4951,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.view_helpdesk_ticket_form_inherit
 msgid "Left title"
-msgstr ""
+msgstr "Titre de gauche"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -4955,7 +4959,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__bl_abobdc
 #, python-format
 msgid "Linked subscription"
-msgstr ""
+msgstr "Abonnement lié"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__linkedin
@@ -4972,37 +4976,37 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_inherit_hr_equipment_request_view_form
 msgid "Loan Management"
-msgstr ""
+msgstr "Gestion des prêts"
 
 #. module: ibjb_studio
 #: model:ir.ui.menu,name:ibjb_studio.maintenance_etapes_pret_menu
 msgid "Loan Steps"
-msgstr ""
+msgstr "Étapes du prêt"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_prt_complte_sur_partie_retour
 msgid "Loan form completed on return portion"
-msgstr ""
+msgstr "Formulaire de prêt complété lors de la partie retour"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_prt_complte_sur_partie_aller
 msgid "Loan form completed on the “go” part"
-msgstr ""
+msgstr "Formulaire de prêt complété lors de la partie « aller »"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__suivi_de_prt
 msgid "Loan monitoring?"
-msgstr ""
+msgstr "Suivi des prêts ?"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__demande_de_pret_id
 msgid "Loan request"
-msgstr ""
+msgstr "Demande de prêt"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__etape_du_prt_id
 msgid "Loan stage"
-msgstr ""
+msgstr "Étape du prêt"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.transfer_report_copy_1
@@ -5012,7 +5016,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_stock_lot
 msgid "Lot/Serial"
-msgstr ""
+msgstr "Lot/série"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_maj_opened
@@ -5031,17 +5035,17 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_view_partner_form
 msgid "Maintenance"
-msgstr ""
+msgstr "Entretien"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__abonnement_equipement_id
 msgid "Maintenance Equipement"
-msgstr ""
+msgstr "Équipement d'entretien"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_maintenance_equipment
 msgid "Maintenance Equipment"
-msgstr ""
+msgstr "Équipement d'entretien"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_report_maintenance_history
@@ -5051,37 +5055,37 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_maintenance_request
 msgid "Maintenance Request"
-msgstr ""
+msgstr "Demande d'entretien"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_maintenance_request_report
 msgid "Maintenance Request Report"
-msgstr ""
+msgstr "Rapport de demande de maintenance"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__listprice_francetext2
 msgid "Mandatory text FR 1"
-msgstr ""
+msgstr "Texte obligatoire FR 1"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__listprice_francetext
 msgid "Mandatory text FR 2"
-msgstr ""
+msgstr "Texte obligatoire FR 2"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__listprice_horsfrancetext2
 msgid "Mandatory text HFR 1"
-msgstr ""
+msgstr "Texte obligatoire HFR 1"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__listprice_horsfrancetext
 msgid "Mandatory text HFR 2"
-msgstr ""
+msgstr "Texte obligatoire HFR 2"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__lot_versionmanuel
 msgid "Manual version"
-msgstr ""
+msgstr "Version manuelle"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_my_weekly_attendance
@@ -5091,94 +5095,94 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Erreur de livraison du message"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Messages"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_account_move_add_fields
 msgid "Migrate studio Account Move fields"
-msgstr ""
+msgstr "Migrer les champs de déplacement de compte du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_account_partner_cat_add_fields
 msgid "Migrate studio Account Partner Category fields"
-msgstr ""
+msgstr "Migrer les champs de catégorie de partenaire de compte Studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_family_add_fields
 #: model:ir.actions.server,name:ibjb_studio.model_stock_quant_add_fields
 msgid "Migrate studio Maintenance Equipment fields"
-msgstr ""
+msgstr "Migrer les champs Équipement de maintenance du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_maintenance_etapes_pret_add_fields
 msgid "Migrate studio Maintenance Loan Steps fields"
-msgstr ""
+msgstr "Migrer les champs Étapes du prêt de maintenance du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_maintenance_version_add_fields
 msgid "Migrate studio Maintenance Version fields"
-msgstr ""
+msgstr "Migrer les champs de la version de maintenance du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_naf_code_add_fields
 msgid "Migrate studio Naf Code fields"
-msgstr ""
+msgstr "Migrer les champs du code Naf du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_product_pricelist_add_fields
 msgid "Migrate studio Product Pricelist fields"
-msgstr ""
+msgstr "Migrer les champs de la liste de prix des produits du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_sale_order_subscription_add_fields
 msgid "Migrate studio Sale Subscription fields"
-msgstr ""
+msgstr "Migrer les champs d'abonnement de vente du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_lot_motif_retrait_add_fields
 msgid "Migrate studio Stock Lot Withdrawal Reasons fields"
-msgstr ""
+msgstr "Migrer les champs Motifs de retrait des lots de stock du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_res_partner_add_fields
 msgid "Migrate studio partner fields"
-msgstr ""
+msgstr "Migrer les champs partenaires du studio"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.model_purchase_order_add_fields
 msgid "Migrate studio purchase order fields"
-msgstr ""
+msgstr "Migrer les champs de bon de commande du studio"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_lot_motif_retrait
 msgid "Model for Stock Lot Withdrawal Reasons (Motif de Retrait)"
-msgstr ""
+msgstr "Modèle de motif de retrait de lot de stock"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_report_monitoring_interventions
 msgid "Monitoring Interventions"
-msgstr ""
+msgstr "Interventions de surveillance"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Date limite de mon activité"
 
 #. module: ibjb_studio
 #: model:ir.ui.menu,name:ibjb_studio.menu_my_weekly_attendance
 msgid "My weekly attendance"
-msgstr ""
+msgstr "Ma présence hebdomadaire"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_naf_code
 #: model:ir.ui.menu,name:ibjb_studio.menu_naf_code
 msgid "NAF Code"
-msgstr ""
+msgstr "Code NAF"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5203,53 +5207,53 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_ticket_gamme__name
 #, python-format
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__field_wExXP
 msgid "New File"
-msgstr ""
+msgstr "Nouveau fichier"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist_item__oci_pricelist_coms
 msgid "New Multiline Text"
-msgstr ""
+msgstr "Nouveau texte multiligne"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist_item__saleorder_pricelist_productdate
 msgid "New Text"
-msgstr ""
+msgstr "Nouveau texte"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__activity_calendar_event_id
 msgid "Next Activity Calendar Event"
-msgstr ""
+msgstr "Prochain événement du calendrier d'activités"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Date limite de la prochaine activité"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Résumé de l'activité suivante"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Type d'activité suivant"
 
 #. module: ibjb_studio
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__helpdesk_ticket__ouverture_fiche_progres__non
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #. module: ibjb_studio
 #: model_terms:ir.actions.act_window,help:ibjb_studio.action_helpdesk_source
 #: model_terms:ir.actions.act_window,help:ibjb_studio.action_helpdesk_ticket_gamme
 msgid "No source found. Let's create one!"
-msgstr ""
+msgstr "Aucune source trouvée. Créons-en un!"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_immuno_hemato__name
@@ -5293,14 +5297,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__blbr_remarque
 #, python-format
 msgid "Noticed"
-msgstr ""
+msgstr "Remarqué"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.notifications_badgeuse
 #: model:ir.actions.server,name:ibjb_studio.notifications_badgeuse_2
 #: model:ir.actions.server,name:ibjb_studio.notifications_badgeuse_http_post
 msgid "Notifications Badgeuse"
-msgstr ""
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.notifications_sortie
@@ -5310,22 +5313,22 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Nombre d'actions"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Nombre d'erreurs"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Nombre de messages nécessitant une action"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Nombre de messages avec erreur de livraison"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5344,22 +5347,22 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_server_maj_reference_order
 msgid "OCI - MAJ reference order"
-msgstr ""
+msgstr "OCI - Ordre de référence MAJ"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_server_oci_maj_reference_order
 msgid "OCI MAJ Reference Order"
-msgstr ""
+msgstr "Ordre de référence OCI MAJ"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_pircelist_offer
 msgid "Offer"
-msgstr ""
+msgstr "Offre"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__pricelist_orderref
 msgid "Offer reference"
-msgstr ""
+msgstr "Référence de l'offre"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_price_list_copy_1
@@ -5377,7 +5380,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_helpdesk_ticket__ouvert_le
 #, python-format
 msgid "Open on"
-msgstr ""
+msgstr "Ouvert le"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5385,12 +5388,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_helpdesk_ticket__ouvert_par_id
 #, python-format
 msgid "Opened by"
-msgstr ""
+msgstr "Ouvert par"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_set_opened_by_creator_if_empty
 msgid "Opened by creator if empty at creation"
-msgstr ""
+msgstr "Ouvert par le créateur si vide à la création"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5398,18 +5401,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_helpdesk_ticket__ouverture_fiche_progres
 #, python-format
 msgid "Opening Progress Sheet"
-msgstr ""
+msgstr "Feuille de progression d’ouverture"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__date_ouverture
 msgid "Opening date"
-msgstr ""
+msgstr "Date d'ouverture"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Order"
-msgstr ""
+msgstr "Commande"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5417,60 +5420,60 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__bl_commentairetxt
 #, python-format
 msgid "Order comment"
-msgstr ""
+msgstr "Commentaire de commande"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_sale_order_cmd
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_sale_order_without_lot
 msgid "Order confirmation"
-msgstr ""
+msgstr "Confirmation de commande"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_equipment__date_de_vente
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_hr_equipment_view_form
 msgid "Order date"
-msgstr ""
+msgstr "Date de commande"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__purchase_order_reference
 msgid "Order reference"
-msgstr ""
+msgstr "Référence de commande"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__carton_dorigine_ou_dfaut_carton_de_lautomate_de_prt
 msgid "Original box or failing that box from the loan machine"
-msgstr ""
+msgstr "Boîte d'origine ou à défaut boîte de la machine de prêt"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_equipment__proprietaire_id
 msgid "Owner"
-msgstr ""
+msgstr "Propriétaire"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__proprietaire_maintenance_equipment_count
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_users__proprietaire_maintenance_equipment_count
 msgid "Owner account"
-msgstr ""
+msgstr "Compte propriétaire"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__lot_pvcontrolekmatic
 msgid "PV supplier"
-msgstr ""
+msgstr "Fournisseur photovoltaïque"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Paid on"
-msgstr ""
+msgstr "Payé le"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__manuel_papier
 msgid "Paper manual"
-msgstr ""
+msgstr "Manuel papier"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_view_partner_form
 msgid "Parent Company"
-msgstr ""
+msgstr "Société mère"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__is_oci_contact_pasconsentement
@@ -5481,38 +5484,38 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__pricelist_conditionspaiement
 msgid "Payment terms"
-msgstr ""
+msgstr "Conditions de paiement"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Payment within 30 calendar day"
-msgstr ""
+msgstr "Paiement sous 30 jours calendaires"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__oci_maint_date_enlv_pret
 msgid "Pick-up date ready"
-msgstr ""
+msgstr "Date de retrait prête"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_report_picking_operations_copy_2
 msgid "Picking Operations copy(2)"
-msgstr ""
+msgstr "Copie des opérations de prélèvement (2)"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_report_picking_operations_copy_4
 msgid "Picking Operations copy(4)"
-msgstr ""
+msgstr "Copie des opérations de prélèvement (4)"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_product_price_list_form
 msgid "Please complete the CONTACT SHEET!"
-msgstr ""
+msgstr "Merci de compléter la FICHE CONTACT !"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_ce_intracommunautaire_template
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Please use the following communication for your payment :"
-msgstr ""
+msgstr "Veuillez utiliser la communication suivante pour votre paiement :"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5525,17 +5528,17 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_quant__oci_inventaire_note
 msgid "Possible Comment"
-msgstr ""
+msgstr "Commentaire possible"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__pricelist_comeventuel
 msgid "Possible comment"
-msgstr ""
+msgstr "Commentaire possible"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.view_stock_picking_form_inherit
 msgid "Preparation elements"
-msgstr ""
+msgstr "Éléments de préparation"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5543,7 +5546,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__bl_prepareepar_id
 #, python-format
 msgid "Prepared by"
-msgstr ""
+msgstr "Préparé par"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5551,12 +5554,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__bl_prepareele_1
 #, python-format
 msgid "Prepared on"
-msgstr ""
+msgstr "Préparé le"
 
 #. module: ibjb_studio
 #: model:mail.template,name:ibjb_studio.presence_notification
 msgid "Presence Notification Automatique"
-msgstr ""
+msgstr "Notification de Présence Automatique"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5570,63 +5573,63 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_product_price_list_form
 msgid "Price calculation"
-msgstr ""
+msgstr "Calcul du prix"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_price_list
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_view_partner_form
 msgid "Price list"
-msgstr ""
+msgstr "Liste de prix"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_server_pricelist_date
 msgid "Price list date"
-msgstr ""
+msgstr "Date de la liste de prix"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_product_price_list_form
 msgid "Price list items"
-msgstr ""
+msgstr "Articles de la liste de prix"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__offre_de_prix
 msgid "Price offer"
-msgstr ""
+msgstr "Offre de prix"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_product_pircelist_offer
 msgid "Price offer EN"
-msgstr ""
+msgstr "Offre de prix FR"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_product_pircelist_offer_copy1
 msgid "Price offer EN copy 1"
-msgstr ""
+msgstr "Offre de prix FR copie 1"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__is_listprice_france
 msgid "Price offer France"
-msgstr ""
+msgstr "Offre de prix France"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__is_listprice_horsfrance
 msgid "Price offer outside France"
-msgstr ""
+msgstr "Offre de prix hors France"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_purchase_order
 msgid "Price request"
-msgstr ""
+msgstr "Demande de prix"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_product_pricelist
 msgid "Pricelist"
-msgstr ""
+msgstr "Liste de prix"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_product_pricelist_item
 msgid "Pricelist Rule"
-msgstr ""
+msgstr "Règle de liste de prix"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_view_partner_form
@@ -5641,12 +5644,12 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_proforma_invoice
 msgid "Pro-Forma Invoice"
-msgstr ""
+msgstr "Facture pro forma"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_product_template
 msgid "Product"
-msgstr ""
+msgstr "Produit"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5655,18 +5658,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__product_reference
 #, python-format
 msgid "Product Reference"
-msgstr ""
+msgstr "Référence produit"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_product__product_tmpl_id_product_pricelist_item_count
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_template__product_tmpl_id_product_pricelist_item_count
 msgid "Product Template count"
-msgstr ""
+msgstr "Nombre de modèles de produit"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_product_product
 msgid "Product Variant"
-msgstr ""
+msgstr "Variante de produit"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5677,12 +5680,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_quant__catg_art
 #, python-format
 msgid "Product reference"
-msgstr ""
+msgstr "Référence produit"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_ibjb_report_saleorder_proforma_invoice
 msgid "Proforma Invoice"
-msgstr ""
+msgstr "Facture pro forma"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5690,7 +5693,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_helpdesk_ticket__oci_asst_ouinonfp
 #, python-format
 msgid "Progress Sheet"
-msgstr ""
+msgstr "Feuille de progression"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5698,44 +5701,44 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_helpdesk_ticket__tache_ficheprogres_id
 #, python-format
 msgid "Progress sheet:"
-msgstr ""
+msgstr "Feuille de progression:"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_purchase_order
 msgid "Purchase Order"
-msgstr ""
+msgstr "Bon de commande"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr ""
+msgstr "Ligne de bon de commande"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_supplier_order_1
 msgid "Purchase order"
-msgstr ""
+msgstr "Bon de commande"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 msgid "Purchase order reference"
-msgstr ""
+msgstr "Référence du bon de commande"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_hr_equipment_view_form
 msgid "Purchase price"
-msgstr ""
+msgstr "Prix d'achat"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__listprice_referencepdf
 msgid "Quality document ref"
-msgstr ""
+msgstr "Réf document qualité"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_quantity
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Quantity"
-msgstr ""
+msgstr "Quantité"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.transfer_report_copy_1
@@ -5750,38 +5753,38 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_server_quarantine_new_batch
 msgid "Quarantine new batch"
-msgstr ""
+msgstr "Mettre en quarantaine un nouveau lot"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Quotation"
-msgstr ""
+msgstr "Citation"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_ibjb_report_saleorder_copy_2
 msgid "Quotation / Order copy(2)"
-msgstr ""
+msgstr "Devis / Copie de commande(2)"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_ibjb_report_sale_order_cmd
 msgid "Quote / Conf cmd backup created from 0"
-msgstr ""
+msgstr "Sauvegarde cmd Quote / Conf créée à partir de 0"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_ibjb_report_saleorder_copy_4
 msgid "Quote / Discount"
-msgstr ""
+msgstr "Devis / Remise"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_ibjb_report_sale_order_without_lot
 msgid "Quote / Order confirmation (without lot)"
-msgstr ""
+msgstr "Devis / Confirmation de commande (sans lot)"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_ibjb_report_sale_order_backup
 msgid "Quote / order Backup"
-msgstr ""
+msgstr "Devis / commande Sauvegarde"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5804,7 +5807,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__ri_complt_et_sign
 msgid "RI completed and signed"
-msgstr ""
+msgstr "RI complété et signé"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -5812,29 +5815,29 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_helpdesk_ticket__gamme_id
 #, python-format
 msgid "Range"
-msgstr ""
+msgstr "Gamme"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__rating_ids
 msgid "Ratings"
-msgstr ""
+msgstr "Notes"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__oci_maint_date_envoi_pret
 msgid "Ready shipping date"
-msgstr ""
+msgstr "Date d'expédition prête"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_lot_motif_retrait
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__motif_de_retrait_id
 #: model:ir.ui.menu,name:ibjb_studio.menu_reason_for_withdrawal
 msgid "Reason for withdrawal"
-msgstr ""
+msgstr "Raison du retrait"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_pircelist_offer
 msgid "Reference offer :"
-msgstr ""
+msgstr "Offre de référence :"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_regroupement
@@ -5847,32 +5850,32 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__oci_maintenance_liee_id
 msgid "Related maintenance"
-msgstr ""
+msgstr "Entretien associé"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_ticket_linked
 msgid "Related ticket(s)"
-msgstr ""
+msgstr "Billet(s) associé(s)"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_inherit_hr_equipment_request_view_form
 msgid "Removal of loan equipment"
-msgstr ""
+msgstr "Enlèvement du matériel prêté"
 
 #. module: ibjb_studio
 #: model:ir.ui.menu,name:ibjb_studio.maintenance_repatriation_status_menu
 msgid "Repatriation Status"
-msgstr ""
+msgstr "Statut de rapatriement"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__pret_de_matriel
 msgid "Requires an equipment loan?"
-msgstr ""
+msgstr "Besoin d'un prêt d'équipement ?"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_reset_close_date_on_reopen
 msgid "Reset closing date in case of reopening"
-msgstr ""
+msgstr "Réinitialiser la date de clôture en cas de réouverture"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.transfer_report_copy_1
@@ -5882,7 +5885,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Utilisateur responsable"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_contact_roles
@@ -5890,7 +5893,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_users__role_contact_id
 #: model:ir.ui.menu,name:ibjb_studio.ibjb_contact_roles
 msgid "Roles"
-msgstr ""
+msgstr "Rôles"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_price_list_copy_1
@@ -5905,48 +5908,48 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_update_opened_date_if_empty_1
 msgid "SHIFT Open By If Empty"
-msgstr ""
+msgstr "SHIFT Ouvrir par si vide"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr ""
+msgstr "Erreur de livraison SMS"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "Commande client"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_sale_order_line
 msgid "Sales Order Line"
-msgstr ""
+msgstr "Ligne de commande client"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Scan this QR Code to<br/>pay with your mobile"
-msgstr ""
+msgstr "Scannez ce QR Code pour<br/>payer avec votre mobile"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_account_view_form
 msgid "Section"
-msgstr ""
+msgstr "Section"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_send_alert_email_service_quality
 msgid "Send Quality Service Alert Email"
-msgstr ""
+msgstr "Envoyer un e-mail d'alerte de service qualité"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_inherit_hr_equipment_request_view_form
 msgid "Sending Loan Material"
-msgstr ""
+msgstr "Envoi du matériel de prêt"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__is_sensible_2
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_users__is_sensible_2
 msgid "Sensible"
-msgstr ""
+msgstr "Sensible"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_service
@@ -5962,7 +5965,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__is_expdition_bloque
 #, python-format
 msgid "Shipping blocked"
-msgstr ""
+msgstr "Expédition bloquée"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__skype
@@ -5994,12 +5997,12 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_hr_equipment_view_form
 msgid "Standard contract"
-msgstr ""
+msgstr "Contrat type"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__date_life_start
 msgid "Start date"
-msgstr ""
+msgstr "Date de début"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__activity_state
@@ -6008,17 +6011,20 @@ msgid ""
 "Overdue: Due date is already passed\n"
 "Today: Activity date is today\n"
 "Planned: Future activities."
-msgstr ""
+msgstr "Statut basé sur les activités\n"
+"En retard: la date d'échéance est déjà dépassée\n"
+"Aujourd'hui: la date de l'activité est aujourd'hui\n"
+"Prévu: activités futures."
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_stock_move
 msgid "Stock Move"
-msgstr ""
+msgstr "Mouvement de stock"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__sous_traitant_id
 msgid "Subcontractor"
-msgstr ""
+msgstr "Sous-traitant"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -6026,28 +6032,28 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__abonnementsurbl
 #, python-format
 msgid "Subscription"
-msgstr ""
+msgstr "Abonnement"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__is_suivi_1
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_users__is_suivi_1
 msgid "Suivi"
-msgstr ""
+msgstr "Suivi"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_product_supplierinfo
 msgid "Supplier Pricelist"
-msgstr ""
+msgstr "Liste de prix des fournisseurs"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Supplier credit"
-msgstr ""
+msgstr "Crédit fournisseur"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Supplier invoice"
-msgstr ""
+msgstr "Facture fournisseur"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__name_product_supplierinfo_count
@@ -6058,7 +6064,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__systme_conforme_aux_spcifications_fabricant
 msgid "System complies with manufacturer specifications"
-msgstr ""
+msgstr "Le système est conforme aux spécifications du fabricant"
 
 #. module: ibjb_studio
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__res_partner__oci_contact_transporteur__tnt
@@ -6102,12 +6108,12 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__maintenance_solution
 msgid "Tasks and measures carried out"
-msgstr ""
+msgstr "Tâches et mesures réalisées"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "Tax ID"
-msgstr ""
+msgstr "Numéro d'identification fiscale"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_account_bank_statement_line__vat_customer
@@ -6124,32 +6130,32 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Taxes"
-msgstr ""
+msgstr "Impôts"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_partner__precision_phone
 #: model:ir.model.fields,field_description:ibjb_studio.field_res_users__precision_phone
 msgid "Telephone details"
-msgstr ""
+msgstr "Coordonnées téléphoniques"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_product_price_list_form
 msgid ""
 "The calculated price is expressed in the item's default unit of measurement."
-msgstr ""
+msgstr "Le prix calculé est exprimé dans l'unité de mesure par défaut de l'article."
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_account_partner_cat
 #: model:ir.ui.menu,name:ibjb_studio.menu_account_partner_cat
 msgid "Third Party Accounting Category"
-msgstr ""
+msgstr "Catégorie de comptabilité de tiers"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_bank_statement_line__oci_codetiersfact
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_move__oci_codetiersfact
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_payment__oci_codetiersfact
 msgid "Third party code"
-msgstr ""
+msgstr "Code tiers"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -6157,110 +6163,114 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__bl_codetiers
 #, python-format
 msgid "Third party code BL"
-msgstr ""
+msgstr "Code tiers BL"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid ""
 "Thirty one dollar and Five\n"
 "                                                    cents"
-msgstr ""
+msgstr "Trente et un dollars et cinq\n"
+" centimes"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_family
 msgid "This Model is Family of articles"
-msgstr ""
+msgstr "Ce modèle est une famille d'articles"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_immuno_hemato
 msgid "This Model is Immuno hemato"
-msgstr ""
+msgstr "Ce modèle est Immuno hémato"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_maintenance_etapes_pret
 msgid "This Model is Maintenance Loan Steps"
-msgstr ""
+msgstr "Ce modèle correspond aux étapes du prêt d'entretien"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_maintenance_version
 msgid "This Model is Maintenance Version"
-msgstr ""
+msgstr "Ce modèle est une version de maintenance"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_naf_code
 msgid "This Model is NAF Code"
-msgstr ""
+msgstr "Ce modèle est le code NAF"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_automates_bm_clients
 msgid "This Model is automates clients"
-msgstr ""
+msgstr "Ce modèle automatise les clients"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_centre_interet
 msgid "This Model is centre interet"
-msgstr ""
+msgstr "Ce modèle est le centre d'intérêt"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_automates_client
 msgid "This Model is code Automates client"
-msgstr ""
+msgstr "Ce modèle est du code Automatise le client"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_code_affaire
 msgid "This Model is code affair"
-msgstr ""
+msgstr "Ce modèle est une affaire de code"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_equipement_cmf
 msgid "This Model is code equipement cmf"
-msgstr ""
+msgstr "Ce modèle est le code équipement cmf"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_contact_roles
 msgid "This Model is contact roles"
-msgstr ""
+msgstr "Ce modèle est un rôle de contact"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_regroupement_regroupement
 msgid "This Model is regroupement"
-msgstr ""
+msgstr "Ce modèle est un regroupement"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_service_service
 msgid "This Model is service"
-msgstr ""
+msgstr "Ce modèle est un service"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_account_partner_cat
 msgid "This Module is Third Party Accounting Category"
-msgstr ""
+msgstr "Ce module est une catégorie de comptabilité tierce"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_oci_helpdesk_type_ticket
 msgid "This Module is helpdesk type ticket"
-msgstr ""
+msgstr "Ce module est un ticket de type helpdesk"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_stock_quant__field_WfwqV
 msgid ""
 "This is the date on which the goods with this Serial Number may become "
 "dangerous and must not be consumed."
-msgstr ""
+msgstr "Il s'agit de la date à laquelle les marchandises portant ce numéro de série peuvent devenir "
+"dangereux et ne doit pas être consommé."
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_stock_quant__date_de_premption
 msgid ""
 "This is the date when goods with this serial number become dangerous and "
 "should no longer be consumed."
-msgstr ""
+msgstr "Il s'agit de la date à laquelle les marchandises portant ce numéro de série deviennent dangereuses et "
+"ne devrait plus être consommé."
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_helpdesk_ticket__source_id
 msgid ""
 "This is the source of the link, e.g. Search Engine, another domain, or name "
 "of email list"
-msgstr ""
+msgstr "Il s'agit de la source du lien, par ex. Moteur de recherche, un autre domaine ou nom "
+"de la liste de diffusion"
 
 #. module: ibjb_studio
 #: model_terms:ir.actions.act_window,help:ibjb_studio.action_automates_bm_clients
@@ -6277,7 +6287,8 @@ msgstr ""
 msgid ""
 "This is your new action ; by default, it contains a list view and a form "
 "view."
-msgstr ""
+msgstr "C'est votre nouvelle action ; par défaut, il contient une vue liste et un formulaire 
+voir."
 
 #. module: ibjb_studio
 #: model_terms:ir.actions.act_window,help:ibjb_studio.action_articles_by_location
@@ -6285,7 +6296,9 @@ msgid ""
 "This is your new action ; by default, it contains a list view and a form view.\n"
 "            You can start customizing these screens by clicking on the Studio icon in the\n"
 "            top right corner (you can also customize this help message there)."
-msgstr ""
+msgstr "C'est votre nouvelle action ; par défaut, il contient une vue liste et une vue formulaire.\n"
+           Vous pouvez commencer à personnaliser ces écrans en cliquant sur l'icône Studio dans le\n"
+          coin supérieur droit (vous pouvez également personnaliser ce message d'aide ici)."
 
 #. module: ibjb_studio
 #: model_terms:ir.actions.act_window,help:ibjb_studio.action_family
@@ -6300,47 +6313,47 @@ msgstr ""
 msgid ""
 "This is your new action; by default, it contains a list view and a form "
 "view."
-msgstr ""
+msgstr "Ceci est votre nouvelle action; par défaut, il contient une vue liste et une vue formulaire."
 
 #. module: ibjb_studio
 #: model:mail.template,subject:ibjb_studio.ticket_alerte_service
 msgid "Ticket ${object.id}"
-msgstr ""
+msgstr "Billet ${object.id}"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_ticket_gamme
 msgid "Ticket Gamme"
-msgstr ""
+msgstr "Gamme de billets"
 
 #. module: ibjb_studio
 #: model:mail.template,name:ibjb_studio.ticket_alerte_service
 msgid "Ticket: Alerte Service Qualite"
-msgstr ""
+msgstr "Billet : Alerte Service Qualité"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.inherit_view_partner_form
 msgid "Titre"
-msgstr ""
+msgstr "Titre"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "To have"
-msgstr ""
+msgstr "Avoir"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__pricelist_alintentionde
 msgid "To the attention of"
-msgstr ""
+msgstr "A l'attention de"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__carton_origine_hautbas_ou_carton_automate_prt_hautbas
 msgid "Top/bottom original box or top/bottom ready machine box"
-msgstr ""
+msgstr "Boîte d'origine supérieure/inférieure ou boîte de machine prête à l'emploi supérieure/inférieure"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__haut_bas_fragile_sur_carton
 msgid "Top/bottom/fragile on cardboard"
-msgstr ""
+msgstr "Haut/bas/fragile sur carton"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.transfer_report_copy_1
@@ -6358,86 +6371,86 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__total_weight
 #, python-format
 msgid "Total Weight"
-msgstr ""
+msgstr "Poids total"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid ""
 "Total amount in words:\n"
 "                                            <br/>"
-msgstr ""
+msgstr "Montant total en lettres:"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Total price"
-msgstr ""
+msgstr "Prix total"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Total quantity items"
-msgstr ""
+msgstr "Quantité totale d'articles"
 
 #. module: ibjb_studio
 #: model:ir.model,name:ibjb_studio.model_stock_picking
 msgid "Transfer"
-msgstr ""
+msgstr "Transfert"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_transfer_report_1
 msgid "Transfer Report 1"
-msgstr ""
+msgstr "Rapport de transfert 1"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_transfer_report_2
 msgid "Transfer Report 2"
-msgstr ""
+msgstr "Rapport de transfert 2"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_transfer_report_3
 msgid "Transfer Report 3"
-msgstr ""
+msgstr "Rapport de transfert 3"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_report_transfer_report_copy_1
 msgid "Transfer Report copy (1)"
-msgstr ""
+msgstr "Copie du rapport de transfert (1)"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.action_report_transfer_report_copy_2
 msgid "Transfer Report copy (2)"
-msgstr ""
+msgstr "Copie du rapport de transfert (2)"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__flacons_de_transport
 msgid "Transport bottles"
-msgstr ""
+msgstr "Bouteilles de transport"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__flacons_de_transport_1
 msgid "Transport bottles 1"
-msgstr ""
+msgstr "Bouteilles de transport 1"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__flacons_de_transport_2
 msgid "Transport bottles 2"
-msgstr ""
+msgstr "Bouteilles de transport 2"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__flacons_de_transport_3
 msgid "Transport bottles 3"
-msgstr ""
+msgstr "Bouteilles de transport 3"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_transport_complte_sur_partie_aller
 msgid "Transport form completed on the “outbound” part"
-msgstr ""
+msgstr "Fiche de transport complétée sur la partie « aller »"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_request__fiche_transport_complte_sur_partie_retour
 msgid "Transport form completed on the “return” section"
-msgstr ""
+msgstr "Formulaire de transport complété sur la rubrique « retour »"
 
 #. module: ibjb_studio
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__res_partner__oci_contact_transporteur__transporteur_client_/_customer_carrier
@@ -6455,24 +6468,24 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__saleorder_order_carrier
 msgid "Transportor Carrier"
-msgstr ""
+msgstr "Transporteur Transporteur"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_sale_order__tva_msg_europe
 msgid "Tva Msg Europe"
-msgstr ""
+msgstr "Tva Msg Europe"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_view_account_invoice_filter
 msgid "Type"
-msgstr ""
+msgstr "Taper"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_ticket_type
 #: model:ir.actions.act_window,name:ibjb_studio.action_type_de_ticket
 #: model:ir.ui.menu,name:ibjb_studio.menu_type_de_ticket
 msgid "Type de ticket"
-msgstr ""
+msgstr "Type de billet"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__activity_exception_decoration
@@ -6482,34 +6495,34 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
-msgid "Unit Price"
+msgid "Type d’activité d’exception enregistrée."
 msgstr ""
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_lot__stock_cout_du_lot_unitaire
 msgid "Unit cost of the item"
-msgstr ""
+msgstr "Coût unitaire de l'article"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_2
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.report_saleorder_copy_4
 msgid "Unit price"
-msgstr ""
+msgstr "Prix unitaire"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_update_opening_date
 msgid "Update Opening date if empty"
-msgstr ""
+msgstr "Mettre à jour la date d'ouverture si vide"
 
 #. module: ibjb_studio
 #: model:ir.actions.server,name:ibjb_studio.action_update_opened_by_if_empty_2
 msgid "Update opened by svide"
-msgstr ""
+msgstr "Mise à jour ouverte par svid"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_equipment__client_utilisateur_id
 msgid "User client"
-msgstr ""
+msgstr "Client utilisateur"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_account_bank_statement_line__amount_tax_signed_stored
@@ -6518,23 +6531,23 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_account_invoice_bill_tree
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_view_out_invoice_tree
 msgid "VAT"
-msgstr ""
+msgstr "TVA"
 
 #. module: ibjb_studio
 #: model:ir.actions.report,name:ibjb_studio.account_move_facture_franchise_de_tva_template
 msgid "VAT Exemption Invoice"
-msgstr ""
+msgstr "Facture d'exonération de TVA"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_export_non_ce_template
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_facto_cic_template
 msgid "VAT No.:"
-msgstr ""
+msgstr "N° TVA :"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_account_invoice_bill_tree
 msgid "VAT included"
-msgstr ""
+msgstr "TVA incluse"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_ventes
@@ -6548,7 +6561,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__bl_verifieepar
 #, python-format
 msgid "Verified by"
-msgstr ""
+msgstr "Vérifié par"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -6570,17 +6583,17 @@ msgstr ""
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__warming
 msgid "Warming"
-msgstr ""
+msgstr "Échauffement"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_family__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Messages du site Web"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,help:ibjb_studio.field_family__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Historique des communications du site Web"
 
 #. module: ibjb_studio
 #. odoo-python
@@ -6588,17 +6601,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__bl_poids
 #, python-format
 msgid "Weight"
-msgstr ""
+msgstr "Poids"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_pricelist__offre_de_prix_annee
 msgid "Year of offer"
-msgstr ""
+msgstr "Année de l'offre"
 
 #. module: ibjb_studio
 #: model:ir.model.fields.selection,name:ibjb_studio.selection__helpdesk_ticket__ouverture_fiche_progres__oui
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #. module: ibjb_studio
 #: model_terms:ir.actions.act_window,help:ibjb_studio.action_menu_cumulative_attendance
@@ -6607,7 +6620,8 @@ msgstr ""
 msgid ""
 "You can start customizing these screens by clicking on the Studio icon on the\n"
 "                        top right corner (you can also customize this help message there)."
-msgstr ""
+msgstr "Vous pouvez commencer à personnaliser ces écrans en cliquant sur l'icône Studio sur le\n"
+                   coin supérieur droit (vous pouvez également personnaliser ce message d'aide ici)."
 
 #. module: ibjb_studio
 #: model_terms:ir.actions.act_window,help:ibjb_studio.action_automates_bm_clients
@@ -6622,7 +6636,8 @@ msgstr ""
 msgid ""
 "You can start customizing these screens by clicking on the Studio icon on the\n"
 "                top right corner (you can also customize this help message there)."
-msgstr ""
+msgstr "Vous pouvez commencer à personnaliser ces écrans en cliquant sur l'icône Studio sur le\n"
+                coin supérieur droit (vous pouvez également personnaliser ce message d'aide ici)."
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.automates_bm_clients_form_view
@@ -6648,18 +6663,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_maintenance_equipment__contrat_en_cours
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.ibjb_studio_hr_equipment_view_form
 msgid "current_contract"
-msgstr ""
+msgstr "contrat_actuel"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_product__is_delete
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_template__is_delete
 msgid "delete"
-msgstr ""
+msgstr "supprimer"
 
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.facture_franchise_de_tva_template
 msgid "due if paid before"
-msgstr ""
+msgstr "dû si payé avant"
 
 #. module: ibjb_studio
 #: model:ir.actions.act_window,name:ibjb_studio.action_helpdesk_ticket_gamme
@@ -6711,7 +6726,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:ibjb_studio.field_stock_picking__date_commande
 #, python-format
 msgid "order date"
-msgstr ""
+msgstr "date de commande"
 
 #. module: ibjb_studio
 #: model:ir.model.fields,field_description:ibjb_studio.field_product_product__qty_av
@@ -6737,7 +6752,7 @@ msgstr ""
 #. module: ibjb_studio
 #: model_terms:ir.ui.view,arch_db:ibjb_studio.product_pircelist_offer
 msgid "valid until"
-msgstr ""
+msgstr "valable jusqu'à"
 
 #. module: ibjb_studio
 #: model:mail.template,subject:ibjb_studio.presence_notification
