@@ -85,8 +85,8 @@ class StockLot(models.Model):
             "x_studio_oci_lot_cout": "lot_cout",
             "x_studio_oci_inventory_lot_kmdispo": "inventory_lot_kmdispo",
             "x_studio_oci_inventory_lot_catgory": "inventory_lot_catgory",
-            "x_studio_cout_x_quantit": "cout_x_quantit",
-            "x_studio_oci_stock_cout_du_lot_unitaire": "stock_cout_du_lot_unitaire",
+            # "x_studio_cout_x_quantit": "cout_x_quantit",
+            # "x_studio_oci_stock_cout_du_lot_unitaire": "stock_cout_du_lot_unitaire",
         }
 
         stock_lots = self.search([])

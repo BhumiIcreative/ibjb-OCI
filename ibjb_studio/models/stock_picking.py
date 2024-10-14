@@ -61,7 +61,7 @@ class ResCompany(models.Model):
             "x_studio_field_itTx0": "product_reference",
             "x_studio_field_n2pvH": "date_commande",
             "x_studio_oci_abonnementsurbl": "abonnementsurbl",
-            "x_studio_oci_bl_abobdc": "bl_abobdc",
+            # "x_studio_oci_bl_abobdc": "bl_abobdc",
             "x_studio_oci_bl_btverif": "bl_btverif_id",
             "x_studio_oci_bl_codetiers": "bl_codetiers",
             "x_studio_oci_bl_commentairetxt": "bl_commentairetxt",

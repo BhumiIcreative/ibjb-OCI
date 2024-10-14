@@ -451,9 +451,9 @@ class MaintenanceRequest(models.Model):
             "x_studio_carton_origine_hautbas_ou_carton_automate_prt_hautbas": "carton_origine_hautbas_ou_carton_automate_prt_hautbas",
             "x_studio_conclusion_et_conseils_au_client": "conclusion_et_conseils_au_client",
             "x_studio_date_ouverture": "date_ouverture",
-            # "x_studio_demande_de_pret": "demande_de_pret_id",
+            "x_studio_demande_de_pret": "demande_de_pret_id",
             "x_studio_description_maintenance": "description_maintenance",
-            # "x_studio_etape_du_prt": "etape_du_prt_id",
+            "x_studio_etape_du_prt": "etape_du_prt_id",
             "x_studio_fiche_pret_1": "fiche_pret_1",
             "x_studio_fiche_pret_4": "fiche_pret_4",
             "x_studio_fiche_prt_complte_sur_partie_aller_": "fiche_prt_complte_sur_partie_aller",
@@ -495,7 +495,7 @@ class MaintenanceRequest(models.Model):
         }
 
         mainten_orders = self.search([])
-        print('\n\n\nmainten_orders',mainten_orders)# Fetch all sale  records
+        print('\n\n\nmainten_orders',mainten_orders)# Fetch all mainten orders
         for rec in mainten_orders:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

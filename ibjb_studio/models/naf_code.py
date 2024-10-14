@@ -17,6 +17,8 @@ class NafCode(models.Model):
         migration_fields = {
             "x_name": "name",
         }
-        for rec in self:
+
+        naf_codes = self.search([])
+        for rec in naf_codes:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

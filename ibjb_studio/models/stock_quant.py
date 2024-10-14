@@ -84,8 +84,9 @@ class StockQuant(models.Model):
             "x_studio_field_WfwqV": "field_WfwqV",
             "x_studio_oci_inventaire_note": "oci_inventaire_note",
             "x_studio_ref_interne_1": "ref_interne_1",
-
         }
-        for rec in self:
+
+        stock_quants = self.search([])
+        for rec in stock_quants:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

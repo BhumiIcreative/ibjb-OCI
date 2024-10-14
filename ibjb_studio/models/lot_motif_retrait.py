@@ -17,6 +17,7 @@ class LotMotifRetrait(models.Model):
         migration_fields = {
             "x_name": "name",
         }
-        for rec in self:
+        lot_motifs = self.search([])
+        for rec in lot_motifs:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

@@ -17,7 +17,7 @@ class StockMove(models.Model):
         schedule action code to migrate stock move studio fields data to custom fields.
         """
         migration_fields = {
-            "x_studio_cha": "codedouane_bl"
+            # "x_studio_cha": "codedouane_bl"
         }
         stock_move_orders = self.search([])
         print('\n\n\n\nstock_move_orders', stock_move_orders)

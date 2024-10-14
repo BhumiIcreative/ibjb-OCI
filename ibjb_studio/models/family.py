@@ -39,9 +39,10 @@ class Family(models.Model):
         """
         migration_fields = {
             "x_name": "name",
-            "x_x_studio_oci_famille_article__product_template_count": "oci_famille_article_product_template_count",
+            # "x_x_studio_oci_famille_article__product_template_count": "oci_famille_article_product_template_count",
             "x_studio_oci_famillearticle_description": "oci_famillearticle_description",
         }
-        for rec in self:
+        family_records = self.search([])
+        for rec in family_records:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

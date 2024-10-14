@@ -45,11 +45,12 @@ class ProductTemplate(models.Model):
             'x_studio_delete': 'is_delete',
             'x_studio_immuno_hemato': 'immuno_hemato_id',
             'x_studio_oci_famille_article': 'oci_famille_article_id',
-            'x_studio_many2many_field_5nn_1i9tlt4i6':'gamme_article_ids'
+            'x_studio_gamme_article':'gamme_article_ids',
+            'x_studio_qty_av':'qty_av'
         }
 
         product_templates = self.search([])
-        print('\n\n\nhelpdesk_tickets', product_templates)  # Fetch all helpdesk tickets
+        print('\n\n\nproduct_templates', product_templates)  # Fetch all product templates
         for rec in product_templates:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

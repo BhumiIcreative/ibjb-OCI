@@ -27,14 +27,18 @@ class PricelistItem(models.Model):
         store=True,
     )
 
-    def Update_product_pricelist_item_studio_fields(self):
+    def update_product_pricelist_studio_fields(self):
+        print('\n\n\nselfupdate_product_pricelist_studio_fields',self)
         """
         server action code to migrate Product pricelist items studio fields data to custom fields.
         """
         migration_fields = {
-            "x_studio_oci_pricelist_coms": "oci_pricelist_coms",
+            "x_studio_field_MqbX7":"field_MqbX7",
+            # "x_studio_oci_pricelist_coms": "oci_pricelist_coms",
+            "x_studio_studio_new_text":"saleorder_pricelist_productdate",
             "x_studio_x_studio_saleorder_pricelist_productdate": "saleorder_pricelist_productdate",
         }
-        for rec in self:
+        pricelist_item_orders = self.search([])
+        for rec in pricelist_item_orders:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

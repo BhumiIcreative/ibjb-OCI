@@ -9,7 +9,19 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+     <record id="sale_update_product_price_list_fields_cron_job" model="ir.cron">
+        <field name="name">Update product price list fields data</field>
+        <field name="model_id" ref="product.model_product_pricelist_item"/>
+        <field name="state">code</field>
+        <field name="code">model.update_product_pricelist_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="pricelist_update_fields_cron_job" model="ir.cron">
@@ -21,19 +33,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
-    </record>
-
-    <record id="pricelist_update_fields_cron_job_2" model="ir.cron">
-        <field name="name">Update sale order line fields data</field>
-        <field name="model_id" ref="model_sale_order"/>
-        <field name="state">code</field>
-        <field name="code">model.update_sale_order_line_studio_fields()</field>
-        <field name="interval_number">1</field>
-        <field name="interval_type">days</field>
-        <field name="numbercall">-1</field>
-        <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="maintence_request_update_fields_cron_job" model="ir.cron">
@@ -45,7 +45,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="maintenance_equipment_update_fields_cron_job" model="ir.cron">
@@ -57,7 +57,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="res_company_update_fields_cron_job" model="ir.cron">
@@ -69,7 +69,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="helpdesk_ticket_update_fields_cron_job" model="ir.cron">
@@ -81,7 +81,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="hr_attendance_update_fields_cron_job" model="ir.cron">
@@ -93,7 +93,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="stock_picking_update_fields_cron_job" model="ir.cron">
@@ -105,7 +105,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="stock_lot_update_fields_cron_job" model="ir.cron">
@@ -117,7 +117,7 @@
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
         <field name="priority">3</field>
-        <field name="nextcall" eval="DateTime.now().strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
 
@@ -129,7 +129,20 @@
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
-        <field name="active" eval="True"/>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_product_product_migration" model="ir.cron">
+        <field name="name">Migrate Product Fields</field>
+        <field name="model_id" ref="product.model_product_product"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_product_product_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="ir_cron_ticket_gamme_migration" model="ir.cron">
@@ -140,7 +153,8 @@
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
-        <field name="active" eval="True"/>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
     <record id="ir_cron_stock_move_migration" model="ir.cron">
@@ -151,7 +165,8 @@
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
-        <field name="active" eval="True"/>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
 
@@ -163,7 +178,8 @@
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
-        <field name="active" eval="True"/>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
 
@@ -175,8 +191,251 @@
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
         <field name="numbercall">-1</field>
-        <field name="active" eval="True"/>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
     </record>
 
+    <record id="ir_cron_helpdesk_source" model="ir.cron">
+        <field name="name">Migrate Helpdesk source Fields</field>
+        <field name="model_id" ref="ibjb_studio.model_helpdesk_source"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_helpdesk_source_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_automates_clients_migration" model="ir.cron">
+        <field name="name">Automates Clients Migration</field>
+        <field name="model_id" ref="ibjb_studio.model_automates_bm_clients"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_automates_clients()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_centre_interet_migration" model="ir.cron">
+        <field name="name">Centre Interet Migration</field>
+        <field name="model_id" ref="ibjb_studio.model_centre_interet"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_centre_interet()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_automates_client_migration" model="ir.cron">
+        <field name="name">Automates Client Migration</field>
+        <field name="model_id" ref="ibjb_studio.model_automates_client"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_automates_client()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_code_affaire_migration" model="ir.cron">
+        <field name="name">Code Affaire Migration</field>
+        <field name="model_id" ref="ibjb_studio.model_code_affaire"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_code_affaire()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_contact_roles_migration" model="ir.cron">
+        <field name="name">Contact Roles Migration</field>
+        <field name="model_id" ref="ibjb_studio.model_contact_roles"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_contact_roles()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_equipement_cmf_migration" model="ir.cron">
+        <field name="name">Equipement CMF Migration</field>
+        <field name="model_id" ref="ibjb_studio.model_equipement_cmf"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_equipement_cmf()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_immuno_hemato_migration" model="ir.cron">
+        <field name="name">Immuno Hemato Migration</field>
+        <field name="model_id" ref="ibjb_studio.model_immuno_hemato"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_immuno_hemato()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <record id="ir_cron_helpdesk_ticket_type_migration" model="ir.cron">
+        <field name="name">Helpdesk Ticket Type Migration</field>
+        <field name="model_id" ref="ibjb_studio.model_oci_helpdesk_type_ticket"/>
+        <field name="state">code</field>
+        <field name="code">model.migrate_helpdesk_ticket_type()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <!--    +++++++=====++++++++++++++++++++++++++=++++++++++++++-->
+
+    <!-- Scheduled action for Res Partner -->
+    <record id="ir_cron_res_partner_migrate" model="ir.cron">
+        <field name="name">Migrate studio partner fields</field>
+        <field name="model_id" ref="sale.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_partner_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <!-- Scheduled action for Purchase Order -->
+    <record id="ir_cron_purchase_order_migrate" model="ir.cron">
+        <field name="name">Migrate studio purchase order fields</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_purchase_order_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <!-- Scheduled action for Stock Quant -->
+    <record id="ir_cron_stock_quant_migrate" model="ir.cron">
+        <field name="name">Migrate studio stock quant fields</field>
+        <field name="model_id" ref="stock.model_stock_quant"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_stock_quant_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+
+    <!-- Scheduled action for Account Move -->
+    <record id="ir_cron_account_move_migrate" model="ir.cron">
+        <field name="name">Migrate studio Account Move fields</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_account_move_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+
+    <!-- Scheduled action for Family -->
+    <record id="ir_cron_family_migrate" model="ir.cron">
+        <field name="name">Migrate studio Family fields</field>
+        <field name="model_id" ref="ibjb_studio.model_family"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_family_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+
+    <!-- Scheduled action for Account Partner Category -->
+    <record id="ir_cron_account_partner_cat_migrate" model="ir.cron">
+        <field name="name">Migrate studio Account Partner Category fields</field>
+        <field name="model_id" ref="ibjb_studio.model_account_partner_cat"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_account_partner_cat_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <!-- Scheduled action for Lot Motif Retrait -->
+    <record id="ir_cron_lot_motif_retrait_migrate" model="ir.cron">
+        <field name="name">Migrate studio Stock Lot Withdrawal Reasons fields</field>
+        <field name="model_id" ref="ibjb_studio.model_lot_motif_retrait"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_lot_motif_retrait_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <!-- Scheduled action for Maintenance Etapes Pret -->
+    <record id="ir_cron_maintenance_etapes_pret_migrate" model="ir.cron">
+        <field name="name">Migrate studio Maintenance Loan Steps fields</field>
+        <field name="model_id" ref="ibjb_studio.model_maintenance_etapes_pret"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_maintenance_etapes_pret_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <!-- Scheduled action for Maintenance Version -->
+    <record id="ir_cron_maintenance_version_migrate" model="ir.cron">
+        <field name="name">Migrate studio Maintenance Version fields</field>
+        <field name="model_id" ref="ibjb_studio.model_maintenance_version"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_maintenance_version_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
+
+    <!-- Scheduled action for Naf Code -->
+    <record id="ir_cron_naf_code_migrate" model="ir.cron">
+        <field name="name">Migrate studio Naf Code fields</field>
+        <field name="model_id" ref="ibjb_studio.model_naf_code"/>
+        <field name="state">code</field>
+        <field name="code">model.Update_naf_code_studio_fields()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">3</field>
+        <field name="nextcall" eval="DateTime.now() + timedelta(hours=2)"/>
+    </record>
 </odoo>
 

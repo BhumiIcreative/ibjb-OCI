@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import fields, models
 from odoo.addons.ibjb_studio import common
+# from v12.enterprise.inter_company_rules.models.purchase_order import purchase_order
 
 
 class PurchaseOrder(models.Model):
@@ -20,16 +21,15 @@ class PurchaseOrder(models.Model):
         copy=False,
         ondelete="set null",
     )
-    oci_achat_devis_codetiers = fields.Char("Code tiers",related="partner_id.customer_code")
 
     def Update_purchase_order_studio_fields(self):
         """
         server action code to migrate Purchase studio fields data to custom fields.
         """
         migration_fields = {
-            # "x_studio_customer_code": "oci_achat_devis_codetiers", # No need to migarte this fields as it is related field
             "x_studio_oci_achats_acheteur": "oci_achats_acheteur",
         }
-        for rec in self:
+        purchase_orders = self.search([])
+        for rec in purchase_orders:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

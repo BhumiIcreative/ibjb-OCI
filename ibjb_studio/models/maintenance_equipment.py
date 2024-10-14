@@ -68,8 +68,8 @@ class MaintenanceEquipment(models.Model):
         print('\n\n\nself', self)
 
         migration_fields = {
-            "x_x_studio_field_aueov__sale_order_count": "aueov_sale_order_count",
-            "x_x_studio_abonnement_equipement__sale_subscription_count": "abonnement_equipement_sale_subscription_count",
+            # "x_x_studio_field_aueov__sale_order_count": "aueov_sale_order_count",
+            # "x_x_studio_abonnement_equipement__sale_subscription_count": "abonnement_equipement_sale_subscription_count",
             "x_studio_contrat_en_cours": "contrat_en_cours",
             "x_studio_date_fin_contrat": "date_fin_contrat",
             "x_studio_contrat_type": "contrat_type",
@@ -81,7 +81,7 @@ class MaintenanceEquipment(models.Model):
         }
 
         maintenance_eqp_orders = self.search([])
-        print('\n\n\nmainten_orders', maintenance_eqp_orders)  # Fetch all sale  records
+        print('\n\n\nmainten_orders', maintenance_eqp_orders)  # Fetch all maintenance eqp orders
         for rec in maintenance_eqp_orders:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

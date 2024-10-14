@@ -54,6 +54,8 @@ class AccountMove(models.Model):
             "x_studio_oci_compta_langcustomer": "oci_compta_langcustomer",
             "x_studio_amount_tax_signed_stored": "amount_tax_signed_stored",
         }
-        for rec in self:
+        account_moves = self.search([])
+        for rec in account_moves:
+            partner_code = rec.partner_id.customer_code if rec.partner_id else False
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

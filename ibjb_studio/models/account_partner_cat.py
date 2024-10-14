@@ -17,6 +17,7 @@ class AccountPartnerCat(models.Model):
         migration_fields = {
             "x_name": "name",
         }
-        for rec in self:
+        account_partners = self.search([])
+        for rec in account_partners:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)

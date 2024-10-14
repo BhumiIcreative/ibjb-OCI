@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import fields, models, _
+
 from odoo.addons.ibjb_studio import common
 
 
 class Partner(models.Model):
     _inherit = "res.partner"
 
-    customer_code = fields.Char(string="Code Tiers", copy=False) # x_studio_customer_code
-    customer_contact = fields.Char(string="Contact", copy=False) # x_studio_customer_contact
+    customer_code = fields.Char(string="Code Tiers", copy=False)  # x_studio_customer_code
+    customer_contact = fields.Char(string="Contact", copy=False)  # x_studio_customer_contact
     field_aD1p5 = fields.Selection(
         related="lang",
         string="Language",
@@ -18,8 +19,8 @@ class Partner(models.Model):
         store=True,
         copy=False,
         readonly=False,
-    ) # x_studio_field_aD1p5
-    tva = fields.Char(string="TVA", copy=False) # x_studio_tva
+    )  # x_studio_field_aD1p5
+    tva = fields.Char(string="TVA", copy=False)  # x_studio_tva
     oci_contact_transporteur = fields.Selection(
         selection=[
             ("DHL", "DHL"),
@@ -36,15 +37,16 @@ class Partner(models.Model):
         string="Transportor",
         store=True,
         tracking=True
-    ) # x_studio_oci_contact_transporteur
-    is_confidentiel = fields.Boolean("Confidentiel", copy=False) # x_studio_confidentiel
-    is_suivi_1 = fields.Boolean("Suivi", copy=False) # x_studio_suivi_1
-    is_sensible_2 = fields.Boolean("Sensible", copy=False) # x_studio_sensible_2
+    )  # x_studio_oci_contact_transporteur
+    is_confidentiel = fields.Boolean("Confidentiel", copy=False)  # x_studio_confidentiel
+    is_suivi_1 = fields.Boolean("Suivi", copy=False)  # x_studio_suivi_1
+    is_sensible_2 = fields.Boolean("Sensible", copy=False)  # x_studio_sensible_2
     proprietaire_maintenance_equipment_count = fields.Integer("Owner account",
-                                                              compute='_compute_maintenance_count') # x_x_studio_proprietaire__maintenance_equipment_count
+                                                              compute='_compute_maintenance_count')  # x_x_studio_proprietaire__maintenance_equipment_count
     maintenance_contact_maintenance_request_count = fields.Integer("Contact count",
-                                                                   compute="_compute_maintenance_contact") # x_x_studio_maintenance_contact__maintenance_request_count
-    name_product_supplierinfo_count = fields.Integer("Supplier price", compute='_compute_product_supplier_count') # x_name__product_supplierinfo_count
+                                                                   compute="_compute_maintenance_contact")  # x_x_studio_maintenance_contact__maintenance_request_count
+    name_product_supplierinfo_count = fields.Integer("Supplier price",
+                                                     compute='_compute_product_supplier_count')  # x_name__product_supplierinfo_count
     oci_listprice_nomclient_product_pricelist_count = fields.Integer("Customer name account",
                                                                      compute='_compute_product_pricelist_count')  # x_x_studio_oci_listprice_nomclient__product_pricelist_count
     tva_msg_europe = fields.Char(
@@ -159,9 +161,46 @@ class Partner(models.Model):
         migration_fields = {
             "x_studio_customer_code": "customer_code",
             "x_studio_customer_contact": "customer_contact",
-            # 'x_studio_field_aD1p5': 'field_aD1p5', # No need to migarte this fields as it is related to base field lang
+            'x_studio_field_aD1p5': 'field_aD1p5',  # Related to base field lang, no migration needed
             "x_studio_tva": "tva",
+            "x_studio_oci_contact_transporteur": "oci_contact_transporteur",
+            "x_studio_confidentiel": "is_confidentiel",
+            "x_studio_suivi_1": "is_suivi_1",
+            "x_studio_sensible_2": "is_sensible_2",
+            # "x_x_studio_proprietaire__maintenance_equipment_count": "proprietaire_maintenance_equipment_count",
+            # "x_x_studio_maintenance_contact__maintenance_request_count": "maintenance_contact_maintenance_request_count",
+            # "x_name__product_supplierinfo_count": "name_product_supplierinfo_count",
+            # "x_x_studio_oci_listprice_nomclient__product_pricelist_count": "oci_listprice_nomclient_product_pricelist_count",
+            "x_studio_tva_msg_europe": "tva_msg_europe",
+            "x_studio_country_group_ids_name": "country_group_ids_name",
+            "x_studio_field_BVkbJ": "field_BVkbJ_ids",
+            "x_studio_regroupement": "regroupement_id",
+            "x_studio_role_contact": "role_contact_id",
+            "x_studio_center_interest": "center_interest_id",
+            "x_studio_code_affaire": "service_id",
+            "x_studio_code_affaire": "code_affaire_id",
+            "x_studio_equipements_cmf": "equipements_cmf_ids",
+            "x_studio_field_LTJb8": "field_LTJb8_ids",
+            "x_studio_equipements_bm": "equipements_bm_ids",
+            "x_studio_facebook": "facebook",
+            "x_studio_linkedin": "linkedin",
+            "x_studio_skype": "skype",
+            "x_studio_precision_phone": "precision_phone",
+            "x_studio_fax": "fax",
+            "x_studio_customer_contact_fax": "customer_contact_fax",
+            "x_studio_prestataire_maintenance": "prestataire_maintenance",
+            "x_studio_est_un_distributeur": "est_un_distributeur",
+            "x_studio_code_naf": "code_naf_id",
+            "x_studio_categorie_comptable": "categorie_comptable_id",
+            "x_studio_oci_contact_constt": "is_oci_contact_constt",
+            "x_studio_oci_contact_consanonyme": "is_oci_contact_consanonyme",
+            "x_studio_oci_contact_pasconsentement": "is_oci_contact_pasconsentement",
+            "x_studio_chorus": "chorus",
+            "x_studio_oci_contact_commentaire": "oci_contact_commentaire",
         }
-        for rec in self:
+
+        partners = self.search([])
+
+        for rec in partners:
             for x_field, field in migration_fields.items():
                 common.set_customer_field(rec, x_field, field)
